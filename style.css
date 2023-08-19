@@ -1,5 +1,6 @@
 body {
     margin: 0;
+
 }
 
 header {
@@ -58,7 +59,8 @@ footer a {
     margin-top: 10px;
 }
 
-nav li, footer {
+nav li,
+footer {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -97,7 +99,9 @@ nav ul svg {
     flex-shrink: 0;
 }
 
-main {
+/* ------------------------------------------------- */
+
+/* main {
     width: 100%;
     min-height: 100vh;
     background: #FAFAFF;
@@ -106,12 +110,65 @@ main {
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
+} */
+
+.custom-select {
+    position: relative;
+    /* display: inline-block; */
 }
+
+.custom-select select {
+    /* Oculta la apariencia predeterminada del select */
+    width: 15%;
+    line-height: 2;
+    /* font-size: 20px; */
+    /* padding: 10px; */
+    /* border: 1px solid #ccc; */
+    /* border-radius: 5px; */
+    padding: 3px;
+    background-color: #f9f9f9;
+}
+
+.custom-select::before {
+    content: "Selecciona una opción";
+    /* Texto del placeholder */
+    position: absolute;
+    top: 0;
+    left: 0;
+    /* padding: 10px; */
+    color: #888;
+    /* Color del texto del placeholder */
+    pointer-events: none;
+    /* Evita que el pseudo-elemento sea interactivo */
+}
+
+input,
+select {
+    display: flex;
+    flex-direction: column;
+    border-radius: 4px;
+    border: 1px solid #30343F;
+}
+
+aside {
+    display: flex;
+    flex-direction: column;
+}
+
+.precio{
+    display: flex;
+    flex-direction: row;
+    /* display: inline-block; */
+}
+
+
+
+/* ---------------------------------------------- */
 
 footer {
     width: 100%;
     min-height: 200px;
-    
+
     background: #30343F;
     display: flex;
     flex-direction: row;
@@ -119,20 +176,20 @@ footer {
     justify-content: space-between;
 }
 
-.footer__links{
+.footer__links {
     margin-right: 900px;
     padding: 80px;
 }
 
 .footer__logo {
     padding: 110px;
-} 
+}
 
-footer li{
+footer li {
     list-style: none;
     line-height: 2;
 }
 
-.footer__copy{
-   margin: 0 auto;
+.footer__copy {
+    margin: 0 auto;
 }

@@ -1,0 +1,138 @@
+body {
+    margin: 0;
+}
+
+header {
+    width: 100%;
+    min-height: 144px;
+    /* flex-shrink: 0; */
+    background: #30343F;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.logo {
+    display: flex;
+    /* width: 372px; */
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-left: 30px;
+    /* margin-right: 500px; */
+    flex-wrap: wrap;
+}
+
+nav {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    /* alih-items: center; */
+    margin-right: 3em;
+}
+
+/* todos los a tanto del footer como del nav */
+
+nav a,
+footer a {
+    text-decoration: none;
+    color: #FFF;
+    font-family: Raleway;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-top: 10px;
+}
+
+nav,
+footer a {
+    text-decoration: none;
+    color: #FFF;
+    font-family: Raleway;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-top: 10px;
+}
+
+nav li, footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    color: #FAFAFF;
+    text-decoration: none;
+    list-style: none;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 2em;
+}
+
+nav ul {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+nav ul svg {
+    width: 13px;
+    /* Cambia el ancho según sea necesario */
+    height: 10px;
+    /* Cambia la altura según sea necesario */
+    margin-top: 16px;
+    margin-left: 4px;
+    /* Cambia el color del ícono si es necesario */
+}
+
+.cart {
+    margin-top: 60px;
+}
+
+.cart img {
+    width: 33px;
+    height: 31px;
+    flex-shrink: 0;
+}
+
+main {
+    width: 100%;
+    min-height: 100vh;
+    background: #FAFAFF;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+footer {
+    width: 100%;
+    min-height: 200px;
+    
+    background: #30343F;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.footer__links{
+    margin-right: 900px;
+    padding: 80px;
+}
+
+.footer__logo {
+    padding: 110px;
+} 
+
+footer li{
+    list-style: none;
+    line-height: 2;
+}
+
+.footer__copy{
+   margin: 0 auto;
+}

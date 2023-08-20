@@ -1,12 +1,11 @@
 body {
     margin: 0;
-
+    box-sizing: border-box;
 }
 
 header {
     width: 100%;
     min-height: 144px;
-    /* flex-shrink: 0; */
     background: #30343F;
     display: flex;
     flex-direction: row;
@@ -16,12 +15,10 @@ header {
 
 .logo {
     display: flex;
-    /* width: 372px; */
     justify-content: center;
     align-items: center;
     gap: 20px;
     margin-left: 40px;
-    /* margin-right: 500px; */
     flex-wrap: wrap;
 }
 
@@ -29,11 +26,8 @@ nav {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    /* alih-items: center; */
     margin-right: 3em;
 }
-
-/* todos los a tanto del footer como del nav */
 
 nav a,
 footer a {
@@ -81,12 +75,9 @@ nav ul {
 
 nav ul svg {
     width: 13px;
-    /* Cambia el ancho según sea necesario */
     height: 10px;
-    /* Cambia la altura según sea necesario */
     margin-top: 16px;
     margin-left: 4px;
-    /* Cambia el color del ícono si es necesario */
 }
 
 .cart {
@@ -103,43 +94,35 @@ nav ul svg {
 
 main {
     width: 100%;
-    /* min-height: 100vh; */
     background: #FAFAFF;
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    /* justify-content: space-between; */
-    /* align-items: center; */
+    /* flex-direction: row; */
+    /* flex-wrap: wrap; */
 }
 
 .custom-select {
     position: relative;
-    /* display: inline-block; */
+    ;
 }
 
 .custom-select select {
-    /* Oculta la apariencia predeterminada del select */
-    width: 160px;
+    width: 205px;
     line-height: 2;
-    /* font-size: 20px; */
-    /* padding: 10px; */
-    /* border: 1px solid #ccc; */
-    /* border-radius: 5px; */
     padding: 3px;
     background-color: #f9f9f9;
+    height: 30px;
 }
 
 .custom-select::before {
-    content: "Selecciona una opción";
-    /* Texto del placeholder */
+    content: "Mayor a menor";
     position: absolute;
     top: 0;
     left: 0;
-    /* padding: 10px; */
     color: #888;
-    /* Color del texto del placeholder */
     pointer-events: none;
-    /* Evita que el pseudo-elemento sea interactivo */
+    line-height: 2;
+    margin-left: 44px;
+    font-weight: 300;
 }
 
 input,
@@ -149,43 +132,50 @@ select {
     border-radius: 4px;
     border: 1px solid #30343F;
     width: 30px;
-    
 }
 
-.precio div{
-    padding: 10px;
-}
-
-.precio input{
-    width: 30px;
+.precio div {
+    /* padding: 10px; */
+    display: inline-flex;
+    padding-top: 10px;
 }
 
 aside {
     display: flex;
     flex-direction: column;
-    /* padding: 20px; */
     margin-left: 40px;
-    /* margin-top: 20px; */
     align-items: start;
     margin-right: 30px;
     margin-top: 20px;
+   
 }
 
-.aside__input{
+.aside__input {
     padding: 10px;
+    /* width: 250px; */
 }
 
-.aside__input:first-of-type input{
+
+.aside__input:first-of-type input {
     width: 155px;
-    line-height: 1.5;
+    line-height: 1.7;
+    text-align: center;
+    padding-top: 5px;
+    width: 200px;
 }
 
-.aside__input:last-of-type div{
+.aside__input:first-of-type ::placeholder {
+    color: #888;
+    font-size: 14px;
+    font-weight: 300;
+    margin-top: 4px !important;
+    line-height: 2;
+    margin-right: 18px;
+}
+
+.aside__input:last-of-type div {
     display: flex;
     flex-direction: row;
-    /* justify-content: space-between; */
-    /* align-items: center; */
-    /* width: 155px; */
     line-height: 1.5;
 }
 
@@ -203,11 +193,16 @@ aside {
     letter-spacing: 0em;
     text-align: left;
     color: #111111;
+    margin-right: 5px;
+}
+
+.precio :nth-child(2) label {
+    margin-left: 9px;
 }
 
 .label {
     font-family: Inter;
-    font-size: 24px;
+    font-size: 20px;
     font-weight: 500;
     line-height: 29px;
     letter-spacing: 0em;
@@ -215,14 +210,68 @@ aside {
     color: #111111;
 }
 
+.input-field {
+    line-height: 1.4;
+    width: 53px;
+}
 
+.card {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+}
+
+.card div:first-of-type {
+    font-family: Inter;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 17px;
+    letter-spacing: 0em;
+    color: #fff;
+    text-align: right;
+    padding-right: 10px;
+}
+
+.card div:first-of-type p {
+    background: #FF3333;
+    display: inline;
+    padding: 3px;
+}
+
+.cards {
+    margin-top: 35px;
+    margin-left: 10px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.card p:nth-child(2),
+.card p:nth-child(3),
+.card p:nth-child(4),
+.card p:nth-child(5),
+.card p:nth-child(6) {
+    margin: 9px;
+}
+
+.card p:nth-child(4) {
+    font-weight: bold;
+}
+
+.card p:nth-child(6) {
+    color: #1D84B5;
+    font-size: 13px;
+}
+
+.card img {
+    width: 304px;
+    height: 352px;
+}
 
 /* ---------------------------------------------- */
 
 footer {
     width: 100%;
-    /* min-height: 140px; */
-
     background: #30343F;
     display: flex;
     flex-direction: row;

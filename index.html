@@ -14,39 +14,40 @@
         <div class="logo">
             <img src="./images/svgjs-g-8619.svg" alt="logo">
 
-            <img src="./images/SvgjsG8620.png" alt="" width="271" height="32" viewBox="0 0 271 32" fill="none">
+            <img src="./images/SvgjsG8620.png" alt="" width="271" height="32" viewbox="0 0 271 32" fill="none">
         </div>
         <nav>
             <ul>
-                <li><a href="#">SHOP</a> <svg xmlns="http://www.w3.org/2000/svg" width="13" height="10"
-                        viewBox="0 0 13 10" fill="none">
+                <li>
+                    <a href="#">SHOP</a>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="13" height="10" viewbox="0 0 13 10" fill="none">
                         <path fill-rule="evenodd" clip-rule="evenodd"
                             d="M0.866943 2.43831L2.7614 0.695175L6.993 5.29412L10.4047 0.789575L12.4569 2.34391L7.18485 9.30469L0.866943 2.43831Z"
                             fill="white" />
-                    </svg></li>
+                    </svg>
+                </li>
 
-                <li><a href="#">CONTACTO</a></li>
-                <li><a href="#">LOGIN</a></li>
+                <li>
+                    <a href="#">CONTACTO</a>
+                </li>
+                <li>
+                    <a href="#">LOGIN</a>
+                </li>
             </ul>
             <!-- icono de carrito -->
             <div class="cart">
-                <img src="./images/cart-icon.svg" alt="" width="32" height="32" viewBox="0 0 32 32" fill="none">
+                <img src="./images/cart-icon.svg" alt="" width="32" height="32" viewbox="0 0 32 32" fill="none">
         </nav>
 
     </header>
     <main>
-
-
-    </main>
-    <aside>
-
-        
+        <aside>
             <div class="aside__input">
-                <label for="buscar">BUSCAR</label>
+                <label for="buscar" class="label">BUSCAR</label>
                 <input type="text" name="" id="buscar" placeholder="Item o categoria" class="aside__input-buscar">
             </div>
             <div class="aside__input">
-                <label for="">ORDENAR POR</label>
+                <label for="" class="label">ORDENAR POR</label>
                 <div class="custom-select">
                     <select name="" id="" class="placeholder-style">
                         <option value="" disabled selected style="color: red;"></option>
@@ -57,28 +58,57 @@
                 </div>
             </div>
             <div class="aside__input">
-                <label for="">PRECIO</label>
+                <label for="" class="label">PRECIO</label>
                 <div class="precio">
                     <div>
-                        <label for="min-price">MIN</label>
+                        <label for="min-price" class="label_precio-min-max">MIN</label>
                         <input type="number" id="min-price" class="input-field" placeholder="0">
                     </div>
                     <div>
-                        <label for="max-price">MAX</label>
+                        <label for="max-price" class="label_precio-min-max">MAX</label>
                         <input type="number" id="max-price" class="input-field" placeholder="9999">
                     </div>
                 </div>
-               
+
             </div>
             <div class="aside__input">
-                <label for="">FILTRAR</label>
-                <input type="checkbox" name="" id="">
+                <label for="" class="label">FILTRAR</label>
+                <div>
+                    <input type="checkbox" name="" id="nuevos-checkbox">
+                    <label for="nuevos">NUEVOS</label>
+                </div>
+                <div>
+                    <input type="checkbox" name="" id="ofertas-checkbox">
+                    <label for="ofertas-checkbox">OFERTAS</label>
+                </div>
+                <div>
+                    <input type="checkbox" name="" id="edicion-especial-checkbox">
+                    <label for="edicion-especial-checkbox">EDICION ESPECIAL</label>
+                </div>
+                <div>
+                    <input type="checkbox" name="" id="favoritos-checkbox">
+                    <label for="favoritos-checkbox">FAVORITOS</label>
+                </div>
             </div>
 
-        
+
+        </aside>
+        <div class="cards">
+            <div class="card">
+                <p>NUEVO</p>
+                <img src="./images/trooper-11.png" alt="">
+                <p>STAR WARS</p>
+                <p>STORMTROOPER LIGHTSABER</p>
+                <p>$ 1799,99</p>
+                <p>3 CUOTAS SIN INTERÉS</p>
+            </div>
+        </div>
 
 
-    </aside>
+
+
+    </main>
+
     <footer>
 
 
@@ -99,6 +129,7 @@
         </div>
 
     </footer>
+</body>
 </body>
 
 </html>

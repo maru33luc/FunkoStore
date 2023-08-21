@@ -12,7 +12,7 @@ header {
     flex-wrap: wrap;
 }
 
-nav {
+header nav {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -22,11 +22,11 @@ nav {
     justify-content: space-between;
 }
 
-picture {
+header nav picture {
     margin-left: 50px;
 }
 
-li a,
+header li a,
 footer a {
     text-decoration: none;
     color: #FFF;
@@ -38,7 +38,7 @@ footer a {
     margin-top: 10px;
 }
 
-nav li {
+header nav li, footer li {
     color: #FAFAFF;
     text-decoration: none;
     list-style: none;
@@ -46,16 +46,16 @@ nav li {
     margin-left: 20px;
 }
 
-nav li:last-of-type {
+header nav li:last-of-type {
     padding: 0;
 }
 
-nav li:last-of-type img {
+header nav li:last-of-type img {
     margin-top: 24px;
     margin-left: 30px;
 }
 
-nav ul {
+header nav ul {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -237,7 +237,7 @@ select {
 /* ---------------------------------------------- */
 
 footer {
-    width: 100%;
+    width: 98%;
     background: #30343F;
     display: flex;
     flex-direction: row;
@@ -263,9 +263,29 @@ footer {
 
 footer li {
     list-style: none;
-    line-height: 2;
+    line-height: 1;
+    padding: 1.3em;
 }
 
 .footer__copy {
+    margin: 0 auto;
+}
+
+footer nav{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+footer section{
+    width: 95%;
+}
+
+footer picture{
+    margin-top: 40px;
+}
+
+footer p:last-of-type{
     margin: 0 auto;
 }

@@ -9,7 +9,7 @@ header {
     background: #30343F;
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap; 
+    flex-wrap: wrap;
 }
 
 nav {
@@ -46,13 +46,13 @@ nav li {
     margin-left: 20px;
 }
 
-nav li:last-of-type{
+nav li:last-of-type {
     padding: 0;
 }
 
-nav li:last-of-type img{
-   margin-top: 24px;
-   margin-left: 30px;
+nav li:last-of-type img {
+    margin-top: 24px;
+    margin-left: 30px;
 }
 
 nav ul {
@@ -62,9 +62,9 @@ nav ul {
     margin-right: 60px;
 }
 
-/* ------------------------------------------------- */
+/* -----------------SHOP MAIN-------------------------------- */
 
-main {
+.shop__main {
     width: 100%;
     background: #FAFAFF;
     display: flex;
@@ -108,7 +108,7 @@ select {
     padding-top: 10px;
 }
 
-aside {
+.shop__aside {
     display: flex;
     flex-direction: column;
     margin-left: 40px;
@@ -243,18 +243,10 @@ footer {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
-}
-
-footer {
-    /* display: flex;
-    justify-content: center; */
     align-items: center;
-    /* width: 100px; */
     color: #FAFAFF;
     text-decoration: none;
     list-style: none;
-    /* flex-direction: row;
-    flex-wrap: wrap; */
     padding: 2em;
 }
 

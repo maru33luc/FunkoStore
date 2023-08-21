@@ -41,18 +41,6 @@ footer a {
     margin-top: 10px;
 }
 
-nav,
-footer a {
-    text-decoration: none;
-    color: #FFF;
-    font-family: Raleway;
-    font-size: 20px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
-    margin-top: 10px;
-}
-
 nav li,
 footer {
     display: flex;
@@ -96,13 +84,10 @@ main {
     width: 100%;
     background: #FAFAFF;
     display: flex;
-    /* flex-direction: row; */
-    /* flex-wrap: wrap; */
 }
 
 .custom-select {
     position: relative;
-    ;
 }
 
 .custom-select select {
@@ -135,7 +120,6 @@ select {
 }
 
 .precio div {
-    /* padding: 10px; */
     display: inline-flex;
     padding-top: 10px;
 }
@@ -147,12 +131,10 @@ aside {
     align-items: start;
     margin-right: 30px;
     margin-top: 20px;
-   
 }
 
 .aside__input {
     padding: 10px;
-    /* width: 250px; */
 }
 
 

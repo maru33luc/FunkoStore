@@ -3,9 +3,12 @@ body {
     box-sizing: border-box;
 }
 
+/* ----------------- HEADER ----------------------------- */
+
 header {
     width: 100%;
     min-height: 144px;
+    min-width: 650px;
     background: #30343F;
     display: flex;
     flex-direction: row;
@@ -16,7 +19,6 @@ header nav {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    /* margin-right: 3em; */
     align-items: center;
     width: 100%;
     justify-content: space-between;
@@ -42,7 +44,7 @@ header nav li, footer li {
     color: #FAFAFF;
     text-decoration: none;
     list-style: none;
-    padding: 2em;
+    padding: 1em;
     margin-left: 20px;
 }
 
@@ -51,46 +53,56 @@ header nav li:last-of-type {
 }
 
 header nav li:last-of-type img {
-    margin-top: 24px;
-    margin-left: 30px;
+    margin-top: 10px;
+    margin-left: 10px;
 }
 
 header nav ul {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    margin-right: 60px;
+    margin-right: 158px;
 }
 
 /* -----------------SHOP MAIN-------------------------------- */
 
-.shop__main {
-    width: 100%;
-    background: #FAFAFF;
+.shop__container {
     display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    margin-left: 2rem;
+}
+
+.shop__main {
+    /* width: 100%; */
+    background: #fff;
+    display: flex;
+    flex-wrap: nowrap;
 }
 
 .custom-select {
     position: relative;
+    margin-top: 15px;
 }
 
 .custom-select select {
     width: 205px;
     line-height: 2;
     padding: 3px;
-    background-color: #f9f9f9;
-    height: 30px;
+    background-color: #fff;
+    height: 35px;
 }
 
 .custom-select::before {
     content: "Mayor a menor";
+
     position: absolute;
     top: 0;
     left: 0;
     color: #888;
     pointer-events: none;
-    line-height: 2;
-    margin-left: 44px;
+    line-height: 2.2;
+    margin-left: 8px;
     font-weight: 300;
 }
 
@@ -98,8 +110,8 @@ input,
 select {
     display: flex;
     flex-direction: column;
-    border-radius: 4px;
-    border: 1px solid #30343F;
+    border-radius: 5px;
+    border: 2.3px solid #000000;
     width: 30px;
 }
 
@@ -109,23 +121,27 @@ select {
 }
 
 .shop__aside {
-    display: flex;
+    display: inline-flex;
     flex-direction: column;
     margin-left: 40px;
     align-items: start;
     margin-right: 30px;
-    margin-top: 20px;
+    margin-top: 50px;
 }
 
 .aside__input {
-    padding: 10px;
+    padding: 16px;
 }
 
+.aside__input input{
+    margin-top: 10px;
+}
 
 .aside__input:first-of-type input {
     width: 155px;
     line-height: 1.7;
-    text-align: center;
+    text-align: start;
+    /* padding-left: 6px; */
     padding-top: 5px;
     width: 200px;
 }
@@ -134,9 +150,11 @@ select {
     color: #888;
     font-size: 14px;
     font-weight: 300;
-    margin-top: 4px !important;
+    margin-top: 4px;
+    /* margin-left: 8px; */
     line-height: 2;
-    margin-right: 18px;
+    margin-right: 16px;
+    padding-left: 5px;
 }
 
 .aside__input:last-of-type div {
@@ -160,6 +178,7 @@ select {
     text-align: left;
     color: #111111;
     margin-right: 5px;
+    margin-top: 13px;
 }
 
 .precio :nth-child(2) label {
@@ -168,23 +187,41 @@ select {
 
 .label {
     font-family: Inter;
-    font-size: 20px;
+    font-size: 24px;
     font-weight: 500;
     line-height: 29px;
     letter-spacing: 0em;
     text-align: left;
     color: #111111;
+    margin-bottom: 20px;
+}
+
+.checkbox {
+    margin-top: 10px;
+    /* margin-bottom: 10px; */
+}
+
+.checkbox__label-text{
+    font-size: 18px;
 }
 
 .input-field {
     line-height: 1.4;
-    width: 53px;
+    width: 40px;
+}
+
+.precio input::placeholder{
+    text-align: center;
 }
 
 .card {
     display: flex;
     flex-direction: column;
     margin: 10px;
+}
+
+.cards li{
+    margin-right: 30px;
 }
 
 .card div:first-of-type {
@@ -205,7 +242,7 @@ select {
 }
 
 .cards {
-    margin-top: 35px;
+    margin-top: 50px;
     margin-left: 10px;
     display: flex;
     flex-direction: row;
@@ -215,26 +252,114 @@ select {
 .card p:nth-child(2),
 .card p:nth-child(3),
 .card p:nth-child(4),
-.card p:nth-child(5),
-.card p:nth-child(6) {
+.card p:nth-child(5) {
     margin: 9px;
 }
 
-.card p:nth-child(4) {
-    font-weight: bold;
+.card a p:nth-child(2){
+    margin-top: 20px;
 }
 
-.card p:nth-child(6) {
+.card a p:last-of-type{
     color: #1D84B5;
     font-size: 13px;
 }
 
-.card img {
-    width: 304px;
-    height: 352px;
+.card h4{
+    margin: 9px;;
 }
 
-/* ---------------------------------------------- */
+.card {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    background-color: #FFFFFF; 
+    padding: 10px; 
+}
+
+.card div:first-of-type {
+    font-family: Inter;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 17px;
+    letter-spacing: 0em;
+    color: #fff;
+    text-align: right;
+    padding-right: 10px;
+}
+
+.card div:first-of-type p {
+    background: #FF3333;
+    display: inline;
+    padding: 3px;
+}
+
+.card a { 
+    text-decoration: none; 
+    color: #111111;
+    display: flex;
+    flex-direction: column;
+}
+
+.card a img {
+    width: 280px;
+    height: 300px;
+}
+
+.card a p {
+    margin: 9px;
+}
+
+.card a p:nth-child(4) {
+    font-weight: bold;
+}
+
+.card a p:nth-child(6) {
+    color: #1D84B5;
+    font-size: 13px;
+}
+
+/* ----------------- PAGINACION ----------------------------- */
+
+.pagination {
+    margin: 0 0 35px 750px;
+}
+
+.pagination ul {
+    list-style: none;
+    padding: 0;
+}
+
+.pagination li {
+    display: inline-block;
+    margin-right: 5px;
+    /* width: 20px;
+    height: 20px; */
+    text-align: center;
+    line-height: 30px;
+}
+
+.pagination a {
+    text-decoration: none;
+    /* background-color: #30343F; */
+    color: #000;
+    font-weight: bold;
+    padding: 5px 5px;
+    border-radius: 3px;
+    border: 1px solid #b0b1b6;
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+}
+
+.pag__ul{
+    list-style: none;
+    padding: 0;
+    display: inline;
+}
+
+
+/* ----------------- FOOTER ----------------------------- */
 
 footer {
     width: 98%;

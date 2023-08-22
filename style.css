@@ -1,9 +1,28 @@
-body {
+*,
+*::after,
+*::before {
+    padding: 0;
     margin: 0;
     box-sizing: border-box;
 }
 
+html {
+    /* font-size: 62.5%; */
+    font-family: Inter, sans-serif;
+}
+
 /* ----------------- HEADER ----------------------------- */
+
+header,
+footer {
+    color: #FFF;
+    font-family: Raleway;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+
+}
 
 header {
     width: 100%;
@@ -13,6 +32,7 @@ header {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    font-family: Raleway;
 }
 
 header nav {
@@ -40,7 +60,8 @@ footer a {
     margin-top: 10px;
 }
 
-header nav li, footer li {
+header nav li,
+footer li {
     color: #FAFAFF;
     text-decoration: none;
     list-style: none;
@@ -126,14 +147,14 @@ select {
     margin-left: 30px;
     align-items: start;
     margin-right: 10px;
-    margin-top: 50px;
+    margin-top: 30px;
 }
 
 .aside__input {
     padding: 16px;
 }
 
-.aside__input .precio input{
+.aside__input .precio input {
     margin-top: 10px;
 }
 
@@ -143,7 +164,8 @@ select {
     text-align: start;
     /* padding-left: 6px; */
     /* padding-top: 5px; */
-    width: 200px;
+    width: 206px;
+    margin-top: 10px;
 }
 
 .aside__input:first-of-type ::placeholder {
@@ -201,16 +223,16 @@ select {
     /* margin-bottom: 10px; */
 }
 
-.checkbox__label-text{
+.checkbox__label-text {
     font-size: 18px;
-    
+
 }
 
-.checkbox-input{
-   margin-right: 5px;
-   /* line-height: 2; */
-   margin-bottom: 5px;
-    margin-left: 10px;
+.checkbox-input {
+    /* margin-right: 5px; */
+    /* line-height: 2; */
+    margin-bottom: 5px;
+    margin-left: 7px;
 }
 
 .input-field {
@@ -218,13 +240,13 @@ select {
     width: 40px;
 }
 
-.precio input::placeholder{
+.precio input::placeholder {
     text-align: center;
 }
 
 
 
-.cards li{
+.cards li {
     margin-right: 20px;
 }
 
@@ -246,7 +268,7 @@ select {
 }
 
 .cards {
-    margin-top: 50px;
+    margin-top: 30px;
     /* margin-left: 10px; */
     display: flex;
     flex-direction: row;
@@ -260,25 +282,26 @@ select {
     margin: 9px;
 }
 
-.card a p:nth-child(2){
+.card a p:nth-child(2) {
     margin-top: 20px;
 }
 
-.card a p:last-of-type{
+.card a p:last-of-type {
     color: #1D84B5;
     font-size: 13px;
 }
 
-.card h4{
-    margin: 9px;;
+.card h4 {
+    margin: 4px 0 3px 8px;
+
 }
 
 .card {
     display: flex;
     flex-direction: column;
     margin: 10px;
-    background-color: #FFFFFF; 
-    padding: 10px; 
+    background-color: #FFFFFF;
+    padding: 10px;
     margin-top: 20px;
 }
 
@@ -299,8 +322,8 @@ select {
     padding: 3px;
 }
 
-.card a { 
-    text-decoration: none; 
+.card a {
+    text-decoration: none;
     color: #111111;
     display: flex;
     flex-direction: column;
@@ -313,10 +336,6 @@ select {
 
 .card a p {
     margin: 9px;
-}
-
-.card a p:nth-child(4) {
-    font-weight: bold;
 }
 
 .card a p:nth-child(6) {
@@ -341,7 +360,7 @@ select {
     /* width: 20px;
     height: 20px; */
     text-align: center;
-    line-height: 30px;
+    line-height: 20px;
 }
 
 .pagination a {
@@ -357,7 +376,7 @@ select {
     display: inline-block;
 }
 
-.pag__ul{
+.pag__ul {
     list-style: none;
     padding: 0;
     display: inline;
@@ -367,7 +386,7 @@ select {
 /* ----------------- FOOTER ----------------------------- */
 
 footer {
-    width: 98%;
+    width: 100%;
     background: #30343F;
     display: flex;
     flex-direction: row;
@@ -378,6 +397,7 @@ footer {
     text-decoration: none;
     list-style: none;
     padding: 2em;
+    line-height: 23.4px;
 }
 
 .footer__links {
@@ -394,28 +414,29 @@ footer {
 footer li {
     list-style: none;
     line-height: 1;
-    padding: 1.3em;
+    /* padding: 1.3em; */
+    margin-top: 10px 0 0 0;
 }
 
 .footer__copy {
     margin: 0 auto;
 }
 
-footer nav{
+footer nav {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
 }
 
-footer section{
+footer section {
     width: 95%;
 }
 
-footer picture{
-    margin-top: 40px;
+footer picture {
+    margin-top: 25px;
 }
 
-footer p:last-of-type{
-    margin: 0 auto;
+footer p:last-of-type {
+    margin: 5px auto;
 }

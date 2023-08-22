@@ -61,7 +61,7 @@ header nav ul {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    margin-right: 158px;
+    margin-right: 80px;
 }
 
 /* -----------------SHOP MAIN-------------------------------- */
@@ -123,9 +123,9 @@ select {
 .shop__aside {
     display: inline-flex;
     flex-direction: column;
-    margin-left: 40px;
+    margin-left: 30px;
     align-items: start;
-    margin-right: 30px;
+    margin-right: 10px;
     margin-top: 50px;
 }
 
@@ -133,26 +133,26 @@ select {
     padding: 16px;
 }
 
-.aside__input input{
+.aside__input .precio input{
     margin-top: 10px;
 }
 
 .aside__input:first-of-type input {
     width: 155px;
-    line-height: 1.7;
+    line-height: 1.6;
     text-align: start;
     /* padding-left: 6px; */
-    padding-top: 5px;
+    /* padding-top: 5px; */
     width: 200px;
 }
 
 .aside__input:first-of-type ::placeholder {
     color: #888;
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 300;
     margin-top: 4px;
     /* margin-left: 8px; */
-    line-height: 2;
+    line-height: 1.9;
     margin-right: 16px;
     padding-left: 5px;
 }
@@ -203,6 +203,14 @@ select {
 
 .checkbox__label-text{
     font-size: 18px;
+    
+}
+
+.checkbox-input{
+   margin-right: 5px;
+   /* line-height: 2; */
+   margin-bottom: 5px;
+    margin-left: 10px;
 }
 
 .input-field {
@@ -214,14 +222,10 @@ select {
     text-align: center;
 }
 
-.card {
-    display: flex;
-    flex-direction: column;
-    margin: 10px;
-}
+
 
 .cards li{
-    margin-right: 30px;
+    margin-right: 20px;
 }
 
 .card div:first-of-type {
@@ -243,7 +247,7 @@ select {
 
 .cards {
     margin-top: 50px;
-    margin-left: 10px;
+    /* margin-left: 10px; */
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -275,6 +279,7 @@ select {
     margin: 10px;
     background-color: #FFFFFF; 
     padding: 10px; 
+    margin-top: 20px;
 }
 
 .card div:first-of-type {
@@ -322,7 +327,7 @@ select {
 /* ----------------- PAGINACION ----------------------------- */
 
 .pagination {
-    margin: 0 0 35px 750px;
+    margin: 0 0 35px 600px;
 }
 
 .pagination ul {

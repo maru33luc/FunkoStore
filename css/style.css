@@ -11,14 +11,41 @@ html {
     font-family: Inter, sans-serif;
 }
 
+ul,ol{
+    list-style: none;
+}
+
+p{
+    font-size: 1.8em;
+}
+
+a{
+    text-decoration: none;
+}
+
+img{
+    width: 100%;
+}
+
+.container{
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.with-icon{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+
+
 /* ----------------- HEADER ----------------------------- */
 
 header,
 footer {
     color: #FFF;
     font-family: Raleway;
-    /* font-size: 2em; */
-    /* font-size: 20px; */
     font-style: normal;
     font-weight: 500;
     line-height: normal;
@@ -33,9 +60,10 @@ header {
     flex-direction: row;
     flex-wrap: wrap;
     font-family: Raleway;
+    padding: 30px;
 }
 
-header nav {
+.navbar {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -44,47 +72,67 @@ header nav {
     justify-content: space-between;
 }
 
-header nav picture {
-    margin-left: 50px;
-}
 
-header li a,
+.navbar__link,
 footer a {
-    text-decoration: none;
     color: #FFF;
     font-family: Raleway;
     font-size: 20px;
-    /* font-size: 1.5vw; */
     font-style: normal;
     font-weight: 500;
     line-height: normal;
-    margin-top: 10px;
+    /* margin-top: 10px; */
+    position: relative;
+    padding-left: 8px;
+    transition: color 0.2s ease-in-out;
 }
 
-header nav li,
-footer li {
-    color: #FAFAFF;
-    text-decoration: none;
-    list-style: none;
-    padding: 1em;
-    margin-left: 20px;
+.navbar__link:hover,
+.submenu__link:hover,
+footer a:hover
+ {
+    color: #FF3333;
 }
 
-header nav li:last-of-type {
-    padding: 0;
-}
-
-header nav li:last-of-type img {
-    margin-top: 10px;
-    margin-left: 10px;
-}
-
-header nav ul {
+.navbar__menu {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    margin-right: 100px;
+    /* margin-right: 100px;
+    margin-left: 120px; */
+    align-items: center;
+    gap: 3rem;
 }
+
+.navbar__logo{
+    max-width: 370px;
+}
+
+.submenu{
+    position: absolute;
+    background-color: #30343F;
+    display: none;
+    width: 300px;
+}
+
+.submenu__link{
+    color: #FAFAFF;
+    display: block;
+    transition: color 0.2s ease-in-out;
+}
+
+.submenu__item{
+    display: block;
+    /* text-align: center; */
+    padding: 12px 8px;
+    padding-right: 16px;
+}
+
+.with-submenu:hover .submenu{
+    display: block;
+}
+
+
 
 /* -----------------SHOP MAIN-------------------------------- */
 
@@ -261,6 +309,7 @@ select {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    justify-content: space-around;
 }
 
 .card p:nth-child(2),
@@ -334,7 +383,6 @@ select {
 /* ----------------- PAGINACION ----------------------------- */
 
 .pagination {
-    /* margin: 0 0 35px 650px; */
     margin: 10px 0 25px 40vw;
 }
 
@@ -423,4 +471,15 @@ footer picture {
 
 footer p:last-of-type {
     margin: 5px auto;
+}
+
+footer ul{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-right: 100px;
+    margin-left: 120px;
+    align-items: center;
+    gap: 1.5rem;
 }

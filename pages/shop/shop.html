@@ -9,7 +9,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500&family=Raleway:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500&family=Raleway:wght@300&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="../../css/normalize.css">
     <link rel="stylesheet" href="../../css/style.css">
     <link rel="stylesheet" href="../../css/index.css">
@@ -19,16 +20,31 @@
 
 <body>
     <header>
-        <nav>
-            <picture>
+        <nav class="navbar container">
+            <picture class="navbar__logo">
                 <a href="../../index.html"><img src="../../img/branding/logo_light_horizontal.svg"
                         alt="Isologotipo de la marca FunkoShop"></a>
             </picture>
-            <ul>
-                <li><a href="./shop.html">SHOP</a></li>
-                <li><a href="./contacto.html">CONTACTO</a></li>
-                <li><a href="./login.html">LOGIN</a></li>
-                <li><a href="./cart.html"><img src="../../img/icons/cart-icon.svg" alt="icono de carrito"></a></li>
+            <ul class="navbar__menu">
+                <li class="navbar__item with-submenu">
+                    <a class="navbar__link with-icon" href="./shop.html">SHOP <iconify-icon icon="mdi:chevron-down"></iconify-icon></a>
+                
+                <ul class="submenu">
+                    <li class="submenu__item">
+                        <a href="" class="submenu__link">Funkos</a>
+                    </li>
+                    <li class="submenu__item">
+                        <a href="" class="submenu__link">Remeras</a>
+                    </li>
+                    <li class="submenu__item">
+                        <a href="" class="submenu__link">LLaveros</a>
+                    </li>
+                </ul>
+            </li>
+                <li class="navbar__item"><a class="navbar__link" href="./contacto.html">CONTACTO</a></li>
+                <li class="navbar__item"><a class="navbar__link" href="./login.html">LOGIN</a></li>
+                <li class="navbar__item"><a class="navbar__cart" href="./cart.html"><img
+                            src="../../img/icons/cart-icon.svg" alt="icono de carrito" class="cart-icon"></a></li>
             </ul>
         </nav>
     </header>
@@ -202,14 +218,16 @@
 
     <div class="pagination">
         <ul class="pag__ul">
-            <li><a href="#"><</a></li>
+            <li><a href="#">
+                    <</a>
+            </li>
             <li><a href="#">1</a></li>
             <li><a href="#">2</a></li>
             <li><a href="#">...</a></li>
             <li><a href="#">9</a></li>
             <li><a href="#">10</a></li>
             <li><a href="#">></a></li>
-            
+
         </ul>
     </div>
     <footer>
@@ -232,6 +250,8 @@
         </section>
         <p>All rights reserved 2023 - Funkoshop &copy;</p>
     </footer>
+
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
 </body>
 
 

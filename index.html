@@ -3,7 +3,8 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="./css/index.css">
+        <link rel="stylesheet" href="./css/style.css">
         <title>Home</title>
     </head>
     <body>
@@ -14,7 +15,7 @@
                     <a href="./index.html"><img src="./img/branding/logo_light_horizontal.svg" alt="Isologotipo de la marca FunkoShop"></a>
                 </picture>
                 <ul>
-                    <li><a href="./pages/shop.html">SHOP</a></li>
+                    <li><a href="./pages/shop/shop.html">SHOP</a></li>
                     <li><a href="./contacto.html">CONTACTO</a></li>
                     <li><a href="./login.html">LOGIN</a></li>
                     <li><a href="./pages/cart.html"><img src="./img/icons/cart-icon.svg" alt="icono de carrito"></a></li>
@@ -23,26 +24,28 @@
         </header>
 
         <main>
-            <section>
+            <section class="hero">
                 <article>
                     <h3>Nuevos Ingresos</h3>
                     <p>
                         Descubrí el próximo Funko Pop de tu colección</p>
-                    <a href="./pages/shop.html">SHOP</a>
+                    <a href="./pages/shop.html" class="hero__a-shop">SHOP</a>
                 </article>
             </section>
-            <section>
+
+            <section class="section-index">
                 <article>
                     <h3>STAR WARS & THE MANDALORIAN</h3>
-                    <p>Disfruta de una saga que sigue agregando personajes a su colección.</p>
+                    <p>Disfruta de una saga que sigue <br>agregando personajes a su colección.</p>
+                    
                     <a href="./pages/shop.html">VER COLECCIÓN</a>
                 </article>
                 <picture>
                     <img src="./img/star-wars/baby-yoda-1.webp" alt="Figura coleccionable Funko de Grogu de la serie The Mandalorian">
                 </picture>
-
             </section>
-            <section>
+
+            <section class="section-index">
                 <article>
                     <h3>POKEMON INDIGO</h3>
                     <p>Atrapa todos los que puedas y disfruta de una colección llena de amigos.</p>
@@ -52,9 +55,10 @@
                     <img src="./img/pokemon/vulpix-1.webp" alt="Figura coleccionable Funko de Vulpix de la serie Pokemon">
                 </picture>
             </section>
-            <section>
+
+            <section class="section-index">
                 <article>
-                    <h3>hARRY POTTER</h3>
+                    <h3>HARRY POTTER</h3>
                     <p>Revive los recuerdos de una saga llena de magia y encanto.</p>
                     <a href="./pages/shop.html">VER COLECCIÓN</a>
                 </article>
@@ -62,53 +66,45 @@
                     <img src="./img/harry-potter/snape-patronus-1.webp" alt="Figura coleccionable Funko del Patronus de Snape en la pelicula de Harry Potter">
                 </picture>
             </section>
-            <section>
+
+            <section class="ultimos-lanzamientos">
                 <h2>ULTIMOS LANZAMIENTOS</h2>
-                <ul>
-                    <li>
-                        <articles>
-                            <a href="">
-                                <picture>
-                                    <img src="./img/star-wars/trooper-1.webp" alt="Figura coleccionable Funko de un Stormtrooper">
-                                </picture>
-                                <div>
-                                    <p>STAR WARS</p>
-                                    <h4>STORMTROOPER LIGHTSABER</h4>
-                                    <p>$ 1799,99</p>
-                                    <p>3 CUOTAS SIN INTERÉS</p>
-                                </div>
-                            </a>
-                        </articles>
+                <ul class="cards">
+                    <li class="card">
+                        <div>
+                            <p>NUEVO</p>
+                        </div>
+                        <a href="#">
+                            <img src="../../img/star-wars/trooper-1.webp" alt="">
+                            <p class="">STAR WARS</p>
+                            <h4>STORMTROOPER LIGHTSABER</h4>
+                            <p class="">$ 1799,99</p>
+                            <p class="">3 CUOTAS SIN INTERÉS</p>
+                        </a>
                     </li>
-                    <li>
-                        <articles>
-                            <a href="">
-                                <picture>
-                                    <img src="./img/pokemon/pidgeotto-1.webp" alt="Figura coleccionable Funko de Pidgeotto">
-                                </picture>
-                                <div>
-                                    <p>POKEMON</p>
-                                    <h4>PIDGEOTTO</h4>
-                                    <p>$ 1799,99</p>
-                                    <p>3 CUOTAS SIN INTERÉS</p>
-                                </div>
-                            </a>
-                        </articles>
+                    <li class="card">
+                        <div>
+                            <p>NUEVO</p>
+                        </div>
+                        <a href="#">
+                            <img src="../../img/pokemon/pidgeotto-1.webp" alt="">
+                            <p class="">POKEMON</p>
+                            <h4>PIDGEOTTO</h4>
+                            <p class="">$ 1799,99</p>
+                            <p class="">3 CUOTAS SIN INTERÉS</p>
+                        </a>
                     </li>
-                    <li>
-                        <articles>
-                            <a href="">
-                                <picture>
-                                    <img src="./img/harry-potter/luna-1.webp" alt="Figura coleccionable Funko de Luna Lovegood">
-                                </picture>
-                                <div>
-                                    <p>HARRY POTTER</p>
-                                    <h4>LUNA LOVEGOOD LION MASK</h4>
-                                    <p>$ 1799,99</p>
-                                    <p>3 CUOTAS SIN INTERÉS</p>
-                                </div>
-                            </a>
-                        </articles>
+                    <li class="card">
+                        <div>
+                            <p>NUEVO</p>
+                        </div>
+                        <a href="#">
+                            <img src="../../img/harry-potter/luna-1.webp" alt="">
+                            <p class="">HARRY POTTER</p>
+                            <h4>LUNA LOVEGOOD LION MASK </h4>
+                            <p class="">$ 1799,99</p>
+                            <p class="">3 CUOTAS SIN INTERÉS</p>
+                        </a>
                     </li>
                 </ul>
 

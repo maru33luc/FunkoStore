@@ -7,7 +7,7 @@
 }
 
 html {
-    /* font-size: 62.5%; */
+    /* font-size: 62.5%; 10px = 1 rem */
     font-family: Inter, sans-serif;
 }
 
@@ -17,16 +17,17 @@ header,
 footer {
     color: #FFF;
     font-family: Raleway;
-    font-size: 20px;
+    /* font-size: 2em; */
+    /* font-size: 20px; */
     font-style: normal;
     font-weight: 500;
     line-height: normal;
+    min-width: 700px;
 }
 
 header {
     width: 100%;
     min-height: 144px;
-    min-width: 650px;
     background: #30343F;
     display: flex;
     flex-direction: row;
@@ -53,6 +54,7 @@ footer a {
     color: #FFF;
     font-family: Raleway;
     font-size: 20px;
+    /* font-size: 1.5vw; */
     font-style: normal;
     font-weight: 500;
     line-height: normal;
@@ -332,7 +334,8 @@ select {
 /* ----------------- PAGINACION ----------------------------- */
 
 .pagination {
-    margin: 0 0 35px 650px;
+    /* margin: 0 0 35px 650px; */
+    margin: 10px 0 25px 40vw;
 }
 
 .pagination ul {

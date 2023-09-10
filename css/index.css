@@ -219,6 +219,8 @@ footer a:hover
     color: #FFF;
 }
 
+/* ------------------------ COLLECTIONS ------------------------ */
+
 main {
     width: 100%;
     display: flex;
@@ -229,14 +231,13 @@ main {
     flex-wrap: wrap;
 }
 
-.section-index {
-    width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    flex-wrap: wrap;
+.collection {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    align-items: center;
 }
 
-.section-index h3 {
+.collection__title {
     font-family: Raleway;
     font-size: 46px;
     font-weight: 500;
@@ -246,7 +247,7 @@ main {
     width: 441px;
 }
 
-.section-index p {
+.collection__text {
     font-family: Raleway;
     font-size: 24px;
     font-weight: 400;
@@ -254,11 +255,11 @@ main {
     letter-spacing: 0em;
     text-align: left;
     width: 458px;
-    border-bottom: 3px solid #FF3333;
+    border-bottom: 2px solid #FF3333;
     padding-bottom: 1rem;
 }
 
-.section-index a {
+.collection__link {
     font-family: Inter;
     font-size: 24px;
     font-weight: 500;
@@ -269,24 +270,28 @@ main {
     color: #FFF;
     background: #111;
     border-radius: 50px;
-    padding: 10px 10px;
-    margin-top: 3rem;
+    padding: 16px 36px;
     display: inline-block;
     width: 55%;
     text-align: center;
+    transition: all 0.2s ease-in-out;
 }
 
-.section-index article {
+.collection__link:hover {
+    background: #FF3333;
+    color: #FFF;
+}
+
+.collection__content {
     display: flex;
     flex-direction: column;
     justify-content: center;
     text-align: center;
-    margin-left: 2rem;
+    gap: 24px;
 }
 
-.section-index:nth-of-type(3) {
-    display: flex;
-    flex-direction: row-reverse;
+.collection:nth-of-type(2) .collection__cover{
+   order: -1;
 }
 
 .ultimos-lanzamientos {

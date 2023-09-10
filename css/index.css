@@ -11,33 +11,34 @@ html {
     font-family: Inter, sans-serif;
 }
 
-ul,ol{
+ul,
+ol {
     list-style: none;
 }
 
-p{
+p {
     font-size: 1.8em;
 }
 
-a{
+a {
     text-decoration: none;
+    color: #000;
 }
 
-img{
+img {
     width: 100%;
 }
 
-.container{
+.container {
     max-width: 1200px;
     margin: 0 auto;
 }
 
-.with-icon{
+.with-icon {
     display: flex;
     align-items: center;
     gap: 8px;
 }
-
 
 
 /* ----------------- HEADER ----------------------------- */
@@ -81,7 +82,6 @@ footer a {
     font-style: normal;
     font-weight: 500;
     line-height: normal;
-    /* margin-top: 10px; */
     position: relative;
     padding-left: 8px;
     transition: color 0.2s ease-in-out;
@@ -89,8 +89,7 @@ footer a {
 
 .navbar__link:hover,
 .submenu__link:hover,
-footer a:hover
- {
+footer a:hover {
     color: #FF3333;
 }
 
@@ -98,37 +97,35 @@ footer a:hover
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    /* margin-right: 100px;
-    margin-left: 120px; */
     align-items: center;
     gap: 3rem;
 }
 
-.navbar__logo{
+.navbar__logo {
     max-width: 370px;
 }
 
-.submenu{
+.submenu {
     position: absolute;
     background-color: #30343F;
     display: none;
     width: 300px;
+    z-index: 3;
 }
 
-.submenu__link{
+.submenu__link {
     color: #FAFAFF;
     display: block;
     transition: color 0.2s ease-in-out;
 }
 
-.submenu__item{
+.submenu__item {
     display: block;
-    /* text-align: center; */
     padding: 12px 8px;
     padding-right: 16px;
 }
 
-.with-submenu:hover .submenu{
+.with-submenu:hover .submenu {
     display: block;
 }
 
@@ -137,8 +134,6 @@ footer a:hover
 .hero {
     background: url(../img/funkos-banner-1.png) no-repeat center center;
     background-size: cover;
-
-    /* height: 400px; */
     width: 100%;
     display: block;
     color: white;
@@ -147,7 +142,7 @@ footer a:hover
     position: relative;
 }
 
-.hero::before{
+.hero::before {
     content: '';
     background-color: rgba(0, 0, 0, 0);
     position: absolute;
@@ -156,7 +151,7 @@ footer a:hover
     top: 0;
     left: 0;
     backdrop-filter: blur(2px) brightness(0.9);
-   
+
 }
 
 .hero__content {
@@ -164,10 +159,7 @@ footer a:hover
     flex-direction: column;
     justify-content: center;
     align-items: start;
-    /* margin: 0; */
-    /* text-align: center; */
     align-content: center;
-    /* margin-left: 2rem; */
     gap: 20px;
     position: relative;
     z-index: 2;
@@ -190,7 +182,6 @@ footer a:hover
     font-style: normal;
     font-weight: 400;
     line-height: normal;
-    /* margin-left: 4.9rem; */
     margin-bottom: 1rem;
 }
 
@@ -206,7 +197,6 @@ footer a:hover
     background: #FFF;
     border-radius: 50px;
     display: inline-block;
-    /* padding: 10px 20px; */
     padding: 12px 68px;
     margin-top: 20px;
     margin-right: 4.5rem;
@@ -221,20 +211,11 @@ footer a:hover
 
 /* ------------------------ COLLECTIONS ------------------------ */
 
-main {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    flex-wrap: wrap;
-}
-
 .collection {
     display: grid;
-    grid-template-columns: repeat(2,1fr);
+    grid-template-columns: repeat(2, 1fr);
     align-items: center;
+    padding: 16px 0;
 }
 
 .collection__title {
@@ -290,34 +271,115 @@ main {
     gap: 24px;
 }
 
-.collection:nth-of-type(2) .collection__cover{
-   order: -1;
+.collection:nth-of-type(2) .collection__cover {
+    order: -1;
 }
 
-.ultimos-lanzamientos {
-    width: 1223px;
-    margin: 0 auto;
-    margin-top: 3rem;
-    margin-bottom: 3rem;
+/* ---------------------SLIDER ---------------------------- */
+
+.slider {
     display: flex;
     flex-direction: column;
-    flex-wrap: wrap;
+    gap: 36px;
+    margin: 10px auto 100px auto;
 }
 
-
-
-.ultimos-lanzamientos li {
-    margin-right: 20px;
+.slider__items {
     display: flex;
-    justify-content: center;
-    text-align: center;
+    gap: 24px;
+    
 }
 
-.ultimos-lanzamientos h2 {
+.slider__item{
+    width: 300px;
+}
+
+.slider__title {
     font-family: Raleway;
     font-size: 46px;
     font-weight: 700;
     line-height: 54px;
     letter-spacing: 0em;
     text-align: left;
+    text-transform: uppercase;
+    padding: 30px 0;
+}
+
+.card-item__content {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 16px;
+    align-items: flex-start;
+}
+
+.card-item__licence {
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.card-item__name {
+    font-weight: 700;
+    font-size: 18px;
+}
+
+.card-item__price {
+    font-weight: 500;
+    font-size: 16px;
+}
+
+.card-item__promo {
+    color: #1D84B5;
+    font-size: 12px;
+}
+
+.card-item__cover {
+    display: flex;
+    position: relative;
+}
+
+.card-item__img--back {
+    display: block;
+    position: relative;
+    top: 0;
+    left: 0;
+    display: none;
+}
+
+.card-item__cover img {
+    animation: fade 1.7s ease-in-out;
+}
+
+.card-item__cover:hover .card-item__img--front {
+    display: none;
+}
+
+.card-item__cover:hover .card-item__img--back {
+    display: block;
+}
+
+@keyframes fade {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.card-item__tag {
+    font-family: Inter;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 17px;
+    letter-spacing: 0em;
+    text-align: left;
+    background-color: #FF3333;
+    color: #FFF;
+    padding: 4px 8px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    text-transform: uppercase;
 }

@@ -228,68 +228,68 @@ select {
 
 /* ----------------- FOOTER ----------------------------- */
 
-footer {
-    width: 100%;
-    background: #30343F;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    color: #FAFAFF;
-    text-decoration: none;
-    list-style: none;
-    padding: 2em;
-    line-height: 23.4px;
-}
+    /* footer {
+        width: 100%;
+        background: #30343F;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        color: #FAFAFF;
+        text-decoration: none;
+        list-style: none;
+        padding: 2em;
+        line-height: 23.4px;
+    }
 
-.footer__links {
-    margin-right: 800px;
-    padding: 20px;
-    margin-left: 35px;
-}
+    .footer__links {
+        margin-right: 800px;
+        padding: 20px;
+        margin-left: 35px;
+    }
 
-.footer__logo {
-    padding: 60px;
-    margin-right: 25px;
-}
+    .footer__logo {
+        padding: 60px;
+        margin-right: 25px;
+    }
 
-footer li {
-    list-style: none;
-    line-height: 1;
-    margin-top: 10px 0 0 0;
-}
+    footer li {
+        list-style: none;
+        line-height: 1;
+        margin-top: 10px 0 0 0;
+    }
 
-.footer__copy {
-    margin: 0 auto;
-}
+    .footer__copy {
+        margin: 0 auto;
+    }
 
-footer nav {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-between;
-}
+    footer nav {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
 
-footer section {
-    width: 95%;
-}
+    footer section {
+        width: 95%;
+    }
 
-footer picture {
-    margin-top: 25px;
-}
+    footer picture {
+        margin-top: 25px;
+    }
 
-footer p:last-of-type {
-    margin: 5px auto;
-}
+    footer p:last-of-type {
+        margin: 5px auto;
+    }
 
-footer ul{
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-right: 100px;
-    margin-left: 120px;
-    align-items: center;
-    gap: 1.5rem;
-}
+    footer ul{
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-right: 100px;
+        margin-left: 120px;
+        align-items: center;
+        gap: 1.5rem;
+    } */

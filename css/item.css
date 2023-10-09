@@ -1,0 +1,254 @@
+.card-item__cover{
+    display: block;
+    
+}
+
+.item{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 50px;
+}
+
+.item__img{
+    max-width: 550px;
+   min-width: 250px;
+}
+
+.item__info{
+    display: flex;
+    flex-direction: column;
+    margin-left: 30px;
+    margin-right: 10px;
+    margin-top: 30px;
+    justify-content: center;
+    gap: 10px;
+    width: 576px;
+}
+
+.item__info .card-item__licence{
+    font-family: Inter;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 17px;
+    letter-spacing: 0em;
+    color: #151515;
+    text-align: left;
+    padding-right: 10px;
+}
+
+.item__info .card-item__name{
+    font-family: Inter;
+    font-size: 38px;
+    font-weight: 700;
+    line-height: 45px;
+    letter-spacing: 0em;
+    color: #151515;
+    text-align: left;
+    padding-right: 10px;
+}
+
+.item__info .item__description{
+    font-family: Inter;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 29px;
+    letter-spacing: 0em;
+    color: #151515;
+    text-align: left;
+    padding-right: 10px;
+}
+
+.item__info .card-item__price{
+    font-family: Inter;
+    font-size: 38px;
+    font-weight: 400;
+    line-height: 45px;
+    letter-spacing: 0em;
+    color: #151515;
+    text-align: left;
+    padding-right: 10px;
+}
+
+.item__promo{
+    font-family: Inter;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 29px;
+    letter-spacing: 0em;
+    color: #1D84B5;
+    text-align: left;
+    padding-right: 10px;
+}
+
+.item__promo a{
+    color: #1D84B5;
+}
+
+.slider__title-productos{
+    font-family: Inter;
+    font-size: 46px;
+    font-weight: 700;
+    line-height: 29px;
+    letter-spacing: 0em;
+    color: #151515;
+    text-align: left;
+    padding-right: 10px;
+}
+
+.slider{
+    gap: 50px;
+}
+
+.glide__arrow{
+    font-size: 2em;
+    color: black;
+    top: 40%!important;
+}
+
+.item__submit{
+    font-family: Inter;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 17px;
+    letter-spacing: 0em;
+    text-align: left;
+    background-color: #FF3333;
+    color: #FFF;
+    border: none;
+    padding: 10px;
+}
+
+.item__input{
+    width: 80px;
+    border: 0.5px solid #C9C9C9;
+    line-height: 2.4em;
+    font-size: 1.5em;
+    position: relative;
+}
+
+.item__input::placeholder{
+    color: #747474;
+    font-size: 1.5em;
+    text-align: center;
+    line-height: 1.7em;
+    padding: 0;
+    margin: 0;
+    vertical-align: middle;
+    position: absolute;
+    top: 22.5%;
+    left: 40%;
+}
+
+.buttons__quantity{
+    display: inline-flex;
+   flex-direction: column; 
+    margin: 0 10px;
+    gap: 5px;
+}
+
+.item__cart{
+    display: flex;
+}
+
+.item__quantity{
+    width: 18px;
+    /* height: 18px; */
+    background: #151515;
+    color: #FFF;
+}
+
+
+
+
+
+@media screen and (max-width: 800px) {
+    .item{
+        flex-direction: column;
+    }
+    .item__info{
+        width: 100%;
+    }
+    .item__info .card-item__licence{
+        font-size: 12px;
+    }
+    .item__info .card-item__name{
+        font-size: 25px;
+    }
+    .item__info .item__description{
+        font-size: 18px;
+    }
+    .item__info .card-item__price{
+        font-size: 25px;
+    }
+    .item__promo{
+        font-size: 9px;
+    }
+    .slider__title-productos{
+        font-size: 25px;
+        margin-left: 25px;
+    }
+  
+    .card-item__cover{
+        max-width: 400px;
+    }
+    
+}
+
+@media screen and (max-width: 360px) {
+    /* achicar nuevamente las letras */
+    .item__info .card-item__licence, .card-item__licence{
+        font-size: 10px;
+    }
+    .item__info .card-item__name {
+        font-size: 20px;
+        text-wrap: wrap;
+    }
+    .item__info .item__description{
+        font-size: 15px;
+        text-wrap: wrap;
+    }
+    .item__info .card-item__price{
+        font-size: 20px;
+    }
+    .item__promo{
+        font-size: 8px;
+    }
+    .slider__title-productos{
+        font-size: 20px;
+        
+    }
+    .card-item__cover{
+        max-width: 300px;
+        min-width: 180px;
+        
+    }
+    .card-item__cover{
+        max-width: 70%;
+    }
+    .card-item__name{
+        font-size: 15px;
+    }
+    .card-item__price{
+        font-size: 12px;
+    }
+    .card-item__promo{
+        font-size: 9px;
+    }
+    .card-item__tag{
+        font-size: 9px;
+    }
+   
+        .glide__arrow--right {
+            /* right:calc(50% - 20px); */
+            right: calc(100% - 230px);
+        }
+}
+
+@media screen and (max-width: 272px) {
+    .glide__arrow--right {
+        /* right:calc(50% - 20px); */
+        right: calc(100% - 210px);
+    }
+
+}
+

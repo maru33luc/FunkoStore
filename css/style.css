@@ -18,6 +18,7 @@
 .custom-select {
     position: relative;
     margin-top: 15px;
+    font-size: 1.5em;
 }
 
 .custom-select select {
@@ -77,6 +78,7 @@ select {
     text-align: start;
     width: 206px;
     margin-top: 10px;
+    padding: 5px;
 }
 
 .aside__input:first-of-type ::placeholder {
@@ -226,70 +228,34 @@ select {
     display: inline;
 }
 
-/* ----------------- FOOTER ----------------------------- */
-
-    /* footer {
-        width: 100%;
-        background: #30343F;
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        align-items: center;
-        color: #FAFAFF;
-        text-decoration: none;
-        list-style: none;
-        padding: 2em;
-        line-height: 23.4px;
+@media screen and (max-width: 530px) {
+    .label{
+      font-size: calc(1.5rem + 0.5vw);
     }
-
-    .footer__links {
-        margin-right: 800px;
-        padding: 20px;
-        margin-left: 35px;
+    .shop__aside{
+      margin: 0;
     }
-
-    .footer__logo {
-        padding: 60px;
-        margin-right: 25px;
+    .aside__input{
+      padding: 5px;
     }
-
-    footer li {
-        list-style: none;
-        line-height: 1;
-        margin-top: 10px 0 0 0;
+    .aside__input-buscar{
+      padding: 8px;
     }
-
-    .footer__copy {
-        margin: 0 auto;
+    .aside__input:first-of-type input{
+      line-height: 1.5em;
+      font-size: calc(0.8rem + 0.5vw);
+      padding: 5px;
     }
-
-    footer nav {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: space-between;
+    .checkbox__label-text{
+      font-size: calc(0.8rem + 0.5vw);
     }
-
-    footer section {
-        width: 95%;
-    }
-
-    footer picture {
-        margin-top: 25px;
-    }
-
-    footer p:last-of-type {
-        margin: 5px auto;
-    }
-
-    footer ul{
-        display: flex;
+    .shop__container{
+      display: flex;
         flex-direction: column;
-        flex-wrap: wrap;
-        justify-content: center;
-        margin-right: 100px;
-        margin-left: 120px;
-        align-items: center;
-        gap: 1.5rem;
-    } */
+    }
+   .shop__main{
+
+   }
+   .cards{
+justify-content: flex-start;   }
+}

@@ -1,5 +1,5 @@
 new Glide('.glide', {
-    type: 'slider',
+    type: 'carousel',
     startAt: 0,
     perView: 3,
     gap: 10,

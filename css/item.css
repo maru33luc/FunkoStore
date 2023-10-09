@@ -115,7 +115,18 @@
     background-color: #FF3333;
     color: #FFF;
     border: none;
-    padding: 10px;
+    box-shadow: inset 1px 1px 4px #151515;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.item__submit:hover{
+    background-color: #FF3333;
+    color: #FFF;
+    box-shadow: inset 1px 1px 4px #151515;
+    transform: scale(1.1);
 }
 
 .item__input{

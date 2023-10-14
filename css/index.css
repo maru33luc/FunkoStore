@@ -6,11 +6,6 @@
 @import url("https://fonts.gstatic.com");
 
 
-/* PAGES */
-@import url("./css/normalize.css");
-@import url("./css/style.css");
-
-
 *,
 *::after,
 *::before {
@@ -188,11 +183,11 @@ footer a:hover {
 }
 
 .navbar__cart svg path {
-    fill: #fff; /* Cambia el color del icono a verde (#00FF00) */
+    /* fill: #fff;  */
 }
 
 .navbar__cart:hover svg path {
-    fill: #FF3333; /* Cambia el color del icono a verde (#00FF00) */
+    fill: #FF3333; 
 }
 
 /* ------------------------ HERO ------------------------ */

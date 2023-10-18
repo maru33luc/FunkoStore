@@ -1,5 +1,3 @@
-
-
 /* -----------------SHOP MAIN-------------------------------- */
 
 .shop__container {
@@ -22,11 +20,12 @@
 }
 
 .custom-select select {
-    width: 205px;
+    width: 240px;
     line-height: 2;
-    padding: 3px;
+    padding: 5px;
     background-color: #fff;
     height: 35px;
+    padding-left: 7px;
 }
 
 .custom-select::before {
@@ -39,7 +38,14 @@
     line-height: 2.2;
     margin-left: 8px;
     font-weight: 300;
+    padding-left: 6px;
 }
+
+.custom-select.option-selected::before {
+    content: "";
+    /* Esto eliminará el texto del ::before */
+}
+
 
 input,
 select {
@@ -53,6 +59,7 @@ select {
 .precio div {
     display: inline-flex;
     padding-top: 10px;
+    align-items: center;
 }
 
 .shop__aside {
@@ -60,26 +67,40 @@ select {
     flex-direction: column;
     margin-left: 30px;
     align-items: start;
-    margin-right: 10px;
+    /* margin-right: 10px; */
     margin-top: 30px;
 }
 
 .aside__input {
     padding: 16px;
+    padding-right: 0px;
 }
 
 .aside__input .precio input {
     margin-top: 10px;
+    padding: 5px;
+    font-size: 14px;
+
+}
+
+#min-price {
+   width: 60px;
+}
+
+#max-price {
+    width: 90px;
 }
 
 .aside__input:first-of-type input {
-    width: 155px;
     line-height: 1.6;
-    text-align: start;
-    width: 206px;
+    width: 240px;
     margin-top: 10px;
     padding: 5px;
+    font-size: 14px;
+    padding-left: 7px;
 }
+
+
 
 .aside__input:first-of-type ::placeholder {
     color: #888;
@@ -115,7 +136,7 @@ select {
 }
 
 .precio :nth-child(2) label {
-    margin-left: 9px;
+    margin-left: 1px;
 }
 
 .label {
@@ -229,33 +250,40 @@ select {
 }
 
 @media screen and (max-width: 530px) {
-    .label{
-      font-size: calc(1.5rem + 0.5vw);
+    .label {
+        font-size: calc(1.5rem + 0.5vw);
     }
-    .shop__aside{
-      margin: 0;
+
+    .shop__aside {
+        margin: 0;
     }
-    .aside__input{
-      padding: 5px;
+
+    .aside__input {
+        padding: 5px;
     }
-    .aside__input-buscar{
-      padding: 8px;
+
+    .aside__input-buscar {
+        padding: 8px;
     }
-    .aside__input:first-of-type input{
-      line-height: 1.5em;
-      font-size: calc(0.8rem + 0.5vw);
-      padding: 5px;
+
+    .aside__input:first-of-type input {
+        line-height: 1.5em;
+        font-size: calc(0.8rem + 0.5vw);
+        padding: 5px;
     }
-    .checkbox__label-text{
-      font-size: calc(0.8rem + 0.5vw);
+
+    .checkbox__label-text {
+        font-size: calc(0.8rem + 0.5vw);
     }
-    .shop__container{
-      display: flex;
+
+    .shop__container {
+        display: flex;
         flex-direction: column;
     }
-   .shop__main{
 
-   }
-   .cards{
-justify-content: flex-start;   }
+    .shop__main {}
+
+    .cards {
+        justify-content: flex-start;
+    }
 }

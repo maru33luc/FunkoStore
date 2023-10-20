@@ -43,9 +43,7 @@
 
 .custom-select.option-selected::before {
     content: "";
-    /* Esto eliminará el texto del ::before */
 }
-
 
 input,
 select {
@@ -67,7 +65,6 @@ select {
     flex-direction: column;
     margin-left: 30px;
     align-items: start;
-    /* margin-right: 10px; */
     margin-top: 30px;
 }
 
@@ -80,11 +77,10 @@ select {
     margin-top: 10px;
     padding: 5px;
     font-size: 14px;
-
 }
 
 #min-price {
-   width: 60px;
+    width: 60px;
 }
 
 #max-price {
@@ -99,8 +95,6 @@ select {
     font-size: 14px;
     padding-left: 7px;
 }
-
-
 
 .aside__input:first-of-type ::placeholder {
     color: #888;
@@ -172,11 +166,6 @@ select {
     text-align: center;
 }
 
-.cards li {
-    margin-right: 80px;
-    margin-bottom: 30px;
-}
-
 .card div:first-of-type {
     font-family: Inter;
     font-size: 14px;
@@ -195,10 +184,10 @@ select {
 }
 
 .cards {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(250px, 1fr));
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
     margin-top: 50px;
-    grid-template-rows: 1fr 1fr 1fr;
     margin-left: 60px;
 }
 
@@ -208,15 +197,16 @@ select {
     display: flex;
     justify-content: center;
     margin-top: 20px;
-  }
-  
-  .pag__ul {
+    margin-bottom: 20px;
+}
+
+.pag__ul {
     list-style: none;
     display: flex;
     align-items: center;
-  }
-  
-  .page-link {
+}
+
+.page-link {
     margin: 0 5px;
     padding: 5px 10px;
     border: 1px solid #ccc;
@@ -224,15 +214,15 @@ select {
     color: #333;
     cursor: pointer;
     transition: background-color 0.3s, color 0.3s;
-  }
-  
-  .page-link.active {
+}
+
+.page-link.active {
     background-color: #333;
     color: #fff;
-  }
-  
-  #previous-page,
-  #next-page {
+}
+
+#previous-page,
+#next-page {
     margin: 0 5px;
     padding: 5px 10px;
     border: 1px solid #ccc;
@@ -240,22 +230,44 @@ select {
     color: #333;
     cursor: pointer;
     transition: background-color 0.3s, color 0.3s;
-  }
-  
-  #previous-page:hover,
-  #next-page:hover {
+}
+
+#previous-page:hover,
+#next-page:hover {
     background-color: #f0f0f0;
-  }
-  
-  #previous-page.disabled,
-  #next-page.disabled {
+}
+
+#previous-page.disabled,
+#next-page.disabled {
     cursor: not-allowed;
     background-color: #ccc;
     color: #888;
-  }
-  
+}
+
 
 /* ----------------- MEDIA QUERIES ----------------------------- */
+
+@media screen and (max-width: 920px) {
+    .shop__container {
+        display: flex;
+        flex-direction: column;
+        margin-left: 0;
+    }
+
+    .shop__aside {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        gap: 10px;
+    }
+
+}
+
+@media screen and (max-width: 552px) {
+    .shop__aside {
+        flex-direction: column;
+    }
+}
 
 @media screen and (max-width: 530px) {
     .label {
@@ -264,10 +276,27 @@ select {
 
     .shop__aside {
         margin: 0;
+        margin-left: 30px;
+    }
+
+    .custom-select, #buscar {
+        margin-top: 0px;
+    }
+
+    .precio div{
+        padding-top: 5px;
     }
 
     .aside__input {
         padding: 5px;
+    }
+
+    .aside__input .precio input {
+        margin-top: 0px;
+    }
+
+    .label_precio-min-max {
+        margin-left: 16px;
     }
 
     .aside__input-buscar {
@@ -291,5 +320,21 @@ select {
 
     .cards {
         justify-content: flex-start;
+        margin-left: 0;
+    }
+}
+
+@media screen and (max-width: 292px) {
+    .aside__input:first-of-type input {
+        width: 70vw;
+    }
+
+    .custom-select select {
+        width: 70vw;
+    }
+
+    .aside__input .precio {
+        display: flex;
+        flex-direction: column;
     }
 }

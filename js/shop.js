@@ -63,7 +63,7 @@ function showPage(pageNumber) {
             item.style.position = 'relative';
             item.style.display = 'block';
         } else {
-            item.style.position = 'absolute';
+            item.style.position = 'relative';
             item.style.display = 'none';
         }
     });
@@ -76,11 +76,6 @@ function showPage(pageNumber) {
         }
     });
     console.log(pageNumber);
-    if (pageNumber > 0) {
-        document.querySelector('ul.cards').style.marginTop = '-40px';
-    }else{
-        document.querySelector('ul.cards').style.marginTop = '50px';
-    }
 }
 
 function goToPage(pageNumber) {

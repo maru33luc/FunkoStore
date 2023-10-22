@@ -6,8 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../css/index.css">
-    <link rel="stylesheet" href="../../css/style.css">
-    <link rel="stylesheet" href="../../css/normalize.css">
 
     <title>FunkoStore</title>
 </head>
@@ -60,7 +58,7 @@
             </ul>
         </nav>
     </header>
-    <div class="shop__container">
+    <main class="shop__container main-container">
         <aside class="shop__aside">
             <div class="aside__input">
                 <label for="buscar" class="label">BUSCAR</label>
@@ -71,10 +69,16 @@
                 <div class="custom-select">
                     <select name="" class="placeholder-style" title="Ordenar por">
 
-                        <option value="" disabled selected></option>
+                        <!-- <option value="" disabled selected></option>
                         <option value="precio">Precio</option>
                         <option value="nombre">Nombre</option>
-                        <option value="fecha">Fecha</option>
+                        <option value="fecha">Fecha</option> -->
+
+                        <option value="az">A-Z</option>
+                    <option value="za">Z-A</option>
+                    <option value="desc">Mayor precio</option>
+                    <option value="asc">Menor precio</option>
+
                     </select>
                 </div>
             </div>
@@ -114,7 +118,8 @@
 
 
         </aside>
-        <main class="shop__main">
+       
+        <div class="shop__main">
             <ul class="cards">
                 <li class="slider__item">
                     <article class="card-item">
@@ -477,9 +482,8 @@
                     </article>
                 </li>
             </ul>
-
-        </main>
-    </div>
+        </div>    
+    </main>
 
     <div class="pagination">
         <ul class="pag__ul">

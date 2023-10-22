@@ -40,7 +40,7 @@
                     </ul>
                 </li>
                 <li class="navbar__item"><a class="navbar__link" href="./contacto.html">CONTACTO</a></li>
-                <li class="navbar__item"><a class="navbar__link" href="./login.html">LOGIN</a></li>
+                <li class="navbar__item"><a class="navbar__link" href="../login.html">LOGIN</a></li>
                 <li class="navbar__item"><a class="navbar__cart" href="./cart.html">
                         <svg width="33" height="31" viewBox="0 0 33 31" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
@@ -67,7 +67,7 @@
             <div class="aside__input">
                 <label for="" class="label">ORDENAR POR</label>
                 <div class="custom-select">
-                    <select name="" class="placeholder-style" title="Ordenar por">
+                    <select name="" class="placeholder-style" title="Ordenar por" id="shop__aside-select">
 
                         <!-- <option value="" disabled selected></option>
                         <option value="precio">Precio</option>
@@ -86,12 +86,12 @@
                 <label for="" class="label">PRECIO</label>
                 <div class="precio">
                     <div>
-                        <label for="min-price" class="label_precio-min-max">MIN</label>
-                        <input type="number" id="min-price" class="input-field" placeholder="0">
+                        <label for="min-price" class="label_precio-min-max">MIN   $</label>
+                        <input type="number" id="min-price" class="input-field" placeholder="0" min="0">
                     </div>
                     <div>
-                        <label for="max-price" class="label_precio-min-max"> - MAX</label>
-                        <input type="number" id="max-price" class="input-field" placeholder="0">
+                        <label for="max-price" class="label_precio-min-max">MAX $</label>
+                        <input type="number" id="max-price" class="input-field" placeholder="0" min="0">
                     </div>
                 </div>
 

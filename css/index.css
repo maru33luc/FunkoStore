@@ -18,6 +18,7 @@
 @import url('./partials/card.css');
 @import url('./partials/slider.css');
 
+
 /* PAGES */
 
 @import url('./pages/home.css');
@@ -46,4 +47,10 @@ p {
     align-items: center;
     gap: 8px;
 }
+
+/* .grid-fixed {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    min-height: 100vh;
+} */
 

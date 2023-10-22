@@ -33,13 +33,12 @@
 
 
 p {
-    font-size: 1.8em;
+    font-size: var(--font-medium);
 }
 
 .container {
     max-width: 1200px;
-    margin: 0 auto;
-    
+    margin: 0 auto; 
 }
 
 .with-icon {
@@ -48,9 +47,4 @@ p {
     gap: 8px;
 }
 
-/* .grid-fixed {
-    display: grid;
-    grid-template-rows: auto 1fr auto;
-    min-height: 100vh;
-} */
 

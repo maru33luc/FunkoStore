@@ -1,0 +1,284 @@
+{
+    "funkos": [
+        {
+            "handle": "frodo-baggins",
+            "title": "Frodo Baggins",
+            "imageName": "https://media.entertainmentearth.com/assets/images/ea4c002dfe1e4f2eac1dbf903e772390lg.jpg",
+            "series": ["Pocket Pop!", "Lord of the Rings Mystery Keychains"],
+            "id": 1
+        },
+        {
+            "handle": "frodo-baggins",
+            "title": "Frodo Baggins",
+            "imageName": "https://i5.walmartimages.com/asr/87493777-aa21-44ca-a029-5db1d5e2fe11_1.aefc5759be99d5873700bce01a7690e4.jpeg",
+            "series": ["Funko Mystery Minis", "Mystery Minis Lord of the Rings"],
+            "id": 2
+        },
+        {
+            "handle": "pippin-took",
+            "title": "Pippin Took",
+            "imageName": "https://www.funkomania.com.br/media/catalog/product/cache/1/image/500x500/9df78eab33525d08d6e5fb8d27136e95/f/u/funko-mystery-keychain-pippin-took1.jpg",
+            "series": ["Pocket Pop!", "Lord of the Rings Mystery Keychains"],
+            "id": 3
+        },
+        {
+            "handle": "samwise-gamgee",
+            "title": "Samwise Gamgee",
+            "imageName": "https://www.funkomania.com.br/media/catalog/product/cache/1/image/500x500/9df78eab33525d08d6e5fb8d27136e95/f/u/funko-mystery-keychain-samwise-gamgee1.jpg",
+            "series": ["Pocket Pop!", "Lord of the Rings Mystery Keychains"],
+            "id": 4
+        },
+        {
+            "handle": "merry-brandybuck",
+            "title": "Merry Brandybuck",
+            "imageName": "https://th.bing.com/th/id/OIP.D2lb3wZ2xDURvxbJkMqbsAHaHa?pid=ImgDet&rs=1",
+            "series": ["Pocket Pop!", "Lord of the Rings Mystery Keychains"],
+            "id": 5
+        },
+        {
+            "handle": "merry-brandybuck",
+            "title": "Merry Brandybuck",
+            "imageName": "https://th.bing.com/th/id/OIP.J65Od0wQsCBP9NgQWSp3ZQHaHa?pid=ImgDet&rs=1",
+            "series": ["Funko Mystery Minis", "Mystery Minis Lord of the Rings"],
+            "id": 6
+        },
+        {
+            "handle": "aragorn",
+            "title": "Aragorn",
+            "imageName": "https://www.supportivepc.com/assets/full/FUNK006743.jpg?20211211210308g",
+            "series": ["Pocket Pop!", "Lord of the Rings Mystery Keychains"],
+            "id": 7
+        },
+        {
+            "handle": "aragorn",
+            "title": "Aragorn",
+            "imageName": "https://i5.walmartimages.com/asr/6c077f44-26d5-45e4-8f1c-c8c6826a441f_1.1ca14f9d48c027e31fa6cd432914dff1.jpeg?odnWidth=612&odnHeight=612&odnBg=ffffff",
+            "series": ["Funko Mystery Minis", "Mystery Minis Lord of the Rings"],
+            "id": 8
+        },
+        {
+            "handle": "arwen",
+            "title": "Arwen",
+            "imageName": "https://th.bing.com/th/id/R.6bb74f66ce3ddbc4ecd81f43232be82d?rik=NrKVOhracKvQiA&pid=ImgRaw&r=0",
+            "series": ["Funko Mystery Minis", "Mystery Minis Lord of the Rings"],
+            "id": 9
+        },
+        {
+            "handle": "sauron",
+            "title": "Sauron",
+            "imageName": "https://i5.walmartimages.com/asr/e1fd7043-a7be-44de-90c0-cb77d2787bba_1.9c4ae6bf87924906910b12aa8243e099.jpeg",
+            "series": ["Funko Mystery Minis", "Mystery Minis Lord of the Rings"],
+            "id": 10
+        },
+        {
+            "handle": "saruman",
+            "title": "Saruman",
+            "imageName": "https://tools.toywiz.com/_images/_products/funkolooselotrsaruman.jpg",
+            "series": ["Funko Mystery Minis", "Mystery Minis Lord of the Rings"],
+            "id": 11
+        },
+        {
+            "handle": "galadriel",
+            "title": "Galadriel",
+            "imageName": "https://i5.walmartimages.com/asr/8979caf9-e6a4-4c0b-b6ab-67e7489fb455_1.a82cc282f2241825fd621485d0647d11.jpeg",
+            "series": ["Funko Mystery Minis", "Mystery Minis Lord of the Rings"],
+            "id": 12
+        },
+        {
+            "handle": "witch-king-of-angmar",
+            "title": "Witch King of Angmar",
+            "imageName": "https://images.hobbydb.com/processed_uploads/catalog_item_photo/catalog_item_photo/image/552589/Witch_King_of_Angmar_Vinyl_Art_Toys_b3edcb4c-e62f-4917-adb4-9b129edacbb6_large.jpg",
+            "series": ["Funko Mystery Minis", "Mystery Minis Lord of the Rings", "Funko Hot Topic Exclusives"],
+            "id": 13
+        },
+        {
+            "handle": "gollum",
+            "title": "Gollum",
+            "imageName": "https://www.sell2bbnovelties.com/mm5/funko/FKO_MM_LOTR1_09.jpg",
+            "series": ["Funko Mystery Minis", "Mystery Minis Lord of the Rings"],
+            "id": 14
+        },
+        {
+            "handle": "gimli",
+            "title": "Gimli",
+            "imageName": "https://www.funkomania.com.br/media/catalog/product/cache/1/image/500x500/9df78eab33525d08d6e5fb8d27136e95/m/y/mystery-mini-gimli1.jpg",
+            "series": ["Funko Mystery Minis", "Mystery Minis Lord of the Rings"],
+            "id": 15
+        },
+        {
+            "handle": "legolas",
+            "title": "Legolas",
+            "imageName": "https://www.funkomania.com.br/media/catalog/product/cache/1/image/500x500/9df78eab33525d08d6e5fb8d27136e95/m/y/mystery-mini-legolas-greenleaf1.jpg",
+            "series": ["Funko Mystery Minis", "Mystery Minis Lord of the Rings"],
+            "id": 16
+        },
+        {
+            "handle": "gandalf-the-gray",
+            "title": "Gandalf the Gray",
+            "imageName": "https://th.bing.com/th/id/OIP.T8MhB7ifnUIlm3Ti63hlYAHaJ8?pid=ImgDet&rs=1",
+            "series": ["Funko Mystery Minis", "Mystery Minis Lord of the Rings"],
+            "id": 17
+        },
+        {
+            "handle": "samwise",
+            "title": "Samwise",
+            "imageName": "https://th.bing.com/th/id/OIP.gD5ez8aCMrrqNHb05xgY-AHaHa?pid=ImgDet&rs=1",
+            "series": ["Funko Mystery Minis", "Mystery Minis Lord of the Rings"],
+            "id": 18
+        },
+        {
+            "handle": "legolas",
+            "title": "Legolas",
+            "imageName": "https://images.hobbydb.com/processed_uploads/catalog_item_photo/catalog_item_photo/image/475166/Legolas_Plush_Toys_44815e8b-e609-4f6b-8c56-55a69f94e007_large.jpg",
+            "series": ["Plushies"],
+            "id": 19
+        },
+        {
+            "handle": "gollum",
+            "title": "Gollum",
+            "imageName": "https://images.hobbydb.com/processed_uploads/catalog_item_photo/catalog_item_photo/image/475165/Gollum_Plush_Toys_3beb8c41-f76d-4420-b7d1-81b764b647a3_large.jpg",
+            "series": ["Plushies"],
+            "id": 20
+        },
+        {
+            "handle": "gandalf",
+            "title": "Gandalf",
+            "imageName": "https://images.hobbydb.com/processed_uploads/catalog_item_photo/catalog_item_photo/image/475164/Gandalf_Plush_Toys_7986b980-bf4c-4d59-b498-d857351c239c_large.jpg",
+            "series": ["Plushies"],
+            "id": 21
+        },
+        {
+            "handle": "orc",
+            "title": "Orc",
+            "imageName": "https://images.hobbydb.com/processed_uploads/catalog_item_photo/catalog_item_photo/image/475163/Orc_Plush_Toys_a6fca323-94bf-49c2-9f5c-c689794e8a37_large.jpg",
+            "series": ["Plushies"],
+            "id": 22
+        },
+        {
+            "handle": "frodo-baggins",
+            "title": "Frodo Baggins",
+            "imageName": "https://images.hobbydb.com/processed_uploads/catalog_item_photo/catalog_item_photo/image/475162/Frodo_Baggins_Plush_Toys_bc922059-fe63-4614-b86b-9473de02f856_large.jpg",
+            "series": ["Plushies"],
+            "id": 23
+        },
+        {
+            "handle": "bilbo-baggins",
+            "title": "Bilbo Baggins",
+            "imageName": "https://images.hobbydb.com/processed_uploads/catalog_item_photo/catalog_item_photo/image/475161/Bilbo_Baggins_Plush_Toys_3949ef2d-8d1e-4011-beaa-ae34e26c0aba_large.jpg",
+            "series": ["Plushies"],
+            "id": 24
+        },
+        {
+            "handle": "frodo-baggins-cursed",
+            "title": "Frodo Baggins (Cursed)",
+            "imageName": "https://images.hobbydb.com/processed_uploads/catalog_item_photo/catalog_item_photo/image/463779/Frodo_Baggins_%2528Cursed%2529_Vinyl_Art_Toys_9d5d895b-ffce-4e2e-8351-b996e64e3025_large.jpg",
+            "series": ["Pop! Vinyl", "Pop! Movies"],
+            "id": 25
+        },
+        {
+            "handle": "balrog",
+            "title": "Balrog",
+            "imageName": "https://images.hobbydb.com/processed_uploads/catalog_item_photo/catalog_item_photo/image/463778/Balrog_Vinyl_Art_Toys_76a8777a-2eff-4ad1-8e1a-bbd1c0fb0a04_large.jpg",
+            "series": ["Pop! Vinyl", "Pop! Movies"],
+            "id": 26
+        },
+        {
+            "handle": "saruman",
+            "title": "Saruman",
+            "imageName": "https://images.hobbydb.com/processed_uploads/catalog_item_photo/catalog_item_photo/image/463777/Saruman_Vinyl_Art_Toys_5e4e2fbd-ebbd-44a4-b6e6-ca18d69c45da_large.jpg",
+            "series": ["Pop! Vinyl", "Pop! Movies"],
+            "id": 27
+        },
+        {
+            "handle": "nazgul",
+            "title": "Nazgul",
+            "imageName": "https://images.hobbydb.com/processed_uploads/catalog_item_photo/catalog_item_photo/image/463776/Nazgul_Vinyl_Art_Toys_b753b23e-149f-4f8d-a0db-a19cac56d928_large.jpg",
+            "series": ["Pop! Vinyl", "Pop! Movies"],
+            "id": 28
+        },
+        {
+            "handle": "samwise-gamgee",
+            "title": "Samwise Gamgee",
+            "imageName": "https://images.hobbydb.com/processed_uploads/catalog_item_photo/catalog_item_photo/image/463775/Samwise_Gamgee_Vinyl_Art_Toys_496d2342-d97f-4c1e-aab4-fbfcc155147a_large.jpg",
+            "series": [],
+            "id": 29
+        },
+        {
+            "handle": "gandalf-balrog-fight",
+            "title": "Gandalf (Balrog Fight)",
+            "imageName": "https://images.hobbydb.com/processed_uploads/catalog_item_photo/catalog_item_photo/image/463774/Gandalf_%2528Balrog_Fight%2529_Vinyl_Art_Toys_54c3750d-fd65-458b-a882-96a520143068_large.jpg",
+            "series": ["Pop! Vinyl", "Pop! Movies"],
+            "id": 30
+        },
+        {
+            "handle": "frodo-baggins",
+            "title": "Frodo Baggins",
+            "imageName": "https://images.hobbydb.com/processed_uploads/catalog_item_photo/catalog_item_photo/image/463773/Frodo_Baggins_Vinyl_Art_Toys_e92b9c33-308b-4cb2-bccd-8674995f9c94_large.jpg",
+            "series": ["Pop! Vinyl", "Pop! Movies"],
+            "id": 31
+        },
+        {
+            "handle": "frodo",
+            "title": "Frodo",
+            "imageName": "https://images.hobbydb.com/processed_uploads/catalog_item_photo/catalog_item_photo/image/470673/Frodo_Vinyl_Art_Toys_643afd2c-5ba4-418f-a460-fcac4f3147d1_large.jpg",
+            "series": ["Wacky Wobblers"],
+            "id": 32
+        },
+        {
+            "handle": "pippin",
+            "title": "Pippin",
+            "imageName": "https://th.bing.com/th/id/OIP.84yX4YWrfSui4tQdEaVIWgHaHa?pid=ImgDet&rs=1",
+            "series": ["Funko Mystery Minis", "Mystery Minis Lord of the Rings"],
+            "id": 33
+        },
+        {
+            "handle": "boromir",
+            "title": "Boromir",
+            "imageName": "https://images.hobbydb.com/processed_uploads/catalog_item_photo/catalog_item_photo/image/552222/Boromir_Vinyl_Art_Toys_bbb97ec6-efae-417c-a8be-e04b6e05c6c2_large.jpg",
+            "series": ["Funko Mystery Minis", "Mystery Minis Lord of the Rings"],
+            "id": 34
+        },
+        {
+            "handle": "galadriel-glow-in-the-dark",
+            "title": "Galadriel (Glow in the Dark)",
+            "imageName": "https://images.hobbydb.com/processed_uploads/catalog_item_photo/catalog_item_photo/image/562665/Galadriel_%2528Glow_in_the_Dark%2529_Vinyl_Art_Toys_e5ba33d9-b37b-45ff-9619-a66e183136b6_large.jpg",
+            "series": ["Funko Mystery Minis", "Mystery Minis Lord of the Rings", "Funko Barnes & Noble Exclusives"],
+            "id": 35
+        },
+        {
+            "handle": "gimli-gold",
+            "title": "Gimli (Gold)",
+            "imageName": "https://images.hobbydb.com/processed_uploads/catalog_item_photo/catalog_item_photo/image/562657/Gimli_%2528Gold%2529_Vinyl_Art_Toys_fca07aff-10b5-4c75-a69b-b1c2d1a1a827_large.jpg",
+            "series": ["Funko Mystery Minis", "Mystery Minis Lord of the Rings", "Funko Barnes & Noble Exclusives"],
+            "id": 36
+        },
+        {
+            "handle": "nazgul",
+            "title": "Nazgul",
+            "imageName": "https://images.hobbydb.com/processed_uploads/catalog_item_photo/catalog_item_photo/image/562652/Nazgul_Vinyl_Art_Toys_20d37bc7-7e87-4dc1-b9a2-431bc63f63d1_large.jpg",
+            "series": ["Funko Mystery Minis", "Mystery Minis Lord of the Rings"],
+            "id": 37
+        },
+        {
+            "handle": "frodo-baggins-invisible",
+            "title": "Frodo Baggins (Invisible)",
+            "imageName": "https://th.bing.com/th/id/OIP.y3j7OWA0HLGwTTbfr3JUFQAAAA?pid=ImgDet&rs=1",
+            "series": ["Funko Mystery Minis", "Mystery Minis Lord of the Rings", "Funko Barnes & Noble Exclusives"],
+            "id": 38
+        },
+        {
+            "handle": "lurtz",
+            "title": "Lurtz",
+            "imageName": "https://images.hobbydb.com/processed_uploads/catalog_item_photo/catalog_item_photo/image/562646/Lurtz_Vinyl_Art_Toys_77922390-e88b-46d2-aa02-f3b523ce9659_large.jpg",
+            "series": ["Funko Mystery Minis", "Mystery Minis Lord of the Rings", "Funko Hot Topic Exclusives"],
+            "id": 39
+        },
+        {
+            "handle": "eowyn",
+            "title": "Eowyn",
+            "imageName": "https://images.hobbydb.com/processed_uploads/catalog_item_photo/catalog_item_photo/image/562638/Eowyn_Vinyl_Art_Toys_5e007efe-7a4d-4815-a561-4937cefcfa37_large.jpg",
+            "series": ["Funko Mystery Minis", "Mystery Minis Lord of the Rings", "Funko Hot Topic Exclusives"],
+            "id": 40
+        }        
+     ]
+}

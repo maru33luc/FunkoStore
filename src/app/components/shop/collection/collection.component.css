@@ -1,0 +1,129 @@
+
+
+.collection {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    padding: 16px 0;
+}
+
+.collection__title {
+    font-family: Raleway;
+    font-size: 46px;
+    font-weight: 500;
+    line-height: 54px;
+    letter-spacing: 0em;
+    text-align: left;
+    width: 441px;
+}
+
+.collection__text {
+    font-family: Raleway;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 28px;
+    letter-spacing: 0em;
+    text-align: left;
+    width: 458px;
+    border-bottom: 2px solid #FF3333;
+    padding-bottom: 1rem;
+    text-wrap: balance;
+}
+
+.collection__link {
+    font-family: Inter;
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 29px;
+    letter-spacing: 0em;
+    text-align: left;
+    text-decoration: none;
+    color: #FFF;
+    background: #111;
+    border-radius: 50px;
+    padding: 16px 36px;
+    display: inline-block;
+    width: 55%;
+    text-align: center;
+    transition: all 0.2s ease-in-out;
+}
+
+.collection__link:hover {
+    background: #FF3333;
+    color: #FFF;
+}
+
+.collection__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    gap: 24px;
+}
+
+.collection:nth-of-type(2) .collection__cover {
+    order: -1;
+}
+
+
+@media (max-width: 890px) {   
+    .collection {
+        grid-template-columns: 1fr;
+    }
+
+    .collection:nth-of-type(2) .collection__cover {
+        order: 2;
+    }
+
+    .collection__cover {
+        width: 70%;
+        margin: 0 auto;
+    }
+
+    .collection__content {
+        align-items: center;
+    }
+
+    .collection__title {
+        text-align: center;
+        width: 100%;
+    }
+
+    .collection__text {
+        text-align: center;
+        width: 100%;
+    }
+}
+
+
+@media screen and (max-width: 440px) {    
+
+    .collection__title {
+        font-size: 2.4em;
+        width: 100%;
+        text-wrap: balance;
+        font-weight: 500px;
+        font-weight: bold;
+        text-align: justify;
+        vertical-align: bottom;
+    }
+
+    .collection__content {
+        align-items: center; 
+    }
+
+    .collection__title {
+        text-align: center;
+        width: 100%;
+    }
+
+    .collection__text {
+        text-align: center;
+        width: 100%;
+        font-size: 1.9em;
+    }
+    .collection__link{
+        font-size: 1.5em;
+        padding: 2px;
+    }
+}

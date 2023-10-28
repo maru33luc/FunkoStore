@@ -1,0 +1,36 @@
+.footer {
+    background: var(--dark-bg-solid);
+    padding: 62px;
+    min-width: 180px;
+}
+
+.navbar__items {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.footer__copy {
+    text-align: center;
+    font-size: 20px;
+    margin-top: 36px;
+}
+
+@media screen and (max-width: 440px) {    
+    .footer{
+        padding: 70px;
+    }
+    .footer__copy{
+        font-size: 1.2em;
+    }
+    .footer .navbar{
+        flex-direction: column;
+        align-items: center;
+    }
+    .footer .navbar img{
+        margin: 20px auto;
+    }
+    .footer picture{
+        width: 100px;
+    }
+}

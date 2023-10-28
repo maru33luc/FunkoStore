@@ -1,0 +1,30 @@
+<section class="slider container">
+  <h2 class="slider__title">ULTIMOS LANZAMIENTOS</h2>
+  <ul class="slider__items">
+    <li class="slider__item g" *ngFor="let item of pagedItems">
+      <article class="card-item">
+        <a class="card-item__link">
+          <picture class="card-item__cover">
+            <span class="card-item__tag">NUEVO</span>
+            <img class="card-item__img--front" [src]="item.frontImage" alt="Figura coleccionable Funko de">
+            <img class="card-item__img--back" [src]="item.backImage" alt="Figura coleccionable Funko de en caja">
+          </picture>
+
+          <div class="card-item__content">
+            <p class="card-item__licence">{{item.name}}</p>
+            <h4 class="card-item__name">{{item.series}}</h4>
+            <p class="card-item__price">$ {{item.price}}</p>
+            <p class="card-item__promo">3 CUOTAS SIN INTERÉS</p>
+          </div>
+        </a>
+      </article>
+    </li>
+    
+  </ul>
+  <div class="slider__nav">
+      <button class="slider__prev" (click)="changePage(currentPage - 1)">Anterior</button>
+      <button class="slider__next" (click)="changePage(currentPage + 1)">Siguiente</button>
+    </div>
+
+ 
+</section>

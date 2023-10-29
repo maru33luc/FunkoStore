@@ -1,0 +1,25 @@
+.shop__container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    margin-left: 2rem;
+    background: var(--light-bg-solid);
+    min-width: 180px;
+}
+
+@media screen and (max-width: 920px) {
+    .shop__container {
+        display: flex;
+        flex-direction: column;
+        margin-left: 0;
+    }
+}
+
+
+@media screen and (max-width: 530px) {
+    .shop__container {
+        display: flex;
+        flex-direction: column;
+    }
+}
+

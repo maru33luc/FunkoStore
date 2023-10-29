@@ -1,0 +1,88 @@
+{
+  "clientes": [
+    {
+      "nombre": "Juan Pablo",
+      "apellido": "Perez",
+      "dni": "12345678",
+      "fechaInicio": "2020-01-01",
+      "id": 1
+    },
+    {
+      "nombre": "Pedro",
+      "apellido": "Lucero",
+      "dni": 12345622,
+      "fechaInicio": "2020-11-01",
+      "id": 2
+    },
+    {
+      "nombre": "Natalia",
+      "apellido": "Fernandez",
+      "dni": 12245678,
+      "fechaInicio": "2022-01-01",
+      "id": 3
+    },
+    {
+      "nombre": "Jose",
+      "apellido": "Hernandez",
+      "dni": 12355678,
+      "fechaInicio": "2020-01-01",
+      "id": 4
+    },
+    {
+      "nombre": "Martin",
+      "apellido": "Perez",
+      "dni": 12345699,
+      "fechaInicio": "2020-01-01",
+      "id": 5
+    },
+    {
+      "nombre": "Juan Pablo",
+      "apellido": "Tarantino",
+      "dni": 55345678,
+      "fechaInicio": "2023-01-01",
+      "id": 6
+    },
+    {
+      "nombre": "Juan",
+      "apellido": "Carrasco",
+      "dni": 33345678,
+      "fechaInicio": "2022-01-01",
+      "id": 7
+    },
+    {
+      "nombre": "Laura",
+      "apellido": "Fernandez",
+      "dni": 12246678,
+      "fechaInicio": "2010-01-01",
+      "id": 8
+    },
+    {
+      "nombre": "Marina",
+      "apellido": "Lucero",
+      "dni": "23456543",
+      "fechaInicio": "2023-10-02",
+      "id": 9
+    },
+    {
+      "nombre": "Damian",
+      "apellido": "Trinidad",
+      "dni": "28842474",
+      "fechaInicio": "2023-10-09",
+      "id": 10
+    },
+    {
+      "nombre": "Pedroo",
+      "apellido": "Guzman",
+      "dni": "23321234",
+      "fechaInicio": "2023-10-10",
+      "id": 12
+    },
+    {
+      "nombre": "Natalia",
+      "apellido": "Ramos",
+      "dni": "28842474",
+      "fechaInicio": "2023-10-03",
+      "id": 13
+    }
+  ]
+}

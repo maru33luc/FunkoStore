@@ -1,0 +1,104 @@
+
+/* -----------------CARDS----------------------------- */
+
+.card div:first-of-type {
+    font-family: var(--base-font);
+    font-size: var(--font-xsmall);
+    font-weight: 500;
+    line-height: 17px;
+    letter-spacing: 0em;
+    color: #fff;
+    text-align: right;
+    padding-right: 10px;
+}
+
+.card div:first-of-type p {
+    background: var(--primary-solid);
+    display: inline;
+    padding: 3px;
+}
+
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+    margin-top: 50px;
+    margin-left: 60px;
+    justify-content: center;
+}
+
+.card-item{
+    margin: 30px;
+}
+
+.card-item__img--front, .card-item__img--back{
+    width: 280px;
+    height: 280px;
+    object-fit: contain;
+}
+
+@media screen and (max-width: 530px) {
+    .cards {
+        justify-content: flex-start;
+        margin-left: 0;
+    }
+}
+
+/* ----------------- PAGINACION ----------------------------- */
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.pag__ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+}
+
+.pag__ul li{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #333;
+    width: 27px;
+    height: 24px;
+    margin: 0 5px;
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.pag__ul li:hover{
+    background-color: #555;
+    color: #fff;
+}
+
+#previous-page:hover, #next-page:hover {
+    background-color: #555;
+    color: #fff;
+}
+
+.pag__ul li.active {
+    background-color: #524f4f; 
+    color: #fff; 
+    font-weight: bold; 
+    border: 1px solid #ccc; 
+    cursor: not-allowed; 
+  }
+  
+  #previous-page.disabled, #next-page.disabled {
+    background-color: #f5f5f5; 
+    color: #ccc; 
+    border: 1px solid #ddd; 
+    cursor: not-allowed; 
+  }
+
+  
+
+  

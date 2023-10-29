@@ -13,6 +13,11 @@ import { ShopPageComponent } from './pages/shop/shop-page/shop-page.component';
 import { ShopAsideComponent } from './components/shop/shop-aside/shop-aside.component';
 import { ShopMainComponent } from './components/shop/shop-main/shop-main.component';
 
+import { AdminMainComponent } from './components/admin/admin-main/admin-main.component';
+import { AdminMainPageComponent } from './pages/admin/admin-main-page/admin-main-page.component';
+import { AdminNewFunkoPageComponent } from './pages/admin/admin-new-funko-page/admin-new-funko-page.component';
+import { AdminEditFunkoPageComponent } from './pages/admin/admin-edit-funko-page/admin-edit-funko-page.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,7 +29,11 @@ import { ShopMainComponent } from './components/shop/shop-main/shop-main.compone
     SliderGlideComponent,
     ShopPageComponent,
     ShopAsideComponent,
-    ShopMainComponent,    
+    ShopMainComponent,
+    AdminMainComponent,
+    AdminMainPageComponent,
+    AdminNewFunkoPageComponent,
+    AdminEditFunkoPageComponent
   ],
   imports: [
     BrowserModule,

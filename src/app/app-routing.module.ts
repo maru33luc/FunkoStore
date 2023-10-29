@@ -3,10 +3,17 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { ShopPageComponent } from './pages/shop/shop-page/shop-page.component';
 
+import { AdminMainPageComponent } from './pages/admin/admin-main-page/admin-main-page.component';
+import { AdminNewFunkoPageComponent } from './pages/admin/admin-new-funko-page/admin-new-funko-page.component';
+import { AdminEditFunkoPageComponent } from './pages/admin/admin-edit-funko-page/admin-edit-funko-page.component';
 
 const routes: Routes = [
-  { path: "", component: HomePageComponent },
+  { path: "home", component: HomePageComponent },
   { path: "shop", component: ShopPageComponent },
+  { path: "admin-main", component: AdminMainPageComponent },
+  { path: "admin-new-funko", component: AdminNewFunkoPageComponent },
+  { path: "admin-edit-funko/:id", component: AdminEditFunkoPageComponent },
+  { path: "**", redirectTo: "home" }
 ];
 
 @NgModule({

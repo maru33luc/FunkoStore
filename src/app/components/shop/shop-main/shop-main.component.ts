@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Funko } from 'src/app/interfaces/interface';
+import { Funko } from 'src/app/interfaces/Funko';
 import { FunkosService } from 'src/app/services/funkos.service';
 
 @Component({

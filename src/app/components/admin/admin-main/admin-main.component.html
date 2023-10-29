@@ -1,0 +1,62 @@
+<main>
+    <section class="admin-search">
+        <svg class="admin-search-icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16">
+            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5">
+                <path d="m11.25 11.25l3 3"></path>
+                <circle cx="7.5" cy="7.5" r="4.75"></circle>
+            </svg>
+        </svg>
+        <input class="admin-search-bar" type="text" name="search" id="search" placeholder="código, nombre o categoria">
+    </section>
+
+    <div class="admin-header">
+        <h2>LISTADO DE PRODUCTOS</h2>
+        <span>AGREGAR
+            <a class="add-article-button" routerLink="/admin-new-funko">
+                <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 20 20">
+                    <path fill="currentColor"
+                        d="M5 21h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2zm2-10h4V7h2v4h4v2h-4v4h-2v-4H7v-2z">
+                    </path>
+                </svg>
+            </a>
+        </span>
+    </div>
+
+    <table class="admin-table">
+        <thead class="admin-table-header">
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Precio</th>
+                <th class="hidden-column"></th>
+                <th class="hidden-column"></th>
+            </tr>
+        </thead>
+
+        <tbody *ngFor="let funko of funkos">
+            <tr class="admin-table-row">
+                <td>{{funko.id}}</td>
+                <td>{{funko.name}}</td>
+                <td>${{funko.price}}</td>
+                <td>
+                    <a class="edit-article-button" [routerLink]="'/admin-edit-funko/' + funko.id">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
+                            <path fill="currentColor" fill-rule="evenodd"
+                                d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83l3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z">
+                            </path>
+                        </svg>
+                    </a>
+                </td>
+                <td>
+                    <a class="delete-article-button" (click)="eliminarFunko(funko.id)">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 20 20">
+                            <path fill="currentColor" fill-rule="evenodd"
+                                d="M9 2a1 1 0 0 0-.894.553L7.382 4H4a1 1 0 0 0 0 2v10a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V6a1 1 0 1 0 0-2h-3.382l-.724-1.447A1 1 0 0 0 11 2H9ZM7 8a1 1 0 0 1 2 0v6a1 1 0 1 1-2 0V8Zm5-1a1 1 0 0 0-1 1v6a1 1 0 1 0 2 0V8a1 1 0 0 0-1-1Z">
+                            </path>
+                        </svg>
+                    </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</main>

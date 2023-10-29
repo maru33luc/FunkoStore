@@ -2,7 +2,7 @@
     <ul class="cards">
       <li class="slider__item" *ngFor="let item of paginatedItems">
         <article class="card-item">
-          <a class="card-item__link" href="">
+          <a class="card-item__link" [routerLink]="'/shop/'+ item.id">
             <picture class="card-item__cover">
               <span class="card-item__tag">NUEVO</span>
               <img class="card-item__img--front" [src]="item.frontImage"

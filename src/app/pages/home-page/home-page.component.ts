@@ -9,10 +9,8 @@ import Glide from '@glidejs/glide';
   styleUrls: ['./home-page.component.css']
 })
 export class HomePageComponent implements OnInit {
+title: string = 'ULTIMOS LANZAMIENTOS';
 
   ngOnInit() {}
-    
-    
-
   }
 

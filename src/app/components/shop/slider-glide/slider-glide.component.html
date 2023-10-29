@@ -1,9 +1,9 @@
 <section class="slider container">
-  <h2 class="slider__title">ULTIMOS LANZAMIENTOS</h2>
+  <h2 class="slider__title">{{title}}</h2>
   <ul class="slider__items">
     <li class="slider__item g" *ngFor="let item of pagedItems">
       <article class="card-item">
-        <a class="card-item__link">
+        <a class="card-item__link" [routerLink]="'/shop/'+ item.id">
           <picture class="card-item__cover">
             <span class="card-item__tag">NUEVO</span>
             <img class="card-item__img--front" [src]="item.frontImage" alt="Figura coleccionable Funko de">

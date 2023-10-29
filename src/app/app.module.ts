@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
+import { ReactiveFormsModule } from '@angular/forms';
+
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/shared/header/header.component';
 import { FooterComponent } from './components/shared/footer/footer.component';
@@ -14,9 +15,13 @@ import { ShopAsideComponent } from './components/shop/shop-aside/shop-aside.comp
 import { ShopMainComponent } from './components/shop/shop-main/shop-main.component';
 
 import { AdminMainComponent } from './components/admin/admin-main/admin-main.component';
+import { AdminFormComponent } from './components/admin/admin-form/admin-form.component';
+import { AdminNewFunkoComponent } from './components/admin/admin-new-funko/admin-new-funko.component';
+import { AdminEditFunkoComponent } from './components/admin/admin-edit-funko/admin-edit-funko.component';
 import { AdminMainPageComponent } from './pages/admin/admin-main-page/admin-main-page.component';
 import { AdminNewFunkoPageComponent } from './pages/admin/admin-new-funko-page/admin-new-funko-page.component';
 import { AdminEditFunkoPageComponent } from './pages/admin/admin-edit-funko-page/admin-edit-funko-page.component';
+
 
 @NgModule({
   declarations: [
@@ -31,6 +36,9 @@ import { AdminEditFunkoPageComponent } from './pages/admin/admin-edit-funko-page
     ShopAsideComponent,
     ShopMainComponent,
     AdminMainComponent,
+    AdminFormComponent,
+    AdminNewFunkoComponent,
+    AdminEditFunkoComponent,
     AdminMainPageComponent,
     AdminNewFunkoPageComponent,
     AdminEditFunkoPageComponent
@@ -38,7 +46,7 @@ import { AdminEditFunkoPageComponent } from './pages/admin/admin-edit-funko-page
   imports: [
     BrowserModule,
     AppRoutingModule,
-
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

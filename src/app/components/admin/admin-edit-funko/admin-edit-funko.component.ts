@@ -1,0 +1,48 @@
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Funko } from 'src/app/interfaces/Funko';
+import { FunkosService } from 'src/app/services/funkos.service';
+
+@Component({
+  selector: 'app-admin-edit-funko',
+  templateUrl: './admin-edit-funko.component.html',
+  styleUrls: ['./admin-edit-funko.component.css']
+})
+export class AdminEditFunkoComponent implements OnInit {
+
+  name: string ='';
+  category: string ='';
+  serie: string ='';
+  description: string ='';
+  price: number = 0;
+  frontImage: string ='';
+  backImage: string ='';
+
+  constructor(private router: Router, private route: ActivatedRoute, private funkosService: FunkosService) { }
+
+  ngOnInit(): void {
+    this.route.params.subscribe(async (params) => {
+      const id = params['id'];
+      try {
+        const response = await this.funkosService.getFunko(id);
+        if (response) {
+          this.name = response.name;
+          this.category = response.category;
+          this.serie = response.serie;
+          this.description = response.description;
+          this.price = response.price;
+          this.frontImage = response.frontImage;
+          this.backImage = response.backImage;
+        }
+      }
+      catch (e) {
+        console.log(e);
+      }
+    });
+  }
+
+  saveFunko(funko: Funko) {
+    this.funkosService.updateFunko(funko, this.route.snapshot.params['id']);
+    this.router.navigate(['admin-main']);
+  }
+}

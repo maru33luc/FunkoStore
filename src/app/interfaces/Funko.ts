@@ -1,8 +1,10 @@
 export interface Funko {
     name: string;
+    description: string;
+    category: string;
+    serie: string;
+    price: number;
     frontImage: string;
     backImage: string;
-    series: string [];
-    price: number;
     id?: number;
 }

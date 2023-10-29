@@ -42,9 +42,9 @@ export class FunkosService {
     }
   }
 
-  async updateFunko(funko: Funko | undefined) {
+  async updateFunko(funko: Funko, id: number | undefined) {
     try {
-      const response = await axios.put(`${this.url}/${funko?.id}`, funko);
+      const response = await axios.put(`${this.url}/${id}`, funko);
     }
     catch(e) {
       console.log(e);

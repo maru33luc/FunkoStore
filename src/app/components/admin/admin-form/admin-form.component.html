@@ -1,0 +1,41 @@
+<form [formGroup]="formulario" (submit)="sendData()">
+    <div class="form-box">
+        <label class="form-label">Nombre: </label>
+        <input class="form-input" type="text" formControlName="name">
+    </div>
+
+    <div class="form-box">
+        <label class="form-label">Categoría: </label>
+        <input class="form-input" type="text" formControlName="category">
+    </div>
+
+    <div class="form-box">
+        <label class="form-label">Serie: </label>
+        <input class="form-input" type="text" formControlName="serie">
+    </div>
+
+    <div class="form-box">
+        <label class="form-label">Descripción: </label>
+        <textarea cols="30" rows="10" formControlName="description"></textarea>
+    </div>
+
+    <div class="form-box">
+        <label class="form-label">Precio: </label>
+        <input class="form-input" type="number" formControlName="price">
+    </div>
+
+    <div class="form-box">
+        <label class="form-label">Imagen delantera: </label>
+        <input class="form-input" type="text" formControlName="frontImage">
+    </div>
+
+    <div class="form-box">
+        <label class="form-label">Imagen trasera: </label>
+        <input class="form-input" type="text" formControlName="backImage">
+    </div>
+
+    <div class="form-box">
+        <input class="form-btn" type="submit" value="Agregar Producto">
+        <input class="form-btn" type="reset" value="Limpiar">
+    </div>
+</form>

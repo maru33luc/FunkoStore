@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Funko } from 'src/app/interfaces/Funko';
 import { FunkosService } from 'src/app/services/funkos.service';
 
@@ -12,6 +12,7 @@ export class SliderGlideComponent implements OnInit {
   itemsPerPage = 4;
   currentPage = 0;
   pages: number[] = [];
+  @Input () title: string | undefined;
 
   constructor(private funkoService: FunkosService) {}
 

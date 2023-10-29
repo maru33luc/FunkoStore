@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./item-page.component.css']
 })
 export class ItemPageComponent {
-
+title: string = 'PRODUCTOS RELACIONADOS';
 }

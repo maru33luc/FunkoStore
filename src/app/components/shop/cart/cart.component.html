@@ -1,0 +1,65 @@
+<main class="main-container">
+    <section class="cart__items">
+        <h2 class="title">CARRITO DE COMPRAS</h2>
+        <article class="cart__items-header">
+            <ul>
+                <li>DETALLE DEL PRODUCTO
+                <li>CANTIDAD</li>
+                <li>TOTAL</li>
+            </ul>
+        </article>
+        <article class="cart__article">
+            <ul class="cart__items">
+                <li class="cart__item">
+                    <div class="item__container">
+                        <picture class="cart__item-picture">
+                            <img src="../../../../assets/img/star-wars/baby-yoda-1.webp" alt="">
+                        </picture>
+                        <article class="item__info">
+                            <h3 class="card-item__name">BABY YODA BLUEBALL</h3>
+                            <p class="card-item__licence">STAR WARS</p>
+                            <p class="card-item__price">precio: $ 1799,99</p>
+                        </article>
+                    </div>
+                    <div class="item__cart">
+
+                        <input class="item__input" type="text" #quantityButton name="quantity" id="quantity" placeholder="0"
+                            disabled>
+                        <div class="cart__quantity-buttons">
+                            <button id="substract" class="item__quantity " #subtractButton type="button">-</button>
+                            <button id="add" class="item__quantity" #addButton type="button">+</button>
+                        </div>
+                    </div>
+                    <div class="cart__total-price">
+                        <p>$ 1799,99</p>
+                    </div>
+                    <img src="../..//../../assets/img/icons/gg-close-o.svg" alt="" class="cart__item-delete">
+
+                </li>
+            </ul>
+        </article>
+    </section>
+
+    <section class="resumen__cart">
+        <h2 class="title">RESUMEN</h2>
+        <article class="resumen__cart-container">
+            <div class="resumen__cart-line">
+                <p>CANTIDAD DE ELEMENTOS</p>
+                <p>3</p>
+            </div>
+            <div class="resumen__cart-line">
+                <p>SUBTOTAL</p>
+                <p>$1799.99</p>
+            </div>
+            <div class="resumen__cart-line">
+                <p>ENVIO</p>
+                <p>$0</p>
+            </div>
+            <div class="resumen__cart-line">
+                <p>TOTAL</p>
+                <p>$1799.99</p>
+            </div>
+        </article>
+        <a href="./checkout.html" class="cart__btn-pay">IR A PAGAR</a>
+    </section>
+</main>

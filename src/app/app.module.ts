@@ -23,6 +23,8 @@ import { AdminNewFunkoPageComponent } from './pages/admin/admin-new-funko-page/a
 import { AdminEditFunkoPageComponent } from './pages/admin/admin-edit-funko-page/admin-edit-funko-page.component';
 import { ItemPageComponent } from './pages/shop/item-page/item-page.component';
 import { ItemComponent } from './components/shop/item/item.component';
+import { CartPageComponent } from './pages/shop/cart-page/cart-page.component';
+import { CartComponent } from './components/shop/cart/cart.component';
 
 
 @NgModule({
@@ -45,7 +47,9 @@ import { ItemComponent } from './components/shop/item/item.component';
     AdminNewFunkoPageComponent,
     AdminEditFunkoPageComponent,
     ItemPageComponent,
-    ItemComponent
+    ItemComponent,
+    CartPageComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,

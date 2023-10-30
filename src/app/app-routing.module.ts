@@ -7,11 +7,13 @@ import { AdminMainPageComponent } from './pages/admin/admin-main-page/admin-main
 import { AdminNewFunkoPageComponent } from './pages/admin/admin-new-funko-page/admin-new-funko-page.component';
 import { AdminEditFunkoPageComponent } from './pages/admin/admin-edit-funko-page/admin-edit-funko-page.component';
 import { ItemPageComponent } from './pages/shop/item-page/item-page.component';
+import { CartPageComponent } from './pages/shop/cart-page/cart-page.component';
 
 const routes: Routes = [
   { path: "home", component: HomePageComponent },
   { path: "shop", component: ShopPageComponent },
   { path: "shop/:id", component: ItemPageComponent},
+  { path: "cart", component: CartPageComponent },
   { path: "admin-main", component: AdminMainPageComponent },
   { path: "admin-new-funko", component: AdminNewFunkoPageComponent },
   { path: "admin-edit-funko/:id", component: AdminEditFunkoPageComponent },

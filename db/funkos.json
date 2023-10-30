@@ -442,5 +442,17 @@
       "price": 15000,
       "id": 40
     }
+  ],
+  "carts": [
+    { "id": 1, "clientId": 1, "funkos": [{ "funkoId": 1, "quantity": 2 }] },
+    { "id": 2, "clientId": 2, "funkos": [{ "funkoId": 2, "quantity": 1 }] },
+    { "id": 3, "clientId": 3, "funkos": [{ "funkoId": 3, "quantity": 1 }] }
+   
+  ],
+  "clients": [
+    { "id": 1, "name": "Cliente 1", "email": "cliente1@example.com" },
+    { "id": 2, "name": "Cliente 2", "email": "cliente2@example.com" },
+    { "id": 3, "name": "Cliente 3", "email": "cliente3@example.com" }
+    
   ]
 }

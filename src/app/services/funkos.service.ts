@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import axios from 'axios';
 import { Funko } from '../interfaces/Funko';
+import axios from 'axios';
 
 @Injectable({
   providedIn: 'root'
@@ -54,7 +54,6 @@ export class FunkosService {
   async deleteFunko(id: number | undefined) {
     try {
       const response = await axios.delete(`${this.url}/${id}`);
-      window.location.reload();
     }
     catch(e) {
       console.log(e);

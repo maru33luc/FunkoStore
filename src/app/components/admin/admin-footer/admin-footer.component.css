@@ -1,0 +1,15 @@
+.footer {
+    background: var(--dark-bg-solid);
+    padding: var(--spacing-68);
+}
+
+.footer-logo {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.footer-copyright {
+    text-align: center;
+    font-size: var(--font-medium);
+    margin-top: var(--spacing-36);
+}

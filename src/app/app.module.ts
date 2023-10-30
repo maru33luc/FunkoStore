@@ -13,6 +13,8 @@ import { SliderGlideComponent } from './components/shop/slider-glide/slider-glid
 import { ShopPageComponent } from './pages/shop/shop-page/shop-page.component';
 import { ShopAsideComponent } from './components/shop/shop-aside/shop-aside.component';
 import { ShopMainComponent } from './components/shop/shop-main/shop-main.component';
+import { ItemPageComponent } from './pages/shop/item-page/item-page.component';
+import { ItemComponent } from './components/shop/item/item.component';
 
 import { AdminMainComponent } from './components/admin/admin-main/admin-main.component';
 import { AdminFormComponent } from './components/admin/admin-form/admin-form.component';
@@ -21,9 +23,8 @@ import { AdminEditFunkoComponent } from './components/admin/admin-edit-funko/adm
 import { AdminMainPageComponent } from './pages/admin/admin-main-page/admin-main-page.component';
 import { AdminNewFunkoPageComponent } from './pages/admin/admin-new-funko-page/admin-new-funko-page.component';
 import { AdminEditFunkoPageComponent } from './pages/admin/admin-edit-funko-page/admin-edit-funko-page.component';
-import { ItemPageComponent } from './pages/shop/item-page/item-page.component';
-import { ItemComponent } from './components/shop/item/item.component';
-
+import { AdminHeaderComponent } from './components/admin/admin-header/admin-header.component';
+import { AdminFooterComponent } from './components/admin/admin-footer/admin-footer.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,8 @@ import { ItemComponent } from './components/shop/item/item.component';
     ShopPageComponent,
     ShopAsideComponent,
     ShopMainComponent,
+    ItemPageComponent,
+    ItemComponent,
     AdminMainComponent,
     AdminFormComponent,
     AdminNewFunkoComponent,
@@ -44,8 +47,8 @@ import { ItemComponent } from './components/shop/item/item.component';
     AdminMainPageComponent,
     AdminNewFunkoPageComponent,
     AdminEditFunkoPageComponent,
-    ItemPageComponent,
-    ItemComponent
+    AdminHeaderComponent,
+    AdminFooterComponent
   ],
   imports: [
     BrowserModule,

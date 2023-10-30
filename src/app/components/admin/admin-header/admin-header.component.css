@@ -1,0 +1,13 @@
+header {
+    background-color: var(--dark-bg-solid);
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    font-family: var(--alternative-font);
+    padding: var(--spacing-30);
+    margin: 0 auto;
+}
+
+a:hover {
+    color: var(--primary-solid);
+}

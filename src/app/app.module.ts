@@ -25,6 +25,10 @@ import { ItemPageComponent } from './pages/shop/item-page/item-page.component';
 import { ItemComponent } from './components/shop/item/item.component';
 import { CartPageComponent } from './pages/shop/cart-page/cart-page.component';
 import { CartComponent } from './components/shop/cart/cart.component';
+import { LoginPageComponent } from './pages/login-page/login-page.component';
+import { LoginFormComponent } from './components/shared/login-form/login-form.component';
+import { RegisterFormComponent } from './components/shared/register-form/register-form.component';
+import { RegisterPageComponent } from './pages/register-page/register-page.component';
 
 
 @NgModule({
@@ -49,7 +53,12 @@ import { CartComponent } from './components/shop/cart/cart.component';
     ItemPageComponent,
     ItemComponent,
     CartPageComponent,
-    CartComponent
+    CartComponent,
+    
+    LoginPageComponent,
+    LoginFormComponent,
+    RegisterFormComponent,
+    RegisterPageComponent
   ],
   imports: [
     BrowserModule,

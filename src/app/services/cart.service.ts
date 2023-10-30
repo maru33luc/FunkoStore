@@ -47,15 +47,17 @@ export class CartService {
     }
   }
 
-  async deleteCart(clientId: number | undefined) {
-    try {
-      const cart = await this.getCartByClientId(clientId);
-      if (cart) {
-        const response = await axios.delete(`${this.url}/${cart.id}`);
-      }
-      window.location.reload();
-    } catch (e) {
-      console.log(e);
-    }
-  }
+  //-------- No deberia necesitarse esta funcion de deleteCart
+
+  // async deleteCart(clientId: number | undefined) {
+  //   try {
+  //     const cart = await this.getCartByClientId(clientId);
+  //     if (cart) {
+  //       const response = await axios.delete(`${this.url}/${cart.id}`);
+  //     }
+  //     window.location.reload();
+  //   } catch (e) {
+  //     console.log(e);
+  //   }
+  // }
 }

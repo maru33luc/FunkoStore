@@ -8,9 +8,13 @@ import { AdminNewFunkoPageComponent } from './pages/admin/admin-new-funko-page/a
 import { AdminEditFunkoPageComponent } from './pages/admin/admin-edit-funko-page/admin-edit-funko-page.component';
 import { ItemPageComponent } from './pages/shop/item-page/item-page.component';
 import { CartPageComponent } from './pages/shop/cart-page/cart-page.component';
+import { LoginPageComponent } from './pages/login-page/login-page.component';
+import { RegisterPageComponent } from './pages/register-page/register-page.component';
 
 const routes: Routes = [
   { path: "home", component: HomePageComponent },
+  { path: "register", component: RegisterPageComponent},
+  { path: "login", component: LoginPageComponent},
   { path: "shop", component: ShopPageComponent },
   { path: "shop/:id", component: ItemPageComponent},
   { path: "cart", component: CartPageComponent },

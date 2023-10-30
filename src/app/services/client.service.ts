@@ -54,4 +54,44 @@ export class ClientService {
       console.log(e);
     }
   }
+
+  async getClientByEmail(email: string | undefined): Promise<Client | undefined> {
+    try {
+      const response = await axios.get(`${this.url}?email=${email}`);
+      if (response.data.length > 0) {
+        return response.data[0];
+      }
+    } catch (e) {
+      console.log(e);
+    }
+    return undefined;
+  }
+
+
+  async getClientIdByEmail(email: string | undefined): Promise<number | undefined> {
+    try {
+      const response = await axios.get(`${this.url}?email=${email}`);
+      if (response.data.length > 0) {
+        return response.data[0].id;
+      }
+    } catch (e) {
+      console.log(e);
+    }
+    return undefined;
+  }
+
+  // comprobar que ese cliente tiene la password correcta
+
+  async getClientByEmailAndPassword(email: string | undefined, password: string | undefined): Promise<Client | undefined> {
+    try {
+      const response = await axios.get(`${this.url}?email=${email}&password=${password}`);
+      if (response.data.length > 0) {
+        return response.data[0];
+      }
+    } catch (e) {
+      console.log(e);
+    }
+    return undefined;
+  }
+
 }

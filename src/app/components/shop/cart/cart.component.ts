@@ -1,6 +1,7 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Funko } from 'src/app/interfaces/Funko';
+import { CartService } from 'src/app/services/cart.service';
 import { FunkosService } from 'src/app/services/funkos.service';
 
 @Component({
@@ -14,7 +15,9 @@ export class CartComponent {
   @ViewChild('subtractButton') subtractButton: ElementRef | undefined;
   @ViewChild('quantityButton') quantityButton: ElementRef | undefined;
 
-  constructor(private route: ActivatedRoute, private funkosService: FunkosService) {}
+  constructor(private route: ActivatedRoute,
+     private funkosService: FunkosService,
+     private cartService: CartService) {}
 
   ngOnInit() {
     this.route.params.subscribe(params => {

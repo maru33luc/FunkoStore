@@ -1,63 +1,57 @@
 import { Injectable } from '@angular/core';
-import axios from 'axios';
-import { Cart } from '../interfaces/Cart';
-
+import { getFirestore, doc, getDoc, setDoc, collection, updateDoc } from 'firebase/firestore';
+import { getAuth } from 'firebase/auth';
+import { FunkoCart } from '../interfaces/Cart';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CartService {
 
-  url: string = 'http://localhost:4000/carts';
+  cart: FunkoCart[] = [];
 
-  constructor() { }
-
-  async getCartByClientId(clientId: number | undefined): Promise<Cart | undefined> {
-    try {
-      const response = await axios.get(`${this.url}?clientId=${clientId}`);
-      if (response.data.length > 0) {
-        return response.data[0];
-      }
-    } catch (e) {
-      console.log(e);
-    }
-    return undefined;
-  }
-
-  async createCart(clientId: number) {
-    const existingCart = await this.getCartByClientId(clientId);
-    
-    if (!existingCart) {
+  async obtenerCarritoDeCompras() {
+    const user = getAuth().currentUser;
+    if (user) {
       try {
-        const newCart = { clientId, funkos: [] };
-        const response = await axios.post(this.url, newCart);
-      } catch (e) {
-        console.log(e);
+        const db = getFirestore();
+        const docRef = doc(db, 'users', user.uid);
+        const docSnap = await getDoc(docRef);
+        const cartData = docSnap.data()?.['carrito'] || [];
+        const cart = cartData.map((item: any) => {
+          return {
+            funkoid: item.funkoid,
+            quantity: item.quantity
+          };
+        });
+        console.log(cart);
+        this.cart = cart;
+        return cart;
+      } catch(error) {
+        console.log(error);
+        return error;
       }
     } else {
-      console.log('El cliente ya tiene un carrito.');
+      console.log("no hay usuario logueado");
+      return undefined;
     }
   }
 
-  async updateCart(cart: Cart, id: number | undefined) {
-    try {
-      const response = await axios.put(`${this.url}/${id}`, cart);
-    } catch (e) {
-      console.log(e);
-    }
-  }
+  async agregarAlCarrito(funkoId: number, quantity: number) {
+    const user = getAuth().currentUser;
+    if (user) {
+      try {
+        this.cart.push({funkoId: funkoId, quantity: quantity} as FunkoCart);
+        const db = getFirestore();
+        const docRef = doc(db, 'users', user.uid);
+        await updateDoc(docRef, {
+          carrito: this.cart});
+        console.log(this.cart);
+        return this.cart;
 
-  //-------- No deberia necesitarse esta funcion de deleteCart
-
-  // async deleteCart(clientId: number | undefined) {
-  //   try {
-  //     const cart = await this.getCartByClientId(clientId);
-  //     if (cart) {
-  //       const response = await axios.delete(`${this.url}/${cart.id}`);
-  //     }
-  //     window.location.reload();
-  //   } catch (e) {
-  //     console.log(e);
-  //   }
-  // }
-}
+      } catch(error) {
+        console.log(error);
+        return error;
+      }
+    }return undefined;
+  }}

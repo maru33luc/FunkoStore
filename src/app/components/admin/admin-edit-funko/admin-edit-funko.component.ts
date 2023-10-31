@@ -10,13 +10,13 @@ import { FunkosService } from 'src/app/services/funkos.service';
 })
 export class AdminEditFunkoComponent implements OnInit {
 
-  name: string ='';
-  category: string ='';
-  serie: string ='';
-  description: string ='';
-  price: number = 0;
-  frontImage: string ='';
-  backImage: string ='';
+  name?: string;
+  category?: string;
+  serie?: string;
+  description?: string;
+  price?: number;
+  frontImage?: string;
+  backImage?: string;
 
   constructor(private router: Router, private route: ActivatedRoute, private funkosService: FunkosService) { }
 
@@ -45,4 +45,5 @@ export class AdminEditFunkoComponent implements OnInit {
     this.funkosService.updateFunko(funko, this.route.snapshot.params['id']);
     this.router.navigate(['admin-main']);
   }
+
 }

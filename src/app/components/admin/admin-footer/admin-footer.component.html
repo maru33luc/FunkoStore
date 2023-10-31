@@ -1,10 +1,24 @@
 <footer class="footer">
 
-    <div class="footer-logo">
+    <nav class="navbar container">
+        <ul class="navbar__items">
+            <li class="navbar__item">
+                <a class="navbar__link" routerLink="/admin-main">LISTADO</a>
+            </li>
+
+            <li class="navbar__item">
+                <a class="navbar__link" routerLink="/admin-new-funko">AGREGAR</a>
+            </li>
+
+            <li class="navbar__item">
+                <a class="navbar__link" routerLink="/home">CERRAR SESIÓN</a>
+            </li>
+        </ul>
+
         <picture>
             <img src="../../../../assets/img/branding/isotype.svg" alt="Isotipo de la marca FunkoShop">
         </picture>
-    </div>
+    </nav>
 
-    <p class="footer-copyright">All rights reserved 2023 - Funkoshop &copy;</p>
+    <p class="footer__copy">All rights reserved 2023 - Funkoshop &copy;</p>
 </footer>

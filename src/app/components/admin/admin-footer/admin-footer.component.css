@@ -3,13 +3,14 @@
     padding: var(--spacing-68);
 }
 
-.footer-logo {
+.navbar__items {
     display: flex;
-    justify-content: flex-end;
+    flex-direction: column;
+    gap: 18px;
 }
 
-.footer-copyright {
-    text-align: center;
+.footer__copy {
     font-size: var(--font-medium);
+    text-align: center;
     margin-top: var(--spacing-36);
 }

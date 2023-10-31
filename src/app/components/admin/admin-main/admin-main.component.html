@@ -6,7 +6,7 @@
                 <circle cx="7.5" cy="7.5" r="4.75"></circle>
             </svg>
         </svg>
-        <input class="admin-search-bar" type="text" name="search" id="search">
+        <input class="admin-search-bar" type="text">
     </section>
 
     <div class="admin-header">
@@ -27,6 +27,7 @@
             <tr>
                 <th>ID</th>
                 <th>Nombre</th>
+                <th>Serie</th>
                 <th>Precio</th>
                 <th class="hidden-column"></th>
                 <th class="hidden-column"></th>
@@ -37,6 +38,7 @@
             <tr class="admin-table-row">
                 <td>{{funko.id}}</td>
                 <td>{{funko.name}}</td>
+                <td>{{funko.serie}}</td>
                 <td>${{funko.price}}</td>
                 <td>
                     <a class="edit-article-button" [routerLink]="'/admin-edit-funko/' + funko.id">

@@ -8,13 +8,13 @@ import { Funko } from 'src/app/interfaces/Funko';
   styleUrls: ['./admin-form.component.css'],
 })
 export class AdminFormComponent {
-  @Input() name: string = '';
-  @Input() category: string = '';
-  @Input() serie: string = '';
-  @Input() description: string = '';
-  @Input() price: number = 0;
-  @Input() frontImage: string = '';
-  @Input() backImage: string = '';
+  @Input() name?: string;
+  @Input() category?: string;
+  @Input() serie?: string;
+  @Input() description?: string;
+  @Input() price?: number;
+  @Input() frontImage?: string;
+  @Input() backImage?: string;
 
   formulario: FormGroup = this.formBuilder.group({
     name: ['', [Validators.required]],
@@ -58,4 +58,5 @@ export class AdminFormComponent {
       this.sendFunko.emit(funko);
     }
   }
+
 }

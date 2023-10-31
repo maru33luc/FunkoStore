@@ -64,6 +64,7 @@ input[type="text"]::placeholder {
     --dark-300: rgb(31, 31, 31, 0.3);
 
     --dark-bg-solid: #30343F;
+    --medium-bg-solid: #E8E9F6;
     --light-bg-solid: #FAFAFF;
     --light-font-solid: #FFFFFF;
 
@@ -83,8 +84,10 @@ input[type="text"]::placeholder {
     /* Spacings */
     --spacing-128: 12.8rem;
     --spacing-68: 6.8rem;
+    --spacing-50: 5rem;
     --spacing-48: 4.8rem;
     --spacing-36: 3.6rem;
+    --spacing-30: 3rem;
     --spacing-28: 2.8rem;
     --spacing-30: 3rem;
     --spacing-24: 2.4rem;

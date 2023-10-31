@@ -3,15 +3,11 @@
     <nav class="navbar container">
         <ul class="navbar__items">
             <li class="navbar__item">
-                <a class="navbar__link" routerLink="/admin-main">LISTADO</a>
+                <a class="navbar__link" routerLink="/admin-main" (click)="scrollToTop()">LISTADO</a>
             </li>
 
             <li class="navbar__item">
-                <a class="navbar__link" routerLink="/admin-new-funko">AGREGAR</a>
-            </li>
-
-            <li class="navbar__item">
-                <a class="navbar__link" routerLink="/home">CERRAR SESIÓN</a>
+                <a class="navbar__link" routerLink="/admin-new-funko" (click)="scrollToTop()">AGREGAR</a>
             </li>
         </ul>
 

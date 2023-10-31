@@ -32,4 +32,8 @@ export class AdminMainComponent implements OnInit {
     }
   }
 
+  scrollToTop() {
+    window.scrollTo(0, 0);
+  }
+
 }

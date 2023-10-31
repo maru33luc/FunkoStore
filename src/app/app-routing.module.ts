@@ -12,9 +12,11 @@ const routes: Routes = [
   { path: "home", component: HomePageComponent },
   { path: "shop", component: ShopPageComponent },
   { path: "shop/:id", component: ItemPageComponent},
+
   { path: "admin-main", component: AdminMainPageComponent },
   { path: "admin-new-funko", component: AdminNewFunkoPageComponent },
   { path: "admin-edit-funko/:id", component: AdminEditFunkoPageComponent },
+
   { path: "**", redirectTo: "home" }
 ];
 

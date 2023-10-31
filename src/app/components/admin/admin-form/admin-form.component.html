@@ -3,9 +3,14 @@
         <label class="form-label">Nombre: </label>
         <input class="form-input" type="text" formControlName="name">
         <label class="form-label">Categoría: </label>
-        <input class="form-input" type="text" formControlName="category">
+        <input class="form-input" list="category" formControlName="category">
+        <datalist id="category">
+            <option value="Keychain">
+            <option value="Minis">
+            <option value="Plushies">
+        </datalist>
     </div>
-    
+
     <div class="form-box">
         <label class="form-label">Serie: </label>
         <input class="form-input" type="text" formControlName="serie">
@@ -27,6 +32,6 @@
 
     <div class="form-box form-box-btn">
         <input class="form-btn" type="submit" value="GUARDAR">
-        <input class="form-btn" type="reset" value="LIMPIAR">
+        <input class="form-btn" type="reset" value="LIMPIAR" (click)="scrollToTop()">
     </div>
 </form>

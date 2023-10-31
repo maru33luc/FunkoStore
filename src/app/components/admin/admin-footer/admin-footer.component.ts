@@ -3,8 +3,11 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-admin-footer',
   templateUrl: './admin-footer.component.html',
-  styleUrls: ['./admin-footer.component.css']
+  styleUrls: ['./admin-footer.component.css'],
 })
 export class AdminFooterComponent {
 
+  scrollToTop() {
+    window.scrollTo(0, 0);
+  }
 }

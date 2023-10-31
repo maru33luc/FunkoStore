@@ -28,7 +28,7 @@ export class AdminFormComponent {
 
   @Output() sendFunko = new EventEmitter<Funko>();
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(private formBuilder: FormBuilder) { }
 
   ngOnChanges() {
     this.formulario.controls['name'].setValue(this.name);
@@ -57,6 +57,10 @@ export class AdminFormComponent {
       };
       this.sendFunko.emit(funko);
     }
+  }
+
+  scrollToTop() {
+    window.scrollTo(0, 0);
   }
 
 }

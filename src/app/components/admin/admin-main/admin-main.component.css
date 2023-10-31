@@ -48,7 +48,6 @@ main {
 
 .admin-table {
     font-size: var(--font-large);
-    width: 100%;
     border-collapse: collapse;
     margin-bottom: var(--spacing-24);
 }
@@ -64,25 +63,23 @@ th {
     padding: 3rem;
 }
 
+th:nth-child(2),
+th:nth-child(3),
+th:nth-child(4) {
+    width: 20%;
+}
+
+th:nth-child(5) {
+    width: 10%;
+}
+
 tbody:nth-child(odd) {
     background-color: var(--medium-bg-solid);
 }
 
 td {
     text-align: center;
-    padding: 1.5rem;
-}
-
-th:nth-child(2),
-td:nth-child(2),
-th:nth-child(3),
-td:nth-child(3) {
-    width: 30%;
-}
-
-th:nth-child(4),
-td:nth-child(4) {
-    width: 15%;
+    padding: 2rem;
 }
 
 .add-article-button {

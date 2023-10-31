@@ -40,6 +40,7 @@ import { AdminEditFunkoPageComponent } from './pages/admin/admin-edit-funko-page
     ShopMainComponent,
     ItemPageComponent,
     ItemComponent,
+
     AdminHeaderComponent,
     AdminFooterComponent,
     AdminMainComponent,

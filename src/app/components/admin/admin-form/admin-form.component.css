@@ -6,8 +6,8 @@ form {
 
 .form-box {
     display: flex;
-    gap: var(--spacing-30);
     align-items: flex-end;
+    gap: var(--spacing-30);
 }
 
 .form-box:nth-child(3) {
@@ -15,10 +15,10 @@ form {
 }
 
 .form-label {
-    width: 25%;
     font-size: var(--font-medium);
     font-weight: 600;
     letter-spacing: .1rem;
+    width: 25%;
 }
 
 .form-box:nth-child(3) .form-label {

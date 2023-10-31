@@ -1,8 +1,8 @@
 header {
     background-color: var(--dark-bg-solid);
+    font-family: var(--alternative-font);
     display: flex;
     flex-wrap: wrap;
-    font-family: var(--alternative-font);
     padding: var(--spacing-30);
     margin: 0 auto;
 }

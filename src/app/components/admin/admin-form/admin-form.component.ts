@@ -8,6 +8,7 @@ import { Funko } from 'src/app/interfaces/Funko';
   styleUrls: ['./admin-form.component.css'],
 })
 export class AdminFormComponent {
+
   @Input() name?: string;
   @Input() category?: string;
   @Input() serie?: string;
@@ -44,7 +45,8 @@ export class AdminFormComponent {
     if (this.formulario.invalid) {
       alert('Debe completar todos los campos');
       return;
-    } else {
+    }
+    else {
       const funko: Funko = {
         name: this.formulario.controls['name'].value,
         category: this.formulario.controls['category'].value,

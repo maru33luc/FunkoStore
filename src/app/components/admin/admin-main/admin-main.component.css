@@ -17,9 +17,13 @@ main {
     font-size: var(--font-medium);
     width: 35%;
     padding: var(--spacing-8);
-    border: .2rem solid var(--dark-solid);
-    border-radius: .6rem;
-    outline: none;
+    border: none;
+    border-bottom: .2rem solid #ff3333;
+}
+
+.admin-search-bar:focus {
+    outline: 0;
+    border-bottom: .2rem solid var(--secondary-solid);;
 }
 
 .admin-header {
@@ -41,10 +45,16 @@ main {
     gap: var(--spacing-16);
 }
 
-.admin-header span a {
+.add-article-btn {
     font-size: var(--font-medium);
     display: flex;
 }
+
+.add-article-btn:hover {
+    color: var(--secondary-solid);
+    transition: background .2s ease-in-out;
+}
+
 
 .admin-table {
     font-size: var(--font-large);
@@ -82,15 +92,15 @@ td {
     padding: 2rem;
 }
 
-.add-article-button {
+.add-article-btn {
     color: #f33;
 }
 
-.edit-article-button {
+.edit-article-btn {
     color: #1d84b5;
 }
 
-.delete-article-button {
+.delete-article-btn {
     color: #f33;
     cursor: pointer;
 }

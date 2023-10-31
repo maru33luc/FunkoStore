@@ -33,7 +33,7 @@ export class FunkosService {
     return undefined;
   }
 
-  async addFunko(funko: Funko | undefined) {
+  async postFunko(funko: Funko | undefined) {
     try {
       const response = await axios.post(this.url, funko);
     }
@@ -42,7 +42,7 @@ export class FunkosService {
     }
   }
 
-  async updateFunko(funko: Funko, id: number | undefined) {
+  async putFunko(funko: Funko, id: number | undefined) {
     try {
       const response = await axios.put(`${this.url}/${id}`, funko);
     }

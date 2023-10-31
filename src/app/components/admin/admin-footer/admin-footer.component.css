@@ -6,7 +6,7 @@
 .navbar__items {
     display: flex;
     flex-direction: column;
-    gap: 18px;
+    gap: var(--spacing-18);
 }
 
 .footer__copy {

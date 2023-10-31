@@ -12,6 +12,7 @@ form {
 
 .form-box:nth-child(3) {
     align-items: flex-start;
+    margin-top: var(--spacing-30);
 }
 
 .form-label {
@@ -22,7 +23,7 @@ form {
 }
 
 .form-box:nth-child(3) .form-label {
-    width: auto;
+    width: 9%;
 }
 
 .form-input {

@@ -72,7 +72,7 @@ export class LoginService {
     }
   }
 
-  async update (nombre: string, apellido: string, carrito: FunkoCart[]) {
+  async updateDataUser (nombre: string, apellido: string, carrito: FunkoCart[]) {
     const user = getAuth().currentUser;
     if (user) {
       try{

@@ -13,7 +13,7 @@ export class AdminNewFunkoComponent {
   constructor(private funkosService: FunkosService, private router: Router) { }
 
   saveFunko(funko: Funko) {
-    this.funkosService.addFunko(funko);
+    this.funkosService.postFunko(funko);
     this.router.navigate(['admin-main']);
   }
 

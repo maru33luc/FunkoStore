@@ -18,9 +18,11 @@ const routes: Routes = [
   { path: "shop", component: ShopPageComponent },
   { path: "shop/:id", component: ItemPageComponent},
   { path: "cart", component: CartPageComponent },
+
   { path: "admin-main", component: AdminMainPageComponent },
   { path: "admin-new-funko", component: AdminNewFunkoPageComponent },
   { path: "admin-edit-funko/:id", component: AdminEditFunkoPageComponent },
+
   { path: "**", redirectTo: "home" }
 ];
 

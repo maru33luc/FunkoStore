@@ -8,13 +8,14 @@ import { Funko } from 'src/app/interfaces/Funko';
   styleUrls: ['./admin-form.component.css'],
 })
 export class AdminFormComponent {
-  @Input() name: string = '';
-  @Input() category: string = '';
-  @Input() serie: string = '';
-  @Input() description: string = '';
-  @Input() price: number = 0;
-  @Input() frontImage: string = '';
-  @Input() backImage: string = '';
+
+  @Input() name?: string;
+  @Input() category?: string;
+  @Input() serie?: string;
+  @Input() description?: string;
+  @Input() price?: number;
+  @Input() frontImage?: string;
+  @Input() backImage?: string;
 
   formulario: FormGroup = this.formBuilder.group({
     name: ['', [Validators.required]],
@@ -28,7 +29,7 @@ export class AdminFormComponent {
 
   @Output() sendFunko = new EventEmitter<Funko>();
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(private formBuilder: FormBuilder) { }
 
   ngOnChanges() {
     this.formulario.controls['name'].setValue(this.name);
@@ -44,7 +45,8 @@ export class AdminFormComponent {
     if (this.formulario.invalid) {
       alert('Debe completar todos los campos');
       return;
-    } else {
+    }
+    else {
       const funko: Funko = {
         name: this.formulario.controls['name'].value,
         category: this.formulario.controls['category'].value,
@@ -58,4 +60,9 @@ export class AdminFormComponent {
       this.sendFunko.emit(funko);
     }
   }
+
+  scrollToTop() {
+    window.scrollTo(0, 0);
+  }
+
 }

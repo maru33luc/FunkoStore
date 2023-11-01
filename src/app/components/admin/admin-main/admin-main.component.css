@@ -5,7 +5,7 @@ main {
 .admin-search {
     display: flex;
     align-items: center;
-    gap: var(--spacing-8);
+    gap: var(--spacing-20);
     margin-bottom: var(--spacing-36);
 }
 
@@ -17,15 +17,19 @@ main {
     font-size: var(--font-medium);
     width: 35%;
     padding: var(--spacing-8);
-    border: .2rem solid var(--dark-solid);
-    border-radius: .6rem;
-    outline: none;
+    border: none;
+    border-bottom: .2rem solid #ff3333;
+}
+
+.admin-search-bar:focus {
+    outline: 0;
+    border-bottom: .2rem solid var(--secondary-solid);;
 }
 
 .admin-header {
     display: flex;
-    align-items: center;
     justify-content: space-between;
+    align-items: center;
     margin-bottom: var(--spacing-24);
 }
 
@@ -41,15 +45,20 @@ main {
     gap: var(--spacing-16);
 }
 
-.admin-header span a {
+.add-article-btn {
     font-size: var(--font-medium);
     display: flex;
 }
 
+.add-article-btn:hover {
+    color: var(--secondary-solid);
+    transition: background .2s ease-in-out;
+}
+
+
 .admin-table {
-    width: 100%;
+    font-size: var(--font-large);
     border-collapse: collapse;
-    border-spacing: 0;
     margin-bottom: var(--spacing-24);
 }
 
@@ -59,49 +68,39 @@ main {
 }
 
 th {
-    font-size: var(--font-medium);
     font-weight: 500;
-    width: 40%;
+    width: 5%;
     padding: 3rem;
 }
 
-td {
-    font-size: var(--font-large);
-    text-align: center;
-    padding: 1.5rem;
-}
-
-th:nth-child(1),
-td:nth-child(1) {
-    width: 15%;
-}
-
 th:nth-child(2),
-td:nth-child(2) {
-    width: 40%;
-}
-
 th:nth-child(3),
-td:nth-child(3) {
-    width: 25%;
+th:nth-child(4) {
+    width: 20%;
 }
 
-th:nth-child(4),
-th:nth-child(5),
-td:nth-child(4),
-td:nth-child(5) {
+th:nth-child(5) {
     width: 10%;
 }
 
-.add-article-button {
+tbody:nth-child(odd) {
+    background-color: var(--medium-bg-solid);
+}
+
+td {
+    text-align: center;
+    padding: 2rem;
+}
+
+.add-article-btn {
     color: #f33;
 }
 
-.edit-article-button {
+.edit-article-btn {
     color: #1d84b5;
 }
 
-.delete-article-button {
+.delete-article-btn {
     color: #f33;
     cursor: pointer;
 }

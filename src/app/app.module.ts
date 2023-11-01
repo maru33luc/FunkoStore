@@ -13,7 +13,13 @@ import { SliderGlideComponent } from './components/shop/slider-glide/slider-glid
 import { ShopPageComponent } from './pages/shop/shop-page/shop-page.component';
 import { ShopAsideComponent } from './components/shop/shop-aside/shop-aside.component';
 import { ShopMainComponent } from './components/shop/shop-main/shop-main.component';
+import { ItemPageComponent } from './pages/shop/item-page/item-page.component';
+import { ItemComponent } from './components/shop/item/item.component';
+import { CartPageComponent } from './pages/shop/cart-page/cart-page.component';
+import { CartComponent } from './components/shop/cart/cart.component';
 
+import { AdminHeaderComponent } from './components/admin/admin-header/admin-header.component';
+import { AdminFooterComponent } from './components/admin/admin-footer/admin-footer.component';
 import { AdminMainComponent } from './components/admin/admin-main/admin-main.component';
 import { AdminFormComponent } from './components/admin/admin-form/admin-form.component';
 import { AdminNewFunkoComponent } from './components/admin/admin-new-funko/admin-new-funko.component';
@@ -21,14 +27,13 @@ import { AdminEditFunkoComponent } from './components/admin/admin-edit-funko/adm
 import { AdminMainPageComponent } from './pages/admin/admin-main-page/admin-main-page.component';
 import { AdminNewFunkoPageComponent } from './pages/admin/admin-new-funko-page/admin-new-funko-page.component';
 import { AdminEditFunkoPageComponent } from './pages/admin/admin-edit-funko-page/admin-edit-funko-page.component';
-import { ItemPageComponent } from './pages/shop/item-page/item-page.component';
-import { ItemComponent } from './components/shop/item/item.component';
-import { CartPageComponent } from './pages/shop/cart-page/cart-page.component';
-import { CartComponent } from './components/shop/cart/cart.component';
+
+
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { LoginFormComponent } from './components/shared/login-form/login-form.component';
 import { RegisterPageComponent } from './pages/register-page/register-page.component';
 import { RegisterFormComponent } from './components/shared/register-form/register-form.component';
+
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { getAuth, provideAuth } from '@angular/fire/auth';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
@@ -47,6 +52,11 @@ import { AngularFireModule } from '@angular/fire/compat';
     ShopPageComponent,
     ShopAsideComponent,
     ShopMainComponent,
+    ItemPageComponent,
+    ItemComponent,
+
+    AdminHeaderComponent,
+    AdminFooterComponent,
     AdminMainComponent,
     AdminFormComponent,
     AdminNewFunkoComponent,

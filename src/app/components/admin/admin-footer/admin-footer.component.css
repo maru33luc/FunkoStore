@@ -1,0 +1,16 @@
+.footer {
+    background: var(--dark-bg-solid);
+    padding: var(--spacing-68);
+}
+
+.navbar__items {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-18);
+}
+
+.footer__copy {
+    font-size: var(--font-medium);
+    text-align: center;
+    margin-top: var(--spacing-36);
+}

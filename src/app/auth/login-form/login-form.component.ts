@@ -22,15 +22,15 @@ export class LoginFormComponent {
     });
   }
 
-  login(){
-    this.loginService.login(this.loginForm.value.email, this.loginForm.value.password);
-    const carrito = async () => {
+  async login() {
+    try {
+      await this.loginService.login(this.loginForm.value.email, this.loginForm.value.password);
+      this.router.navigateByUrl('/');
       const carritoActual = await this.cartService.obtenerCarritoDeCompras();
       console.log(carritoActual);
-      // this.cartService.agregarAlCarrito(1, 1);
-      // console.log(carritoActual);
+    } catch (error) {
+      console.error(error);
     }
-    carrito();
-    this.router.navigateByUrl('/');
   }
+  
 }

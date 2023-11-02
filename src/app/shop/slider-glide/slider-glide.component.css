@@ -31,10 +31,21 @@
     margin-top: 20px;
   }
   
+  .card-item__cover {
+    width: 100%;
+    height: 270px;
+    border-radius: 10px;
+  }
+  
+  .slider__item{
+    width: 100%;
+  }
+
   .card-item__img--front, .card-item__img--back {
     height: 270px; 
     object-fit: contain;
     border-radius: 10px;
+    width: 100%;
   }
 
 .slider__nav {

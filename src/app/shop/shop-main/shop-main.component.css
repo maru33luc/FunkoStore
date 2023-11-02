@@ -32,9 +32,10 @@
 }
 
 .card-item__img--front, .card-item__img--back{
-    width: 280px;
+    width: 280px!important;
     height: 280px;
     object-fit: contain;
+    width: 100%;
 }
 
 @media screen and (max-width: 530px) {

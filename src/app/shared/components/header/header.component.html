@@ -12,7 +12,6 @@
         <ul #navBar class="navbar__menu">
             <li class="navbar__item with-submenu">
                 <a class="navbar__link with-icon" [routerLink]="['/shop']">SHOP 
-                    <!-- <img class="icon-color" src="../../../../assets/img/icons/icons8-chevron.png" alt="ícono de flecha hacia abajo"> -->
                         <span class="chevron-icon-mask chevron-icon "></span>               
                 </a>
 
@@ -28,9 +27,28 @@
                     </li>
                 </ul>
             </li>
-            <li class="navbar__item"><a class="navbar__link" href="./contacto.html">CONTACTO</a></li>
-            <li class="navbar__item"><a class="navbar__link" [routerLink]="['/login/log']">LOGIN</a></li>
-            <li class="navbar__item"><a class="navbar__link" [routerLink]="['/register/reg']">REGISTER</a></li>
+            <li class="navbar__item"><a class="navbar__link" >CONTACTO</a></li>
+
+
+            <ng-container *appIfAuthenticated="isLoggedIn">
+                <!-- Mostrar este contenido si el usuario está autenticado -->
+                <li class="navbar__item">
+                    <ng-container *ngIf="username">
+                        BIENVENIDO {{ username }} !
+                      </ng-container>
+                </li>
+                <li class="navbar__item">
+                  <a class="navbar__link" (click)="logout()">LOGOUT</a>
+                </li>
+              </ng-container>
+              
+              <li class="navbar__item" *ngIf="!isLoggedIn">
+                <a class="navbar__link" [routerLink]="['/login/log']">LOGIN</a>
+              </li>
+              <li class="navbar__item" *ngIf="!isLoggedIn">
+                <a class="navbar__link" [routerLink]="['/register/reg']">REGISTER</a>
+              </li>
+              
             <li class="navbar__item"><a class="navbar__cart" [routerLink]="['/shop/cart']">
                 <svg width="33" height="31" viewBox="0 0 33 31" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M12.5 31C13.8807 31 15 29.8807 15 28.5C15 27.1193 13.8807 26 12.5 26C11.1193 26 10 27.1193 10 28.5C10 29.8807 11.1193 31 12.5 31Z" fill="white"/>

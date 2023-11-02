@@ -7,13 +7,27 @@ import { FirestoreModule } from '@angular/fire/firestore';
 import { getFirestore, doc, setDoc, getDoc } from 'firebase/firestore';
 import { Route } from '@angular/router';
 import { FunkoCart } from '../interfaces/Cart';
+import { Observable } from 'rxjs';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
 
-  constructor(private auth: Auth) {}
+  private authState$: Observable<any> | undefined;
+
+  constructor(private auth: Auth) { 
+    // Crea un observable personalizado para el estado de autenticación
+    this.authState$ = new Observable((observer) => {
+      this.auth.onAuthStateChanged(observer);
+    });
+  }
+
+  // Define un método para obtener el observable del estado de autenticación
+  authStateObservable(): Observable<any> | undefined {
+    return this.authState$;
+  }
 
   async register(email: string, password: string, nombre: string, apellido: string) {
     try {
@@ -36,13 +50,13 @@ export class LoginService {
   }
 
   async login(email: string, password: string) {
-    try{
+    try {
       const user = await signInWithEmailAndPassword(this.auth, email, password);
       console.log("login exitoso");
       console.log(user);
       this.getDataActualUser();
 
-    }catch(error){
+    } catch (error) {
       console.log(error);
     }
   }
@@ -51,31 +65,47 @@ export class LoginService {
     const user = getAuth().currentUser;
     console.log(user);
     if (user) {
-      try{
+      try {
         const db = getFirestore();
         const docRef = doc(db, 'users', user.uid);
         const docSnap = await getDoc(docRef);
         console.log(docSnap.data());
       }
-      catch(error){
+      catch (error) {
+        console.log(error);
+      }
+    }
+  }
+
+  async getUserName() {
+    const user = getAuth().currentUser;
+    if (user) {
+      try {
+        const db = getFirestore();
+        const docRef = doc(db, 'users', user.uid);
+        const docSnap = await getDoc(docRef);
+        console.log(user.email + " " + docSnap.data()?.['nombre']);
+        return docSnap.data()?.['nombre'];
+      }
+      catch (error) {
         console.log(error);
       }
     }
   }
 
   async logout() {
-    try{
+    try {
       await this.auth.signOut();
       console.log("logout exitoso");
-    }catch(error){
+    } catch (error) {
       console.log(error);
     }
   }
 
-  async updateDataUser (nombre: string, apellido: string, carrito: FunkoCart[]) {
+  async updateDataUser(nombre: string, apellido: string, carrito: FunkoCart[]) {
     const user = getAuth().currentUser;
     if (user) {
-      try{
+      try {
         const db = getFirestore();
         const docRef = doc(db, 'users', user.uid);
         const payload = {
@@ -86,9 +116,28 @@ export class LoginService {
         const docSnap = await setDoc(docRef, payload);
         console.log(docSnap);
       }
-      catch(error){
+      catch (error) {
         console.log(error);
       }
     }
+  }
+
+  isUserLoggedIn(): boolean {
+    const user = getAuth().currentUser;
+    if (user) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  getInfoUsuarioLogueado() {
+    this.authStateObservable()?.subscribe((user) => {
+      if (user) {
+        return user;
+      } else {
+        return null;
+      }
+    });
   }
 }

@@ -24,7 +24,7 @@ import { CartComponent } from './cart/cart.component';
     ShopMainComponent,
     ItemPageComponent,
     CartPageComponent,
-    ItemComponent,],
+    ItemComponent],
   imports: [
     CommonModule,
     ShopRoutingModule,

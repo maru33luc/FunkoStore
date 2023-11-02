@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import Glide from '@glidejs/glide';
+import { LoginService } from 'src/app/services/login.service';
 
 
 
@@ -11,6 +12,13 @@ import Glide from '@glidejs/glide';
 export class HomePageComponent implements OnInit {
 title: string = 'ULTIMOS LANZAMIENTOS';
 
-  ngOnInit() {}
+constructor(private loginService:LoginService) { 
+  
+}
+
+  ngOnInit() {
+    const resp = this.loginService.isUserLoggedIn();
+    console.log(resp);
+  }
   }
 

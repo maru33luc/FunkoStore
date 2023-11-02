@@ -33,7 +33,7 @@
     "@angular-devkit/build-angular": "^16.2.7",
     "@angular/cli": "^16.2.7",
     "@angular/compiler-cli": "^16.2.0",
-    "@schematics/angular": "^16.2.8",
+    "@schematics/angular": "^16.2.9",
     "@types/glidejs__glide": "^3.6.3",
     "@types/jasmine": "~4.3.0",
     "css-loader": "^6.8.1",

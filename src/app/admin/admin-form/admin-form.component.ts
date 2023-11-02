@@ -18,13 +18,13 @@ export class AdminFormComponent {
   @Input() backImage?: string;
 
   formulario: FormGroup = this.formBuilder.group({
-    name: ['', [Validators.required]],
-    category: ['', [Validators.required]],
-    serie: ['', [Validators.required]],
-    description: ['', [Validators.required]],
-    price: [0, [Validators.required]],
-    frontImage: ['', [Validators.required]],
-    backImage: ['', [Validators.required]],
+    name: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(30)]],
+    category: ['', [Validators.required, Validators.pattern('^(Keychain|Minis|Plugis)$')]],
+    serie: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(30)]],
+    price: [0, [Validators.min(1)]],
+    description: ['', [Validators.required, Validators.maxLength(300)]],
+    frontImage: ['', [Validators.required, Validators.pattern('^(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})([/\\w .-]*)*/?$')]],
+    backImage: ['', [Validators.required, Validators.pattern('^(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})([/\\w .-]*)*/?$')]]
   });
 
   @Output() sendFunko = new EventEmitter<Funko>();
@@ -41,9 +41,13 @@ export class AdminFormComponent {
     this.formulario.controls['backImage'].setValue(this.backImage);
   }
 
+  validate(field: string, error: string) {
+    return this.formulario.controls[field].getError(error) && this.formulario.controls[field].touched;
+}
+
   sendData() {
     if (this.formulario.invalid) {
-      alert('Debe completar todos los campos');
+      alert('No se puede guardar porque hay campos inválidos');
       return;
     }
     else {

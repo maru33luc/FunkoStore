@@ -4,9 +4,8 @@ import { AdminEditFunkoPageComponent } from './pages/admin-edit-funko-page/admin
 import { AdminMainPageComponent } from './pages/admin-main-page/admin-main-page.component';
 import { AdminNewFunkoPageComponent } from './pages/admin-new-funko-page/admin-new-funko-page.component';
 
-
 const routes: Routes = [
-  { path: '' , component: AdminMainPageComponent},
+  { path: '' , component: AdminMainPageComponent },
   { path: "admin-new-funko", component: AdminNewFunkoPageComponent },
   { path: "admin-edit-funko/:id", component: AdminEditFunkoPageComponent },
   { path: "**", redirectTo: " " }

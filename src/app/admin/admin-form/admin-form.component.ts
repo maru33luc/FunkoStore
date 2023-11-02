@@ -21,7 +21,7 @@ export class AdminFormComponent {
     name: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(30)]],
     category: ['', [Validators.required, Validators.pattern('^(Keychain|Minis|Plugis)$')]],
     serie: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(30)]],
-    price: [0, [Validators.min(1)]],
+    price: [0, [Validators.required, Validators.min(1)]],
     description: ['', [Validators.required, Validators.maxLength(300)]],
     frontImage: ['', [Validators.required, Validators.pattern('^(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})([/\\w .-]*)*/?$')]],
     backImage: ['', [Validators.required, Validators.pattern('^(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})([/\\w .-]*)*/?$')]]
@@ -29,7 +29,7 @@ export class AdminFormComponent {
 
   @Output() sendFunko = new EventEmitter<Funko>();
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder) {}
 
   ngOnChanges() {
     this.formulario.controls['name'].setValue(this.name);
@@ -42,15 +42,13 @@ export class AdminFormComponent {
   }
 
   validate(field: string, error: string) {
-    return this.formulario.controls[field].getError(error) && this.formulario.controls[field].touched;
-}
+    return (this.formulario.controls[field].getError(error) && this.formulario.controls[field].touched);
+  }
 
   sendData() {
     if (this.formulario.invalid) {
-      alert('No se puede guardar porque hay campos inválidos');
-      return;
-    }
-    else {
+      this.formulario.markAllAsTouched();
+    } else {
       const funko: Funko = {
         name: this.formulario.controls['name'].value,
         category: this.formulario.controls['category'].value,

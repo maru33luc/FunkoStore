@@ -14,7 +14,12 @@ export class AdminNewFunkoComponent {
 
   saveFunko(funko: Funko) {
     this.funkosService.postFunko(funko);
-    this.router.navigate(['admin-main']);
+    this.router.navigate(['/admin']);
+    this.scrollToTop();
+  }
+
+  scrollToTop() {
+    window.scrollTo(0, 0);
   }
 
 }

@@ -33,7 +33,8 @@
         <div class="form-box">
             <label class="form-label">Precio: </label>
             <input class="form-input" type="number" formControlName="price">
-            <span class="error" *ngIf="validate('price', 'min')">Campo obligatorio</span>
+            <span class="error" *ngIf="validate('price', 'required')">Campo obligatorio</span>
+            <span class="error" *ngIf="validate('price', 'min')">El precio debe ser igual o mayor a 1</span>
         </div>
     </div>
 

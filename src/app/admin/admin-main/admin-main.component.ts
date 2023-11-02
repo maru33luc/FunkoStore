@@ -28,6 +28,7 @@ export class AdminMainComponent implements OnInit {
     const ok = confirm('¿Está seguro que desea eliminar este Funko?');
     if (ok) {
       await this.funkosService.deleteFunko(id);
+      this.scrollToTop();
       window.location.reload();
     }
   }

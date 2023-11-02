@@ -6,9 +6,9 @@ import { AdminNewFunkoPageComponent } from './pages/admin-new-funko-page/admin-n
 
 const routes: Routes = [
   { path: '' , component: AdminMainPageComponent },
-  { path: "admin-new-funko", component: AdminNewFunkoPageComponent },
-  { path: "admin-edit-funko/:id", component: AdminEditFunkoPageComponent },
-  { path: "**", redirectTo: " " }
+  { path: 'new-funko', component: AdminNewFunkoPageComponent },
+  { path: 'edit-funko/:id', component: AdminEditFunkoPageComponent },
+  { path: '**', redirectTo: '' }
 ];
 
 @NgModule({

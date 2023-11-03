@@ -67,8 +67,14 @@ form {
 
 .form-box-btn {
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     gap: var(--spacing-30);
+}
+
+@media screen and (min-width: 576px) {
+    .form-box-btn {
+        justify-content: flex-end;
+    }
 }
 
 .form-btn {

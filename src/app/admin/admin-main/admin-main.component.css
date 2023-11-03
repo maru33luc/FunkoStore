@@ -27,12 +27,13 @@ h1 {
     justify-content: space-between;
     align-items: flex-start;
     gap: var(--spacing-20);
-    margin-bottom: var(--spacing-36);
+    margin-bottom: var(--spacing-20);
 }
 
 @media screen and (min-width: 576px) {
     .admin-header {
         flex-direction: row;
+        margin-bottom: var(--spacing-36);
     }
 }
 
@@ -148,8 +149,17 @@ td {
 }
 
 th:nth-child(4),
-td:nth-child(4) {
+td:nth-child(4),
+th:nth-child(5),
+td:nth-child(5) {
     display: none;
+}
+
+@media screen and (min-width: 376px){
+    th:nth-child(5),
+    td:nth-child(5) {
+        display: table-cell;
+    }
 }
 
 @media screen and (min-width: 576px){

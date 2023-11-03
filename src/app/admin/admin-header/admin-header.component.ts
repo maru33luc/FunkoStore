@@ -1,4 +1,6 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-admin-header',
@@ -10,6 +12,8 @@ import { Component, ElementRef, ViewChild } from '@angular/core';
 })
 export class AdminHeaderComponent {
 
+  constructor (private loginService: LoginService, private router: Router) { }
+
   @ViewChild('hambIcon') hambIcon!: ElementRef;
   @ViewChild('navBar') navBar!: ElementRef;
 
@@ -20,6 +24,11 @@ export class AdminHeaderComponent {
         this.navBar.nativeElement.classList.toggle('navbar__menu-toogle');
       });
     }
+  }
+
+  logout() {
+    this.loginService.logout();
+    this.router.navigate(['/home']);
   }
 
 }

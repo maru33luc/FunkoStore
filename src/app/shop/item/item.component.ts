@@ -1,6 +1,7 @@
 import { Component, AfterViewInit, ElementRef, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Funko } from 'src/app/interfaces/Funko';
+import { CartService } from 'src/app/services/cart.service';
 import { FunkosService } from 'src/app/services/funkos.service';
 
 @Component({
@@ -14,11 +15,15 @@ export class ItemComponent implements AfterViewInit {
   @ViewChild('subtractButton') subtractButton: ElementRef | undefined;
   @ViewChild('quantityButton') quantityButton: ElementRef | undefined;
 
-  constructor(private route: ActivatedRoute, private funkosService: FunkosService) {}
+  constructor(
+    private route: ActivatedRoute,
+    private funkosService: FunkosService,
+    private cartService: CartService
+  ) {}
 
   ngOnInit() {
     this.route.params.subscribe(params => {
-      const itemId = params['id']; 
+      const itemId = params['id'];
       this.getItemById(itemId);
     });
   }
@@ -26,7 +31,6 @@ export class ItemComponent implements AfterViewInit {
   ngAfterViewInit() {
     if (this.addButton && this.subtractButton && this.quantityButton) {
       this.addButton.nativeElement.addEventListener('click', () => this.handleAddClick());
-
       this.subtractButton.nativeElement.addEventListener('click', () => this.handleSubtractClick());
     }
   }
@@ -42,7 +46,7 @@ export class ItemComponent implements AfterViewInit {
   private updateQuantity(change: number) {
     if (this.quantityButton) {
       let quantityValue = this.quantityButton.nativeElement.value;
-      
+
       if (quantityValue === "" || isNaN(quantityValue)) {
         quantityValue = "0";
       } else {
@@ -51,7 +55,6 @@ export class ItemComponent implements AfterViewInit {
           quantityValue = "0";
         }
       }
-
       this.quantityButton.nativeElement.value = quantityValue;
     }
   }
@@ -59,10 +62,25 @@ export class ItemComponent implements AfterViewInit {
   async getItemById(itemId: number): Promise<Funko | undefined> {
     try {
       this.selectedItem = await this.funkosService.getFunko(itemId);
+      return this.selectedItem;
     } catch (error) {
       console.log(error);
       return undefined;
     }
-    return undefined;
+  }
+
+  async addToCart() {
+    let carrito = await this.cartService.obtenerCarritoDeCompras();
+    if (this.selectedItem && this.quantityButton) {
+      const quantity = parseInt(this.quantityButton.nativeElement.value);
+      if (quantity > 0) {
+        if (this.selectedItem.id) {
+          this.cartService.agregarAlCarrito(this.selectedItem.id, quantity);
+        }
+        this.quantityButton.nativeElement.value = "0";
+      }
+    }
+    carrito = await this.cartService.obtenerCarritoDeCompras();
+    console.log(carrito);
   }
 }

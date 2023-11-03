@@ -12,6 +12,7 @@ import { ShopPageComponent } from './pages/shop-page/shop-page.component';
 import { ItemPageComponent } from './pages/item-page/item-page.component';
 import { SharedModule } from '../shared/shared.module';
 import { CartComponent } from './cart/cart.component';
+import { AuthModule } from '@angular/fire/auth';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { CartComponent } from './cart/cart.component';
   imports: [
     CommonModule,
     ShopRoutingModule,
-    SharedModule
+    SharedModule,
+    AuthModule
   ],
   exports: [
     CollectionComponent,

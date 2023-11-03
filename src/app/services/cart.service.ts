@@ -10,6 +10,10 @@ export class CartService {
 
   cart: FunkoCart[] = [];
 
+  constructor() {
+    this.obtenerCarritoDeCompras();
+  }
+
   async obtenerCarritoDeCompras() {
     const user = getAuth().currentUser;
     if (user) {
@@ -18,16 +22,19 @@ export class CartService {
         const docRef = doc(db, 'users', user.uid);
         const docSnap = await getDoc(docRef);
         const cartData = docSnap.data()?.['carrito'] || [];
-        const cart = cartData.map((item: any) => {
+
+        // Transforma cartData en un array de Funkos
+        const cart = Object.keys(cartData).map((funkoid) => {
           return {
-            funkoid: item.funkoid,
-            quantity: item.quantity
+            funkoId: Number(funkoid), 
+            quantity: cartData[funkoid].quantity
           };
         });
-        console.log(cart);
-        this.cart = cart;
+       
+        this.cart = cart as FunkoCart[]; 
         return cart;
-      } catch(error) {
+
+      } catch (error) {
         console.log(error);
         return error;
       }
@@ -38,20 +45,24 @@ export class CartService {
   }
 
   async agregarAlCarrito(funkoId: number, quantity: number) {
-    const user = getAuth().currentUser;
-    if (user) {
-      try {
-        this.cart.push({funkoId: funkoId, quantity: quantity} as FunkoCart);
-        const db = getFirestore();
-        const docRef = doc(db, 'users', user.uid);
-        await updateDoc(docRef, {
-          carrito: this.cart});
-        console.log(this.cart);
-        return this.cart;
+    if (typeof funkoId === 'number' && typeof quantity === 'number') {
+      const user = getAuth().currentUser;
+      if (user) {
+        try {
+          this.cart.push({ funkoId: funkoId, quantity: quantity } as FunkoCart);
+          const db = getFirestore();
+          const docRef = doc(db, 'users', user.uid);
+          await updateDoc(docRef, {
+            carrito: this.cart
+          });
+          console.log(this.cart);
+          return this.cart;
 
-      } catch(error) {
-        console.log(error);
-        return error;
-      }
+        } catch (error) {
+          console.log(error);
+          return error;
+        }
+      } return undefined;
     }return undefined;
-  }}
+  }
+}

@@ -9,6 +9,7 @@ const routes: Routes = [
   { path: 'new-funko', component: AdminNewFunkoPageComponent },
   { path: 'edit-funko/:id', component: AdminEditFunkoPageComponent },
   { path: 'new-funko/new-funko', redirectTo: 'new-funko' },
+  { path: 'edit-funko/:id/new-funko', redirectTo: 'new-funko' },
   { path: '**', redirectTo: '' }
 ];
 

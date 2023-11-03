@@ -18,11 +18,11 @@ export class AdminFormComponent {
   @Input() backImage?: string;
 
   formulario: FormGroup = this.formBuilder.group({
-    name: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(30)]],
+    name: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(20)]],
     category: ['', [Validators.required, Validators.pattern('^(Keychain|Minis|Plugis)$')]],
-    serie: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(30)]],
+    serie: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(20)]],
     price: [0, [Validators.required, Validators.min(1)]],
-    description: ['', [Validators.required, Validators.maxLength(300)]],
+    description: ['', [Validators.required, Validators.maxLength(100)]],
     frontImage: ['', [Validators.required, Validators.pattern('^(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})([/\\w .-]*)*/?$')]],
     backImage: ['', [Validators.required, Validators.pattern('^(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})([/\\w .-]*)*/?$')]]
   });

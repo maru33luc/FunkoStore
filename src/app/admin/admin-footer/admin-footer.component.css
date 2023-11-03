@@ -6,11 +6,38 @@
 .navbar__items {
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
     gap: var(--spacing-18);
+}
+
+.navbar__link {
+    padding-left: 0;
 }
 
 .footer__copy {
     font-size: var(--font-medium);
     text-align: center;
     margin-top: var(--spacing-36);
+}
+
+@media screen and (max-width: 440px) {    
+    .footer{
+        padding: 7rem;
+    }
+    .footer .navbar{
+        flex-direction: column;
+        align-items: center;
+    }
+    .navbar__items {
+        align-items: center;
+    }
+    .footer .navbar img{
+        margin: 2rem auto;
+    }
+    .footer picture{
+        width: 10rem;
+    }
+    .footer__copy{
+        font-size: 1.2rem;
+    }
 }

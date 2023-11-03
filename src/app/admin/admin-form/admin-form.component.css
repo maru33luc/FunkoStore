@@ -6,31 +6,50 @@ form {
 
 .form-row {
     display: flex;
+    flex-direction: column;
     align-items: flex-end;
     gap: var(--spacing-30);
+}
+
+@media screen and (min-width: 576px) {
+    .form-row {
+        flex-direction: row;
+    }
 }
 
 .form-box {
     position: relative;
     width: 100%;
     display: flex;
-    align-items: flex-end;
-    gap: var(--spacing-30);
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-20);
 }
 
 .form-label {
-    font-size: var(--font-medium);
+    font-size: var(--font-xsmall);
     font-weight: 600;
     letter-spacing: .1rem;
-    width: 25%;
+}
+
+@media screen and (min-width: 992px) {
+    .form-label {
+        font-size: var(--font-medium);
+    }
 }
 
 .form-input {
-    font-size: var(--font-medium);
+    font-size: var(--font-xsmall);
     width: 100%;
     padding: 1rem .5rem;
     border: none;
     border-bottom: .2rem solid #ff3333;
+}
+
+@media screen and (min-width: 992px) {
+    .form-input {
+        font-size: var(--font-medium);
+    }
 }
 
 .form-input:focus {
@@ -38,52 +57,34 @@ form {
     border-bottom: .2rem solid var(--secondary-solid);;
 }
 
-.form-box-text-area {
-    align-items: flex-start;
-    margin-top: var(--spacing-30);
-}
-
-.form-box-text-area label {
-    width: 9%;
-}
-
-textarea {
-    font-family: var(--base-font);
-    font-size: var(--font-medium);
-    width: 100%;
-    padding: 1rem;
-    border: .2rem solid #ff3333;
-}
-
-textarea:focus {
-    outline-color: var(--secondary-solid);
-}
-
 .error {
     position: absolute;
-    left: 25%;
-    top: 100%;
+    top: 25%;
     font-size: var(--font-xsmall);
     color: #ff3333;
     font-weight: 600;
 }
 
-.error-text-area {
-    left: 12.5%;
-}
-
 .form-box-btn {
+    display: flex;
     justify-content: flex-end;
+    gap: var(--spacing-30);
 }
 
 .form-btn {
     background-color: var(--primary-solid);
     color: var(--light-font-solid);
-    font-size: var(--font-medium);
+    font-size: var(--font-xsmall);
     transition: background .2s ease-in-out;
     padding: var(--spacing-12) var(--spacing-28);
     border: none;
     cursor: pointer;
+}
+
+@media screen and (min-width: 992px) {
+    .form-btn {
+        font-size: var(--font-medium);
+    }
 }
 
 .form-btn:hover {

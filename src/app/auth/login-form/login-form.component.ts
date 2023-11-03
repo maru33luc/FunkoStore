@@ -25,12 +25,20 @@ export class LoginFormComponent {
   async login() {
     try {
       await this.loginService.login(this.loginForm.value.email, this.loginForm.value.password);
-      this.router.navigateByUrl('/');
+      if(this.loginService.isUserLoggedIn()) {
+        this.loginService.isAdmin().subscribe(isAdmin => {
+          if (isAdmin) {
+            this.router.navigateByUrl('/admin');
+          }else{
+            this.router.navigateByUrl('/home');
+          }
+          
+        });
+      }
       const carritoActual = await this.cartService.obtenerCarritoDeCompras();
-      console.log(carritoActual);
     } catch (error) {
       console.error(error);
     }
   }
-  
+
 }

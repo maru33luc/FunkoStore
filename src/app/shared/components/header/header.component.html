@@ -30,7 +30,7 @@
             <li class="navbar__item"><a class="navbar__link" >CONTACTO</a></li>
 
 
-            <ng-container *appIfAuthenticated="isLoggedIn">
+            <ng-container *appIfAuthenticated>
                 <!-- Mostrar este contenido si el usuario está autenticado -->
                 <li class="navbar__item">
                     <ng-container *ngIf="username">

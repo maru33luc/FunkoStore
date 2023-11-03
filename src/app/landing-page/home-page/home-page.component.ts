@@ -16,9 +16,11 @@ constructor(private loginService:LoginService) {
   
 }
 
-  ngOnInit() {
-    const resp = this.loginService.isUserLoggedIn();
-    console.log(resp);
+  async ngOnInit() {
+    // const resp = this.loginService.isUserLoggedIn();
+    // console.log(resp);
+    // const isAdmin = await  this.loginService.isAdmin();
+    // console.log(isAdmin);
   }
   }
 

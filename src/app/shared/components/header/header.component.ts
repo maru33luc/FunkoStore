@@ -20,11 +20,9 @@ username: string = '';
     this.loginService.authStateObservable()?.subscribe((user) => {
       if (user) {
         this.isLoggedIn = true;
-        console.log("usuario logueado");
         
       } else {
         this.isLoggedIn = false;
-        console.log("usuario no logueado");
       }
       
     });
@@ -49,11 +47,12 @@ username: string = '';
   
   obtenerNombreUsuario() {
     this.loginService.getUserName().then((nombre) => {
-      console.log(nombre);
-      this.username = nombre.toUpperCase();
+      if (nombre) {
+        this.username = nombre.toUpperCase();
+      }
     });
-   
   }
+  
 
  
 

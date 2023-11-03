@@ -27,7 +27,8 @@ export class RegisterFormComponent {
       const response = await this.loginService.register(this.registerForm.value.email, this.registerForm.value.password, 
         this.registerForm.value.name, this.registerForm.value.lastname)
       console.log(response);
-      this.router.navigateByUrl('/login');
+      this.loginService.logout();
+      this.router.navigateByUrl('/login/log');
     }catch(error){
       console.log(error);
     }

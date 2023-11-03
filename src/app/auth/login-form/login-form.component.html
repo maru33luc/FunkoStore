@@ -3,11 +3,12 @@
     <form class="login__form form" [formGroup]="loginForm" (ngSubmit)="login()" >
       <div class="form__box--grid">
         <label class="form__label" for="email">Email:</label>
-        <input class="form__input" type="email" formControlName="email" placeholder="johndoe@email.com">
+        <input class="form__input" type="email" formControlName="email" placeholder="johndoe@email.com" 
+        autocomplete="email">
       </div>
       <div class="form__box--grid">
         <label class="form__label" for="password">Contraseña:</label>
-        <input class="form__input" type="password" formControlName="password" placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;">
+        <input class="form__input" type="password" formControlName="password" placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;" autocomplete="current-password">
       </div>
       <div class="form__submission">
         <input class="form__btn btn btn--primary btn--large" type="submit" value="Ingresar">

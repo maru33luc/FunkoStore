@@ -38,7 +38,8 @@ export class LoginService {
       const payload = {
         nombre: nombre,
         apellido: apellido,
-        carrito: [] as FunkoCart[]
+        carrito: [] as FunkoCart[],
+        isAdmin: false
       }
       const docSnap = await setDoc(docRef, payload);
       return response;
@@ -53,7 +54,6 @@ export class LoginService {
     try {
       const user = await signInWithEmailAndPassword(this.auth, email, password);
       console.log("login exitoso");
-      console.log(user);
       this.getDataActualUser();
 
     } catch (error) {
@@ -63,7 +63,6 @@ export class LoginService {
 
   async getDataActualUser() {
     const user = getAuth().currentUser;
-    console.log(user);
     if (user) {
       try {
         const db = getFirestore();
@@ -84,7 +83,6 @@ export class LoginService {
         const db = getFirestore();
         const docRef = doc(db, 'users', user.uid);
         const docSnap = await getDoc(docRef);
-        console.log(user.email + " " + docSnap.data()?.['nombre']);
         return docSnap.data()?.['nombre'];
       }
       catch (error) {
@@ -140,4 +138,25 @@ export class LoginService {
       }
     });
   }
+
+  isAdmin (): Observable<boolean> {
+    return new Observable((observer) => {
+      this.authStateObservable()?.subscribe((user) => {
+        if (user) {
+          const db = getFirestore();
+          const docRef = doc(db, 'users', user.uid);
+          getDoc(docRef).then((docSnap) => {
+            if (docSnap.data()?.['isAdmin']) {
+              observer.next(true);
+            } else {
+              observer.next(false);
+            }
+          });
+        } else {
+          observer.next(false);
+        }
+      });
+    });
+  }
+
 }

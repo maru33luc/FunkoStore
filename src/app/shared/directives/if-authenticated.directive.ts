@@ -18,7 +18,7 @@ export class IfAuthenticatedDirective implements OnInit {
   }
 
   private updateView(authState: any) {
-    const isLoggedIn = this.loginService.isUserLoggedIn();
+    const isLoggedIn = authState !== null; 
 
     if (isLoggedIn) {
       this.viewContainer.createEmbeddedView(this.templateRef);

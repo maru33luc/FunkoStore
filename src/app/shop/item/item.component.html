@@ -21,14 +21,15 @@
     </article>
   </article>
 
-<article class="item-info-box">
+  <article class="item-info-box">
     <h4 class="item-info-box__title">Información del Personaje</h4>
-    <p><strong>Raza:</strong> Raza del personaje</p>
-    <p><strong>Spouse:</strong> Cónyuge del personaje</p>
-    <p><strong>Link Wiki:</strong> <a href="URL de la Wiki" target="_blank">Enlace a la Wiki</a></p>
-    <p><strong>Nacimiento:</strong> Fecha de nacimiento</p>
-    <p><strong>Muerte:</strong> Fecha de muerte</p>
+    <p><strong>Raza:</strong> {{ characterInfo?.race }}</p>
+    <p><strong>Spouse:</strong> {{ characterInfo?.spouse }}</p>
+    <p><strong>Link Wiki:</strong> <a href="{{ characterInfo?.wikiUrl }}" target="_blank"> {{ characterInfo?.wikiUrl }}</a></p>
+    <p><strong>Nacimiento:</strong> {{ characterInfo?.birth }}</p>
+    <p><strong>Muerte:</strong> {{ characterInfo?.death }}</p>
 </article>
+
 </section>
 
 

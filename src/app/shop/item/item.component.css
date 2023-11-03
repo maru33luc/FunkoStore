@@ -1,11 +1,12 @@
 .item__container {
     display: flex;
-   gap: 20px;
+   /* gap: 2.5em; */
     margin-top: 50px;
-    justify-content: center;
+    /* justify-content: center; */
     align-items: center;
     flex-wrap: wrap;
-    margin-right: 10px auto;
+    margin-right: 10px 0;
+    margin-bottom: 100px;
 }
 
 .card-item__cover {
@@ -17,7 +18,6 @@
     display: flex;
     flex-direction: row;
     margin-bottom: 50px;
-    margin-left: 30px;
     margin-top: 40px;
 }
 
@@ -36,7 +36,6 @@
     margin-top: 30px;
     justify-content: center;
     gap: 20px;
-    /* width: 576px; */
 }
 
 .item__info .card-item__licence {
@@ -317,14 +316,17 @@
     margin-top: 30px;
     box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2); 
     text-align: left;
-   
     display: flex;
     flex-direction: column;
+    text-wrap: wrap;
+    max-width: 30%;
+    min-width: 282px;
+    margin-left: 30px;
   }
   
   .item-info-box__title {
     font-family: 'Arial', sans-serif; 
-    font-size: 24px;
+    font-size: 20px;
     font-weight: 700;
     color: #3498db; 
     margin-bottom: 15px;
@@ -333,10 +335,11 @@
   
   .item-info-box p {
     font-family: 'Arial', sans-serif; 
-    font-size: 18px; 
+    font-size: 14px; 
     font-weight: 400;
     color: #555; 
     margin: 10px 0; 
+   
   }
   
   .item-info-box a {

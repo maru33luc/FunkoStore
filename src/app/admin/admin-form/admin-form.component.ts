@@ -18,18 +18,18 @@ export class AdminFormComponent {
   @Input() backImage?: string;
 
   formulario: FormGroup = this.formBuilder.group({
-    name: ['', [Validators.required]],
-    category: ['', [Validators.required]],
-    serie: ['', [Validators.required]],
-    description: ['', [Validators.required]],
-    price: [0, [Validators.required]],
-    frontImage: ['', [Validators.required]],
-    backImage: ['', [Validators.required]],
+    name: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(30)]],
+    category: ['', [Validators.required, Validators.pattern('^(Keychain|Minis|Plugis)$')]],
+    serie: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(30)]],
+    price: [0, [Validators.required, Validators.min(1)]],
+    description: ['', [Validators.required, Validators.maxLength(300)]],
+    frontImage: ['', [Validators.required, Validators.pattern('^(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})([/\\w .-]*)*/?$')]],
+    backImage: ['', [Validators.required, Validators.pattern('^(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})([/\\w .-]*)*/?$')]]
   });
 
   @Output() sendFunko = new EventEmitter<Funko>();
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder) {}
 
   ngOnChanges() {
     this.formulario.controls['name'].setValue(this.name);
@@ -41,12 +41,14 @@ export class AdminFormComponent {
     this.formulario.controls['backImage'].setValue(this.backImage);
   }
 
+  validate(field: string, error: string) {
+    return (this.formulario.controls[field].getError(error) && this.formulario.controls[field].touched);
+  }
+
   sendData() {
     if (this.formulario.invalid) {
-      alert('Debe completar todos los campos');
-      return;
-    }
-    else {
+      this.formulario.markAllAsTouched();
+    } else {
       const funko: Funko = {
         name: this.formulario.controls['name'].value,
         category: this.formulario.controls['category'].value,

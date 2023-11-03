@@ -4,15 +4,18 @@ form {
     gap: var(--spacing-50);
 }
 
-.form-box {
+.form-row {
     display: flex;
     align-items: flex-end;
     gap: var(--spacing-30);
 }
 
-.form-box:nth-child(3) {
-    align-items: flex-start;
-    margin-top: var(--spacing-30);
+.form-box {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+    gap: var(--spacing-30);
 }
 
 .form-label {
@@ -20,10 +23,6 @@ form {
     font-weight: 600;
     letter-spacing: .1rem;
     width: 25%;
-}
-
-.form-box:nth-child(3) .form-label {
-    width: 9%;
 }
 
 .form-input {
@@ -39,6 +38,15 @@ form {
     border-bottom: .2rem solid var(--secondary-solid);;
 }
 
+.form-box-text-area {
+    align-items: flex-start;
+    margin-top: var(--spacing-30);
+}
+
+.form-box-text-area label {
+    width: 9%;
+}
+
 textarea {
     font-family: var(--base-font);
     font-size: var(--font-medium);
@@ -49,6 +57,19 @@ textarea {
 
 textarea:focus {
     outline-color: var(--secondary-solid);
+}
+
+.error {
+    position: absolute;
+    left: 25%;
+    top: 100%;
+    font-size: var(--font-xsmall);
+    color: #ff3333;
+    font-weight: 600;
+}
+
+.error-text-area {
+    left: 12.5%;
 }
 
 .form-box-btn {

@@ -10,4 +10,5 @@ export class AdminFooterComponent {
   scrollToTop() {
     window.scrollTo(0, 0);
   }
+
 }

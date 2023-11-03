@@ -1,33 +1,66 @@
 <form [formGroup]="formulario" (submit)="sendData()">
-    <div class="form-box">
-        <label class="form-label">Nombre: </label>
-        <input class="form-input" type="text" formControlName="name">
-        <label class="form-label">Categoría: </label>
-        <input class="form-input" list="category" formControlName="category">
-        <datalist id="category">
-            <option value="Keychain">
-            <option value="Minis">
-            <option value="Plushies">
-        </datalist>
+    <div class="form-row">
+        <div class="form-box">
+            <label class="form-label">Nombre: </label>
+            <input class="form-input" type="text" formControlName="name">
+            <span class="error" *ngIf="validate('name', 'required')">Campo obligatorio</span>
+            <span class="error" *ngIf="validate('name', 'minlength')">Mínimo 3 caracteres</span>
+            <span class="error" *ngIf="validate('name', 'maxlength')">Máximo 30 caracteres</span>
+        </div>
+
+        <div class="form-box">
+            <label class="form-label">Categoría: </label>
+            <input class="form-input" list="category" formControlName="category">
+            <datalist id="category">
+                <option value="Keychain">
+                <option value="Minis">
+                <option value="Plushies">
+            </datalist>
+            <span class="error" *ngIf="validate('category', 'required')">Campo obligatorio</span>
+            <span class="error" *ngIf="validate('category', 'pattern')">Categoría inválida</span>
+        </div>
     </div>
 
-    <div class="form-box">
-        <label class="form-label">Serie: </label>
-        <input class="form-input" type="text" formControlName="serie">
-        <label class="form-label">Precio: </label>
-        <input class="form-input" type="number" formControlName="price">
+    <div class="form-row">
+        <div class="form-box">
+            <label class="form-label">Serie: </label>
+            <input class="form-input" type="text" formControlName="serie">
+            <span class="error" *ngIf="validate('serie', 'required')">Campo obligatorio</span>
+            <span class="error" *ngIf="validate('serie', 'minlength')">Mínimo 3 caracteres</span>
+            <span class="error" *ngIf="validate('serie', 'maxlength')">Máximo 30 caracteres</span>
+        </div>
+
+        <div class="form-box">
+            <label class="form-label">Precio: </label>
+            <input class="form-input" type="number" formControlName="price">
+            <span class="error" *ngIf="validate('price', 'required')">Campo obligatorio</span>
+            <span class="error" *ngIf="validate('price', 'min')">El precio debe ser igual o mayor a 1</span>
+        </div>
     </div>
 
-    <div class="form-box">
-        <label class="form-label">Descripción: </label>
-        <textarea cols="30" rows="10" formControlName="description"></textarea>
+    <div class="form-row">
+        <div class="form-box form-box-text-area">
+            <label class="form-label">Descripción: </label>
+            <textarea rows="5" formControlName="description"></textarea>
+            <span class="error error-text-area" *ngIf="validate('description', 'required')">Campo obligatorio</span>
+            <span class="error error-text-area" *ngIf="validate('description', 'maxlength')">Máximo 300 caracteres</span>
+        </div>
     </div>
 
-    <div class="form-box">
-        <label class="form-label">Imagen delantera: </label>
-        <input class="form-input" type="text" formControlName="frontImage">
-        <label class="form-label">Imagen trasera: </label>
-        <input class="form-input" type="text" formControlName="backImage">
+    <div class="form-row">
+        <div class="form-box">
+            <label class="form-label">Imagen delantera: </label>
+            <input class="form-input" type="text" formControlName="frontImage">
+            <span class="error" *ngIf="validate('frontImage', 'required')">Campo obligatorio</span>
+            <span class="error" *ngIf="validate('frontImage', 'pattern')">Formato incorrecto (Ejemplo: http://www.sitio.com)</span>
+        </div>
+
+        <div class="form-box">
+            <label class="form-label">Imagen trasera: </label>
+            <input class="form-input" type="text" formControlName="backImage">
+            <span class="error" *ngIf="validate('backImage', 'required')">Campo obligatorio</span>
+            <span class="error" *ngIf="validate('backImage', 'pattern')">Formato incorrecto (Ejemplo: http://www.sitio.com)</span>
+        </div>
     </div>
 
     <div class="form-box form-box-btn">

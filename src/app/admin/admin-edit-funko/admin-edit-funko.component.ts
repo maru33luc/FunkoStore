@@ -43,7 +43,12 @@ export class AdminEditFunkoComponent implements OnInit {
 
   saveFunko(funko: Funko) {
     this.funkosService.putFunko(funko, this.route.snapshot.params['id']);
-    this.router.navigate(['admin-main']);
+    this.router.navigate(['/admin']);
+    this.scrollToTop();
+  }
+
+  scrollToTop() {
+    window.scrollTo(0, 0);
   }
 
 }

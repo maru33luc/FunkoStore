@@ -12,19 +12,23 @@ export class ApiTolkienService {
 
   async getCharacterInfo(name: string) {
     try {
-      const response = await axios.get(`${this.url}?name=${name}`, {
+      // Encapsula el nombre con / y ^ para hacer una búsqueda basada en expresiones regulares
+      const regexName = `^${name}`;
+      
+      const response = await axios.get(`${this.url}?name=/${regexName}/i`, {
         headers: {
           'Authorization': `Bearer ${this.token}`
         }
       });
-
+  
       if (response.status === 200) {
         return response.data;
       } else {
         alert('Error en la solicitud' + response.status);
       }
     } catch (error) {
-      alert ('Error en la solicitud' + error);
+      alert('Error en la solicitud' + error);
     }
   }
+  
 }

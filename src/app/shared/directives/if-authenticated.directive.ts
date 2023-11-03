@@ -11,9 +11,19 @@ export class IfAuthenticatedDirective implements OnInit {
     private loginService: LoginService
   ) {}
 
-  ngOnInit() {
-    this.loginService.authStateObservable()?.subscribe((authState) => {
-      this.updateView(authState);
+  // ngOnInit() {
+  //   this.loginService.authStateObservable()?.subscribe((authState) => {
+  //     this.updateView(authState);
+  //   });
+  // }
+
+  // version con next, error y complete
+  ngOnInit(): void {
+    this.loginService.authStateObservable()?.subscribe({
+      next: (authState) => {this.updateView(authState)},
+        error: (error: any) => void {},
+        complete: () => {}
+      
     });
   }
 

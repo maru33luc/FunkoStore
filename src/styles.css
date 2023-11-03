@@ -160,6 +160,10 @@ footer a:hover {
     gap: 3rem;
 }
 
+.submenu .submenu__item a {
+    font-size: 0.8em;
+}
+
 /* ---------------------CARDS ---------------------------- */
 
 .card-item {

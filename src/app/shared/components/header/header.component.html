@@ -11,7 +11,7 @@
 
         <ul #navBar class="navbar__menu">
             <li class="navbar__item with-submenu">
-                <a class="navbar__link with-icon" [routerLink]="['/shop']">SHOP 
+                <a class="navbar__link with-icon" [routerLink]="['/shop']">TIENDA 
                         <span class="chevron-icon-mask chevron-icon "></span>               
                 </a>
 
@@ -27,8 +27,6 @@
                     </li>
                 </ul>
             </li>
-            <li class="navbar__item"><a class="navbar__link" >CONTACTO</a></li>
-
 
             <ng-container *appIfAuthenticated>
                 <!-- Mostrar este contenido si el usuario está autenticado -->
@@ -38,15 +36,15 @@
                       </ng-container>
                 </li>
                 <li class="navbar__item">
-                  <a class="navbar__link" (click)="logout()">LOGOUT</a>
+                  <a class="navbar__link" (click)="logout()">CERRAR SESIÓN</a>
                 </li>
               </ng-container>
               
               <li class="navbar__item" *ngIf="!isLoggedIn">
-                <a class="navbar__link" [routerLink]="['/login/log']">LOGIN</a>
+                <a class="navbar__link" [routerLink]="['/login/log']">INICIAR SESIÓN</a>
               </li>
               <li class="navbar__item" *ngIf="!isLoggedIn">
-                <a class="navbar__link" [routerLink]="['/register/reg']">REGISTER</a>
+                <a class="navbar__link" [routerLink]="['/register/reg']">REGISTRARSE</a>
               </li>
               
             <li class="navbar__item"><a class="navbar__cart" [routerLink]="['/shop/cart']">

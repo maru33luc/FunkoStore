@@ -10,14 +10,13 @@
 
         <div class="form-box">
             <label class="form-label">Categoría</label>
-            <input class="form-input" list="category" formControlName="category">
-            <datalist id="category">
-                <option value="Keychain">
-                <option value="Minis">
-                <option value="Plushies">
-            </datalist>
+            <select class="form-input" formControlName="category">
+                <option disable selected></option>
+                <option value="Keychain">Keychain</option>
+                <option value="Minis">Minis</option>
+                <option value="Plushies">Plushies</option>
+            </select>
             <span class="error" *ngIf="validate('category', 'required')">Campo obligatorio</span>
-            <span class="error" *ngIf="validate('category', 'pattern')">Categoría inválida</span>
         </div>
     </div>
 

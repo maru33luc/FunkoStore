@@ -4,6 +4,13 @@ form {
     gap: var(--spacing-50);
 }
 
+@media screen and (min-width: 576px) {
+    form {
+        width: 75%;
+        margin: 0 auto;
+    }
+}
+
 .form-row {
     display: flex;
     flex-direction: column;

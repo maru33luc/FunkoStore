@@ -19,7 +19,7 @@ export class AdminFormComponent {
 
     formulario: FormGroup = this.formBuilder.group({
         name: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(20)]],
-        category: ['', [Validators.required, Validators.pattern('^(Keychain|Minis|Plugis)$')]],
+        category: ['', Validators.required],
         serie: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(20)]],
         price: [0, [Validators.required, Validators.min(1)]],
         description: ['', [Validators.required, Validators.maxLength(100)]],

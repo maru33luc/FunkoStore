@@ -10,7 +10,10 @@ import { OrderFunkosService } from 'src/app/services/order-funkos.service';
 export class ShopAsideComponent {
 
   searchQuery: string = '';
-  orderType: 'az' | 'za' | 'desc' | 'asc' = 'az'; 
+  orderType: 'az' | 'za' | 'desc' | 'asc' = 'az';
+  minPrice: number = 0;
+  maxPrice: number = 0;
+
 
   constructor(private orderService: OrderFunkosService,
     private funkoService: FunkosService) { }
@@ -27,4 +30,11 @@ export class ShopAsideComponent {
   onSearchChange(query: string) {
     this.orderService.setSearchQuery(query);
   }
+
+  onPriceFilterChange() {
+    // Llamar a una función para filtrar los Funkos por rango de precio en el servicio.
+    this.funkoService.filterFunkosByPrice(this.minPrice, this.maxPrice);
+  }
+
+
 }

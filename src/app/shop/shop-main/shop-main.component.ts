@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Funko } from 'src/app/interfaces/Funko';
 import { FunkosService } from 'src/app/services/funkos.service';
 import { OrderFunkosService } from 'src/app/services/order-funkos.service';
@@ -15,14 +16,16 @@ export class ShopMainComponent implements OnInit {
   pages: number[] = [];
   searchQuery: string = '';
   showPagination = true;
+  lista$: Observable<Funko[]> | undefined;
+  filteredFunkos$: Observable<Funko[]> | undefined; // Observable para Funkos filtrados por precio
 
 
   constructor(private funkoService: FunkosService,
-     private orderService: OrderFunkosService) {}
+    private orderService: OrderFunkosService) { }
 
   ngOnInit() {
-    this.mostrarFunkos();
-    window.addEventListener('resize', () => {
+    this.lista$ = this.funkoService.getFilteredFunkosObservable();
+    this.filteredFunkos$ = this.funkoService.getFilteredFunkosObservable();    window.addEventListener('resize', () => {
       this.updateItemsPerPage();
     });
 
@@ -33,7 +36,7 @@ export class ShopMainComponent implements OnInit {
       } else if (orderType === 'za') {
         this.lista.sort((a, b) => (b.name || '').localeCompare(a.name || ''));
       }
-       else if (orderType === 'asc') {
+      else if (orderType === 'asc') {
         this.lista.sort((a, b) => a.price - b.price);
       } else if (orderType === 'desc') {
         this.lista.sort((a, b) => b.price - a.price);
@@ -45,6 +48,15 @@ export class ShopMainComponent implements OnInit {
       this.searchQuery = query;
       this.filterFunkos();
     });
+
+     // Se subscribe a los cambios en los Funkos filtrados por precio y actualiza la lista
+     this.filteredFunkos$.subscribe(filteredFunkos => {
+      this.lista = filteredFunkos;
+      if(this.lista.length === 0) {
+        this.showPagination = false;
+      }
+      this.calculateTotalPages();
+    });
   }
 
   filterFunkos() {
@@ -54,7 +66,7 @@ export class ShopMainComponent implements OnInit {
       const filteredFunkos = this.lista.filter((funko) =>
         (funko.name || '').toLowerCase().includes(this.searchQuery.toLowerCase())
       );
-  
+
       if (filteredFunkos.length === 0) {
         // No se encontraron resultados, oculta la paginación.
         this.showPagination = false;
@@ -109,5 +121,9 @@ export class ShopMainComponent implements OnInit {
     } else {
       this.itemsPerPage = 9;
     }
+  }
+
+  filterFunkosByPrice(minPrice: number, maxPrice: number) {
+    this.funkoService.filterFunkosByPrice(minPrice, maxPrice);
   }
 }

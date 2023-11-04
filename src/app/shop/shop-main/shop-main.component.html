@@ -22,7 +22,7 @@
       </li>
     </ul>
   </div>
-  <div class="pagination">
+  <div class="pagination" *ngIf="showPagination">
     <ul class="pag__ul">
       <li id="previous-page" [class.disabled]="currentPage === 0" (click)="changePage(currentPage - 1)">
         «

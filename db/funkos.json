@@ -308,7 +308,6 @@
       "name": "frodo-baggins-cursed",
       "description": "",
       "category": "Pop! Vinyl",
-      "title": "Frodo Baggins (Cursed)",
       "frontImage": "https://th.bing.com/th/id/OIP.NAwm8nrVABxT8U_Xw1ULCwHaKL?pid=ImgDet&rs=1",
       "backImage": "https://images.hobbydb.com/processed_uploads/catalog_item_photo/catalog_item_photo/image/463779/Frodo_Baggins_%2528Cursed%2529_Vinyl_Art_Toys_9d5d895b-ffce-4e2e-8351-b996e64e3025_large.jpg",
       "serie": [
@@ -319,10 +318,9 @@
       "id": 25
     },
     {
-      "name": "balrog",
+      "name": "Balrog",
       "description": "",
       "category": "Pop! Vinyl",
-      "title": "Balrog",
       "frontImage": "https://th.bing.com/th/id/OIP.zKnG6Uc3gcn5FP6DRbhISQHaHa?pid=ImgDet&rs=1",
       "backImage": "https://images.hobbydb.com/processed_uploads/catalog_item_photo/catalog_item_photo/image/463778/Balrog_Vinyl_Art_Toys_76a8777a-2eff-4ad1-8e1a-bbd1c0fb0a04_large.jpg",
       "serie": [
@@ -346,8 +344,7 @@
       "id": 27
     },
     {
-      "handle": "nazgul",
-      "title": "Nazgul",
+      "name": "Nazgul",
       "description": "",
       "category": "Pop! Vinyl",
       "frontImage": "https://th.bing.com/th/id/OIP.L6OVqh6v83vzvcxvbnKdkQHaHa?pid=ImgDet&rs=1",
@@ -399,10 +396,9 @@
       "id": 31
     },
     {
-      "handle": "frodo",
+      "name": "Frodo",
       "description": "",
       "category": "Wacky Wobblers",
-      "title": "Frodo",
       "frontImage": "https://rodim.com.ua/components/com_jshopping/files/img_products/full_frodo1.jpg",
       "backImage": "https://images.hobbydb.com/processed_uploads/catalog_item_photo/catalog_item_photo/image/470673/Frodo_Vinyl_Art_Toys_643afd2c-5ba4-418f-a460-fcac4f3147d1_large.jpg",
       "serie": [
@@ -452,7 +448,7 @@
       "id": 35
     },
     {
-      "title": "Gimli (Gold)",
+      "name": "Gimli (Gold)",
       "description": "",
       "category": "Minis",
       "frontImage": "https://images.hobbydb.com/processed_uploads/catalog_item_photo/catalog_item_photo/image/562657/Gimli_%2528Gold%2529_Vinyl_Art_Toys_fca07aff-10b5-4c75-a69b-b1c2d1a1a827_large.jpg",
@@ -466,7 +462,7 @@
       "id": 36
     },
     {
-      "title": "Nazgul",
+      "name": "Nazgul",
       "description": "",
       "category": "Minis",
       "frontImage": "https://images.hobbydb.com/processed_uploads/catalog_item_photo/catalog_item_photo/image/562652/Nazgul_Vinyl_Art_Toys_20d37bc7-7e87-4dc1-b9a2-431bc63f63d1_large.jpg",
@@ -479,7 +475,7 @@
       "id": 37
     },
     {
-      "title": "Frodo Baggins (Invisible)",
+      "name": "Frodo Baggins (Invisible)",
       "description": "",
       "category": "Minis",
       "frontImage": "https://i5.walmartimages.com/asr/1b0fb59a-b488-4fc3-aa6c-1b10122f8c75_1.d4736c755966d2f19106ca1be5b5c71c.jpeg",

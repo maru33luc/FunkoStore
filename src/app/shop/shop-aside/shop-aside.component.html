@@ -1,13 +1,16 @@
 <aside class="shop__aside">
     <div class="aside__input">
         <label for="buscar" class="label">BUSCAR</label>
-        <input type="text" name="" id="buscar" placeholder="Item o categoria" class="aside__input-buscar">
-    </div>
+        <input type="text" name="searchQuery" id="buscar" 
+        placeholder="Nombre" class="aside__input-buscar" 
+        [(ngModel)]="searchQuery"
+  (ngModelChange)="onSearchChange($event)">
+      </div>
+      
     <div class="aside__input">
         <label for="" class="label">ORDENAR POR</label>
         <div class="custom-select">
-            <select name="" class="placeholder-style" title="Ordenar por" id="shop__aside-select">
-
+            <select name="orderType" class="placeholder-style" title="Ordenar por" id="shop__aside-select" [(ngModel)]="orderType" (change)="onOrderChange()" >
                 <option value="az">A-Z</option>
                 <option value="za">Z-A</option>
                 <option value="desc">Mayor precio</option>

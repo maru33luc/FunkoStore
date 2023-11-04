@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Funko } from 'src/app/interfaces/Funko';
 import { FunkosService } from 'src/app/services/funkos.service';
+import { OrderFunkosService } from 'src/app/services/order-funkos.service';
 
 @Component({
   selector: 'app-shop-main',
@@ -8,19 +9,63 @@ import { FunkosService } from 'src/app/services/funkos.service';
   styleUrls: ['./shop-main.component.css']
 })
 export class ShopMainComponent implements OnInit {
-
   lista: Funko[] = [];
   itemsPerPage = 9;
   currentPage = 0;
   pages: number[] = [];
+  searchQuery: string = '';
+  showPagination = true;
 
-  constructor(private funkoService: FunkosService) {}
+
+  constructor(private funkoService: FunkosService,
+     private orderService: OrderFunkosService) {}
 
   ngOnInit() {
     this.mostrarFunkos();
     window.addEventListener('resize', () => {
       this.updateItemsPerPage();
     });
+
+    this.orderService.orderType$.subscribe(orderType => {
+      // Lógica de ordenamiento
+      if (orderType === 'az') {
+        this.lista.sort((a, b) => (a.name || '').localeCompare(b.name || ''));
+      } else if (orderType === 'za') {
+        this.lista.sort((a, b) => (b.name || '').localeCompare(a.name || ''));
+      }
+       else if (orderType === 'asc') {
+        this.lista.sort((a, b) => a.price - b.price);
+      } else if (orderType === 'desc') {
+        this.lista.sort((a, b) => b.price - a.price);
+      }
+      this.calculateTotalPages();
+    });
+
+    this.orderService.searchQuery$.subscribe((query) => {
+      this.searchQuery = query;
+      this.filterFunkos();
+    });
+  }
+
+  filterFunkos() {
+    if (this.searchQuery.trim() === '') {
+      this.mostrarFunkos();
+    } else {
+      const filteredFunkos = this.lista.filter((funko) =>
+        (funko.name || '').toLowerCase().includes(this.searchQuery.toLowerCase())
+      );
+  
+      if (filteredFunkos.length === 0) {
+        // No se encontraron resultados, oculta la paginación.
+        this.showPagination = false;
+        this.lista = [];
+      } else {
+        // Se encontraron resultados, muestra la paginación y actualiza la lista.
+        this.showPagination = true;
+        this.lista = filteredFunkos;
+        this.calculateTotalPages();
+      }
+    }
   }
 
   async mostrarFunkos() {
@@ -57,15 +102,12 @@ export class ShopMainComponent implements OnInit {
   updateItemsPerPage() {
     if (window.innerWidth <= 1380 && window.innerWidth > 1045) {
       this.itemsPerPage = 6;
-    }else if (window.innerWidth <= 1045 && window.innerWidth > 600) {
+    } else if (window.innerWidth <= 1045 && window.innerWidth > 600) {
       this.itemsPerPage = 3;
-    }
-    else if (window.innerWidth <= 600) {
+    } else if (window.innerWidth <= 600) {
       this.itemsPerPage = 1;
-    }
-     else {
+    } else {
       this.itemsPerPage = 9;
     }
   }
-  
 }

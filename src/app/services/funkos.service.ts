@@ -60,4 +60,24 @@ export class FunkosService {
     }
   }
 
+  async filterFunkosByName(name: string): Promise<Funko[] | undefined> {
+    try {
+      const response = await axios.get(this.url);
+      const allFunkos = response.data as Funko[];
+  
+      // Si el nombre está vacío, devuelve todos los funkos
+      if (!name) {
+        return allFunkos;
+      }
+  
+      // Filtra los funkos que contienen el nombre proporcionado
+      const filteredFunkos = allFunkos.filter(funko => funko.name.toLowerCase().includes(name.toLowerCase()));
+      return filteredFunkos;
+    } catch (e) {
+      console.log(e);
+    }
+    return undefined;
+  }
+  
+
 }

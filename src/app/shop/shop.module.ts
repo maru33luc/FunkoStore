@@ -13,6 +13,7 @@ import { ItemPageComponent } from './pages/item-page/item-page.component';
 import { SharedModule } from '../shared/shared.module';
 import { CartComponent } from './cart/cart.component';
 import { AuthModule } from '@angular/fire/auth';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { AuthModule } from '@angular/fire/auth';
     CommonModule,
     ShopRoutingModule,
     SharedModule,
-    AuthModule
+    AuthModule, 
+    FormsModule
   ],
   exports: [
     CollectionComponent,

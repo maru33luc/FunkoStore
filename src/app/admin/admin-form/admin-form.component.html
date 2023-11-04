@@ -52,14 +52,16 @@
             <label class="form-label">Imagen delantera</label>
             <input class="form-input" type="text" formControlName="frontImage">
             <span class="error" *ngIf="validate('frontImage', 'required')">Campo obligatorio</span>
-            <span class="error" *ngIf="validate('frontImage', 'pattern')">Formato inválido (Ejemplo: http://www.sitio.com)</span>
+            <span class="error" *ngIf="validate('frontImage', 'pattern')">Formato inválido (Ejemplo:
+                http://www.sitio.com)</span>
         </div>
 
         <div class="form-box">
             <label class="form-label">Imagen trasera</label>
             <input class="form-input" type="text" formControlName="backImage">
             <span class="error" *ngIf="validate('backImage', 'required')">Campo obligatorio</span>
-            <span class="error" *ngIf="validate('backImage', 'pattern')">Formato inválido (Ejemplo: http://www.sitio.com)</span>
+            <span class="error" *ngIf="validate('backImage', 'pattern')">Formato inválido (Ejemplo:
+                http://www.sitio.com)</span>
         </div>
     </div>
 

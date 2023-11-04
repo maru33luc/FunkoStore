@@ -43,7 +43,7 @@ form {
     width: 100%;
     padding: 1rem .5rem;
     border: none;
-    border-bottom: .2rem solid #ff3333;
+    border-bottom: .2rem solid var(--primary-solid);
 }
 
 @media screen and (min-width: 992px) {
@@ -61,7 +61,7 @@ form {
     position: absolute;
     top: 25%;
     font-size: var(--font-xsmall);
-    color: #ff3333;
+    color: var(--primary-solid);
     font-weight: 600;
 }
 

@@ -28,10 +28,11 @@
               type="number"
               id="min-price"
               class="input-field"
-              placeholder="0"
               min="0"
               [ngModel]="minPrice"
               (ngModelChange)="minPrice = $event"
+              (focus)="clearMinPricePlaceholder()"
+              (blur)="resetMinPricePlaceholder()"
               (input)="onPriceFilterChange()"
             />
           </div>
@@ -41,13 +42,18 @@
               type="number"
               id="max-price"
               class="input-field"
-              placeholder="0"
               min="0"
               [ngModel]="maxPrice"
               (ngModelChange)="maxPrice = $event"
+              (focus)="clearMaxPricePlaceholder()"
+              (blur)="resetMaxPricePlaceholder()"
               (input)="onPriceFilterChange()"
             />
           </div>
+          
+          
+          
+       
         </div>
       </div>
     <div class="aside__input">

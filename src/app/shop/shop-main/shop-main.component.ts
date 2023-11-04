@@ -10,6 +10,7 @@ import { OrderFunkosService } from 'src/app/services/order-funkos.service';
   styleUrls: ['./shop-main.component.css']
 })
 export class ShopMainComponent implements OnInit {
+  
   lista: Funko[] = [];
   itemsPerPage = 9;
   currentPage = 0;
@@ -19,13 +20,13 @@ export class ShopMainComponent implements OnInit {
   lista$: Observable<Funko[]> | undefined;
   filteredFunkos$: Observable<Funko[]> | undefined; // Observable para Funkos filtrados por precio
 
-
   constructor(private funkoService: FunkosService,
     private orderService: OrderFunkosService) { }
 
   ngOnInit() {
     this.lista$ = this.funkoService.getFilteredFunkosObservable();
-    this.filteredFunkos$ = this.funkoService.getFilteredFunkosObservable();    window.addEventListener('resize', () => {
+    this.filteredFunkos$ = this.funkoService.getFilteredFunkosObservable();
+    window.addEventListener('resize', () => {
       this.updateItemsPerPage();
     });
 
@@ -49,15 +50,17 @@ export class ShopMainComponent implements OnInit {
       this.filterFunkos();
     });
 
-     // Se subscribe a los cambios en los Funkos filtrados por precio y actualiza la lista
-     this.filteredFunkos$.subscribe(filteredFunkos => {
+    // Se subscribe a los cambios en los Funkos filtrados por precio y actualiza la lista
+    this.filteredFunkos$.subscribe(filteredFunkos => {
       this.lista = filteredFunkos;
-      if(this.lista.length === 0) {
+      if (this.lista.length === 0) {
         this.showPagination = false;
       }
       this.calculateTotalPages();
     });
   }
+
+  // -----------------FILTRADO FUNKOS ---------------------
 
   filterFunkos() {
     if (this.searchQuery.trim() === '') {
@@ -79,6 +82,13 @@ export class ShopMainComponent implements OnInit {
       }
     }
   }
+
+  filterFunkosByPrice(minPrice: number, maxPrice: number) {
+    this.funkoService.filterFunkosByPrice(minPrice, maxPrice);
+  }
+
+
+  // ------------PAGINACION -------------------------------
 
   async mostrarFunkos() {
     const response = await this.funkoService.getFunkos();
@@ -108,6 +118,7 @@ export class ShopMainComponent implements OnInit {
     } else {
       this.currentPage = newPage;
     }
+    window.scrollTo(0, 0);
     return false;
   }
 
@@ -115,15 +126,11 @@ export class ShopMainComponent implements OnInit {
     if (window.innerWidth <= 1380 && window.innerWidth > 1045) {
       this.itemsPerPage = 6;
     } else if (window.innerWidth <= 1045 && window.innerWidth > 600) {
-      this.itemsPerPage = 3;
+      this.itemsPerPage = 4;
     } else if (window.innerWidth <= 600) {
       this.itemsPerPage = 1;
     } else {
       this.itemsPerPage = 9;
     }
-  }
-
-  filterFunkosByPrice(minPrice: number, maxPrice: number) {
-    this.funkoService.filterFunkosByPrice(minPrice, maxPrice);
   }
 }

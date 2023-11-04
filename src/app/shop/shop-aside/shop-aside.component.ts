@@ -32,9 +32,39 @@ export class ShopAsideComponent {
   }
 
   onPriceFilterChange() {
-    // Llamar a una función para filtrar los Funkos por rango de precio en el servicio.
-    this.funkoService.filterFunkosByPrice(this.minPrice, this.maxPrice);
-  }
+    if(this.maxPrice > 0  && this.maxPrice > this.minPrice)
+      this.funkoService.filterFunkosByPrice(this.minPrice, this.maxPrice);
+    if(this.maxPrice === 0 && this.minPrice == 0)
+    this.funkoService.showAllFunkos();
+    }  
 
+  clearMinPricePlaceholder() {
+    if (this.minPrice === 0) {
+      this.minPrice = NaN;
+    }
+  }
+  
+  clearMaxPricePlaceholder() {
+    if (this.maxPrice === 0) {
+      this.maxPrice = NaN;
+    }
+  }
+  
+  resetMinPricePlaceholder() {
+    if (this.minPrice === null) {
+      this.minPrice = 0;
+    }
+  }
+  
+  resetMaxPricePlaceholder() {
+    if (this.maxPrice === null) {
+      this.maxPrice = 0;
+    }
+  }
+  
+  
+  
+  
+  
 
 }

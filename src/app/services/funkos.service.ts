@@ -74,6 +74,9 @@ export class FunkosService {
     }
   }
 
+  
+  // -------------- FILTRADOS ----------------------------
+
   async filterFunkosByName(name: string): Promise<Funko[] | undefined> {
     try {
       const response = await axios.get(this.url);
@@ -106,5 +109,9 @@ export class FunkosService {
       return this.filteredFunkosSubject.asObservable();
     }
   
-  
+    showAllFunkos() {
+      this.filteredFunkos = this.funkos; // Usar la lista completa de Funkos
+      this.filteredFunkosSubject.next(this.filteredFunkos);
+    }
+    
 }

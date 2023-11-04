@@ -32,8 +32,8 @@
 }
 
 .card-item__img--front, .card-item__img--back{
-    width: 280px!important;
-    height: 280px;
+    width: 240px!important;
+    height: 240px;
     object-fit: contain;
     width: 100%;
 }

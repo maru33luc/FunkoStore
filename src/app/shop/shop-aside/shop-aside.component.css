@@ -60,10 +60,12 @@
 
 #min-price {
     width: 60px;
+    padding-left: 5px;
 }
 
 #max-price {
     width: 90px;
+    padding-left: 5px;
 }
 
 .aside__input:first-of-type input {
@@ -118,7 +120,8 @@
 
 .label {
     font-family: Inter;
-    font-size: var(--font-large);
+    /* font-size: var(--font-large); */
+    font-size: 1.8em;
     font-weight: 500;
     line-height: 29px;
     letter-spacing: 0em;
@@ -132,7 +135,8 @@
 }
 
 .checkbox__label-text {
-    font-size: 18px;
+    font-size: var(--font-xsmall);
+
 }
 
 .checkbox-input {

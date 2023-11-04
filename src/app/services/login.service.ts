@@ -61,6 +61,15 @@ export class LoginService {
     }
   }
 
+  async logout() {
+    try {
+      await this.auth.signOut();
+      console.log("logout exitoso");
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   async getDataActualUser() {
     const user = getAuth().currentUser;
     if (user) {
@@ -69,12 +78,14 @@ export class LoginService {
         const docRef = doc(db, 'users', user.uid);
         const docSnap = await getDoc(docRef);
         console.log(docSnap.data());
+        return docSnap.data();
       }
       catch (error) {
         console.log(error);
+        return error;
       }
-    }
-  }
+    }return null;
+  }  
 
   async getUserName() {
     const user = getAuth().currentUser;
@@ -88,15 +99,6 @@ export class LoginService {
       catch (error) {
         console.log(error);
       }
-    }
-  }
-
-  async logout() {
-    try {
-      await this.auth.signOut();
-      console.log("logout exitoso");
-    } catch (error) {
-      console.log(error);
     }
   }
 

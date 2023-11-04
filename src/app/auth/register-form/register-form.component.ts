@@ -1,41 +1,63 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LoginService } from 'src/app/services/login.service';
 
 @Component({
-  selector: 'app-register-form',
-  templateUrl: './register-form.component.html',
-  styleUrls: ['./register-form.component.css']
+    selector: 'app-register-form',
+    templateUrl: './register-form.component.html',
+    styleUrls: ['./register-form.component.css'],
 })
 export class RegisterFormComponent {
-  registerForm: FormGroup;
 
-  constructor( private router: Router, private fb: FormBuilder, private loginService: LoginService) {
-    this.registerForm = this.fb.group({
-      name: ['', Validators.required],
-      lastname: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]],
-      repassword: ['', [Validators.required]],
-      acceptTerms: [false, Validators.requiredTrue]
+    registerForm: FormGroup = this.fb.group({
+        name: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(30)]],
+        lastname: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(30)]],
+        email: ['', [Validators.required, Validators.email]],
+        password: ['', [Validators.required, Validators.minLength(6)]],
+        repassword: ['', [Validators.required]],
     });
-  }
 
-  async register(){
-    try{
-      const response = await this.loginService.register(this.registerForm.value.email, this.registerForm.value.password, 
-        this.registerForm.value.name, this.registerForm.value.lastname)
-      console.log(response);
-      this.loginService.logout();
-      this.router.navigateByUrl('/login/log');
-    }catch(error){
-      console.log(error);
+    constructor(
+        private router: Router,
+        private fb: FormBuilder,
+        private loginService: LoginService,
+    ) {}
+
+    validate(field: string, error: string) {
+        return (
+            this.registerForm.controls[field].getError(error) && 
+            this.registerForm.controls[field].touched);
     }
-    
-  }
 
+    validatePassword() {
+        const password = this.registerForm.controls['password'].value;
+        const repassword = this.registerForm.controls['repassword'].value;
+        if (repassword.length === 0) {
+            return false;
+        }
+        return (
+            password !== repassword &&
+            this.registerForm.controls['repassword'].touched);
+    }
 
-
+    async register() {
+        if (this.registerForm.invalid) {
+            this.registerForm.markAllAsTouched();
+        } else {
+            try {
+                const response = await this.loginService.register(
+                    this.registerForm.value.email,
+                    this.registerForm.value.password,
+                    this.registerForm.value.name,
+                    this.registerForm.value.lastname
+                );
+                this.loginService.logout();
+                this.router.navigateByUrl('/login/log');
+            } catch (e) {
+                console.log(e);
+            }
+        }
+    }
 
 }

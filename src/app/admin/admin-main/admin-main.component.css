@@ -1,25 +1,3 @@
-main {
-    margin: var(--spacing-20);
-}
-
-@media screen and (min-width: 992px){
-    main {
-        margin: var(--spacing-68);
-    }
-}
-
-h1 {
-    font-size: var(--font-large);
-    text-align: center;
-    margin-bottom: var(--spacing-28);
-}
-
-@media screen and (min-width: 992px){
-    h1 {
-        font-size: var(--font-jumbo);
-    }
-}
-
 .admin-header {
     display: flex;
     flex-direction: column;
@@ -37,7 +15,7 @@ h1 {
     }
 }
 
-.admin-header span {
+.admin-add {
     font-size: var(--font-xsmall);
     font-weight: 700;
     align-self: flex-end;
@@ -47,7 +25,7 @@ h1 {
 }
 
 @media screen and (min-width: 992px){
-    .admin-header span {
+    .admin-add {
         font-size: var(--font-medium);
     }
 }
@@ -74,7 +52,7 @@ h1 {
     font-size: var(--font-xsmall);
     padding: var(--spacing-8);
     border: none;
-    border-bottom: .2rem solid #ff3333;
+    border-bottom: .2rem solid var(--primary-solid);
 }
 
 @media screen and (min-width: 992px){
@@ -88,18 +66,19 @@ h1 {
     border-bottom: .2rem solid var(--secondary-solid);;
 }
 
-.add-article-btn {
+.admin-add-btn {
+    color: var(--primary-solid);
     font-size: var(--font-xsmall);
     display: flex;
 }
 
 @media screen and (min-width: 992px){
-    .add-article-btn {
+    .admin-add-btn {
         font-size: var(--font-medium);
     }
 }
 
-.add-article-btn:hover {
+.admin-add-btn:hover {
     color: var(--secondary-solid);
     transition: background .2s ease-in-out;
 }
@@ -125,25 +104,9 @@ h1 {
 
 th {
     font-weight: 500;
-    width: 5%;
-    padding: 3rem 0;
 }
 
-th:nth-child(2),
-th:nth-child(3),
-th:nth-child(4) {
-    width: 20%;
-}
-
-th:nth-child(5) {
-    width: 10%;
-}
-
-tbody tr:nth-child(odd) {
-    background-color: var(--medium-bg-solid);
-}
-
-td {
+th, td {
     text-align: center;
     padding: 2rem 0;
 }
@@ -169,15 +132,27 @@ td:nth-child(5) {
     }
 }
 
-.add-article-btn {
-    color: #f33;
+.admin-table-cell-small {
+    width: 5%;
 }
 
-.edit-article-btn {
+.admin-table-cell-large {
+    width: 20%;    
+}
+
+.admin-table-cell-medium {
+    width: 10%;
+}
+
+.admin-table-body .admin-table-row:nth-child(odd) {
+    background-color: var(--medium-bg-solid);
+}
+
+.admin-edit-btn {
     color: #1d84b5;
 }
 
-.delete-article-btn {
+.admin-delete-btn {
     color: #f33;
     cursor: pointer;
 }

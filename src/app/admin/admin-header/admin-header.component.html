@@ -1,25 +1,24 @@
 <header>
-    <nav class="navbar container">
-        <picture class="navbar__logo">
-            <img src="../../../../assets/img/branding/logo_light_horizontal.svg"
-                alt="Isologotipo de la marca FunkoShop">
+    <nav class="navbar">
+        <picture class="navbar-logo">
+            <img src="../../../../assets/img/branding/logo_light_horizontal.svg" alt="Isologotipo de la marca FunkoShop">
         </picture>
 
-        <div class="navbar__menu-toggle">
+        <div class="navbar-menu-toggle">
             <span #hambIcon class="menu-icon">&#9776;</span>
         </div>
 
-        <ul #navBar class="navbar__menu">
-            <li class="navbar__item">
-                <a class="navbar__link" routerLink="/admin">LISTADO</a>
+        <ul #navBar class="navbar-menu">
+            <li class="navbar-item">
+                <a class="navbar-link" routerLink="/admin">LISTADO</a>
             </li>
 
-            <li class="navbar__item">
-                <a class="navbar__link" [routerLink]="['/admin/new-funko']">AGREGAR</a>
+            <li class="navbar-item">
+                <a class="navbar-link" [routerLink]="['/admin/new-funko']">AGREGAR</a>
             </li>
 
-            <li class="navbar__item">
-                <a class="navbar__link" (click)="logout()">CERRAR SESIÓN</a>
+            <li class="navbar-item">
+                <a class="navbar-link" (click)="logout()">CERRAR SESIÓN</a>
             </li>
         </ul>
     </nav>

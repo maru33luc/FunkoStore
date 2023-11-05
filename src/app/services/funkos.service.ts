@@ -11,10 +11,8 @@ export class FunkosService {
   url: string = 'http://localhost:4000/funkos';
   private funkos: Funko[] = [];
   private filteredFunkos: Funko[] = [];
-
-  // Creamos un observable para emitir los cambios en la lista filtrada
   private filteredFunkosSubject: Subject<Funko[]> = new Subject<Funko[]>();
-
+  
   constructor() {
     this.getFunkos().then(data => {
       if (data) {
@@ -30,7 +28,7 @@ export class FunkosService {
       const response = await axios.get(this.url);
       return response.data;
     }
-    catch(e) {
+    catch (e) {
       console.log(e);
     }
     return undefined;
@@ -41,7 +39,7 @@ export class FunkosService {
       const response = await axios.get(`${this.url}/${id}`);
       return response.data;
     }
-    catch(e) {
+    catch (e) {
       console.log(e);
     }
     return undefined;
@@ -51,7 +49,7 @@ export class FunkosService {
     try {
       const response = await axios.post(this.url, funko);
     }
-    catch(e) {
+    catch (e) {
       console.log(e);
     }
   }
@@ -60,7 +58,7 @@ export class FunkosService {
     try {
       const response = await axios.put(`${this.url}/${id}`, funko);
     }
-    catch(e) {
+    catch (e) {
       console.log(e);
     }
   }
@@ -69,49 +67,50 @@ export class FunkosService {
     try {
       const response = await axios.delete(`${this.url}/${id}`);
     }
-    catch(e) {
+    catch (e) {
       console.log(e);
     }
   }
 
-  
-  // -------------- FILTRADOS ----------------------------
-
-  async filterFunkosByName(name: string): Promise<Funko[] | undefined> {
-    try {
-      const response = await axios.get(this.url);
-      const allFunkos = response.data as Funko[];
-      // Si el nombre está vacío, devuelve todos los funkos
-      if (!name) {
-        return allFunkos;
-      }
-      // Filtra los funkos que contienen el nombre proporcionado
-      const filteredFunkos = allFunkos.filter(funko => funko.name.toLowerCase().includes(name.toLowerCase()));
-      return filteredFunkos;
-    } catch (e) {
-      console.log(e);
+  filterFunkosByName(searchQuery: string) {
+    if (searchQuery.trim() === '') {
+      this.showAllFunkos();
+    } else {
+      this.filteredFunkos = this.funkos.filter((funko) =>
+        (funko.name || '').toLowerCase().includes(searchQuery.toLowerCase())
+      );
+      this.filteredFunkosSubject.next(this.filteredFunkos);
     }
-    return undefined;
+  }
+
+  sortFunkos(orderType: string) {
+    if (orderType === 'az') {
+      this.filteredFunkos.sort((a, b) => (a.name || '').localeCompare(b.name || ''));
+    } else if (orderType === 'za') {
+      this.filteredFunkos.sort((a, b) => (b.name || '').localeCompare(a.name || ''));
+    } else if (orderType === 'asc') {
+      this.filteredFunkos.sort((a, b) => a.price - b.price);
+    } else if (orderType === 'desc') {
+      this.filteredFunkos.sort((a, b) => b.price - a.price);
+    }
+    this.filteredFunkosSubject.next(this.filteredFunkos);
+  }
+
+  filterFunkosByPrice(minPrice: number, maxPrice: number) {
+    this.filteredFunkos = this.funkos.filter(funko => {
+      const price = funko.price;
+      return price >= minPrice && price <= maxPrice;
+    });
+    this.filteredFunkosSubject.next(this.filteredFunkos);
+    console.log("SERVICE: " + this.filteredFunkos.length);
   }
   
-    // Esta función se encarga de aplicar el filtro de precio y emitir la lista filtrada
-    filterFunkosByPrice(minPrice: number, maxPrice: number) {
-      this.filteredFunkos = this.funkos.filter(funko => {
-        const price = funko.price; 
-        return price >= minPrice && price <= maxPrice;
-      });
-      // Emitimos la lista filtrada a través del observable
-      this.filteredFunkosSubject.next(this.filteredFunkos);
-    }
-  
-    // Agregamos una función para obtener el observable de la lista filtrada
-    getFilteredFunkosObservable(): Observable<Funko[]> {
-      return this.filteredFunkosSubject.asObservable();
-    }
-  
-    showAllFunkos() {
-      this.filteredFunkos = this.funkos; // Usar la lista completa de Funkos
-      this.filteredFunkosSubject.next(this.filteredFunkos);
-    }
-    
+  getFilteredFunkosObservable(): Observable<Funko[]> {
+    return this.filteredFunkosSubject.asObservable();
+  }
+
+  showAllFunkos() {
+    this.filteredFunkos = this.funkos;
+    this.filteredFunkosSubject.next(this.filteredFunkos);
+  }
 }

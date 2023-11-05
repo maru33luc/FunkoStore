@@ -9,6 +9,7 @@ import { LoginService } from 'src/app/services/login.service';
     styleUrls: ['./register-form.component.css'],
 })
 export class RegisterFormComponent {
+    private isRegisterError: boolean = false;
 
     registerForm: FormGroup = this.fb.group({
         name: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(30)]],
@@ -54,8 +55,10 @@ export class RegisterFormComponent {
                 );
                 this.loginService.logout();
                 this.router.navigateByUrl('/login/log');
+                this.isRegisterError = true;
             } catch (e) {
                 console.log(e);
+                this.isRegisterError = false;
             }
         }
     }

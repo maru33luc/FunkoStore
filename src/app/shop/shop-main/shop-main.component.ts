@@ -10,7 +10,6 @@ import { OrderFunkosService } from 'src/app/services/order-funkos.service';
   styleUrls: ['./shop-main.component.css']
 })
 export class ShopMainComponent implements OnInit {
-  
   lista: Funko[] = [];
   itemsPerPage = 9;
   currentPage = 0;
@@ -18,75 +17,41 @@ export class ShopMainComponent implements OnInit {
   searchQuery: string = '';
   showPagination = true;
   lista$: Observable<Funko[]> | undefined;
-  filteredFunkos$: Observable<Funko[]> | undefined; // Observable para Funkos filtrados por precio
+  filteredFunkos$: Observable<Funko[]> | undefined;
+  minPrice: number = 0;
+  maxPrice: number = 1000; // Valores iniciales de precio mínimo y máximo
 
-  constructor(private funkoService: FunkosService,
-    private orderService: OrderFunkosService) { }
+  constructor(private funkoService: FunkosService, private orderService: OrderFunkosService) { }
 
   ngOnInit() {
     this.lista$ = this.funkoService.getFilteredFunkosObservable();
-    this.filteredFunkos$ = this.funkoService.getFilteredFunkosObservable();
+    this.filteredFunkos$ = this.funkoService.getFilteredFunkosObservable();  
+
     window.addEventListener('resize', () => {
       this.updateItemsPerPage();
     });
 
     this.orderService.orderType$.subscribe(orderType => {
-      // Lógica de ordenamiento
-      if (orderType === 'az') {
-        this.lista.sort((a, b) => (a.name || '').localeCompare(b.name || ''));
-      } else if (orderType === 'za') {
-        this.lista.sort((a, b) => (b.name || '').localeCompare(a.name || ''));
-      }
-      else if (orderType === 'asc') {
-        this.lista.sort((a, b) => a.price - b.price);
-      } else if (orderType === 'desc') {
-        this.lista.sort((a, b) => b.price - a.price);
-      }
-      this.calculateTotalPages();
+      this.funkoService.sortFunkos(orderType);
+      this.currentPage = 0; // Reiniciar a la primera página después de cambiar el orden
+      this.calculateTotalPages(); // Recalcular el número de páginas
     });
 
     this.orderService.searchQuery$.subscribe((query) => {
       this.searchQuery = query;
-      this.filterFunkos();
+      this.funkoService.filterFunkosByName(query);
+      this.currentPage = 0; // Reiniciar a la primera página después de aplicar un filtro
+      this.calculateTotalPages(); // Recalcular el número de páginas
     });
 
-    // Se subscribe a los cambios en los Funkos filtrados por precio y actualiza la lista
-    this.filteredFunkos$.subscribe(filteredFunkos => {
+    // Suscripción a cambios en el filtro de precio
+    this.funkoService.getFilteredFunkosObservable().subscribe(filteredFunkos => {
       this.lista = filteredFunkos;
-      if (this.lista.length === 0) {
-        this.showPagination = false;
-      }
-      this.calculateTotalPages();
+      this.currentPage = 0; // Reiniciar a la primera página después de recibir nuevos resultados
+      this.calculateTotalPages(); // Recalcular el número de páginas
+      this.updatePaginationVisibility(); // Actualizar la visibilidad de la paginación
     });
   }
-
-  // -----------------FILTRADO FUNKOS ---------------------
-
-  filterFunkos() {
-    if (this.searchQuery.trim() === '') {
-      this.mostrarFunkos();
-    } else {
-      const filteredFunkos = this.lista.filter((funko) =>
-        (funko.name || '').toLowerCase().includes(this.searchQuery.toLowerCase())
-      );
-
-      if (filteredFunkos.length === 0) {
-        // No se encontraron resultados, oculta la paginación.
-        this.showPagination = false;
-        this.lista = [];
-      } else {
-        // Se encontraron resultados, muestra la paginación y actualiza la lista.
-        this.showPagination = true;
-        this.lista = filteredFunkos;
-        this.calculateTotalPages();
-      }
-    }
-  }
-
-  filterFunkosByPrice(minPrice: number, maxPrice: number) {
-    this.funkoService.filterFunkosByPrice(minPrice, maxPrice);
-  }
-
 
   // ------------PAGINACION -------------------------------
 
@@ -131,6 +96,14 @@ export class ShopMainComponent implements OnInit {
       this.itemsPerPage = 1;
     } else {
       this.itemsPerPage = 9;
+    }
+  }
+
+  updatePaginationVisibility() {
+    if (this.lista.length === 0) {
+      this.showPagination = false;
+    } else {
+      this.showPagination = true;
     }
   }
 }

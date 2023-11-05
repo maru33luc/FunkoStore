@@ -1,11 +1,6 @@
-import { Funko } from './../interfaces/Funko';
 import { Injectable } from '@angular/core';
 import { Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword, getAuth } from '@angular/fire/auth';
-import firebase from 'firebase/app';
-import { Firestore, collection } from 'firebase/firestore';
-import { FirestoreModule } from '@angular/fire/firestore';
 import { getFirestore, doc, setDoc, getDoc } from 'firebase/firestore';
-import { Route } from '@angular/router';
 import { FunkoCart } from '../interfaces/Cart';
 import { Observable } from 'rxjs';
 
@@ -166,6 +161,4 @@ export class LoginService {
       });
     });
   }
-  
-
 }

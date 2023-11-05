@@ -35,9 +35,9 @@ footer {
     }
 }
 
-@media (min-width: 992px) {
+@media (min-width: 1010px) {
     .navbar-logo {
-        margin: var(--spacing-30) var(--spacing-68);
+        margin: var(--spacing-30);
     }
 }
 

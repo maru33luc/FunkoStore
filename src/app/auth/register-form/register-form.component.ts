@@ -9,6 +9,8 @@ import { LoginService } from 'src/app/services/login.service';
     styleUrls: ['./register-form.component.css'],
 })
 export class RegisterFormComponent {
+    isUser: boolean = false;
+
     registerForm: FormGroup = this.fb.group({
         name: ['', [Validators.required, Validators.maxLength(30)]],
         lastname: ['', [Validators.required, Validators.maxLength(30)]],
@@ -52,6 +54,7 @@ export class RegisterFormComponent {
                 this.loginService.logout();
                 this.router.navigateByUrl('/login/log');
             } catch (e) {
+                this.isUser = true;
                 console.log(e);
             }
         }

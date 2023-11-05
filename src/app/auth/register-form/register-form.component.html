@@ -15,12 +15,12 @@
             <span class="form-error" *ngIf="validate('lastname', 'maxlength')">Máximo 30 caracteres</span>
         </div>
 
-
         <div class="form-box">
             <label class="form-label" for="email">Correo electrónico</label>
             <input id="email" class="form-input" type="email" formControlName="email" placeholder="Tu correo electrónico">
             <span class="form-error" *ngIf="validate('email', 'required')">Campo obligatorio</span>
             <span class="form-error" *ngIf="validate('email', 'email')">Fomato inválido</span>
+            <span class="form-error" *ngIf="isUser">Otro usuario se registró con este correo</span>
         </div>
 
         <div class="form-row">

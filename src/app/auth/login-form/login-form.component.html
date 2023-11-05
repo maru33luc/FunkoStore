@@ -6,6 +6,7 @@
             <input id="email" class="form-input" type="email" formControlName="email" autocomplete="username" placeholder="Tu correo electrónico" required>
             <span class="form-error" *ngIf="validate('email', 'required')">Campo obligatorio</span>
             <span class="form-error" *ngIf="validate('email', 'email')">Fomato inválido</span>
+            <span class="form-error" *ngIf="!isCorrect">Correo y/o contraseña incorrectos</span>
         </div>
 
         <div class="form-box">
@@ -13,6 +14,7 @@
             <input id="password" class="form-input" type="password" formControlName="password" autocomplete="current-password" placeholder="Tu contraseña" required>
             <span class="form-error" *ngIf="validate('password', 'required')">Campo obligatorio</span>
             <span class="form-error" *ngIf="validate('password', 'minlength')">Mínimo 6 caracteres</span>
+            <span class="form-error" *ngIf="!isCorrect">Correo y/o contraseña incorrectos</span>
         </div>
 
         <div class="form-box-btn">

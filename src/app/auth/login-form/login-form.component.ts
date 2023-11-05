@@ -9,6 +9,8 @@ import { LoginService } from 'src/app/services/login.service';
     styleUrls: ['./login-form.component.css'],
 })
 export class LoginFormComponent {
+    isCorrect: boolean = true;
+
     loginForm: FormGroup = this.fb.group({
         email: ['', [Validators.required, Validators.email]],
         password: ['', [Validators.required, Validators.minLength(6)]]
@@ -45,6 +47,7 @@ export class LoginFormComponent {
                     });
                 }
             } catch (e) {
+                this.isCorrect = false;
                 console.error(e);
             }
         }

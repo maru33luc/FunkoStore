@@ -8,9 +8,11 @@ import { LoginService } from 'src/app/services/login.service';
     styleUrls: ['./header.component.css']
 })
 export class HeaderComponent{
-
     isLoggedIn: boolean = false;
     username: string = '';
+
+    @ViewChild('hambIcon') hambIcon!: ElementRef;
+    @ViewChild('navBar') navBar!: ElementRef;
 
     constructor(private loginService: LoginService) {}
 
@@ -25,9 +27,6 @@ export class HeaderComponent{
         this.obtenerNombreUsuario();
     }
 
-    @ViewChild('hambIcon') hambIcon!: ElementRef;
-    @ViewChild('navBar') navBar!: ElementRef;
-
     ngAfterViewInit() {
         if (this.hambIcon) {
             this.hambIcon.nativeElement.addEventListener('click', () => {
@@ -37,15 +36,15 @@ export class HeaderComponent{
         }
     }
 
-    logout() {
-        this.loginService.logout();
-    }
-
     obtenerNombreUsuario() {
         this.loginService.getUserName().then((nombre) => {
             if (nombre) {
                 this.username = nombre.toUpperCase();
             }
         });
+    }
+
+    logout() {
+        this.loginService.logout();
     }
 }

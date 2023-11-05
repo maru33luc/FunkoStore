@@ -9,7 +9,6 @@ import { LoginService } from 'src/app/services/login.service';
     styleUrls: ['./register-form.component.css'],
 })
 export class RegisterFormComponent {
-
     registerForm: FormGroup = this.fb.group({
         name: ['', [Validators.required, Validators.maxLength(30)]],
         lastname: ['', [Validators.required, Validators.maxLength(30)]],

@@ -9,7 +9,6 @@ import { LoginService } from 'src/app/services/login.service';
     styleUrls: ['./login-form.component.css'],
 })
 export class LoginFormComponent {
-
     loginForm: FormGroup = this.fb.group({
         email: ['', [Validators.required, Validators.email]],
         password: ['', [Validators.required, Validators.minLength(6)]]

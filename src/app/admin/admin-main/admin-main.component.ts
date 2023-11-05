@@ -8,7 +8,6 @@ import { FunkosService } from 'src/app/services/funkos.service';
     styleUrls: ['./admin-main.component.css']
 })
 export class AdminMainComponent implements OnInit {
-
     funkos!: Funko[];
 
     constructor(private funkosService: FunkosService) {}

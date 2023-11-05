@@ -8,7 +8,6 @@ import { Funko } from 'src/app/interfaces/Funko';
     styleUrls: ['./admin-form.component.css'],
 })
 export class AdminFormComponent {
-
     @Input() name?: string;
     @Input() category?: string;
     @Input() serie?: string;

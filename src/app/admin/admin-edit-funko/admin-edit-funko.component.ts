@@ -9,7 +9,6 @@ import { FunkosService } from 'src/app/services/funkos.service';
     styleUrls: ['./admin-edit-funko.component.css']
 })
 export class AdminEditFunkoComponent implements OnInit {
-
     name?: string;
     category?: string;
     serie?: string;

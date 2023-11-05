@@ -9,14 +9,13 @@ import { LoginService } from 'src/app/services/login.service';
     styleUrls: ['./admin-header.component.css']
 })
 export class AdminHeaderComponent {
+    @ViewChild('hambIcon') hambIcon!: ElementRef;
+    @ViewChild('navBar') navBar!: ElementRef;
 
     constructor (
         private loginService: LoginService,
         private router: Router
     ) {}
-
-    @ViewChild('hambIcon') hambIcon!: ElementRef;
-    @ViewChild('navBar') navBar!: ElementRef;
 
     ngAfterViewInit() {
         if (this.hambIcon) {

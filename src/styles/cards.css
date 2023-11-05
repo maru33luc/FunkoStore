@@ -1,0 +1,89 @@
+.card-item {
+    min-width: 230px;
+    max-width: 240px;
+}
+
+.card-item__content {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 16px;
+    align-items: flex-start;
+}
+
+.card-item__licence {
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.card-item__name {
+    font-weight: 700;
+    font-size: 18px;
+}
+
+.card-item__price {
+    font-weight: 500;
+    font-size: 16px;
+}
+
+.card-item__promo {
+    color: #1D84B5;
+    font-size: 12px;
+}
+
+.card-item__cover {
+    display: flex;
+    position: relative;
+}
+
+.card-item__img--back {
+    display: block;
+    position: relative;
+    top: 0;
+    left: 0;
+    display: none;
+}
+
+.card-item__cover img {
+    animation: fade 1.7s ease-in-out;
+}
+
+.card-item__cover:hover .card-item__img--front {
+    display: none;
+}
+
+.card-item__cover:hover .card-item__img--back {
+    display: block;
+}
+
+@keyframes fade {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.card-item__tag {
+    font-family: Inter;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 17px;
+    letter-spacing: 0em;
+    text-align: left;
+    background-color: #FF3333;
+    color: #FFF;
+    padding: 4px 8px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    text-transform: uppercase;
+}
+
+@media screen and (max-width: 715px) {
+    .card-item {
+        margin: 0 auto;
+    }
+}

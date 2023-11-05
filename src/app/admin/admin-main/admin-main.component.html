@@ -9,7 +9,9 @@
                     <circle cx="7.5" cy="7.5" r="4.75"></circle>
                 </svg>
             </svg>
-            <input class="admin-search-bar" type="text" placeholder="Nombre, categoría o serie">
+            <input class="admin-search-bar" type="text" placeholder= "Filtrar por nombre"
+            [(ngModel)]="searchQuery"
+            (ngModelChange)="onSearchChange($event)">
         </div>
 
         <div class="admin-add">AGREGAR
@@ -37,7 +39,7 @@
         </thead>
 
         <tbody class="admin-table-body">
-            <tr class="admin-table-row" *ngFor="let funko of funkos">
+            <tr class="admin-table-row" *ngFor="let funko of lista">
                 <td class="admin-table-cell-small">{{funko.id}}</td>
                 <td class="admin-table-cell-large">{{funko.name}}</td>
                 <td class="admin-table-cell-large">{{funko.category}}</td>
@@ -64,4 +66,5 @@
             </tr>
         </tbody>
     </table>
+    <div class="admin-search-negative" *ngIf="!hasResults">NO SE ENCONTRARON PRODUCTOS</div>
 </main>

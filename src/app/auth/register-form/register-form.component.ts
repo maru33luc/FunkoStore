@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LoginService } from 'src/app/services/login.service';
@@ -8,7 +8,7 @@ import { LoginService } from 'src/app/services/login.service';
     templateUrl: './register-form.component.html',
     styleUrls: ['./register-form.component.css'],
 })
-export class RegisterFormComponent {
+export class RegisterFormComponent implements OnInit {
     isUser: boolean = false;
 
     registerForm: FormGroup = this.fb.group({
@@ -24,6 +24,12 @@ export class RegisterFormComponent {
         private fb: FormBuilder,
         private loginService: LoginService,
     ) {}
+
+    ngOnInit() {
+        this.registerForm.get('email')?.valueChanges.subscribe((valor) => {
+            this.isUser = false;
+        });
+    }
 
     validate(field: string, error: string): boolean {
         return (

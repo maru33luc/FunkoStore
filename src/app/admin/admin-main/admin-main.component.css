@@ -149,10 +149,24 @@ td:nth-child(5) {
 }
 
 .admin-edit-btn {
-    color: #1d84b5;
+    color: var(--secondary-solid);
 }
 
 .admin-delete-btn {
-    color: #f33;
+    color: var(--primary-solid);
     cursor: pointer;
+}
+
+.admin-search-negative {
+    color: var(--primary-solid);
+    font-size: var(--font-xsmall);
+    font-weight: 500;
+    text-align: center;
+    margin: var(--spacing-8);
+}
+
+@media screen and (min-width: 992px){
+    .admin-search-negative {
+        font-size: var(--font-medium);
+    }
 }

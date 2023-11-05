@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Funko } from 'src/app/interfaces/Funko';
 import { FunkosService } from 'src/app/services/funkos.service';
+import { OrderFunkosService } from 'src/app/services/order-funkos.service';
 
 @Component({
     selector: 'app-admin-main',
@@ -8,18 +9,48 @@ import { FunkosService } from 'src/app/services/funkos.service';
     styleUrls: ['./admin-main.component.css']
 })
 export class AdminMainComponent implements OnInit {
-    funkos!: Funko[];
+    lista: Funko[] = [];
+    searchQuery: string = '';
+    hasResults: boolean = true;
 
-    constructor(private funkosService: FunkosService) {}
+    constructor(
+        private funkosService: FunkosService,
+        private orderService: OrderFunkosService,
+    ) { }
 
     ngOnInit() {
-        this.mostrarFunkos();
+        this.orderService.searchQuery$.subscribe((query) => {
+            this.searchQuery = query;
+            this.filterFunkos();
+        });
+    }
+
+    onSearchChange(query: string) {
+        this.orderService.setSearchQuery(query);
+    }
+
+    filterFunkos() {
+        if (this.searchQuery.trim() === '') {
+            this.mostrarFunkos();
+            this.hasResults = true;
+        } else {
+            const filteredFunkos = this.lista.filter((funko) =>
+                (funko.name || '').toLowerCase().includes(this.searchQuery.toLowerCase())
+            );
+            if (filteredFunkos.length === 0) {
+                this.lista = [];
+                this.hasResults = false;
+            } else {
+                this.lista = filteredFunkos;
+                this.hasResults = true;
+            }
+        }
     }
 
     async mostrarFunkos() {
         const response = await this.funkosService.getFunkos();
         if (response) {
-            this.funkos = response;
+            this.lista = response;
         }
     }
 

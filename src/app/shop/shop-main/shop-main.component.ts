@@ -24,6 +24,7 @@ export class ShopMainComponent implements OnInit {
   constructor(private funkoService: FunkosService, private orderService: OrderFunkosService) { }
 
   ngOnInit() {
+    this.mostrarFunkos();
     this.lista$ = this.funkoService.getFilteredFunkosObservable();
     this.filteredFunkos$ = this.funkoService.getFilteredFunkosObservable();  
 
@@ -100,10 +101,13 @@ export class ShopMainComponent implements OnInit {
   }
 
   updatePaginationVisibility() {
-    if (this.lista.length === 0) {
+    if (this.filteredFunkos$ === undefined) {
+      this.showPagination = false;
+    } else if (this.lista.length === 0) {
       this.showPagination = false;
     } else {
       this.showPagination = true;
     }
   }
+
 }

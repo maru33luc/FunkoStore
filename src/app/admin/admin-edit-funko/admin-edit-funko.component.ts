@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Funko } from 'src/app/interfaces/Funko';
 import { FunkosService } from 'src/app/services/funkos.service';
+import Swal from 'sweetalert2';
 
 @Component({
     selector: 'app-admin-edit-funko',
@@ -45,8 +46,13 @@ export class AdminEditFunkoComponent implements OnInit {
 
     saveFunko(funko: Funko) {
         this.funkosService.putFunko(funko, this.route.snapshot.params['id']);
-        this.router.navigate(['/admin']);
-        this.scrollToTop();
+        Swal.fire({
+            title: "El producto ha sido modificado",
+            icon: "success"
+        }).then(() => {
+            this.router.navigate(['/admin']);
+            this.scrollToTop();
+        });
     }
 
     scrollToTop() {

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Funko } from 'src/app/interfaces/Funko';
 import { FunkosService } from 'src/app/services/funkos.service';
+import Swal from 'sweetalert2';
 
 @Component({
     selector: 'app-admin-new-funko',
@@ -13,12 +14,17 @@ export class AdminNewFunkoComponent {
     constructor(
         private funkosService: FunkosService,
         private router: Router
-    ) {}
+    ) { }
 
     saveFunko(funko: Funko) {
         this.funkosService.postFunko(funko);
-        this.router.navigate(['/admin']);
-        this.scrollToTop();
+        Swal.fire({
+            title: "El producto ha sido creado",
+            icon: "success"
+        }).then(() => {
+            this.router.navigate(['/admin']);
+            this.scrollToTop();
+        });
     }
 
     scrollToTop() {

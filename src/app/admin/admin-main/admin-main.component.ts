@@ -13,7 +13,7 @@ export class AdminMainComponent implements OnInit {
     searchQuery: string = '';
     hasResults: boolean = true;
 
-    constructor(private funkosService: FunkosService) {}
+    constructor(private funkosService: FunkosService) { }
 
     ngOnInit() {
         this.mostrarFunkos();
@@ -38,30 +38,27 @@ export class AdminMainComponent implements OnInit {
         }
     }
 
-    async eliminarFunko(id: number | undefined) {
-        const result = await Swal.fire({
-            title: 'Eliminar?',
-            text: 'Estás seguro de eliminar este registro.',
-            icon: 'warning',
+    eliminarFunko(id: number | undefined) {
+        Swal.fire({
+            title: "¿Está seguro que desea eliminar este producto?",
+            icon: "warning",
             showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Sí, eliminar!',
-            cancelButtonText: 'Cancelar'
-        });
-
-        if (result.isConfirmed) {
-            await this.funkosService.deleteFunko(id);
-            const result = await Swal.fire(
-                'Eliminado!',
-                'El registro ha sido eliminado.',
-                'success'
-            );
+            confirmButtonColor: "#FF3333",
+            cancelButtonColor: "#1D84B5",
+            confirmButtonText: "Eliminar",
+            cancelButtonText: "Cancelar"
+        }).then((result) => {
             if (result.isConfirmed) {
-                this.scrollToTop();
-                window.location.reload();
+                this.funkosService.deleteFunko(id);
+                Swal.fire({
+                    title: "El producto ha sido eliminado",
+                    icon: "success"
+                }).then(() => {
+                    this.scrollToTop();
+                    window.location.reload();
+                });
             }
-        }
+        });
     }
 
     scrollToTop() {

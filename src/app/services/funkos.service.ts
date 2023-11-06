@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Funko } from '../interfaces/Funko';
-import axios from 'axios';
 import { Observable, Subject } from 'rxjs';
+import axios from 'axios';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class FunkosService {
 
@@ -83,6 +83,7 @@ export class FunkosService {
     }
   }
 
+  
   sortFunkos(orderType: string) {
     if (orderType === 'az') {
       this.filteredFunkos.sort((a, b) => (a.name || '').localeCompare(b.name || ''));

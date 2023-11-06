@@ -1,0 +1,139 @@
+header,
+footer {
+    background: var(--dark-bg-solid);
+    font-family: var(--alternative-font);
+    color: var(--light-font-solid);
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.navbar {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap-reverse;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+@media (min-width: 576px) {
+    .navbar {
+        justify-content: space-between;
+    }
+}
+
+.navbar-logo {
+    width: 100%;
+    margin: var(--spacing-20);
+}
+
+@media (min-width: 576px) {
+    .navbar-logo {
+        width: auto;
+    }
+}
+
+@media (min-width: 1010px) {
+    .navbar-logo {
+        margin: var(--spacing-30);
+    }
+}
+
+.navbar-menu-toogle {
+    background-color: var(--dark-bg-solid);
+    width: 100%;
+    position: absolute;
+    top: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-20);
+    padding: var(--spacing-20);
+    z-index: 10;
+}
+
+.menu-icon {
+    display: block;
+    font-size: var(--font-xlarge);
+    margin: var(--spacing-20);
+}
+
+.menu-icon:hover {
+    color: var(--primary-solid);
+    cursor: pointer;
+}
+
+@media (min-width: 992px) {
+    .menu-icon {
+        display: none;
+    }
+}
+
+.navbar-menu {
+    display: none;
+}
+
+@media (min-width: 992px) {
+    .navbar-menu {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: var(--spacing-30);
+        margin: var(--spacing-30) var(--spacing-68);
+    }
+}
+
+.navbar-item {
+    font-size: var(--font-medium);
+    font-weight: 500;
+}
+
+.navbar-link {
+    font-weight: 500;
+    transition: color .2s ease-in-out;
+    cursor: pointer;
+}
+
+.navbar-link:hover {
+    color: var(--primary-solid);
+}
+
+.navbar-cart:hover svg path {
+    fill: var(--primary-solid);
+}
+
+footer {
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-30);
+    padding: var(--spacing-12);
+}
+
+@media screen and (min-width: 996px) {
+    footer {
+        padding: var(--spacing-30);
+    }
+}
+
+.footer-pic {
+    padding: var(--spacing-12);
+}
+
+.footer-pic img {
+    width: 100%;
+    height: 100%;
+}
+
+.footer-copy {
+    font-size: var(--font-xsmall);
+    text-align: center;
+}
+
+@media screen and (min-width: 768px) {
+    .footer-copy {
+        font-size: var(--font-medium);
+    }
+}

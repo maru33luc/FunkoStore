@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LoginService } from 'src/app/services/login.service';
@@ -8,15 +8,15 @@ import { LoginService } from 'src/app/services/login.service';
     templateUrl: './register-form.component.html',
     styleUrls: ['./register-form.component.css'],
 })
-export class RegisterFormComponent {
-    private isRegisterError: boolean = false;
+export class RegisterFormComponent implements OnInit {
+    isUser: boolean = false;
 
     registerForm: FormGroup = this.fb.group({
-        name: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(30)]],
-        lastname: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(30)]],
+        name: ['', [Validators.required, Validators.maxLength(30)]],
+        lastname: ['', [Validators.required, Validators.maxLength(30)]],
         email: ['', [Validators.required, Validators.email]],
         password: ['', [Validators.required, Validators.minLength(6)]],
-        repassword: ['', [Validators.required]],
+        repassword: ['', [Validators.required]]
     });
 
     constructor(
@@ -25,19 +25,23 @@ export class RegisterFormComponent {
         private loginService: LoginService,
     ) {}
 
-    validate(field: string, error: string) {
+    ngOnInit() {
+        this.registerForm.get('email')?.valueChanges.subscribe((valor) => {
+            this.isUser = false;
+        });
+    }
+
+    validate(field: string, error: string): boolean {
         return (
             this.registerForm.controls[field].getError(error) && 
             this.registerForm.controls[field].touched);
     }
 
-    validatePassword() {
+    validateRepassword(): boolean {
         const password = this.registerForm.controls['password'].value;
         const repassword = this.registerForm.controls['repassword'].value;
-        if (repassword.length === 0) {
-            return false;
-        }
         return (
+            repassword.length !== 0 &&
             password !== repassword &&
             this.registerForm.controls['repassword'].touched);
     }
@@ -55,12 +59,10 @@ export class RegisterFormComponent {
                 );
                 this.loginService.logout();
                 this.router.navigateByUrl('/login/log');
-                this.isRegisterError = true;
             } catch (e) {
+                this.isUser = true;
                 console.log(e);
-                this.isRegisterError = false;
             }
         }
     }
-
 }

@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 
 import { AdminHeaderComponent } from './admin-header/admin-header.component';
-import { AdminFooterComponent } from './admin-footer/admin-footer.component';
 import { AdminMainComponent } from './admin-main/admin-main.component';
 import { AdminFormComponent } from './admin-form/admin-form.component';
 import { AdminNewFunkoComponent } from './admin-new-funko/admin-new-funko.component';
@@ -12,24 +11,27 @@ import { AdminEditFunkoPageComponent } from './pages/admin-edit-funko-page/admin
 
 import { CommonModule } from '@angular/common';
 import { AdminRoutingModule } from './admin-routing.module';
+import { SharedModule } from "../shared/shared.module";
 import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [
-    AdminHeaderComponent,
-    AdminFooterComponent,
-    AdminMainComponent,
-    AdminFormComponent,
-    AdminNewFunkoComponent,
-    AdminEditFunkoComponent,
-    AdminMainPageComponent,
-    AdminNewFunkoPageComponent,
-    AdminEditFunkoPageComponent,
-  ],
-  imports: [
-    CommonModule,
-    AdminRoutingModule,
-    ReactiveFormsModule
-  ]
+    declarations: [
+        AdminHeaderComponent,
+        AdminMainComponent,
+        AdminFormComponent,
+        AdminNewFunkoComponent,
+        AdminEditFunkoComponent,
+        AdminMainPageComponent,
+        AdminNewFunkoPageComponent,
+        AdminEditFunkoPageComponent,
+    ],
+    imports: [
+        CommonModule,
+        AdminRoutingModule,
+        SharedModule,
+        ReactiveFormsModule,
+        FormsModule
+    ]
 })
-export class AdminModule { }
+export class AdminModule {}

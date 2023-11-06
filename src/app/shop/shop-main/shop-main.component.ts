@@ -5,9 +5,9 @@ import { FunkosService } from 'src/app/services/funkos.service';
 import { OrderFunkosService } from 'src/app/services/order-funkos.service';
 
 @Component({
-  selector: 'app-shop-main',
-  templateUrl: './shop-main.component.html',
-  styleUrls: ['./shop-main.component.css']
+    selector: 'app-shop-main',
+    templateUrl: './shop-main.component.html',
+    styleUrls: ['./shop-main.component.css']
 })
 export class ShopMainComponent implements OnInit {
   lista: Funko[] = [];
@@ -32,12 +32,14 @@ export class ShopMainComponent implements OnInit {
       this.updateItemsPerPage();
     });
 
+    // Suscripción a cambios en el orden
     this.orderService.orderType$.subscribe(orderType => {
       this.funkoService.sortFunkos(orderType);
       this.currentPage = 0; // Reiniciar a la primera página después de cambiar el orden
       this.calculateTotalPages(); // Recalcular el número de páginas
     });
 
+    // Suscripción a cambios en el filtro de búsqueda
     this.orderService.searchQuery$.subscribe((query) => {
       this.searchQuery = query;
       this.funkoService.filterFunkosByName(query);
@@ -54,39 +56,39 @@ export class ShopMainComponent implements OnInit {
     });
   }
 
-  // ------------PAGINACION -------------------------------
+    // ------------PAGINACION -------------------------------
 
-  async mostrarFunkos() {
-    const response = await this.funkoService.getFunkos();
-    if (response != undefined) {
-      this.lista = response as Funko[];
-      this.calculateTotalPages();
-    } else {
-      console.log('Error al mostrar los funkos');
+    async mostrarFunkos() {
+        const response = await this.funkoService.getFunkos();
+        if (response != undefined) {
+            this.lista = response as Funko[];
+            this.calculateTotalPages();
+        } else {
+            console.log('Error al mostrar los funkos');
+        }
     }
-  }
 
-  calculateTotalPages() {
-    this.pages = Array(Math.ceil(this.lista.length / this.itemsPerPage)).fill(0).map((_, i) => i);
-  }
-
-  get paginatedItems() {
-    const startIndex = this.currentPage * this.itemsPerPage;
-    const endIndex = startIndex + this.itemsPerPage;
-    return this.lista.slice(startIndex, endIndex);
-  }
-
-  changePage(newPage: number) {
-    if (newPage < 0) {
-      this.currentPage = 0;
-    } else if (newPage >= this.pages.length) {
-      this.currentPage = this.pages.length - 1;
-    } else {
-      this.currentPage = newPage;
+    calculateTotalPages() {
+        this.pages = Array(Math.ceil(this.lista.length / this.itemsPerPage)).fill(0).map((_, i) => i);
     }
-    window.scrollTo(0, 0);
-    return false;
-  }
+
+    get paginatedItems() {
+        const startIndex = this.currentPage * this.itemsPerPage;
+        const endIndex = startIndex + this.itemsPerPage;
+        return this.lista.slice(startIndex, endIndex);
+    }
+
+    changePage(newPage: number) {
+        if (newPage < 0) {
+            this.currentPage = 0;
+        } else if (newPage >= this.pages.length) {
+            this.currentPage = this.pages.length - 1;
+        } else {
+            this.currentPage = newPage;
+        }
+        window.scrollTo(0, 0);
+        return false;
+    }
 
   updateItemsPerPage() {
     if (window.innerWidth <= 1380 && window.innerWidth > 1045) {

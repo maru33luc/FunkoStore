@@ -1,15 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LoginService } from 'src/app/services/login.service';
-import { CartService } from 'src/app/services/cart.service';
 
 @Component({
     selector: 'app-login-form',
     templateUrl: './login-form.component.html',
     styleUrls: ['./login-form.component.css'],
 })
-export class LoginFormComponent {
+export class LoginFormComponent implements OnInit {
+    isCorrect: boolean = true;
 
     loginForm: FormGroup = this.fb.group({
         email: ['', [Validators.required, Validators.email]],
@@ -19,13 +19,21 @@ export class LoginFormComponent {
     constructor(
         private router: Router,
         private fb: FormBuilder,
-        private loginService: LoginService,
-        private cartService: CartService
-    ) {}
+        private loginService: LoginService
+    ) { }
 
-    validate(field: string, error: string) {
+    ngOnInit() {
+        this.loginForm.get('email')?.valueChanges.subscribe((valor) => {
+            this.isCorrect = true;
+        });
+        this.loginForm.get('password')?.valueChanges.subscribe((valor) => {
+            this.isCorrect = true;
+        });
+    }
+
+    validate(field: string, error: string): boolean {
         return (
-            this.loginForm.controls[field].getError(error) && 
+            this.loginForm.controls[field].getError(error) &&
             this.loginForm.controls[field].touched);
     }
 
@@ -47,11 +55,10 @@ export class LoginFormComponent {
                         }
                     });
                 }
-                const carritoActual = await this.cartService.obtenerCarritoDeCompras();
             } catch (e) {
+                this.isCorrect = false;
                 console.error(e);
             }
         }
     }
-
 }

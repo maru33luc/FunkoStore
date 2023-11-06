@@ -1,0 +1,48 @@
+.btn {
+    border: none;
+    cursor: pointer;
+}
+
+.btn--primary {
+    background-color: var(--primary-solid);
+    color: var(--light-font-solid);
+    transition: background 0.2s ease-in-out;
+}
+
+.btn--primary:hover {
+    background-color: var(--secondary-solid);
+}
+
+.btn--medium {
+    padding: var(--spacing-8) var(--spacing-16);
+}
+
+.btn--large {
+    padding: var(--spacing-12) var(--spacing-28);
+}
+
+
+
+/*-------------------------ADMIN------------------------*/
+
+.admin-main {
+    margin: var(--spacing-20);
+}
+
+@media screen and (min-width: 768px) {
+    .admin-main {
+        margin: var(--spacing-68);
+    }
+}
+
+.admin-h1 {
+    font-size: var(--font-large);
+    text-align: center;
+    margin-bottom: var(--spacing-28);
+}
+
+@media screen and (min-width: 768px) {
+    .admin-h1 {
+        font-size: var(--font-jumbo);
+    }
+}

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Funko } from 'src/app/interfaces/Funko';
 import { FunkosService } from 'src/app/services/funkos.service';
 import { OrderFunkosService } from 'src/app/services/order-funkos.service';
+import Swal from 'sweetalert2';
 
 @Component({
     selector: 'app-admin-main',
@@ -55,11 +56,28 @@ export class AdminMainComponent implements OnInit {
     }
 
     async eliminarFunko(id: number | undefined) {
-        const ok = confirm('¿Está seguro que desea eliminar este Funko?');
-        if (ok) {
+        const result = await Swal.fire({
+            title: 'Eliminar?',
+            text: 'Estás seguro de eliminar este registro.',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Sí, eliminar!',
+            cancelButtonText: 'Cancelar'
+        });
+
+        if (result.isConfirmed) {
             await this.funkosService.deleteFunko(id);
-            this.scrollToTop();
-            window.location.reload();
+            const result = await Swal.fire(
+                'Eliminado!',
+                'El registro ha sido eliminado.',
+                'success'
+            );
+            if (result.isConfirmed) {
+                this.scrollToTop();
+                window.location.reload();
+            }
         }
     }
 

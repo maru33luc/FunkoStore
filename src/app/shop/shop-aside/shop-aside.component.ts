@@ -14,23 +14,18 @@ export class ShopAsideComponent {
   minPrice: number = 0;
   maxPrice: number = 0;
 
-
   constructor(private orderService: OrderFunkosService,
     private funkoService: FunkosService) { }
 
   onOrderChange() {
     this.orderService.setOrderType(this.orderType);
-    console.log(this.orderType);
-  }
-
-  onSearch() {
-    this.funkoService.filterFunkosByName(this.searchQuery);
   }
 
   onSearchChange(query: string) {
     this.orderService.setSearchQuery(query);
   }
 
+  // Funciones para el manejo de los placeholders de los inputs de precio  
   onPriceFilterChange() {
     if(this.maxPrice > 0  && this.maxPrice > this.minPrice)
       this.funkoService.filterFunkosByPrice(this.minPrice, this.maxPrice);
@@ -61,10 +56,4 @@ export class ShopAsideComponent {
       this.maxPrice = 0;
     }
   }
-  
-  
-  
-  
-  
-
 }

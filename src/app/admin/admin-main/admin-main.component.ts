@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Funko } from 'src/app/interfaces/Funko';
 import { FunkosService } from 'src/app/services/funkos.service';
 import { OrderFunkosService } from 'src/app/services/order-funkos.service';
@@ -13,6 +14,7 @@ export class AdminMainComponent implements OnInit {
     lista: Funko[] = [];
     searchQuery: string = '';
     hasResults: boolean = true;
+    listaFiltrada : Observable  <Funko[]> | undefined;
 
     constructor(
         private funkosService: FunkosService,
@@ -20,32 +22,15 @@ export class AdminMainComponent implements OnInit {
     ) { }
 
     ngOnInit() {
-        this.orderService.searchQuery$.subscribe((query) => {
-            this.searchQuery = query;
-            this.filterFunkos();
+        this.mostrarFunkos();
+        this.funkosService.getFilteredFunkosObservable().subscribe(filteredFunkos => {
+            this.lista = filteredFunkos;
         });
+
     }
 
-    onSearchChange(query: string) {
-        this.orderService.setSearchQuery(query);
-    }
-
-    filterFunkos() {
-        if (this.searchQuery.trim() === '') {
-            this.mostrarFunkos();
-            this.hasResults = true;
-        } else {
-            const filteredFunkos = this.lista.filter((funko) =>
-                (funko.name || '').toLowerCase().includes(this.searchQuery.toLowerCase())
-            );
-            if (filteredFunkos.length === 0) {
-                this.lista = [];
-                this.hasResults = false;
-            } else {
-                this.lista = filteredFunkos;
-                this.hasResults = true;
-            }
-        }
+    filterFunkos(query: string) {
+        this.funkosService.filterFunkosByName(query);
     }
 
     async mostrarFunkos() {

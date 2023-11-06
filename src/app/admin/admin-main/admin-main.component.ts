@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
 import { Funko } from 'src/app/interfaces/Funko';
 import { FunkosService } from 'src/app/services/funkos.service';
-import { OrderFunkosService } from 'src/app/services/order-funkos.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -14,19 +12,19 @@ export class AdminMainComponent implements OnInit {
     lista: Funko[] = [];
     searchQuery: string = '';
     hasResults: boolean = true;
-    listaFiltrada : Observable  <Funko[]> | undefined;
 
-    constructor(
-        private funkosService: FunkosService,
-        private orderService: OrderFunkosService,
-    ) { }
+    constructor(private funkosService: FunkosService) {}
 
     ngOnInit() {
         this.mostrarFunkos();
         this.funkosService.getFilteredFunkosObservable().subscribe(filteredFunkos => {
             this.lista = filteredFunkos;
+            if (this.lista.length == 0) {
+                this.hasResults = false;
+            } else {
+                this.hasResults = true;
+            }
         });
-
     }
 
     filterFunkos(query: string) {

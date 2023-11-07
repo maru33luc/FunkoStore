@@ -48,7 +48,7 @@ main {
 }
 
 .cart__items-header ul li:nth-of-type(3) {
-    padding-right: 150px;
+    padding-right: 170px;
 }
 
 .cart__items {
@@ -180,6 +180,14 @@ main {
 }
 
 .cart__item-delete {
+    width: 30px;
+    height: 30px;
+    margin-left: 10px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.cart__item-confirm{
     width: 30px;
     height: 30px;
     margin-left: 10px;

@@ -33,13 +33,15 @@
                         </div>
                     </div>
                     <div class="cart__total-price">
-                        <p>Total: $ {{ calculateTotalPrice(item) }}</p>
+                        <p>{{ calculateTotalPrice(item) }}</p>
                     </div>
-                   
+                   <div>
                     <img src="../../../../assets/img/icons/check-circle-svgrepo-com.svg"
-                    alt="" class="cart__item-delete" (click)="saveChangesToDatabase()">
+                    alt="" class="cart__item-confirm" (click)="saveChangesToDatabase()">
                     <img src="../..//../../assets/img/icons/gg-close-o.svg"
                     alt="" class="cart__item-delete" (click)="removeItem(item)">
+                   </div>
+                    
                 </li>
             </ul>
 

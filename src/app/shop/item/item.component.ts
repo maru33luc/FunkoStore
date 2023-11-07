@@ -85,7 +85,8 @@ export class ItemComponent implements AfterViewInit {
     }
   }
   async addToCart() {
-    let carrito = await this.cartService.obtenerCarritoDeCompras();
+    // let carrito = await this.cartService.obtenerCarritoDeCompras();
+    // console.log(carrito);
     if (this.selectedItem && this.quantityButton) {
       const quantity = parseInt(this.quantityButton.nativeElement.value);
       if (quantity > 0) {
@@ -95,7 +96,7 @@ export class ItemComponent implements AfterViewInit {
         this.quantityButton.nativeElement.value = "0";
       }
     }
-    carrito = await this.cartService.obtenerCarritoDeCompras();
-    console.log(carrito);
+    // carrito = await this.cartService.obtenerCarritoDeCompras();
+    // console.log(carrito);
   }
 }

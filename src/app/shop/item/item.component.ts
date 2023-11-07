@@ -1,3 +1,4 @@
+import { CartLocalService } from './../../services/cart-local.service';
 import { ApiTolkienService } from './../../services/api-tolkien.service';
 import { Component, AfterViewInit, ElementRef, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
@@ -5,6 +6,7 @@ import { CharacterApi } from 'src/app/interfaces/CharacterApi';
 import { Funko } from 'src/app/interfaces/Funko';
 import { CartService } from 'src/app/services/cart.service';
 import { FunkosService } from 'src/app/services/funkos.service';
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-item',
@@ -14,6 +16,8 @@ import { FunkosService } from 'src/app/services/funkos.service';
 export class ItemComponent implements AfterViewInit {
   selectedItem: Funko | undefined;
   characterInfo: CharacterApi | undefined;
+  isAuthenticated: boolean = false; // Variable para rastrear el estado de autenticación
+
 
   @ViewChild('addButton') addButton: ElementRef | undefined;
   @ViewChild('subtractButton') subtractButton: ElementRef | undefined;
@@ -23,8 +27,14 @@ export class ItemComponent implements AfterViewInit {
     private route: ActivatedRoute,
     private funkosService: FunkosService,
     private cartService: CartService,
-    private apiTolkienService: ApiTolkienService
-  ) {}
+    private apiTolkienService: ApiTolkienService,
+    private loginService: LoginService,
+    private cartLocalService: CartLocalService
+  ) {
+    this.loginService.authStateObservable()?.subscribe((user) => {
+      this.isAuthenticated = !!user; // Asigna verdadero si el usuario está logueado
+    });
+  }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -81,15 +91,20 @@ export class ItemComponent implements AfterViewInit {
       return undefined;
     }
   }
+
   async addToCart() {
     if (this.selectedItem && this.quantityButton) {
       const quantity = parseInt(this.quantityButton.nativeElement.value);
       if (quantity > 0) {
         if (this.selectedItem.id) {
+          if(this.isAuthenticated){
           this.cartService.agregarAlCarrito(this.selectedItem.id, quantity);
+        }else{
+          await this.cartLocalService.addToCart({funkoId: this.selectedItem.id, quantity: quantity});
+          console.log('Agregado al carrito local');
         }
         this.quantityButton.nativeElement.value = "0";
       }
     }
   }
-}
+}}

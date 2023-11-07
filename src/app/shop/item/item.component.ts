@@ -67,7 +67,6 @@ export class ItemComponent implements AfterViewInit {
   async getItemById(itemId: number): Promise<Funko | undefined> {
     try {
       this.selectedItem = await this.funkosService.getFunko(itemId);
-
       // Una vez que tengas el Funko, obtén la información del personaje de Tolkien
       if (this.selectedItem && this.selectedItem.name) {
         const response = await this.apiTolkienService.getCharacterInfo(this.selectedItem.name);
@@ -77,7 +76,6 @@ export class ItemComponent implements AfterViewInit {
         console.log(this.characterInfo);
         
       }
-
       return this.selectedItem;
     } catch (error) {
       console.log(error);
@@ -85,8 +83,6 @@ export class ItemComponent implements AfterViewInit {
     }
   }
   async addToCart() {
-    // let carrito = await this.cartService.obtenerCarritoDeCompras();
-    // console.log(carrito);
     if (this.selectedItem && this.quantityButton) {
       const quantity = parseInt(this.quantityButton.nativeElement.value);
       if (quantity > 0) {
@@ -96,7 +92,5 @@ export class ItemComponent implements AfterViewInit {
         this.quantityButton.nativeElement.value = "0";
       }
     }
-    // carrito = await this.cartService.obtenerCarritoDeCompras();
-    // console.log(carrito);
   }
 }

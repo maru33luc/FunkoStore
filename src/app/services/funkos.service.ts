@@ -113,4 +113,14 @@ export class FunkosService {
         this.filteredFunkos = this.funkos;
         this.filteredFunkosSubject.next(this.filteredFunkos);
     }
+
+    obtenerPrecioFunko (id: number): number | undefined {
+        const funko = this.funkos.find(funko => funko.id === id);
+        return funko?.price;
+    }
+
+    calcularPrecioTotal (funkoId: number, cantidad: number): number | undefined {
+        const precioFunko = this.obtenerPrecioFunko(funkoId);
+        return precioFunko ? precioFunko * cantidad : undefined;
+    }
 }

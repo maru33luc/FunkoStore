@@ -84,11 +84,13 @@ main {
 
 .cart__item-picture {
     width: 200px;
+    height: 120px;
 }
 
 .cart__item-picture img {
     width: 100%;
-    object-fit: cover;
+    /* height: 80%; */
+    object-fit: contain;
 }
 
 .cart__item .item__container .item__info {

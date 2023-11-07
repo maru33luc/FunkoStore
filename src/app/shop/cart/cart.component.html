@@ -3,40 +3,45 @@
         <h2 class="title">CARRITO DE COMPRAS</h2>
         <article class="cart__items-header">
             <ul>
-                <li>DETALLE DEL PRODUCTO
+                <li>DETALLE DEL PRODUCTO</li>
                 <li>CANTIDAD</li>
                 <li>TOTAL</li>
             </ul>
         </article>
         <article class="cart__article">
+            <!-- Parte de tu HTML donde deseas mostrar los elementos del carrito -->
             <ul class="cart__items">
-                <li class="cart__item">
+                <li class="cart__item" *ngFor="let item of cartItemsCopy">
+                    <!-- Aquí muestras los detalles de cada elemento del carrito, como imagen, nombre, precio, cantidad, total, etc. -->
                     <div class="item__container">
                         <picture class="cart__item-picture">
-                            <img src="../../../../assets/img/star-wars/baby-yoda-1.webp" alt="">
+                            <img [src]="item.imageSrc" alt="{{ item.name }}">
                         </picture>
                         <article class="item__info">
-                            <h3 class="card-item__name">BABY YODA BLUEBALL</h3>
-                            <p class="card-item__licence">STAR WARS</p>
-                            <p class="card-item__price">precio: $ 1799,99</p>
+                            <h3 class="card-item__name">{{ item.name }}</h3>
+                            <p class="card-item__licence">{{ item.licence }}</p>
+                            <p class="card-item__price">Precio: $ {{ item.price }}</p>
                         </article>
                     </div>
                     <div class="item__cart">
-
-                        <input class="item__input" type="text" #quantityButton name="quantity" id="quantity" placeholder="0"
-                            disabled>
+                        <input class="item__input" type="text" [value]="item.quantity" id="quantity" 
+                        placeholder="0" disabled>
+                        <!-- Agrega botones o lógica para aumentar y disminuir la cantidad -->
                         <div class="cart__quantity-buttons">
-                            <button id="substract" class="item__quantity " #subtractButton type="button">-</button>
-                            <button id="add" class="item__quantity" #addButton type="button">+</button>
+                            <button (click)="increaseQuantity(item)" id="substract" class="item__quantity">+</button>
+                            <button (click)="decreaseQuantity(item)"id="add" class="item__quantity">-</button>
                         </div>
                     </div>
                     <div class="cart__total-price">
-                        <p>$ 1799,99</p>
+                        <p>Total: $ {{ calculateTotalPrice(item) }}</p>
                     </div>
-                    <img src="../..//../../assets/img/icons/gg-close-o.svg" alt="" class="cart__item-delete">
-
+                    <!-- Agrega un botón o lógica para eliminar el artículo del carrito -->
+                    <!-- <button (click)="removeItem(item)">Eliminar</button> -->
+                    <img src="../..//../../assets/img/icons/gg-close-o.svg"
+                    alt="" class="cart__item-delete" (click)="removeItem(item)">
                 </li>
             </ul>
+
         </article>
     </section>
 
@@ -45,19 +50,19 @@
         <article class="resumen__cart-container">
             <div class="resumen__cart-line">
                 <p>CANTIDAD DE ELEMENTOS</p>
-                <p>3</p>
+                <p>{{ getTotalQuantity() }}</p>
             </div>
             <div class="resumen__cart-line">
                 <p>SUBTOTAL</p>
-                <p>$1799.99</p>
+                <p>$ {{ getSubtotal() | number: '1.2-2' }}</p>
             </div>
             <div class="resumen__cart-line">
-                <p>ENVIO</p>
+                <p>ENVÍO</p>
                 <p>$0</p>
             </div>
             <div class="resumen__cart-line">
                 <p>TOTAL</p>
-                <p>$1799.99</p>
+                <p>$ {{ getTotalPrice() | number: '1.2-2' }}</p>
             </div>
         </article>
         <a href="./checkout.html" class="cart__btn-pay">IR A PAGAR</a>

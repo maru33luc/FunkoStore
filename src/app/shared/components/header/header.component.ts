@@ -1,4 +1,5 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
+import { Observable } from 'rxjs';
 import { LoginService } from 'src/app/services/login.service';
 
 @Component({
@@ -10,6 +11,7 @@ import { LoginService } from 'src/app/services/login.service';
 export class HeaderComponent{
     isLoggedIn: boolean = false;
     username: string = '';
+    user$ : Observable<any> | undefined;
 
     @ViewChild('hambIcon') hambIcon!: ElementRef;
     @ViewChild('navBar') navBar!: ElementRef;
@@ -24,7 +26,17 @@ export class HeaderComponent{
                 this.isLoggedIn = false;
             }
         });
-        this.obtenerNombreUsuario();
+        // this.obtenerNombreUsuario();
+
+        this.loginService.authStateObservable()?.subscribe((user) => {
+            if (user) {
+                this.loginService.getUserName().then((nombre) => {
+                    if (nombre) {
+                        this.username = nombre.toUpperCase();
+                    }
+                });
+            }
+        });
     }
 
     ngAfterViewInit() {
@@ -36,13 +48,13 @@ export class HeaderComponent{
         }
     }
 
-    obtenerNombreUsuario() {
-        this.loginService.getUserName().then((nombre) => {
-            if (nombre) {
-                this.username = nombre.toUpperCase();
-            }
-        });
-    }
+    // obtenerNombreUsuario() {
+    //     this.loginService.getUserName().then((nombre) => {
+    //         if (nombre) {
+    //             this.username = nombre.toUpperCase();
+    //         }
+    //     });
+    // }
 
     logout() {
         this.loginService.logout();

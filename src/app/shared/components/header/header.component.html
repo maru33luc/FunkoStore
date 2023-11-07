@@ -15,7 +15,7 @@
 
             <ng-container *appIfAuthenticated>
                 <li class="navbar-item">
-                    <ng-container *ngIf="username">HOLA {{username}}!</ng-container>
+                    <ng-container *ngIf="username">HOLA {{username}}</ng-container>
                 </li>
                 <li class="navbar-item">
                     <a class="navbar-link" (click)="logout()">CERRAR SESIÓN</a>

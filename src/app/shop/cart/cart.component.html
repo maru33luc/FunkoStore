@@ -35,8 +35,9 @@
                     <div class="cart__total-price">
                         <p>Total: $ {{ calculateTotalPrice(item) }}</p>
                     </div>
-                    <!-- Agrega un botón o lógica para eliminar el artículo del carrito -->
-                    <!-- <button (click)="removeItem(item)">Eliminar</button> -->
+                   
+                    <img src="../../../../assets/img/icons/check-circle-svgrepo-com.svg"
+                    alt="" class="cart__item-delete" (click)="saveChangesToDatabase()">
                     <img src="../..//../../assets/img/icons/gg-close-o.svg"
                     alt="" class="cart__item-delete" (click)="removeItem(item)">
                 </li>

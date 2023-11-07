@@ -1,4 +1,4 @@
-import { user } from '@angular/fire/auth';
+import { Auth, user } from '@angular/fire/auth';
 import { Injectable } from '@angular/core';
 import { getFirestore, doc, getDoc, setDoc, collection, updateDoc } from 'firebase/firestore';
 import { getAuth } from 'firebase/auth';
@@ -13,7 +13,8 @@ export class CartService {
     cart: FunkoCart[] = [];
     private cartSubject: BehaviorSubject<FunkoCart[]> = new BehaviorSubject(this.cart);
 
-    constructor(private loginService: LoginService) {
+    constructor(private loginService: LoginService,
+        private auth: Auth) {
         this.loginService.authStateObservable()?.subscribe((user) => {
             if (user) {
                 this.obtenerCarritoDeCompras(user.uid);
@@ -94,4 +95,36 @@ export class CartService {
             } return undefined
         });
     }
+
+
+    async actualizarCantidades(cambiosDeCantidad: { funkoId: number; quantity: number }[]) {
+        const user = this.auth.currentUser;
+      
+        if (user) {
+          try {
+            const db = getFirestore();
+            const docRef = doc(db, 'users', user.uid);
+      
+            // Actualiza la copia local del carrito
+            for (const cambio of cambiosDeCantidad) {
+              const cartItem = this.cart.find((item) => item.funkoId === cambio.funkoId);
+      
+              if (cartItem) {
+                cartItem.quantity = cambio.quantity;
+              }
+            }
+      
+            // Actualiza la base de datos con la copia local actualizada
+            await updateDoc(docRef, {
+              carrito: this.cart
+            });
+      
+            // Notifica a los suscriptores sobre los cambios en el carrito
+            this.cartSubject.next(this.cart);
+          } catch (error) {
+            console.error(error);
+          }
+        }
+      }
+      
 }

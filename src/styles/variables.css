@@ -50,18 +50,3 @@
     --spacing-12: 1.2rem;
     --spacing-8: 0.8rem;
 }
-
-p {
-    font-size: var(--font-medium);
-}
-
-.container {
-    max-width: 120rem;
-    margin: 0 auto;
-}
-
-.with-icon {
-    display: flex;
-    align-items: center;
-    gap: .8rem;
-}

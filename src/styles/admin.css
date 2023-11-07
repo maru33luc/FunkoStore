@@ -1,0 +1,21 @@
+.admin-main {
+    margin: var(--spacing-20);
+}
+
+@media screen and (min-width: 768px) {
+    .admin-main {
+        margin: var(--spacing-68);
+    }
+}
+
+.admin-h1 {
+    font-size: var(--font-large);
+    text-align: center;
+    margin-bottom: var(--spacing-28);
+}
+
+@media screen and (min-width: 768px) {
+    .admin-h1 {
+        font-size: var(--font-jumbo);
+    }
+}

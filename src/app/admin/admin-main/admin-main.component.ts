@@ -52,7 +52,8 @@ export class AdminMainComponent implements OnInit {
                 this.funkosService.deleteFunko(id);
                 Swal.fire({
                     title: "El producto ha sido eliminado",
-                    icon: "success"
+                    icon: "success",
+                    confirmButtonColor: "#1D84B5"
                 }).then(() => {
                     this.scrollToTop();
                     window.location.reload();

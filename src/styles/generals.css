@@ -52,3 +52,8 @@ input::placeholder {
     align-items: center;
     gap: .8rem;
 }
+
+.swal2-popup {
+    font-family: var(--base-font);
+    font-size: var(--font-xsmall);
+}

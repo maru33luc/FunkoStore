@@ -20,7 +20,8 @@ export class AdminNewFunkoComponent {
         this.funkosService.postFunko(funko);
         Swal.fire({
             title: "El producto ha sido creado",
-            icon: "success"
+            icon: "success",
+            confirmButtonColor: "#1D84B5"
         }).then(() => {
             this.router.navigate(['/admin']);
             this.scrollToTop();

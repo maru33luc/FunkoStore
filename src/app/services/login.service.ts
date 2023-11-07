@@ -43,7 +43,6 @@ export class LoginService {
             }
             const docSnap = await setDoc(docRef, payload);
             return response;
-
         } catch (e) {
             console.log(e);
             throw e;
@@ -55,7 +54,6 @@ export class LoginService {
             const user = await signInWithEmailAndPassword(this.auth, email, password);
             console.log("login exitoso");
             this.getDataActualUser();
-
         } catch (e) {
             console.log(e);
             throw e;

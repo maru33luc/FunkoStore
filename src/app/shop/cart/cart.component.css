@@ -6,7 +6,7 @@
     letter-spacing: 0em;
     text-align: left;
     border-bottom: 4px solid #FF3333;
-    margin-top: 100px;
+    margin-top: 30px;
     width: -moz-fit-content;
     width: fit-content;
     display: inline-flex;
@@ -22,7 +22,6 @@ main {
 
 .cart__items-header {
     margin-top: 30px;
-    /* margin-left: 4em; */
     max-width: 1300px;
 }
 
@@ -55,7 +54,6 @@ main {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    /* margin-left: 4em; */
     max-width: 1300px;
 }
 
@@ -79,7 +77,6 @@ main {
     padding-top: 5px;
     align-items: center;
     background: #FAFAFF;
-
 }
 
 .cart__item-picture {
@@ -89,7 +86,6 @@ main {
 
 .cart__item-picture img {
     width: 100%;
-    /* height: 80%; */
     object-fit: contain;
 }
 
@@ -110,9 +106,9 @@ main {
     font-weight: 500;
     line-height: 17px;
     letter-spacing: 0em;
-    text-align: left;
     margin-top: 5px;
     margin-bottom: 10px;
+    text-wrap: balance;
 }
 
 .item__container .item__info .card-item__name {
@@ -199,7 +195,6 @@ main {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    /* margin-left: 25.7em; */
     max-width: 500px;
     margin-left: 60vw;
 }
@@ -224,7 +219,6 @@ main {
 }
 
 .resumen__cart .title {
-    align-self: flex-end;
     font-family: Raleway;
     font-size: 46px;
     font-weight: 700;
@@ -340,7 +334,6 @@ main {
 
 @media screen and (max-width: 1000px) {
     .cart__item .item__container {
-        /* width: 260px; */
         width: 30%;
         flex-direction: column;
         align-items: flex-start;
@@ -379,7 +372,7 @@ main {
     }
 
     .cart__items-header ul li:nth-of-type(3) {
-        padding: 0;
+        padding-right: 50px;
     }
 }
 
@@ -389,11 +382,28 @@ main {
         margin-left: 0;
     }
 
+    .cart__item .item__cart #quantity{
+        width: 40px;
+        font-size: 16px;
+        padding: 0;
+        height: 40px;
+    }
+
+    .cart__items-header{
+        display: none;
+    }
+
+    .cart__items .cart__article{
+        position: relative;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
     .cart__items {
         display: flex;
         flex-direction: column;
-        align-items: flex-end;
-        width: 450px;
+        width: 100%;
         position: relative;
     }
 
@@ -404,9 +414,9 @@ main {
     }
 
     .cart__items .title {
-        margin: 0 0px;
+        margin-left: 20px;
+        margin-top: 0;
         font-size: 3em;
-        margin-right: 3.5em;
     }
 
     .cart__items-header ul {
@@ -433,25 +443,34 @@ main {
         margin-top: 39px;
     }
 
-    .cart__article {
-        position: absolute;
-        top: 88px;
-        right: 520px;
-        width: 100px;
-    }
-
     .cart__items .cart__item {
         display: flex;
         flex-direction: column;
         height: auto;
-        align-items: baseline;
         margin-top: 0;
-        width: 220px;
+        width: 70%;
+        padding-bottom: 20px;
+        margin-left: 20px;
     }
 
-    .item__container {
-        height: auto;
+    .cart__items .cart__item:first-of-type {
+       margin-top: 20px;
     }
+
+    .cart__item .item__container {
+        height: auto;
+        width: 100%;
+        flex-direction: column;
+        align-items: center;  
+    }
+
+    .cart__item .item__container .item__info {
+        width: 100%;
+        margin: 0;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }   
 
     .cart__item .item__cart {
         margin-top: 20px;
@@ -462,9 +481,8 @@ main {
     .cart__total-price {
         margin-top: 20px;
         display: flex;
-        justify-content: flex-end;
-        align-items: start;
-        align-self: flex-start;
+        align-items: center;
+        align-self: center;
         margin-left: 15px;
     }
 
@@ -476,21 +494,19 @@ main {
         cursor: pointer;
         margin-top: 20px;
     }
-    .card-item__name, .card-item__licence, .card-item__price{
+    .card-item__name, .card-item__price{
         margin-left: 25px;
     }
 
     .resumen__cart{
-        margin-left: 0;
+        margin-left: 20px;
         width: 250px;
     }
     .resumen__cart .title{
-        margin-left: 0;
         margin-right: 0;
         margin-top: 40px;
         margin-bottom: 0;
         font-size: 3em;
-        align-self: flex-start;
     }
     .resumen__cart-container .resumen__cart-line p{
         font-size: 1.5em;

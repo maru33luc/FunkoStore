@@ -13,9 +13,7 @@ export class CartComponent {
   quantityChanges: { funkoId: number; quantity: number }[] = [];
 
   constructor(private cartService: CartService,
-    private funkoService: FunkosService) {
-      
-    }
+    private funkoService: FunkosService) {}
 
     ngOnInit() {
       this.cartService.obtenerCarrito().subscribe(async (items) => {
@@ -70,16 +68,17 @@ export class CartComponent {
   }
 
   removeItem(item: any) {
-    this.cartService.agregarAlCarrito(item.funkoId, -item.quantity);
+    this.cartService.eliminarDelCarrito(item.funkoId);
     this.cartItems = this.cartItems.filter((cartItem) => cartItem !== item);
   }
-
+  
   getTotalQuantity(): number {
     return this.cartItems.reduce((total, item) => total + item.quantity, 0);
   }
 
   getSubtotal(): number {
-    return this.cartItems.reduce((subtotal, item) => subtotal + item.price * item.quantity, 0);
+    console.log(this.cartItemsCopy);
+    return this.cartItemsCopy.reduce((subtotal, item) => subtotal + item.price * item.quantity, 0);
   }
 
   getTotalPrice(): number {

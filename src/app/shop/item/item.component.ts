@@ -67,7 +67,6 @@ export class ItemComponent implements AfterViewInit {
   async getItemById(itemId: number): Promise<Funko | undefined> {
     try {
       this.selectedItem = await this.funkosService.getFunko(itemId);
-      // Una vez que tengas el Funko, obtén la información del personaje de Tolkien
       if (this.selectedItem && this.selectedItem.name) {
         const response = await this.apiTolkienService.getCharacterInfo(this.selectedItem.name);
         if (response && response.docs && response.docs.length > 0) {

@@ -13,10 +13,15 @@ export class LoginService {
     private authState$: Observable<any> | undefined;
 
     constructor(private auth: Auth) {
+        this.initialize();
         // Crea un observable personalizado para el estado de autenticación
         this.authState$ = new Observable((observer) => {
             this.auth.onAuthStateChanged(observer);
         });
+    }
+
+    private initialize(): void {
+        window.addEventListener('unload', this.onUnload.bind(this));
     }
 
     // Define un método para obtener el observable del estado de autenticación
@@ -38,7 +43,6 @@ export class LoginService {
             }
             const docSnap = await setDoc(docRef, payload);
             return response;
-
         } catch (e) {
             console.log(e);
             throw e;
@@ -50,7 +54,6 @@ export class LoginService {
             const user = await signInWithEmailAndPassword(this.auth, email, password);
             console.log("login exitoso");
             this.getDataActualUser();
-
         } catch (e) {
             console.log(e);
             throw e;
@@ -81,6 +84,10 @@ export class LoginService {
                 return error;
             }
         } return null;
+    }
+
+    private onUnload(): void {
+        this.logout();
     }
 
     async getUserName() {
@@ -137,29 +144,29 @@ export class LoginService {
         });
     }
 
-  isAdmin(): Observable<boolean> {
-    return new Observable((observer) => {
-      this.authStateObservable()?.subscribe((user) => {
-        if (user) {
-          const db = getFirestore();
-          const docRef = doc(db, 'users', user.uid);
-          getDoc(docRef)
-            .then((docSnap) => {
-              if (docSnap.data()?.['isAdmin']) {
-                observer.next(true);
-              } else {
-                observer.next(false);
-              }
-              observer.complete(); 
-            })
-            .catch((error) => {
-              observer.error(error); 
+    isAdmin(): Observable<boolean> {
+        return new Observable((observer) => {
+            this.authStateObservable()?.subscribe((user) => {
+                if (user) {
+                    const db = getFirestore();
+                    const docRef = doc(db, 'users', user.uid);
+                    getDoc(docRef)
+                        .then((docSnap) => {
+                            if (docSnap.data()?.['isAdmin']) {
+                                observer.next(true);
+                            } else {
+                                observer.next(false);
+                            }
+                            observer.complete();
+                        })
+                        .catch((error) => {
+                            observer.error(error);
+                        });
+                } else {
+                    observer.next(false);
+                    observer.complete();
+                }
             });
-        } else {
-          observer.next(false);
-          observer.complete(); 
-        }
-      });
-    });
-  }
+        });
+    }
 }

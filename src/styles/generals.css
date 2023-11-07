@@ -32,8 +32,28 @@ img {
     height: 100%;
 }
 
+p {
+    font-size: var(--font-medium);
+}
+
 input::placeholder {
     color: var(--dark-300);
     font-family: var(--base-font);
     font-weight: 500;
+}
+
+.container {
+    max-width: 120rem;
+    margin: 0 auto;
+}
+
+.with-icon {
+    display: flex;
+    align-items: center;
+    gap: .8rem;
+}
+
+.swal2-popup {
+    font-family: var(--base-font);
+    font-size: var(--font-xsmall);
 }

@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
 import { Funko } from 'src/app/interfaces/Funko';
 import { FunkosService } from 'src/app/services/funkos.service';
-import { OrderFunkosService } from 'src/app/services/order-funkos.service';
+import Swal from 'sweetalert2';
 
 @Component({
     selector: 'app-admin-main',
@@ -13,19 +12,19 @@ export class AdminMainComponent implements OnInit {
     lista: Funko[] = [];
     searchQuery: string = '';
     hasResults: boolean = true;
-    listaFiltrada : Observable  <Funko[]> | undefined;
 
-    constructor(
-        private funkosService: FunkosService,
-        private orderService: OrderFunkosService,
-    ) { }
+    constructor(private funkosService: FunkosService) { }
 
     ngOnInit() {
         this.mostrarFunkos();
         this.funkosService.getFilteredFunkosObservable().subscribe(filteredFunkos => {
             this.lista = filteredFunkos;
+            if (this.lista.length == 0) {
+                this.hasResults = false;
+            } else {
+                this.hasResults = true;
+            }
         });
-
     }
 
     filterFunkos(query: string) {
@@ -39,13 +38,28 @@ export class AdminMainComponent implements OnInit {
         }
     }
 
-    async eliminarFunko(id: number | undefined) {
-        const ok = confirm('¿Está seguro que desea eliminar este Funko?');
-        if (ok) {
-            await this.funkosService.deleteFunko(id);
-            this.scrollToTop();
-            window.location.reload();
-        }
+    eliminarFunko(id: number | undefined) {
+        Swal.fire({
+            title: "¿Está seguro que desea eliminar este producto?",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#FF3333",
+            cancelButtonColor: "#1D84B5",
+            confirmButtonText: "Eliminar",
+            cancelButtonText: "Cancelar"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                this.funkosService.deleteFunko(id);
+                Swal.fire({
+                    title: "El producto ha sido eliminado",
+                    icon: "success",
+                    confirmButtonColor: "#1D84B5"
+                }).then(() => {
+                    this.scrollToTop();
+                    window.location.reload();
+                });
+            }
+        });
     }
 
     scrollToTop() {

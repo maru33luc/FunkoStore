@@ -20,13 +20,11 @@ export class CartComponent {
         this.cartItems = items;
         this.cartItemsCopy = this.cartItems.map(item => ({ ...item }));
         await this.loadFunkoDetails();
-        console.log(this.cartItemsCopy);
       });
     }
   
     async loadFunkoDetails() {
       for (const item of this.cartItemsCopy) {
-         console.log('Loading details for item:', item);
          try {
            const funko = await this.funkoService.getFunko(item.funkoId);
            if (funko) {
@@ -34,7 +32,6 @@ export class CartComponent {
              item.price = funko.price;
              item.imageSrc = funko.frontImage;
              item.licence = funko.serie;
-             console.log('Details loaded for item:', item);
            } else {
              console.log('Item not found:', item);
            }

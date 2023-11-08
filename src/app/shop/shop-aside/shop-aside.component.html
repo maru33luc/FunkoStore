@@ -59,21 +59,21 @@
     <div class="aside__input">
         <label for="" class="label">FILTRAR</label>
         <div class="checkbox">
-            <input type="checkbox" name="" id="nuevos-checkbox" class="checkbox-input" value="minis" (click)="onCategoryChange('Minis')">
+            <input type="checkbox" name="category" id="nuevos-checkbox" class="checkbox-input" value="minis" (click)="onCategoryChange($event,'Minis')">
             <label class="checkbox__label-text" for="nuevos-checkbox">MINIS</label>
         </div>
         <div>
-            <input type="checkbox" name="" id="ofertas-checkbox" class="checkbox-input" (click)="onCategoryChange('Keychain')">
+            <input type="checkbox" name="category" id="ofertas-checkbox" class="checkbox-input" (click)="onCategoryChange($event,'Keychain')">
             <label class="checkbox__label-text" for="ofertas-checkbox">KEYCHAIN</label>
         </div>
         <div>
-            <input type="checkbox" name="" id="edicion-especial-checkbox" class="checkbox-input" 
-            (click)="onCategoryChange('Plushies')">
+            <input type="checkbox" name="category" id="edicion-especial-checkbox" class="checkbox-input" 
+            (click)="onCategoryChange($event,'Plushies')">
             <label class="checkbox__label-text" for="edicion-especial-checkbox">PLUSHIES</label>
         </div>
         <div>
-            <input type="checkbox" name="" id="edicion-especial-checkbox" class="checkbox-input"
-            (click)="onCategoryChange('Pop! Vinyl')">
+            <input type="checkbox" name="category" id="edicion-especial-checkbox" class="checkbox-input"
+            (click)="onCategoryChange($event,'Pop! Vinyl')">
             <label class="checkbox__label-text" for="edicion-especial-checkbox">POP! VINYL</label>
         </div>
         <div>

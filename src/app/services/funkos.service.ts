@@ -82,7 +82,6 @@ export class FunkosService {
         }
     }
 
-
     sortFunkos(orderType: string) {
         if (orderType === 'az') {
             this.filteredFunkos.sort((a, b) => (a.name || '').localeCompare(b.name || ''));
@@ -102,7 +101,6 @@ export class FunkosService {
             return price >= minPrice && price <= maxPrice;
         });
         this.filteredFunkosSubject.next(this.filteredFunkos);
-        console.log("SERVICE: " + this.filteredFunkos.length);
     }
 
     filterFunkosByCategory(serie: string) {
@@ -113,7 +111,6 @@ export class FunkosService {
             (funko.category == serie && typeof funko.category === 'string')
           );
           this.filteredFunkosSubject.next(this.filteredFunkos);
-          console.log('Filtrado service', this.filteredFunkos);
         }
       }
       

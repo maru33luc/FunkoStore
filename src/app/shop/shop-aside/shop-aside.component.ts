@@ -17,6 +17,26 @@ export class ShopAsideComponent {
   constructor(private orderService: OrderFunkosService,
     private funkoService: FunkosService) { }
 
+    ngOnInit() {
+      const checkboxes = document.querySelectorAll<HTMLInputElement>('input[type="checkbox"][name="category"]');
+      checkboxes.forEach((checkbox) => {
+        checkbox.addEventListener('change', (event) => {
+          const inputCheckbox = checkbox as HTMLInputElement;
+          if (inputCheckbox.checked) {
+            checkboxes.forEach((otherCheckbox) => {
+              if (otherCheckbox !== checkbox) {
+                otherCheckbox.disabled = true; // Desactiva los otros checkboxes
+              }
+            });
+          } else {
+            checkboxes.forEach((otherCheckbox) => {
+              otherCheckbox.disabled = false; // Activa los otros checkboxes
+            });
+          }
+        });
+      });
+    }
+
   onOrderChange() {
     this.orderService.setOrderType(this.orderType);
   }
@@ -25,9 +45,15 @@ export class ShopAsideComponent {
     this.orderService.setSearchQuery(query);
   }
 
-  onCategoryChange(serie: string) {
-    this.orderService.setCategoryQuery(serie);
+  onCategoryChange(event: Event, serie: string) {
+    const checkbox = event.target as HTMLInputElement;
+    if (checkbox.checked) {
+      this.orderService.setCategoryQuery(serie);
+    } else {
+      this.orderService.setCategoryQuery(''); // Valor vacío si se desmarca
+    }
   }
+  
 
   // Funciones para el manejo de los placeholders de los inputs de precio  
   onPriceFilterChange() {

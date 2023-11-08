@@ -13,7 +13,6 @@ export class ApiTolkienService {
         try {
             // Encapsula el nombre con / y ^ para hacer una búsqueda basada en expresiones regulares
             const regexName = `^${name}`;
-
             const response = await axios.get(`${this.url}?name=/${regexName}/i`, {
                 headers: {
                     'Authorization': `Bearer ${this.token}`

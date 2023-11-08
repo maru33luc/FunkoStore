@@ -86,4 +86,20 @@ export class ShopAsideComponent {
       this.maxPrice = 0;
     }
   }
+
+  clearFilters() {
+    this.searchQuery = '';
+    this.orderType = 'az';
+    this.minPrice = 0;
+    this.maxPrice = 0;
+    this.orderService.setSearchQuery('');
+    this.orderService.setOrderType('az');
+    this.funkoService.showAllFunkos();
+
+    const checkboxes = document.querySelectorAll<HTMLInputElement>('input[type="checkbox"][name="category"]');
+    checkboxes.forEach((checkbox) => {
+      checkbox.checked = false;
+      checkbox.disabled = false;
+    });
+  }
 }

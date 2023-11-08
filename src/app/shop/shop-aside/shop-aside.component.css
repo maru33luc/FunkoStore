@@ -11,7 +11,7 @@
 
 .custom-select {
     position: relative;
-    margin-top: 15px;
+    margin-top: 10px;
     font-size: 1.5em;
 }
 
@@ -35,7 +35,7 @@
 
 .precio div {
     display: inline-flex;
-    padding-top: 10px;
+    /* padding-top: 10px; */
     align-items: center;
 }
 
@@ -127,7 +127,7 @@
     letter-spacing: 0em;
     text-align: left;
     color: var(--dark-solid);
-    margin-bottom: 20px;
+    /* margin-bottom: 20px; */
 }
 
 .checkbox {
@@ -152,6 +152,22 @@
 .precio input::placeholder {
     text-align: center;
 }
+
+.clear-filters-button {
+    background-color: var(--secondary-300);
+    border: 2px solid #000000;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: var(--font-xsmall);
+    margin-top: 10px;
+    margin-left: 7px;
+    cursor: pointer;
+    /* color: var(--light-bg-solid); */
+    padding: 10px;
+    margin-top: 10px;
+}
+
+/* ----------------- MEDIA QUERIES --------------------- */
 
 @media screen and (max-width: 350px) {
     .aside__input:first-of-type input {

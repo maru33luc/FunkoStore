@@ -81,13 +81,19 @@ export class LoginFormComponent implements OnInit {
             }
         });
         if (mail) {
-
-            /* ACÁ VA EL LLAMADO AL SERVICIO PARA RESETEAR LA CONTRASEÑA */
-
-            Swal.fire({
-                text: `Se ha enviado un correo a ${mail} para restablecer su contraseña`,
-                icon: "success",
-            });
+            try {
+                await this.loginService.resetPassword(mail); 
+                Swal.fire({
+                    text: `Se ha enviado un correo a ${mail} para restablecer su contraseña`,
+                    icon: "success",
+                });
+            } catch (error) {
+                Swal.fire({
+                    text: "Error al restablecer la contraseña. Por favor, verifique su correo electrónico.",
+                    icon: "error",
+                });
+                console.error(error);
+            }
         }
     }
 

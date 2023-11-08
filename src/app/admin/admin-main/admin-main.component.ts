@@ -40,20 +40,17 @@ export class AdminMainComponent implements OnInit {
 
     eliminarFunko(id: number | undefined) {
         Swal.fire({
-            title: "¿Está seguro que desea eliminar este producto?",
+            text: "¿Está seguro de eliminar este producto?",
             icon: "warning",
             showCancelButton: true,
-            confirmButtonColor: "#FF3333",
-            cancelButtonColor: "#1D84B5",
             confirmButtonText: "Eliminar",
             cancelButtonText: "Cancelar"
         }).then((result) => {
             if (result.isConfirmed) {
                 this.funkosService.deleteFunko(id);
                 Swal.fire({
-                    title: "El producto ha sido eliminado",
-                    icon: "success",
-                    confirmButtonColor: "#1D84B5"
+                    text: "El producto ha sido eliminado",
+                    icon: "success"
                 }).then(() => {
                     this.scrollToTop();
                     window.location.reload();

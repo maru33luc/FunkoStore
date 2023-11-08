@@ -130,6 +130,17 @@
     /* margin-bottom: 20px; */
 }
 
+.label-categoria{
+    font-family: Inter;
+    font-size: 1.5em;
+    font-weight: 500;
+    line-height: 29px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: var(--dark-solid);
+    padding-top: 20px;    
+}
+
 .checkbox {
     margin-top: 10px;
 }

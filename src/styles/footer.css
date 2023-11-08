@@ -2,6 +2,7 @@ footer {
     background: var(--dark-bg-solid);
     font-family: var(--alternative-font);
     color: var(--light-font-solid);
+    
 }
 
 .footer-main {

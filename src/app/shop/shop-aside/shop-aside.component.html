@@ -58,6 +58,7 @@
       </div>
     <div class="aside__input">
         <label for="" class="label">FILTRAR</label>
+        <div class="label-categoria">CATEGORÍA</div>
         <div class="checkbox">
             <input type="checkbox" name="category" id="nuevos-checkbox" class="checkbox-input" value="minis" (click)="onCategoryChange($event,'Minis')">
             <label class="checkbox__label-text" for="nuevos-checkbox">MINIS</label>
@@ -82,7 +83,29 @@
         </div>
         
 
+        <div class="label-categoria">SAGA</div>
+        <div class="checkbox">
+            <input type="checkbox" name="licence" id="nuevos-checkbox" class="checkbox-input"  (click)="onCategoryChange($event,'Lord of the Rings')">
+            <label class="checkbox__label-text" for="nuevos-checkbox">LOTR</label>
+        </div>
+        <div>
+            <input type="checkbox" name="licence" id="ofertas-checkbox" class="checkbox-input" (click)="onCategoryChange($event,'Harry Potter')">
+            <label class="checkbox__label-text" for="ofertas-checkbox">HARRY POTTER</label>
+        </div>
+        <div>
+            <input type="checkbox" name="licence" id="edicion-especial-checkbox" class="checkbox-input" 
+            (click)="onCategoryChange($event,'Star Wars')">
+            <label class="checkbox__label-text" for="edicion-especial-checkbox">STAR WARS</label>
+        </div>
+        <div>
+            <input type="checkbox" name="category" id="edicion-especial-checkbox" class="checkbox-input"
+            (click)="onCategoryChange($event,'Pokemon')">
+            <label class="checkbox__label-text" for="edicion-especial-checkbox">POKEMON</label>
+        </div>
+        
     </div>
+
+    
     <button class="clear-filters-button" (click)="clearFilters()">LIMPIAR FILTROS</button>
 
 </aside>

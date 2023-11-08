@@ -5,19 +5,15 @@
     letter-spacing: .1rem;
 }
 
-.swal2-icon {
-    font-size: var(--font-xsmall) !important;
-}
-
 .swal2-confirm,
 .swal2-cancel {
     background-color: var(--primary-solid) !important;
     color: var(--light-font-solid) !important;
     font-size: var(--font-xsmall) !important;
-    transition: background .2s ease-in-out !important;
-    padding: var(--spacing-12) var(--spacing-28) !important;
+    padding: var(--spacing-12) var(--spacing-28);
     border: none !important;
     border-radius: .5rem !important;
+    transition: background .2s ease-in-out;
     cursor: pointer !important;
 }
 
@@ -31,28 +27,27 @@ div:where(.swal2-container) button:where(.swal2-styled) {
 }
 
 .swal2-input {
+    font-size: var(--font-xsmall);
     padding: 1rem .5rem !important;
-    border: none !important;
-    border-radius: 0 !important;
-    border-bottom: .2rem solid var(--primary-solid) !important;
+    border: .2rem solid var(--primary-solid);
+    border-radius: .5rem;
     box-shadow: none !important;
 }
 
 .swal2-input:focus {
-    outline: 0 !important;
-    border-bottom: .2rem solid var(--secondary-solid) !important;
+    border: .2rem solid var(--secondary-solid);
 }
 
 .swal2-validation-message {
-    background-color: white !important;
-    color: var(--primary-solid) !important;
-    font-weight: 600 !important;
+    background-color: white;
+    color: var(--primary-solid);
+    font-weight: 600;
 }
 
 .swal2-validation-message:before {
-    display: none !important;
+    display: none;
 }
 
 .swal2-actions {
-    gap: var(--spacing-30) !important;
+    gap: var(--spacing-30);
 }

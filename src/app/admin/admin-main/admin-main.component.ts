@@ -10,6 +10,10 @@ import Swal from 'sweetalert2';
 })
 export class AdminMainComponent implements OnInit {
     lista: Funko[] = [];
+    itemsPerPage = 10;
+    currentPage = 0;
+    pages: number[] = [];
+    showPagination = true;
     searchQuery: string = '';
     hasResults: boolean = true;
 
@@ -33,9 +37,31 @@ export class AdminMainComponent implements OnInit {
 
     async mostrarFunkos() {
         const response = await this.funkosService.getFunkos();
-        if (response) {
-            this.lista = response;
+        if (response != undefined) {
+            this.lista = response as Funko[];
+            this.calculateTotalPages();
         }
+    }
+
+    calculateTotalPages() {
+        this.pages = Array(Math.ceil(this.lista.length / this.itemsPerPage)).fill(0).map((_, i) => i);
+    }
+
+    get paginatedItems() {
+        const startIndex = this.currentPage * this.itemsPerPage;
+        const endIndex = startIndex + this.itemsPerPage;
+        return this.lista.slice(startIndex, endIndex);
+    }
+
+    changePage(newPage: number) {
+        if (newPage < 0) {
+            this.currentPage = 0;
+        } else if (newPage >= this.pages.length) {
+            this.currentPage = this.pages.length - 1;
+        } else {
+            this.currentPage = newPage;
+        }
+        window.scrollTo(0, 0);
     }
 
     eliminarFunko(id: number | undefined) {

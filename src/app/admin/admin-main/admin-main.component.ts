@@ -33,6 +33,7 @@ export class AdminMainComponent implements OnInit {
 
     filterFunkos(query: string) {
         this.funkosService.filterFunkosByName(query);
+        this.calculateTotalPages();
     }
 
     async mostrarFunkos() {

@@ -8,6 +8,8 @@
       "price": 8000,
       "frontImage": "https://media.entertainmentearth.com/assets/images/ea4c002dfe1e4f2eac1dbf903e772390lg.jpg",
       "backImage": "https://i.pinimg.com/originals/7b/0b/b0/7b0bb03e613123ab6f5dec2bf26b1d35.jpg",
+      "licence": "The Lord of the Rings",
+      "stock": 40,
       "id": 1
     },
     {
@@ -21,6 +23,8 @@
         "Mystery Minis Lord of the Rings"
       ],
       "price": 12000,
+      "licence": "The Lord of the Rings",
+      "stock": 60,
       "id": 2
     },
     {
@@ -34,6 +38,8 @@
         "Lord of the Rings Mystery Keychains"
       ],
       "price": 8000,
+      "licence": "The Lord of the Rings",
+      "stock": 90,
       "id": 3
     },
     {
@@ -47,6 +53,8 @@
         "Lord of the Rings Mystery Keychains"
       ],
       "price": 8000,
+      "licence": "The Lord of the Rings",
+      "stock": 60,
       "id": 4
     },
     {
@@ -60,6 +68,8 @@
         "Lord of the Rings Mystery Keychains"
       ],
       "price": 8000,
+      "licence": "The Lord of the Rings",
+      "stock": 70,
       "id": 5
     },
     {
@@ -73,6 +83,8 @@
         "Mystery Minis Lord of the Rings"
       ],
       "price": 12000,
+      "licence": "The Lord of the Rings",
+      "stock": 40,
       "id": 6
     },
     {
@@ -86,6 +98,8 @@
         "Lord of the Rings Mystery Keychains"
       ],
       "price": 8000,
+      "licence": "The Lord of the Rings",
+      "stock": 40,
       "id": 7
     },
     {
@@ -99,6 +113,8 @@
         "Mystery Minis Lord of the Rings"
       ],
       "price": 12000,
+      "licence": "The Lord of the Rings",
+      "stock": 40,
       "id": 8
     },
     {
@@ -112,6 +128,8 @@
         "Mystery Minis Lord of the Rings"
       ],
       "price": 12000,
+      "licence": "The Lord of the Rings",
+      "stock": 40,
       "id": 9
     },
     {
@@ -125,6 +143,8 @@
         "Mystery Minis Lord of the Rings"
       ],
       "price": 12000,
+      "licence": "The Lord of the Rings",
+      "stock": 90,
       "id": 10
     },
     {
@@ -138,6 +158,8 @@
         "Mystery Minis Lord of the Rings"
       ],
       "price": 12000,
+      "licence": "The Lord of the Rings",
+      "stock": 40,
       "id": 11
     },
     {
@@ -151,6 +173,8 @@
         "Mystery Minis Lord of the Rings"
       ],
       "price": 12000,
+      "licence": "The Lord of the Rings",
+      "stock": 40,
       "id": 12
     },
     {
@@ -165,6 +189,8 @@
         "Funko Hot Topic Exclusives"
       ],
       "price": 15000,
+      "licence": "The Lord of the Rings",
+      "stock": 40,
       "id": 13
     },
     {
@@ -178,6 +204,8 @@
         "Mystery Minis Lord of the Rings"
       ],
       "price": 12000,
+      "licence": "The Lord of the Rings",
+      "stock": 40,
       "id": 14
     },
     {
@@ -191,6 +219,8 @@
         "Mystery Minis Lord of the Rings"
       ],
       "price": 12000,
+      "licence": "The Lord of the Rings",
+      "stock": 40,
       "id": 15
     },
     {
@@ -204,6 +234,8 @@
         "Mystery Minis Lord of the Rings"
       ],
       "price": 12000,
+      "licence": "The Lord of the Rings",
+      "stock": 40,
       "id": 16
     },
     {
@@ -217,6 +249,8 @@
         "Mystery Minis Lord of the Rings"
       ],
       "price": 12000,
+      "licence": "The Lord of the Rings",
+      "stock": 50,
       "id": 17
     },
     {
@@ -230,6 +264,8 @@
         "Mystery Minis Lord of the Rings"
       ],
       "price": 12000,
+      "licence": "The Lord of the Rings",
+      "stock": 40,
       "id": 18
     },
     {
@@ -242,6 +278,8 @@
         "Plushies"
       ],
       "price": 20000,
+      "licence": "The Lord of the Rings",
+      "stock": 100,
       "id": 19
     },
     {
@@ -254,6 +292,8 @@
         "Plushies"
       ],
       "price": 20000,
+      "licence": "The Lord of the Rings",
+      "stock": 40,
       "id": 20
     },
     {
@@ -266,6 +306,8 @@
         "Plushies"
       ],
       "price": 20000,
+      "licence": "The Lord of the Rings",
+      "stock": 40,
       "id": 21
     },
     {
@@ -278,6 +320,8 @@
         "Plushies"
       ],
       "price": 20000,
+      "licence": "The Lord of the Rings",
+      "stock": 70,
       "id": 22
     },
     {
@@ -290,6 +334,8 @@
         "Plushies"
       ],
       "price": 20000,
+      "licence": "The Lord of the Rings",
+      "stock": 40,
       "id": 23
     },
     {
@@ -302,6 +348,8 @@
         "Plushies"
       ],
       "price": 20000,
+      "licence": "The Lord of the Rings",
+      "stock": 40,
       "id": 24
     },
     {
@@ -315,6 +363,8 @@
         "Pop! Movies"
       ],
       "price": 25000,
+      "licence": "The Lord of the Rings",
+      "stock": 40,
       "id": 25
     },
     {
@@ -328,6 +378,8 @@
         "Pop! Movies"
       ],
       "price": 23000,
+      "licence": "The Lord of the Rings",
+      "stock": 40,
       "id": 26
     },
     {
@@ -341,6 +393,8 @@
         "Pop! Movies"
       ],
       "price": 23000,
+      "licence": "The Lord of the Rings",
+      "stock": 40,
       "id": 27
     },
     {
@@ -354,6 +408,8 @@
         "Pop! Movies"
       ],
       "price": 23000,
+      "licence": "The Lord of the Rings",
+      "stock": 40,
       "id": 28
     },
     {
@@ -367,6 +423,8 @@
         "Pop! Movies"
       ],
       "price": 23000,
+      "licence": "The Lord of the Rings",
+      "stock": 40,
       "id": 29
     },
     {
@@ -380,6 +438,8 @@
         "Pop! Movies"
       ],
       "price": 24000,
+      "licence": "The Lord of the Rings",
+      "stock": 40,
       "id": 30
     },
     {
@@ -393,6 +453,8 @@
         "Pop! Movies"
       ],
       "price": 23000,
+      "licence": "The Lord of the Rings",
+      "stock": 40,
       "id": 31
     },
     {
@@ -405,6 +467,8 @@
         "Wacky Wobblers"
       ],
       "price": 15000,
+      "licence": "The Lord of the Rings",
+      "stock": 40,
       "id": 32
     },
     {
@@ -418,6 +482,8 @@
         "Mystery Minis Lord of the Rings"
       ],
       "price": 12000,
+      "licence": "The Lord of the Rings",
+      "stock": 80,
       "id": 33
     },
     {
@@ -431,6 +497,8 @@
         "Mystery Minis Lord of the Rings"
       ],
       "price": 12000,
+      "licence": "The Lord of the Rings",
+      "stock": 40,
       "id": 34
     },
     {
@@ -445,6 +513,8 @@
         "Funko Barnes & Noble Exclusives"
       ],
       "price": 24000,
+      "licence": "The Lord of the Rings",
+      "stock": 40,
       "id": 35
     },
     {
@@ -459,6 +529,8 @@
         "Funko Barnes & Noble Exclusives"
       ],
       "price": 26000,
+      "licence": "The Lord of the Rings",
+      "stock": 40,
       "id": 36
     },
     {
@@ -472,6 +544,8 @@
         "Mystery Minis Lord of the Rings"
       ],
       "price": 12000,
+      "licence": "The Lord of the Rings",
+      "stock": 40,
       "id": 37
     },
     {
@@ -486,6 +560,8 @@
         "Funko Barnes & Noble Exclusives"
       ],
       "price": 24000,
+      "licence": "The Lord of the Rings",
+      "stock": 40,
       "id": 38
     },
     {
@@ -500,6 +576,8 @@
         "Funko Hot Topic Exclusives"
       ],
       "price": 15000,
+      "licence": "The Lord of the Rings",
+      "stock": 40,
       "id": 39
     },
     {
@@ -514,7 +592,21 @@
         "Funko Hot Topic Exclusives"
       ],
       "price": 15000,
+      "licence": "The Lord of the Rings",
+      "stock": 40,
       "id": 40
+    },
+    {
+      "name": "Luna LoveGood",
+      "category": "Pop! Vynil",
+      "serie": "Pocket Pop!",
+      "description": "Funko de Luna",
+      "price": 10000,
+      "frontImage": "https://kbportugal.pt/7047-large_default/funko-pop-harry-potter-luna-lovegood.jpg",
+      "backImage": "https://www.leprechaun.es/1426-large_default/funko-pop-14-luna-lovegood-harry-potter.jpg",
+      "stock": 40,
+      "licence": "Harry Potter",
+      "id": 41
     }
   ]
 }

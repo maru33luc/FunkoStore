@@ -17,6 +17,8 @@ export class AdminEditFunkoComponent implements OnInit {
     price?: number;
     frontImage?: string;
     backImage?: string;
+    licence?: string;
+    stock?: number;
 
     constructor(
         private router: Router,
@@ -37,6 +39,8 @@ export class AdminEditFunkoComponent implements OnInit {
                     this.price = response.price;
                     this.frontImage = response.frontImage;
                     this.backImage = response.backImage;
+                    this.stock = response.stock;
+                    this.licence = response.licence;
                 }
             } catch (e) {
                 console.log(e);

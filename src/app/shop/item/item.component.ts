@@ -78,12 +78,27 @@ export class ItemComponent implements AfterViewInit {
     try {
       this.selectedItem = await this.funkosService.getFunko(itemId);
       if (this.selectedItem && this.selectedItem.name) {
-        const response = await this.apiTolkienService.getCharacterInfo(this.selectedItem.name);
-        if (response && response.docs && response.docs.length > 0) {
-          this.characterInfo = response.docs[0];
+        if (this.selectedItem.licence === 'The Lord of the Rings') {
+          const response = await this.apiTolkienService.getCharacterInfo(this.selectedItem.name);
+          if (response && response.docs && response.docs.length > 0) {
+            this.characterInfo = response.docs[0];
+          }
+          console.log(this.characterInfo);
         }
-        console.log(this.characterInfo);
-        
+        else if (this.selectedItem.licence === 'Harry Potter') {
+          const response = await this.apiTolkienService.getCharacterInfo(this.selectedItem.name);
+          if (response && response.docs && response.docs.length > 0) {
+            this.characterInfo = response.docs[0];
+          }
+          console.log(this.characterInfo);
+        }
+        else if (this.selectedItem.licence === 'StarWars') {
+          const response = await this.apiTolkienService.getCharacterInfo(this.selectedItem.name);
+          if (response && response.docs && response.docs.length > 0) {
+            this.characterInfo = response.docs[0];
+          }
+          console.log(this.characterInfo);
+        }
       }
       return this.selectedItem;
     } catch (error) {
@@ -97,14 +112,15 @@ export class ItemComponent implements AfterViewInit {
       const quantity = parseInt(this.quantityButton.nativeElement.value);
       if (quantity > 0) {
         if (this.selectedItem.id) {
-          if(this.isAuthenticated){
-          this.cartService.agregarAlCarrito(this.selectedItem.id, quantity);
-        }else{
-          await this.cartLocalService.addToCart({funkoId: this.selectedItem.id, quantity: quantity});
-          console.log('Agregado al carrito local');
+          if (this.isAuthenticated) {
+            this.cartService.agregarAlCarrito(this.selectedItem.id, quantity);
+          } else {
+            await this.cartLocalService.addToCart({ funkoId: this.selectedItem.id, quantity: quantity });
+            console.log('Agregado al carrito local');
+          }
+          this.quantityButton.nativeElement.value = "0";
         }
-        this.quantityButton.nativeElement.value = "0";
       }
     }
   }
-}}
+}

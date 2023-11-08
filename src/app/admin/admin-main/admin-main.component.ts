@@ -1,4 +1,3 @@
-import { Observable } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
 import { Funko } from 'src/app/interfaces/Funko';
 import { FunkosService } from 'src/app/services/funkos.service';
@@ -27,19 +26,19 @@ export class AdminMainComponent implements OnInit {
 
         this.orderService.searchQuery$.subscribe((query) => {
             this.funkosService.filterFunkosByName(query);
-          });
+        });
 
         this.funkosService.getFilteredFunkosObservable().subscribe(filteredFunkos => {
             this.lista = filteredFunkos;
             this.currentPage = 0;
             this.calculateTotalPages();
-            
+
             if (this.lista.length === 0) {
                 this.hasResults = false;
             } else {
                 this.hasResults = true;
             }
-            
+
         });
     }
 

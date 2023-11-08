@@ -14,9 +14,6 @@ import { SharedModule } from '../shared/shared.module';
 import { CartComponent } from './cart/cart.component';
 import { AuthModule } from '@angular/fire/auth';
 import { FormsModule } from '@angular/forms';
-import { TermsPageComponent } from './pages/terms-page/terms-page.component';
-import { ContactPageComponent } from './pages/contact-page/contact-page.component';
-import { AboutUsPageComponent } from './pages/about-us-page/about-us-page.component';
 
 
 @NgModule({
@@ -29,10 +26,7 @@ import { AboutUsPageComponent } from './pages/about-us-page/about-us-page.compon
     ShopMainComponent,
     ItemPageComponent,
     CartPageComponent,
-    ItemComponent,
-    TermsPageComponent,
-    ContactPageComponent,
-    AboutUsPageComponent],
+    ItemComponent],
   imports: [
     CommonModule,
     ShopRoutingModule,

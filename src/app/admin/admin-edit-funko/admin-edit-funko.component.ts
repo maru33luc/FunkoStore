@@ -47,9 +47,8 @@ export class AdminEditFunkoComponent implements OnInit {
     saveFunko(funko: Funko) {
         this.funkosService.putFunko(funko, this.route.snapshot.params['id']);
         Swal.fire({
-            title: "El producto ha sido modificado",
+            text: "El producto ha sido modificado",
             icon: "success",
-            confirmButtonColor: "#1D84B5"
         }).then(() => {
             this.router.navigate(['/admin']);
             this.scrollToTop();

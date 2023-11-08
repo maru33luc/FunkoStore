@@ -116,6 +116,7 @@
     transition: background .2s ease-in-out;
     padding: var(--spacing-12) var(--spacing-28);
     border: none;
+    border-radius: .5rem;
     cursor: pointer;
 }
 

@@ -17,9 +17,16 @@
             <span class="form-error" *ngIf="!isCorrect">Correo y/o contraseña incorrectos</span>
         </div>
 
-        <div class="form-box-btn">
+        <div class="form-box-login">
             <input class="form-btn" type="submit" value="INICIAR SESIÓN">
+            <div class="form-box-login-message">
+                <p>¿Olvidó su contraseña?</p>
+                <a (click)="resetPassword()">Click aquí</a>
+            </div>
+            <div class="form-box-login-message">
+                <p>¿No está registrado?</p>
+                <a [routerLink]="['/register/reg']" (click)="scrollToTop()">Click aquí</a>
+            </div>
         </div>
-
     </form>
 </main>

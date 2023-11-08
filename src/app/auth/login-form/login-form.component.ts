@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LoginService } from 'src/app/services/login.service';
+import Swal from 'sweetalert2';
 
 @Component({
     selector: 'app-login-form',
@@ -60,5 +61,37 @@ export class LoginFormComponent implements OnInit {
                 console.error(e);
             }
         }
+    }
+
+    async resetPassword() {
+        const { value: mail } = await Swal.fire({
+            text: "Ingrese su correo electrónico",
+            input: "text",
+            showCancelButton: true,
+            confirmButtonText: "REESTABLECER",
+            cancelButtonText: "CANCELAR",
+            inputValidator: (value) => {
+                const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+                if (!value) {
+                    return "Campo obligatorio";
+                } else if (!regex.test(value)) {
+                    return "Formato inválido";
+                }
+                return null;
+            }
+        });
+        if (mail) {
+
+            /* ACÁ VA EL LLAMADO AL SERVICIO PARA RESETEAR LA CONTRASEÑA */
+
+            Swal.fire({
+                text: `Se ha enviado un correo a ${mail} para restablecer su contraseña`,
+                icon: "success",
+            });
+        }
+    }
+
+    scrollToTop() {
+        window.scrollTo(0, 0);
     }
 }

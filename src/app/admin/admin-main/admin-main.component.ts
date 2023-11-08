@@ -1,6 +1,8 @@
+import { Observable } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
 import { Funko } from 'src/app/interfaces/Funko';
 import { FunkosService } from 'src/app/services/funkos.service';
+import { OrderFunkosService } from 'src/app/services/order-funkos.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -14,20 +16,29 @@ export class AdminMainComponent implements OnInit {
     currentPage = 0;
     pages: number[] = [];
     showPagination = true;
-    searchQuery: string = '';
     hasResults: boolean = true;
 
-    constructor(private funkosService: FunkosService) { }
+    constructor(private funkosService: FunkosService,
+        private orderService: OrderFunkosService) { }
 
     ngOnInit() {
         this.mostrarFunkos();
+
+        this.orderService.searchQuery$.subscribe((query) => {
+            this.funkosService.filterFunkosByName(query);
+          });
+
         this.funkosService.getFilteredFunkosObservable().subscribe(filteredFunkos => {
             this.lista = filteredFunkos;
-            if (this.lista.length == 0) {
+            this.currentPage = 0;
+            this.calculateTotalPages();
+            
+            if (this.lista.length === 0) {
                 this.hasResults = false;
             } else {
                 this.hasResults = true;
             }
+            
         });
     }
 
@@ -40,6 +51,7 @@ export class AdminMainComponent implements OnInit {
         const response = await this.funkosService.getFunkos();
         if (response != undefined) {
             this.lista = response as Funko[];
+            console.log(this.lista);
             this.calculateTotalPages();
         }
     }

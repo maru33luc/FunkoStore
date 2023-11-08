@@ -26,7 +26,6 @@ export class HeaderComponent{
                 this.isLoggedIn = false;
             }
         });
-        // this.obtenerNombreUsuario();
 
         this.loginService.authStateObservable()?.subscribe((user) => {
             if (user) {
@@ -47,14 +46,6 @@ export class HeaderComponent{
             });
         }
     }
-
-    // obtenerNombreUsuario() {
-    //     this.loginService.getUserName().then((nombre) => {
-    //         if (nombre) {
-    //             this.username = nombre.toUpperCase();
-    //         }
-    //     });
-    // }
 
     logout() {
         this.loginService.logout();

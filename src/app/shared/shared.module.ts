@@ -4,8 +4,8 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { IfAuthenticatedDirective } from './directives/if-authenticated.directive';
 
-import { SharedRoutingModule } from './shared-routing.module';
 import { CommonModule } from '@angular/common';
+import { SharedRoutingModule } from './shared-routing.module';
 
 @NgModule({
     declarations: [

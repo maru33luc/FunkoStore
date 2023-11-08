@@ -1,6 +1,8 @@
+import { LoginService } from 'src/app/services/login.service';
 import { Component } from '@angular/core';
 import { CartService } from 'src/app/services/cart.service';
 import { FunkosService } from 'src/app/services/funkos.service';
+import { CartLocalService } from 'src/app/services/cart-local.service';
 
 @Component({
   selector: 'app-cart',
@@ -13,14 +15,26 @@ export class CartComponent {
   quantityChanges: { funkoId: number; quantity: number }[] = [];
 
   constructor(private cartService: CartService,
-    private funkoService: FunkosService) {}
+    private funkoService: FunkosService,
+    private loginService: LoginService,
+    private cartLocalService: CartLocalService) {}
 
     ngOnInit() {
-      this.cartService.obtenerCarrito().subscribe(async (items) => {
-        this.cartItems = items;
-        this.cartItemsCopy = this.cartItems.map(item => ({ ...item }));
-        await this.loadFunkoDetails();
-      });
+
+      this.loginService.authStateObservable()?.subscribe(async(user) => {
+        if (user) {
+          this.cartService.obtenerCarrito().subscribe(async (items) => {
+            this.cartItems = items;
+            this.cartItemsCopy = this.cartItems.map(item => ({ ...item }));
+            await this.loadFunkoDetails();
+          });
+        } else {
+          this.cartItems = await this.cartLocalService.getCart();
+          this.cartItemsCopy = this.cartItems.map(item => ({ ...item }));
+          this.loadFunkoDetails();          
+        }
+      }
+      );
     }
   
     async loadFunkoDetails() {

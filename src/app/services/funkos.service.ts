@@ -105,6 +105,19 @@ export class FunkosService {
         console.log("SERVICE: " + this.filteredFunkos.length);
     }
 
+    filterFunkosByCategory(serie: string) {
+        if (serie.trim() === '') {
+          this.showAllFunkos();
+        } else {
+          this.filteredFunkos = this.funkos.filter((funko) =>
+            (funko.category == serie && typeof funko.category === 'string')
+          );
+          this.filteredFunkosSubject.next(this.filteredFunkos);
+          console.log('Filtrado service', this.filteredFunkos);
+        }
+      }
+      
+
     getFilteredFunkosObservable(): Observable<Funko[]> {
         return this.filteredFunkosSubject.asObservable();
     }

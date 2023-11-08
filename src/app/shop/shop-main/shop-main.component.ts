@@ -54,7 +54,17 @@ export class ShopMainComponent implements OnInit {
       this.calculateTotalPages(); // Recalcular el número de páginas
       this.updatePaginationVisibility(); // Actualizar la visibilidad de la paginación
     });
+
+    // Suscripción a cambios en el filtro de serie
+    this.orderService.categoryQuery$.subscribe((serie) => {
+      this.searchQuery = serie;
+      this.funkoService.filterFunkosByCategory(serie);
+      this.currentPage = 0; // Reiniciar a la primera página después de aplicar un filtro
+      this.calculateTotalPages(); // Recalcular el número de páginas
+    });
   }
+
+  
 
     // ------------PAGINACION -------------------------------
 

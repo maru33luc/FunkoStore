@@ -25,6 +25,10 @@ export class ShopAsideComponent {
     this.orderService.setSearchQuery(query);
   }
 
+  onCategoryChange(serie: string) {
+    this.orderService.setCategoryQuery(serie);
+  }
+
   // Funciones para el manejo de los placeholders de los inputs de precio  
   onPriceFilterChange() {
     if(this.maxPrice > 0  && this.maxPrice > this.minPrice)

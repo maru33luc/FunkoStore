@@ -16,7 +16,8 @@ export class RegisterFormComponent implements OnInit {
         lastname: ['', [Validators.required, Validators.maxLength(30)]],
         email: ['', [Validators.required, Validators.email]],
         password: ['', [Validators.required, Validators.minLength(6)]],
-        repassword: ['', [Validators.required]]
+        repassword: ['', [Validators.required]],
+        terms: false,
     });
 
     constructor(
@@ -46,6 +47,12 @@ export class RegisterFormComponent implements OnInit {
             this.registerForm.controls['repassword'].touched);
     }
 
+    validateTerms(): boolean {
+        return (
+            !this.registerForm.controls['terms'].value &&
+            this.registerForm.controls['terms'].touched);
+    }
+
     async register() {
         if (this.registerForm.invalid) {
             this.registerForm.markAllAsTouched();
@@ -64,5 +71,9 @@ export class RegisterFormComponent implements OnInit {
                 console.log(e);
             }
         }
+    }
+
+    scrollToTop() {
+        window.scrollTo(0, 0);
     }
 }

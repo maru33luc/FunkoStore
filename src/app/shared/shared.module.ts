@@ -6,18 +6,13 @@ import { IfAuthenticatedDirective } from './directives/if-authenticated.directiv
 
 import { CommonModule } from '@angular/common';
 import { SharedRoutingModule } from './shared-routing.module';
-import { TermsComponent } from './components/terms/terms.component';
-import { ContactComponent } from './components/contact/contact.component';
-import { AbousUsComponent } from './components/abous-us/abous-us.component';
+
 
 @NgModule({
     declarations: [
         HeaderComponent,
         FooterComponent,
         IfAuthenticatedDirective,
-        TermsComponent,
-        ContactComponent,
-        AbousUsComponent,
     ],
     imports: [
         CommonModule,
@@ -27,7 +22,6 @@ import { AbousUsComponent } from './components/abous-us/abous-us.component';
         HeaderComponent,
         FooterComponent,
         IfAuthenticatedDirective,
-        TermsComponent,
     ]
 })
-export class SharedModule {}
+export class SharedModule { }

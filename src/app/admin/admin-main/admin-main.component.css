@@ -15,21 +15,6 @@
     }
 }
 
-.admin-add {
-    font-size: var(--font-xsmall);
-    font-weight: 700;
-    align-self: flex-end;
-    display: flex;
-    align-items: center;
-    gap: var(--spacing-16);
-}
-
-@media screen and (min-width: 992px) {
-    .admin-add {
-        font-size: var(--font-medium);
-    }
-}
-
 .admin-search {
     width: 100%;
     display: flex;
@@ -67,10 +52,23 @@
     ;
 }
 
+.admin-add {
+    font-size: var(--font-xsmall);
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-16);
+}
+
+@media screen and (min-width: 992px) {
+    .admin-add {
+        font-size: var(--font-medium);
+    }
+}
+
 .admin-add-btn {
     color: var(--primary-solid);
     font-size: var(--font-xsmall);
-    display: flex;
 }
 
 @media screen and (min-width: 992px) {

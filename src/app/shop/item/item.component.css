@@ -339,7 +339,14 @@
     font-weight: 400;
     color: #555; 
     margin: 10px 0; 
-   
+  }
+
+  .item__info .item__description{
+    /* font-family: 'Arial', sans-serif;  */
+    font-family: var(--base-font);
+    font-weight: 800;
+    color: var(--secondary-900)!important; 
+    margin: 10px 0;
   }
   
   .item-info-box a {

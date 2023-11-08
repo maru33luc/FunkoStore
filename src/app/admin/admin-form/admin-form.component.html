@@ -15,6 +15,7 @@
                 <option value="Keychain">Keychain</option>
                 <option value="Minis">Minis</option>
                 <option value="Plushies">Plushies</option>
+                <option value="Pop! Vynil">Pop! Vinyl</option>
             </select>
             <span class="form-error" *ngIf="validate('category', 'required')">Campo obligatorio</span>
         </div>
@@ -31,9 +32,15 @@
 
         <div class="form-box">
             <label class="form-label" for="price">Precio</label>
-            <input id="price" class="form-input" type="number" formControlName="price">
+            <input id="price" class="form-input" type="number" formControlName="price" min="0">
             <span class="form-error" *ngIf="validate('price', 'required')">Campo obligatorio</span>
             <span class="form-error" *ngIf="validate('price', 'min')">Precio inválido</span>
+        </div>
+
+        <div class="form-box">
+            <label class="form-label" for="stock">Stock</label>
+            <input id="stock" class="form-input" type="number" formControlName="stock" value="0" min="0">
+            <span class="form-error" *ngIf="validate('stock', 'required')">Campo obligatorio</span>
         </div>
     </div>
 
@@ -60,6 +67,20 @@
             <span class="form-error" *ngIf="validate('backImage', 'required')">Campo obligatorio</span>
             <span class="form-error" *ngIf="validate('backImage', 'pattern')">Formato inválido</span>
         </div>
+
+    </div>
+
+    <div class="form-box">
+        <label class="form-label" for="licence">Saga</label>
+        <select id="licence" class="form-input" formControlName="licence" >
+            
+            <option value="" disabled selected>Nombre de la Saga</option>
+            <option value="El Señor de los Anillos">El Señor de los Anillos</option>
+            <option value="Starwars">Starwars</option>
+            <option value="Harry Potter">Harry Potter</option>
+        
+        </select>
+        <span class="form-error" *ngIf="validate('licence', 'required')">Campo obligatorio</span>
     </div>
 
     <div class="form-box-btn">

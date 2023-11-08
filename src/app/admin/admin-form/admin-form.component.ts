@@ -15,6 +15,8 @@ export class AdminFormComponent {
     @Input() price?: number;
     @Input() frontImage?: string;
     @Input() backImage?: string;
+    @Input() licence?: string;
+    @Input() stock?: number;
 
     formAdmin: FormGroup = this.formBuilder.group({
         name: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(20)]],
@@ -23,7 +25,9 @@ export class AdminFormComponent {
         price: [0, [Validators.required, Validators.min(1)]],
         description: ['', [Validators.required, Validators.maxLength(100)]],
         frontImage: ['', [Validators.required, Validators.pattern('^(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})([/\\w .-]*)*/?$')]],
-        backImage: ['', [Validators.required, Validators.pattern('^(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})([/\\w .-]*)*/?$')]]
+        backImage: ['', [Validators.required, Validators.pattern('^(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})([/\\w .-]*)*/?$')]],
+        licence: ['', Validators.required],
+        stock: [0, [Validators.required, Validators.min(1)]],
     });
 
     @Output() sendFunko = new EventEmitter<Funko>();
@@ -38,6 +42,8 @@ export class AdminFormComponent {
         this.formAdmin.controls['price'].setValue(this.price);
         this.formAdmin.controls['frontImage'].setValue(this.frontImage);
         this.formAdmin.controls['backImage'].setValue(this.backImage);
+        this.formAdmin.controls['licence'].setValue(this.licence);
+        this.formAdmin.controls['stock'].setValue(this.stock);
     }
 
     validate(field: string, error: string) {
@@ -58,6 +64,8 @@ export class AdminFormComponent {
                 price: this.formAdmin.controls['price'].value,
                 frontImage: this.formAdmin.controls['frontImage'].value,
                 backImage: this.formAdmin.controls['backImage'].value,
+                stock: this.formAdmin.controls['stock'].value,
+                licence: this.formAdmin.controls['licence'].value,
                 id: 0,
             };
             this.sendFunko.emit(funko);

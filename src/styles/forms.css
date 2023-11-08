@@ -86,7 +86,7 @@
 .form-input:focus {
     outline: 0;
     border-bottom: .2rem solid var(--secondary-solid);
-    ;
+    
 }
 
 .form-error {
@@ -129,3 +129,6 @@
 .form-btn:hover {
     background-color: var(--secondary-solid);
 }
+
+
+

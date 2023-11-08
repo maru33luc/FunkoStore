@@ -6,5 +6,7 @@ export interface Funko {
     price: number;
     frontImage: string;
     backImage: string;
+    licence: string;    
+    stock: number;
     id?: number;
 }

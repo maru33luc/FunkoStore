@@ -58,7 +58,6 @@ export class CartLocalService {
     }
  }
 
-     
   async removeFromCart(funkoId: number) {
     if (!this.db) return;
 
@@ -96,6 +95,4 @@ export class CartLocalService {
       request.onerror = () => reject(request.error);
     });
   }
-  
-  
   }

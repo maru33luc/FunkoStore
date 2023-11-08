@@ -82,7 +82,6 @@ export class FunkosService {
         }
     }
 
-
     sortFunkos(orderType: string) {
         if (orderType === 'az') {
             this.filteredFunkos.sort((a, b) => (a.name || '').localeCompare(b.name || ''));
@@ -102,8 +101,19 @@ export class FunkosService {
             return price >= minPrice && price <= maxPrice;
         });
         this.filteredFunkosSubject.next(this.filteredFunkos);
-        console.log("SERVICE: " + this.filteredFunkos.length);
     }
+
+    filterFunkosByCategory(serie: string) {
+        if (serie.trim() === '') {
+          this.showAllFunkos();
+        } else {
+          this.filteredFunkos = this.funkos.filter((funko) =>
+            (funko.category == serie && typeof funko.category === 'string')
+          );
+          this.filteredFunkosSubject.next(this.filteredFunkos);
+        }
+      }
+      
 
     getFilteredFunkosObservable(): Observable<Funko[]> {
         return this.filteredFunkosSubject.asObservable();

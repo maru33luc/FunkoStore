@@ -43,18 +43,28 @@ export class ShopMainComponent implements OnInit {
     this.orderService.searchQuery$.subscribe((query) => {
       this.searchQuery = query;
       this.funkoService.filterFunkosByName(query);
-      this.currentPage = 0; // Reiniciar a la primera página después de aplicar un filtro
-      this.calculateTotalPages(); // Recalcular el número de páginas
+      this.currentPage = 0; 
+      this.calculateTotalPages(); 
     });
 
     // Suscripción a cambios en el filtro de precio
     this.funkoService.getFilteredFunkosObservable().subscribe(filteredFunkos => {
       this.lista = filteredFunkos;
-      this.currentPage = 0; // Reiniciar a la primera página después de recibir nuevos resultados
-      this.calculateTotalPages(); // Recalcular el número de páginas
-      this.updatePaginationVisibility(); // Actualizar la visibilidad de la paginación
+      this.currentPage = 0; 
+      this.calculateTotalPages(); 
+      this.updatePaginationVisibility();
+    });
+
+    // Suscripción a cambios en el filtro de serie
+    this.orderService.categoryQuery$.subscribe((serie) => {
+      this.searchQuery = serie;
+      this.funkoService.filterFunkosByCategory(serie);
+      this.currentPage = 0; 
+      this.calculateTotalPages(); 
     });
   }
+
+  
 
     // ------------PAGINACION -------------------------------
 

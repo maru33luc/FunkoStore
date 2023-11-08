@@ -21,4 +21,11 @@ export class OrderFunkosService {
     setSearchQuery(query: string) {
         this.searchQuerySubject.next(query);
     }
+
+    private categoryQuerySubject = new BehaviorSubject<string>('');
+    categoryQuery$: Observable<string> = this.categoryQuerySubject.asObservable();
+
+    setCategoryQuery(serie: string) {
+        this.categoryQuerySubject.next(serie);
+    }
 }

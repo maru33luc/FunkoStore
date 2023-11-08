@@ -9,10 +9,8 @@
             </ul>
         </article>
         <article class="cart__article">
-            <!-- Parte de tu HTML donde deseas mostrar los elementos del carrito -->
             <ul class="cart__items">
                 <li class="cart__item" *ngFor="let item of cartItemsCopy">
-                    <!-- Aquí muestras los detalles de cada elemento del carrito, como imagen, nombre, precio, cantidad, total, etc. -->
                     <div class="item__container">
                         <picture class="cart__item-picture">
                             <img [src]="item.imageSrc" alt="{{ item.name }}">
@@ -26,7 +24,6 @@
                     <div class="item__cart">
                         <input class="item__input" type="text" [value]="item.quantity" id="quantity" 
                         placeholder="0" disabled>
-                        <!-- Agrega botones o lógica para aumentar y disminuir la cantidad -->
                         <div class="cart__quantity-buttons">
                             <button (click)="increaseQuantity(item)" id="substract" class="item__quantity">+</button>
                             <button (click)="decreaseQuantity(item)"id="add" class="item__quantity">-</button>

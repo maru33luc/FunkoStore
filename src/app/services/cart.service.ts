@@ -45,7 +45,6 @@ export class CartService {
                     const cartData = docSnap.data()?.['carrito'] || {};
                     this.cart = cartData as FunkoCart[];
                     this.cartSubject.next(this.cart);
-                    console.log("OBTENIENDO CARRITO:", this.cart);
                     return this.cart;
                 } catch (error) {
                     console.log(error);
@@ -64,13 +63,9 @@ export class CartService {
                 try {
                     if (typeof funkoId === 'number' && typeof quantity === 'number') {
                         if (user) {
-
-                            console.log(this.cart);
                            
                             if (this.cart) {
                                 const existingCartItemIndex = this.cart.findIndex((item: FunkoCart) => item.funkoId === funkoId);
-                                console.log(existingCartItemIndex);
-                                console.log(funkoId);
                                 if (existingCartItemIndex !== -1) {
                                     this.cart[existingCartItemIndex].quantity += quantity;
                                     console.log(this.cart);

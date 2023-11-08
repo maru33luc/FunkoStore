@@ -17,6 +17,7 @@ export class AdminMainComponent implements OnInit {
     pages: number[] = [];
     showPagination = true;
     hasResults: boolean = true;
+    searchQuery: string = '';
 
     constructor(private funkosService: FunkosService,
         private orderService: OrderFunkosService) { }

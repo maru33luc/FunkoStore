@@ -1,15 +1,20 @@
 .shop-main {
-    margin: var(--spacing-20) 0;
+    margin: var(--spacing-20) auto;
 }
 
 @media screen and (min-width: 768px) {
     .shop-main {
-        margin-bottom: var(--spacing-68) 0;
+        margin: var(--spacing-68) var(--spacing-20);
+    }
+}
+
+@media screen and (min-width: 996px) {
+    .shop-main {
+        margin: var(--spacing-68) var(--spacing-40);
     }
 }
 
 .shop-main-cards {
-    width: 100%;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -18,8 +23,8 @@
 
 @media screen and (min-width: 992px) {
     .shop-main-cards {
-        min-width: 80vw;
-        max-width: 80vw;
+        min-width: 75vw;
+        max-width: 75vw;
     }
 }
 

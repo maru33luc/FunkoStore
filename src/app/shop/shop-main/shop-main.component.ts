@@ -110,12 +110,12 @@ export class ShopMainComponent implements OnInit {
     }
 
     updateItemsPerPage() {
-        if (window.innerWidth <= 1200 && window.innerWidth > 992) {
+        if (window.innerWidth <= 1200 && window.innerWidth >= 992) {
             this.itemsPerPage = 8;
-        } else if (window.innerWidth <= 992 && window.innerWidth > 768) {
+        } else if (window.innerWidth < 992 && window.innerWidth >= 768) {
             this.itemsPerPage = 6;
-        } else if (window.innerWidth <= 768) {
-            this.itemsPerPage = 3;
+        } else if (window.innerWidth < 768) {
+            this.itemsPerPage = 4;
         } else {
             this.itemsPerPage = 9;
         }

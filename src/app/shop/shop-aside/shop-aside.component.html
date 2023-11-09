@@ -19,13 +19,13 @@
         <label class="shop-aside-label">PRECIO</label>
         <div class="shop-aside-price">
             <div class="shop-aside-box">
-                <label class="shop-aside-label-small" for="min-price">MIN</label>
+                <label class="shop-aside-label-small" for="min-price">Min</label>
                 <input id="min-price" class="shop-aside-input" type="number" min="0" [ngModel]="minPrice"
                     (ngModelChange)="minPrice = $event" (focus)="clearMinPricePlaceholder()"
                     (blur)="resetMinPricePlaceholder()" (input)="onPriceFilterChange()"/>
             </div>
             <div class="shop-aside-box">
-                <label class="shop-aside-label-small" for="max-price">MAX</label>
+                <label class="shop-aside-label-small" for="max-price">Max</label>
                 <input id="max-price" class="shop-aside-input" type="number" min="0" [ngModel]="maxPrice"
                     (ngModelChange)="maxPrice = $event" (focus)="clearMaxPricePlaceholder()"
                     (blur)="resetMaxPricePlaceholder()" (input)="onPriceFilterChange()"/>
@@ -34,9 +34,9 @@
     </div>
 
     <div class="shop-aside-box">
-        <label class="shop-aside-label">FILTRAR</label>
-        
-        <label class="shop-aside-label-small">Por categoría</label>
+        <h2 class="shop-aside-label">FILTRAR</h2>
+        <h3 class="shop-aside-label-small">Por categoría</h3>
+
         <div class="shop-aside-checkbox">
             <input id="minis" name="category" class="shop-aside-checkbox-input" type="checkbox"
                 (click)="onCategoryChange($event,'Minis')">
@@ -54,7 +54,7 @@
                 (click)="onCategoryChange($event,'Plushies')">
             <label class="shop-aside-label-small" for="plushies">Plushies</label>
         </div>
-        
+
         <div class="shop-aside-checkbox">
             <input id="pop-vinyl" name="category" class="shop-aside-checkbox-input" type="checkbox"
                 (click)="onCategoryChange($event,'Pop! Vinyl')">
@@ -66,8 +66,11 @@
                 (click)="onCategoryChange($event,'Favorites')">
             <label class="shop-aside-label-small" for="favorites">Favoritos</label>
         </div>
+    </div>
 
-        <div class="shop-aside-label-small">Por saga</div>
+    <div class="shop-aside-box">    
+        <h3 class="shop-aside-label-small">Por saga</h3>
+
         <div class="shop-aside-checkbox">
             <input id="lotr" name="saga" class="shop-aside-checkbox-input" type="checkbox"
                 (click)="onLicenceChange($event,'The Lord of the Rings')">

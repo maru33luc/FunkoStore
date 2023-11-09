@@ -1,111 +1,97 @@
-<aside class="shop__aside">
-    <div class="aside__input">
-        <label for="buscar" class="label">BUSCAR</label>
-        <input type="text" name="searchQuery" id="buscar" 
-        placeholder="Nombre" class="aside__input-buscar" 
-        [(ngModel)]="searchQuery"
-  (ngModelChange)="onSearchChange($event)">
-      </div>
-      
-    <div class="aside__input">
-        <label for="" class="label">ORDENAR POR</label>
-        <div class="custom-select">
-            <select name="orderType" class="placeholder-style" title="Ordenar por" id="shop__aside-select" [(ngModel)]="orderType" (change)="onOrderChange()" >
-                <option value="az">A-Z</option>
-                <option value="za">Z-A</option>
-                <option value="desc">Mayor precio</option>
-                <option value="asc">Menor precio</option>
-
-            </select>
-        </div>
-    </div>
-    <div class="aside__input">
-        <label class="label">PRECIO</label>
-        <div class="precio">
-          <div>
-            <label for="min-price" class="label_precio-min-max">MIN $</label>
-            <input
-              type="number"
-              id="min-price"
-              class="input-field"
-              min="0"
-              [ngModel]="minPrice"
-              (ngModelChange)="minPrice = $event"
-              (focus)="clearMinPricePlaceholder()"
-              (blur)="resetMinPricePlaceholder()"
-              (input)="onPriceFilterChange()"
-            />
-          </div>
-          <div>
-            <label for="max-price" class="label_precio-min-max">MAX $</label>
-            <input
-              type="number"
-              id="max-price"
-              class="input-field"
-              min="0"
-              [ngModel]="maxPrice"
-              (ngModelChange)="maxPrice = $event"
-              (focus)="clearMaxPricePlaceholder()"
-              (blur)="resetMaxPricePlaceholder()"
-              (input)="onPriceFilterChange()"
-            />
-          </div>
-          
-          
-          
-       
-        </div>
-      </div>
-    <div class="aside__input">
-        <label for="" class="label">FILTRAR</label>
-        <div class="label-categoria">CATEGORÍA</div>
-        <div class="checkbox">
-            <input type="checkbox" name="category" id="nuevos-checkbox" class="checkbox-input" value="minis" (click)="onCategoryChange($event,'Minis')">
-            <label class="checkbox__label-text" for="nuevos-checkbox">MINIS</label>
-        </div>
-        <div>
-            <input type="checkbox" name="category" id="ofertas-checkbox" class="checkbox-input" (click)="onCategoryChange($event,'Keychain')">
-            <label class="checkbox__label-text" for="ofertas-checkbox">KEYCHAIN</label>
-        </div>
-        <div>
-            <input type="checkbox" name="category" id="edicion-especial-checkbox" class="checkbox-input" 
-            (click)="onCategoryChange($event,'Plushies')">
-            <label class="checkbox__label-text" for="edicion-especial-checkbox">PLUSHIES</label>
-        </div>
-        <div>
-            <input type="checkbox" name="category" id="edicion-especial-checkbox" class="checkbox-input"
-            (click)="onCategoryChange($event,'Pop! Vinyl')">
-            <label class="checkbox__label-text" for="edicion-especial-checkbox">POP! VINYL</label>
-        </div>
-        <div>
-            <input type="checkbox" name="" id="favoritos-checkbox" class="checkbox-input">
-            <label class="checkbox__label-text" for="favoritos-checkbox">FAVORITOS</label>
-        </div>
-        
-
-        <div class="label-categoria">SAGA</div>
-        <div class="checkbox">
-            <input type="checkbox" name="category" id="nuevos-checkbox" class="checkbox-input"  (click)="onLicenceChange($event,'The Lord of the Rings')">
-            <label class="checkbox__label-text" for="nuevos-checkbox">LOTR</label>
-        </div>
-        <div>
-            <input type="checkbox" name="category" id="ofertas-checkbox" class="checkbox-input" (click)="onLicenceChange($event,'Harry Potter')">
-            <label class="checkbox__label-text" for="ofertas-checkbox">HARRY POTTER</label>
-        </div>
-        <div>
-            <input type="checkbox" name="category" id="edicion-especial-checkbox" class="checkbox-input" 
-            (click)="onLicenceChange($event,'Star Wars')">
-            <label class="checkbox__label-text" for="edicion-especial-checkbox">STAR WARS</label>
-        </div>
-        <div>
-            <input type="checkbox" name="category" id="edicion-especial-checkbox" class="checkbox-input"
-            (click)="onLicenceChange($event,'Pokemon')">
-            <label class="checkbox__label-text" for="edicion-especial-checkbox">POKEMON</label>
-        </div>
-        
+<aside class="shop-aside">
+    <div class="shop-aside-box">
+        <label class="shop-aside-label" for="search">BUSCAR</label>
+        <input id="search" class="shop-aside-input" type="text" name="searchQuery" placeholder="Nombre"
+            [(ngModel)]="searchQuery" (ngModelChange)="onSearchChange($event)">
     </div>
 
-    
-    <button class="clear-filters-button" (click)="clearFilters()">LIMPIAR FILTROS</button>
+    <div class="shop-aside-box">
+        <label class="shop-aside-label" for="order">ORDENAR POR</label>
+        <select id="order" class="shop-aside-input" name="orderType" [(ngModel)]="orderType" (change)="onOrderChange()">
+            <option value="az">A-Z</option>
+            <option value="za">Z-A</option>
+            <option value="desc">Mayor precio</option>
+            <option value="asc">Menor precio</option>
+        </select>
+    </div>
 
+    <div class="shop-aside-box">
+        <label class="shop-aside-label">PRECIO</label>
+        <div class="shop-aside-price">
+            <div class="shop-aside-box">
+                <label class="shop-aside-label-small" for="min-price">MIN</label>
+                <input id="min-price" class="shop-aside-input" type="number" min="0" [ngModel]="minPrice"
+                    (ngModelChange)="minPrice = $event" (focus)="clearMinPricePlaceholder()"
+                    (blur)="resetMinPricePlaceholder()" (input)="onPriceFilterChange()"/>
+            </div>
+            <div class="shop-aside-box">
+                <label class="shop-aside-label-small" for="max-price">MAX</label>
+                <input id="max-price" class="shop-aside-input" type="number" min="0" [ngModel]="maxPrice"
+                    (ngModelChange)="maxPrice = $event" (focus)="clearMaxPricePlaceholder()"
+                    (blur)="resetMaxPricePlaceholder()" (input)="onPriceFilterChange()"/>
+            </div>
+        </div>
+    </div>
+
+    <div class="shop-aside-box">
+        <label class="shop-aside-label">FILTRAR</label>
+        
+        <label class="shop-aside-label-small">Por categoría</label>
+        <div class="shop-aside-checkbox">
+            <input id="minis" name="category" class="shop-aside-checkbox-input" type="checkbox"
+                (click)="onCategoryChange($event,'Minis')">
+            <label class="shop-aside-label-small" for="minis">Minis</label>
+        </div>
+        
+        <div class="shop-aside-checkbox">
+            <input id="keychain" name="category" class="shop-aside-checkbox-input" type="checkbox"
+            (click)="onCategoryChange($event,'Keychain')">
+            <label class="shop-aside-label-small" for="keychain">Keychain</label>
+        </div>
+        
+        <div class="shop-aside-checkbox">
+            <input id="plushies" name="category" class="shop-aside-checkbox-input" type="checkbox"
+                (click)="onCategoryChange($event,'Plushies')">
+            <label class="shop-aside-label-small" for="plushies">Plushies</label>
+        </div>
+        
+        <div class="shop-aside-checkbox">
+            <input id="pop-vinyl" name="category" class="shop-aside-checkbox-input" type="checkbox"
+                (click)="onCategoryChange($event,'Pop! Vinyl')">
+            <label class="shop-aside-label-small" for="pop-vinyl">Pop! Vinyl</label>
+        </div>
+        
+        <div class="shop-aside-checkbox">
+            <input id="favorites" name="category" class="shop-aside-checkbox-input" type="checkbox"
+                (click)="onCategoryChange($event,'Favorites')">
+            <label class="shop-aside-label-small" for="favorites">Favoritos</label>
+        </div>
+
+        <div class="shop-aside-label-small">Por saga</div>
+        <div class="shop-aside-checkbox">
+            <input id="lotr" name="saga" class="shop-aside-checkbox-input" type="checkbox"
+                (click)="onLicenceChange($event,'The Lord of the Rings')">
+            <label class="shop-aside-label-small" for="lotr">Lord of the Rings</label>
+        </div>
+
+        <div class="shop-aside-checkbox">
+            <input id="harry-potter" name="saga" class="shop-aside-checkbox-input" type="checkbox"
+                (click)="onLicenceChange($event,'Harry Potter')">
+            <label class="shop-aside-label-small" for="harry-potter">Harry Potter</label>
+        </div>
+
+        <div class="shop-aside-checkbox">
+            <input id="star-wars" name="saga" class="shop-aside-checkbox-input" type="checkbox"
+                (click)="onLicenceChange($event,'Star Wars')">
+            <label class="shop-aside-label-small" for="star-wars">Star Wars</label>
+        </div>
+
+        <div class="shop-aside-checkbox">
+            <input id="pokemon" name="saga" class="shop-aside-checkbox-input" type="checkbox"
+                (click)="onLicenceChange($event,'Pokemon')">
+            <label class="shop-aside-label-small" for="pokemon">Pokemon</label>
+        </div>
+    </div>
+
+    <button class="shop-aside-btn" (click)="clearFilters()">LIMPIAR FILTROS</button>
 </aside>

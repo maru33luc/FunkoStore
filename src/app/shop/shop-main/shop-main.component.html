@@ -1,40 +1,37 @@
-<div class="shop__main">
-    <ul class="cards">
-      <li class="slider__item" *ngFor="let item of paginatedItems">
-        <article class="card-item">
-          <a class="card-item__link" [routerLink]="'/shop/'+ item.id">
-            <picture class="card-item__cover">
-              <span class="card-item__tag">NUEVO</span>
-              <img class="card-item__img--front" [src]="item.frontImage"
-                   alt="Figura coleccionable Funko ">
-              <img class="card-item__img--back" [src]="item.backImage"
-                   alt="Figura coleccionable Funko ">
-            </picture>
-  
-            <div class="card-item__content">
-              <p class="card-item__licence">{{item.name}}</p>
-              <h4 class="card-item__name">{{item.serie}}</h4>
-              <p class="card-item__price">$ {{item.price}}</p>
-              <p class="card-item__promo">3 CUOTAS SIN INTERÉS</p>
-            </div>
-          </a>
-        </article>
-      </li>
+<main class="shop-main">
+    <ul class="shop-main-cards">
+        <li *ngFor="let item of paginatedItems">
+            <article class="card-item">
+                <a [routerLink]="'/shop/'+ item.id">
+                    <picture class="card-item-cover">
+                        <span class="card-item-tag">NUEVO</span>
+                        <img class="card-item-img-front" [src]="item.frontImage" alt="Figura coleccionable Funko">
+                        <img class="card-item-img-back" [src]="item.backImage" alt="Figura coleccionable Funko">
+                    </picture>
+                    <div class="card-item-content">
+                        <p class="card-item-name">{{item.name}}</p>
+                        <p class="card-item-serie">{{item.serie}}</p>
+                        <p class="card-item-price">${{item.price}}</p>
+                        <p class="card-item-promo">3 CUOTAS SIN INTERÉS</p>
+                    </div>
+                </a>
+            </article>
+        </li>
     </ul>
-  </div>
-  <div class="pagination" *ngIf="showPagination">
-    <ul class="pag__ul">
-      <li id="previous-page" [class.disabled]="currentPage === 0" (click)="changePage(currentPage - 1)">
-        «
-      </li>
-      <li class="page-link" *ngFor="let _ of pages; let i = index" [class.active]="i === currentPage" (click)="changePage(i)">{{ i + 1 }}
-        
-      </li>
-      <li id="next-page" [class.disabled]="currentPage === pages.length - 1" (click)="changePage(currentPage + 1)">
-        »
-      </li>
-    </ul>
-  </div>
-  
-  
-  
+
+    <div class="pagination" *ngIf="showPagination">
+        <ul class="pag-ul">
+            <li id="previous-page" [class.disabled]="currentPage === 0"
+                (click)="changePage(currentPage - 1)">
+                «
+            </li>
+            <li class="page-link" *ngFor="let _ of pages; let i = index" [class.active]="i === currentPage"
+                (click)="changePage(i)">{{ i + 1 }}
+            </li>
+            <li id="next-page" [class.disabled]="currentPage === pages.length - 1"
+                (click)="changePage(currentPage + 1)">
+                »
+            </li>
+        </ul>
+    </div>
+</main>

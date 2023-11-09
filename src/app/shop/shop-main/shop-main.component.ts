@@ -10,69 +10,72 @@ import { OrderFunkosService } from 'src/app/services/order-funkos.service';
     styleUrls: ['./shop-main.component.css']
 })
 export class ShopMainComponent implements OnInit {
-  lista: Funko[] = [];
-  itemsPerPage = 9;
-  currentPage = 0;
-  pages: number[] = [];
-  searchQuery: string = '';
-  showPagination = true;
-  lista$: Observable<Funko[]> | undefined;
-  filteredFunkos$: Observable<Funko[]> | undefined;
-  minPrice: number = 0;
-  maxPrice: number = 1000; // Valores iniciales de precio mínimo y máximo
+    lista: Funko[] = [];
+    itemsPerPage = 9;
+    currentPage = 0;
+    pages: number[] = [];
+    searchQuery: string = '';
+    showPagination = true;
+    lista$: Observable<Funko[]> | undefined;
+    filteredFunkos$: Observable<Funko[]> | undefined;
+    minPrice: number = 0;
+    maxPrice: number = 1000; // Valores iniciales de precio mínimo y máximo
 
-  constructor(private funkoService: FunkosService, private orderService: OrderFunkosService) { }
+    constructor(
+        private funkoService: FunkosService,
+        private orderService: OrderFunkosService
+    ) { }
 
-  ngOnInit() {
-    this.mostrarFunkos();
-    this.lista$ = this.funkoService.getFilteredFunkosObservable();
-    this.filteredFunkos$ = this.funkoService.getFilteredFunkosObservable();  
+    ngOnInit() {
+        this.mostrarFunkos();
+        this.lista$ = this.funkoService.getFilteredFunkosObservable();
+        this.filteredFunkos$ = this.funkoService.getFilteredFunkosObservable();
 
-    window.addEventListener('resize', () => {
-      this.updateItemsPerPage();
-    });
+        window.addEventListener('resize', () => {
+            this.updateItemsPerPage();
+        });
 
-    // Suscripción a cambios en el orden
-    this.orderService.orderType$.subscribe(orderType => {
-      this.funkoService.sortFunkos(orderType);
-      this.currentPage = 0; // Reiniciar a la primera página después de cambiar el orden
-      this.calculateTotalPages(); // Recalcular el número de páginas
-    });
+        // Suscripción a cambios en el orden
+        this.orderService.orderType$.subscribe(orderType => {
+            this.funkoService.sortFunkos(orderType);
+            this.currentPage = 0; // Reiniciar a la primera página después de cambiar el orden
+            this.calculateTotalPages(); // Recalcular el número de páginas
+        });
 
-    // Suscripción a cambios en el filtro de búsqueda
-    this.orderService.searchQuery$.subscribe((query) => {
-      this.searchQuery = query;
-      this.funkoService.filterFunkosByName(query);
-      this.currentPage = 0; 
-      this.calculateTotalPages(); 
-    });
+        // Suscripción a cambios en el filtro de búsqueda
+        this.orderService.searchQuery$.subscribe((query) => {
+            this.searchQuery = query;
+            this.funkoService.filterFunkosByName(query);
+            this.currentPage = 0;
+            this.calculateTotalPages();
+        });
 
-    // Suscripción a cambios en el filtro de precio
-    this.funkoService.getFilteredFunkosObservable().subscribe(filteredFunkos => {
-      this.lista = filteredFunkos;
-      this.currentPage = 0; 
-      this.calculateTotalPages(); 
-      this.updatePaginationVisibility();
-    });
+        // Suscripción a cambios en el filtro de precio
+        this.funkoService.getFilteredFunkosObservable().subscribe(filteredFunkos => {
+            this.lista = filteredFunkos;
+            this.currentPage = 0;
+            this.calculateTotalPages();
+            this.updatePaginationVisibility();
+        });
 
-    // Suscripción a cambios en el filtro de serie
-    this.orderService.categoryQuery$.subscribe((serie) => {
-      this.searchQuery = serie;
-      this.funkoService.filterFunkosByCategory(serie);
-      this.currentPage = 0; 
-      this.calculateTotalPages(); 
-    });
+        // Suscripción a cambios en el filtro de serie
+        this.orderService.categoryQuery$.subscribe((serie) => {
+            this.searchQuery = serie;
+            this.funkoService.filterFunkosByCategory(serie);
+            this.currentPage = 0;
+            this.calculateTotalPages();
+        });
 
-    // Suscripción a cambios en el filtro de licencia
-    this.orderService.licenceQuery$?.subscribe((licence) => {
-      this.searchQuery = licence;
-      this.funkoService.filterFunkosByLicence(licence);
-      this.currentPage = 0; 
-      this.calculateTotalPages(); 
-    });
-  }
+        // Suscripción a cambios en el filtro de licencia
+        this.orderService.licenceQuery$?.subscribe((licence) => {
+            this.searchQuery = licence;
+            this.funkoService.filterFunkosByLicence(licence);
+            this.currentPage = 0;
+            this.calculateTotalPages();
+        });
+    }
 
-    // ------------PAGINACION -------------------------------
+    //--------------------PAGINACION--------------------
 
     async mostrarFunkos() {
         const response = await this.funkoService.getFunkos();
@@ -106,26 +109,25 @@ export class ShopMainComponent implements OnInit {
         return false;
     }
 
-  updateItemsPerPage() {
-    if (window.innerWidth <= 1380 && window.innerWidth > 1045) {
-      this.itemsPerPage = 6;
-    } else if (window.innerWidth <= 1045 && window.innerWidth > 600) {
-      this.itemsPerPage = 4;
-    } else if (window.innerWidth <= 600) {
-      this.itemsPerPage = 1;
-    } else {
-      this.itemsPerPage = 9;
+    updateItemsPerPage() {
+        if (window.innerWidth <= 1200 && window.innerWidth > 992) {
+            this.itemsPerPage = 8;
+        } else if (window.innerWidth <= 992 && window.innerWidth > 768) {
+            this.itemsPerPage = 6;
+        } else if (window.innerWidth <= 768) {
+            this.itemsPerPage = 3;
+        } else {
+            this.itemsPerPage = 9;
+        }
     }
-  }
 
-  updatePaginationVisibility() {
-    if (this.filteredFunkos$ === undefined) {
-      this.showPagination = false;
-    } else if (this.lista.length === 0) {
-      this.showPagination = false;
-    } else {
-      this.showPagination = true;
+    updatePaginationVisibility() {
+        if (this.filteredFunkos$ === undefined) {
+            this.showPagination = false;
+        } else if (this.lista.length === 0) {
+            this.showPagination = false;
+        } else {
+            this.showPagination = true;
+        }
     }
-  }
-
 }

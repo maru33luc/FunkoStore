@@ -1,286 +1,111 @@
-/* -----------------ASIDE----------------------------- */ 
-
-
-
-.shop__main {
-    background: var(--light-font-solid);
-    display: flex;
-    flex-wrap: nowrap;
-    background: var(--light-bg-solid);
-}
-
-.custom-select {
-    position: relative;
-    margin-top: 10px;
-    font-size: 1.5em;
-}
-
-.custom-select select {
-    width: 240px;
-    line-height: 2;
-    padding: 5px;
-    background-color: var(--light-font-solid);
-    height: 35px;
-    padding-left: 7px;
-    border: 2.3px solid #000000;
-}
-
-.aside__input input {
+.shop-aside {
+    width: 100%;
     display: flex;
     flex-direction: column;
-    border-radius: 5px;
-    border: 2.3px solid #000000;
-    width: 30px;
+    align-items: center;
+    gap: var(--spacing-40);
+    padding: var(--spacing-20);
 }
 
-.precio div {
-    display: inline-flex;
-    /* padding-top: 10px; */
+@media screen and (min-width: 992px) {
+    .shop-aside {
+        padding: var(--spacing-40);
+    }
+}
+
+.shop-aside-box {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-10);
+}
+
+.shop-aside-label {
+    font-size: var(--font-xsmall);
+    font-weight: 600;
+    letter-spacing: .1rem;
+}
+
+@media screen and (min-width: 768px) {
+    .shop-aside-label {
+        font-size: var(--font-small);
+    }
+}
+
+.shop-aside-input {
+    font-size: var(--font-xsmall);
+    width: 100%;
+    padding: 1rem .5rem;
+    border: .2rem solid var(--dark-solid);
+    border-radius: .5rem;
+}
+
+@media screen and (min-width: 768px) {
+    .shop-aside-input {
+        font-size: var(--font-small);
+    }
+}
+
+.shop-aside-input:focus {
+    outline: 0;
+    border: .2rem solid var(--primary-solid);
+}
+
+.shop-aside-price {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-10);
+}
+
+@media screen and (min-width: 576px) {
+    .shop-aside-price {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+}
+
+.shop-aside-label-small {
+    font-size: var(--font-xsmall);
+    font-weight: 600;
+    letter-spacing: .1rem;
+}
+
+@media screen and (min-width: 768px) {
+    .shop-aside-label-small {
+        font-size: var(--font-small);
+    }
+}
+
+.shop-aside-checkbox {
+    display: flex;
+    gap: var(--spacing-10);
     align-items: center;
 }
 
-.shop__aside {
-    display: inline-flex;
-    flex-direction: column;
-    margin-left: 30px;
-    align-items: start;
-    margin-top: 30px;
+.shop-aside-checkbox-input {
+    width: 1.5rem;
+    height: 1.5rem;
 }
 
-.aside__input {
-    padding: 16px;
-    padding-right: 0px;
-}
-
-.aside__input .precio input {
-    margin-top: 10px;
-    padding: 5px;
+.shop-aside-btn {
+    background-color: var(--primary-solid);
+    color: var(--light-font-solid);
     font-size: var(--font-xsmall);
-}
-
-#min-price {
-    width: 60px;
-    padding-left: 5px;
-}
-
-#max-price {
-    width: 90px;
-    padding-left: 5px;
-}
-
-.aside__input:first-of-type input {
-    line-height: 1.6;
-    width: 240px;
-    margin-top: 10px;
-    padding: 5px;
-    font-size: var(--font-xsmall);
-    padding-left: 7px;
-}
-
-.aside__input:first-of-type ::placeholder {
-    color: #888;
-    font-size: 15px;
-    font-weight: 300;
-    margin-top: 4px;
-    line-height: 1.9;
-    margin-right: 16px;
-    /* padding-left: 5px; */
-}
-
-.aside__input:last-of-type div {
-    display: flex;
-    flex-direction: row;
-    line-height: 1.5;
-}
-
-.precio {
-    display: flex;
-    flex-direction: row;
-}
-
-.label_precio-min-max {
-    font-family: Inter;
-    font-size: 13px;
-    font-weight: 500;
-    line-height: 19px;
-    letter-spacing: 0em;
-    text-align: left;
-    color: var(--dark-solid);
-    margin-right: 2px;
-    margin-top: 13px;
-}
-
-.precio div:nth-child(2) {
-    margin-left: 4px;
-}
-
-.precio :nth-child(2) label {
-    margin-left: 1px;
-}
-
-.label {
-    font-family: Inter;
-    /* font-size: var(--font-large); */
-    font-size: 1.8em;
-    font-weight: 500;
-    line-height: 29px;
-    letter-spacing: 0em;
-    text-align: left;
-    color: var(--dark-solid);
-    /* margin-bottom: 20px; */
-}
-
-.label-categoria{
-    font-family: Inter;
-    font-size: 1.5em;
-    font-weight: 500;
-    line-height: 29px;
-    letter-spacing: 0em;
-    text-align: left;
-    color: var(--dark-solid);
-    padding-top: 20px;    
-}
-
-.checkbox {
-    margin-top: 10px;
-}
-
-.checkbox__label-text {
-    font-size: var(--font-xsmall);
-
-}
-
-.checkbox-input {
-    margin-bottom: 5px;
-    margin-left: 7px;
-}
-
-.input-field {
-    line-height: 1.4;
-    width: 40px;
-}
-
-.precio input::placeholder {
-    text-align: center;
-}
-
-.clear-filters-button {
-    background-color: var(--secondary-300);
-    border: 2px solid #000000;
-    border-radius: 5px;
-    padding: 5px;
-    font-size: var(--font-xsmall);
-    margin-top: 10px;
-    margin-left: 7px;
+    transition: background .2s ease-in-out;
+    padding: var(--spacing-10) var(--spacing-20);
+    border: none;
+    border-radius: .5rem;
     cursor: pointer;
-    /* color: var(--light-bg-solid); */
-    padding: 10px;
-    margin-top: 10px;
 }
 
-/* ----------------- MEDIA QUERIES --------------------- */
-
-@media screen and (max-width: 350px) {
-    .aside__input:first-of-type input {
-        width: 50vw;
-        min-width: 120px;
-    }
-
-    .custom-select select {
-        width: 50vw;
-        min-width: 120px;
-    }
-
-    .aside__input .precio {
-        display: flex;
-        flex-direction: column;
-    }
-    
-}
-
-
-@media screen and (max-width: 920px) {
-    
-    .shop__aside {
-        display: flex;
-        flex-wrap: wrap;
-        flex-direction: row;
-        gap: 10px;
+@media screen and (min-width: 768px) {
+    .shop-aside-btn {
+        font-size: var(--font-small);
     }
 }
 
-@media screen and (max-width: 552px) {
-    .shop__aside {
-        flex-direction: column;
-    }
-}
-
-
-@media screen and (max-width: 530px) {
-    .label {
-        font-size: calc(1.5rem + 0.5vw);
-    }
-
-    .shop__aside {
-        margin: 0;
-        margin-left: 30px;
-    }
-
-    .custom-select, #buscar {
-        margin-top: 0px;
-    }
-
-    .precio div{
-        padding-top: 5px;
-    }
-
-    .aside__input {
-        padding: 5px;
-    }
-
-    .aside__input .precio input {
-        margin-top: 0px;
-    }
-
-    .aside__input-buscar {
-        padding: 8px;
-    }
-
-    .aside__input:first-of-type input {
-        line-height: 1.5em;
-        font-size: calc(0.8rem + 0.5vw);
-        padding: 5px;
-    }
-
-    .aside__input .precio input {
-        line-height: 1.5;
-        padding: 0;
-    }
-
-    .label_precio-min-max{
-        margin-top: 0px;
-    }
-
-    .checkbox__label-text {
-        font-size: calc(0.8rem + 0.5vw);
-    }
-}
-
-@media  screen and (max-width: 350px) {
-    .precio div:nth-child(2){
-        margin-left: 0px;
-    }
-    .precio :nth-child(2) label{
-        margin-left: 0px;
-        margin-right: 3px;
-    }
-    .precio :nth-child(1) label{
-        letter-spacing: 0.08em;
-    }
-    #max-price{
-        width: 70px;
-    }
-    #min-price{
-        width: 50px;
-    }
+.shop-aside-btn:hover {
+    background-color: var(--secondary-solid);
 }

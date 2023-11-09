@@ -32,20 +32,3 @@ img {
     object-fit: contain;
     height: 100%;
 }
-
-input::placeholder {
-    color: var(--dark-300);
-    font-family: var(--base-font);
-    font-weight: 500;
-}
-
-.container {
-    max-width: 120rem;
-    margin: 0 auto;
-}
-
-.with-icon {
-    display: flex;
-    align-items: center;
-    gap: .8rem;
-}

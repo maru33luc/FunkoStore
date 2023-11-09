@@ -2,7 +2,7 @@ import { CartLocalService } from './../../services/cart-local.service';
 import { ApiTolkienService } from './../../services/api-tolkien.service';
 import { Component, AfterViewInit, ElementRef, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { CharacterApiPotter, CharacterApiStarWars, CharacterApiTolkien } from 'src/app/interfaces/CharacterApi';
+import { CharacterApiPokemon, CharacterApiPotter, CharacterApiStarWars, CharacterApiTolkien } from 'src/app/interfaces/CharacterApi';
 import { Funko } from 'src/app/interfaces/Funko';
 import { CartService } from 'src/app/services/cart.service';
 import { FunkosService } from 'src/app/services/funkos.service';
@@ -10,6 +10,7 @@ import { LoginService } from 'src/app/services/login.service';
 import { BehaviorSubject } from 'rxjs';
 import { PotterApiService } from 'src/app/services/potter-api.service';
 import { ApiStarWarsService } from 'src/app/services/api-star-wars.service';
+import { ApiPokemonService } from 'src/app/services/api-pokemon.service';
 
 @Component({
   selector: 'app-item',
@@ -21,6 +22,7 @@ export class ItemComponent implements AfterViewInit {
   characterInfo: CharacterApiTolkien | undefined;
   characterInfoPotter: CharacterApiPotter | undefined;
   characterInfoStarWars: CharacterApiStarWars | undefined;
+  characterInfoPokemon: CharacterApiPokemon | undefined;
   isAuthenticated: boolean = false; // Variable para rastrear el estado de autenticación
   selectedItemLicence: string | undefined;
 
@@ -36,7 +38,8 @@ export class ItemComponent implements AfterViewInit {
     private loginService: LoginService,
     private cartLocalService: CartLocalService,
     private apiPotterService : PotterApiService,
-    private apiStarWarsService : ApiStarWarsService
+    private apiStarWarsService : ApiStarWarsService,
+    private apiPokemonService : ApiPokemonService
   ) {
     this.loginService.authStateObservable()?.subscribe((user) => {
       this.isAuthenticated = !!user; // Asigna verdadero si el usuario está logueado
@@ -113,6 +116,16 @@ export class ItemComponent implements AfterViewInit {
           }else{
             this.characterInfoStarWars = undefined;
           }
+        }
+        else if(this.selectedItem.licence === 'Pokemon'){
+          const response = await this.apiPokemonService.getPokemon(this.selectedItem.id);
+          console.log(this.selectedItem.id);
+          if (response ) {
+            this.characterInfoPokemon = response;
+          }else{
+            this.characterInfoPokemon = undefined;
+          }
+
         }
       }
       return this.selectedItem;

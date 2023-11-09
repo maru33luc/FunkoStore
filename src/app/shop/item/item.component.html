@@ -64,4 +64,16 @@
     <img src="{{characterInfoStarWars?.image}}" alt="" *ngIf="characterInfoStarWars?.image!=undefined">
   </article>
 
+  <article class="item-info-box pokemon-info" *ngIf="selectedItemLicence=='Pokemon'">
+   
+    <h4 class="item-info-box__title">Información Extra</h4>
+    <p><strong>Nombre:</strong> {{characterInfoPokemon?.name? characterInfoPokemon?.name : 'desconocido' }} </p>
+    <p><strong>Descripción:</strong> {{characterInfoPokemon?.description? characterInfoPokemon?.description : 'desconocido' }} </p>
+    <p><strong>Tipo:</strong> {{characterInfoPokemon?.type? characterInfoPokemon?.type : 'desconocido' }} </p>
+    <p><strong>Altura:</strong> {{characterInfoPokemon?.height? characterInfoPokemon?.height : 'desconocido' }} </p>
+    <p><strong>Peso:</strong> {{characterInfoPokemon?.weight? characterInfoPokemon?.weight : 'desconocido' }} </p>
+  
+  <img src="{{characterInfoStarWars?.image}}" alt="" *ngIf="characterInfoStarWars?.image!=undefined">
+</article>
+
 </section>

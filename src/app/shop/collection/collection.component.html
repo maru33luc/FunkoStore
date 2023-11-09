@@ -3,7 +3,7 @@
             <h3 class="collection__title">STAR WARS & THE MANDALORIAN</h3>
             <p class="collection__text">Disfruta de una saga que sigue agregando personajes a su colección.</p>
 
-            <a class="collection__link" href="./pages/shop.html">VER COLECCIÓN</a>
+            <a class="collection__link" [routerLink]="['/shop', { licence: 'Star Wars' }]">VER COLECCIÓN</a>
         </article>
         <picture class="collection__cover">
             <img src="../../../../assets/img/star-wars/baby-yoda-1.webp"
@@ -15,7 +15,7 @@
         <article class="collection__content">
             <h3 class="collection__title">POKEMON INDIGO</h3>
             <p class="collection__text">Atrapa todos los que puedas y disfruta de una colección llena de amigos.</p>
-            <a class="collection__link" href="./pages/shop.html">VER COLECCIÓN</a>
+            <a class="collection__link" [routerLink]="['/shop', { licence: 'Pokemon' }]">VER COLECCIÓN</a>
         </article>
         <picture class="collection__cover">
             <img src="../../../assets/img/pokemon/vulpix-1.webp" alt="Figura coleccionable Funko de Vulpix de la serie Pokemon">
@@ -26,7 +26,7 @@
         <article class="collection__content">
             <h3 class="collection__title">HARRY POTTER</h3>
             <p class="collection__text">Revive los recuerdos de una saga llena de magia y encanto.</p>
-            <a class="collection__link" href="./pages/shop.html">VER COLECCIÓN</a>
+            <a class="collection__link" [routerLink]="['/shop', { licence: 'Harry Potter' }]">VER COLECCIÓN</a>
         </article>
         <picture class="collection__cover">
             <img src="../../../assets/img/harry-potter/snape-patronus-1.webp"

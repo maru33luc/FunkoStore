@@ -15,7 +15,6 @@ import { CartComponent } from './cart/cart.component';
 import { AuthModule } from '@angular/fire/auth';
 import { FormsModule } from '@angular/forms';
 
-
 @NgModule({
   declarations: [
     CartComponent,
@@ -32,7 +31,8 @@ import { FormsModule } from '@angular/forms';
     ShopRoutingModule,
     SharedModule,
     AuthModule, 
-    FormsModule
+    FormsModule,
+    
   ],
   exports: [
     CollectionComponent,

@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
@@ -6,7 +7,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 })
 export class OrderFunkosService {
 
-    constructor() { }
+    constructor(private activatedRoute: ActivatedRoute) { }
 
     private orderTypeSubject = new BehaviorSubject<'az' | 'za' | 'desc' | 'asc'>('az');
     orderType$ = this.orderTypeSubject.asObservable();

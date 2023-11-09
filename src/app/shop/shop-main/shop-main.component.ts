@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Funko } from 'src/app/interfaces/Funko';
 import { FunkosService } from 'src/app/services/funkos.service';
@@ -21,10 +22,19 @@ export class ShopMainComponent implements OnInit {
   minPrice: number = 0;
   maxPrice: number = 1000; // Valores iniciales de precio mínimo y máximo
 
-  constructor(private funkoService: FunkosService, private orderService: OrderFunkosService) { }
+  constructor(private funkoService: FunkosService, 
+    private orderService: OrderFunkosService,
+    private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
-    this.mostrarFunkos();
+    this.activatedRoute.paramMap.subscribe(params => {
+      const licence = params.get('licence');
+      this.orderService.setLicenceQuery(licence || ''); 
+      this.searchQuery = licence || '';
+      this.funkoService.filterFunkosByLicence(licence || '');
+      this.currentPage = 0;
+      this.calculateTotalPages();
+    });
     this.lista$ = this.funkoService.getFilteredFunkosObservable();
     this.filteredFunkos$ = this.funkoService.getFilteredFunkosObservable();  
 

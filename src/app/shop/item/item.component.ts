@@ -7,6 +7,7 @@ import { Funko } from 'src/app/interfaces/Funko';
 import { CartService } from 'src/app/services/cart.service';
 import { FunkosService } from 'src/app/services/funkos.service';
 import { LoginService } from 'src/app/services/login.service';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-item',
@@ -17,7 +18,7 @@ export class ItemComponent implements AfterViewInit {
   selectedItem: Funko | undefined;
   characterInfo: CharacterApi | undefined;
   isAuthenticated: boolean = false; // Variable para rastrear el estado de autenticación
-
+  selectedItemLicence: string | undefined;
 
   @ViewChild('addButton') addButton: ElementRef | undefined;
   @ViewChild('subtractButton') subtractButton: ElementRef | undefined;
@@ -77,6 +78,10 @@ export class ItemComponent implements AfterViewInit {
   async getItemById(itemId: number): Promise<Funko | undefined> {
     try {
       this.selectedItem = await this.funkosService.getFunko(itemId);
+      this.selectedItemLicence = this.selectedItem?.licence;
+      if (this.selectedItemLicence) {
+        this.funkosService.filterFunkosByLicence(this.selectedItemLicence);
+      }
       if (this.selectedItem && this.selectedItem.name) {
         if (this.selectedItem.licence === 'The Lord of the Rings') {
           const response = await this.apiTolkienService.getCharacterInfo(this.selectedItem.name);
@@ -106,6 +111,8 @@ export class ItemComponent implements AfterViewInit {
       return undefined;
     }
   }
+
+  
 
   async addToCart() {
     if (this.selectedItem && this.quantityButton) {

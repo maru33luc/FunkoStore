@@ -13,6 +13,7 @@ export class SliderGlideComponent implements OnInit {
   currentPage = 0;
   pages: number[] = [];
   @Input () title: string | undefined;
+  @Input() filtroLista: string | undefined;
 
   constructor(private funkoService: FunkosService) {}
 
@@ -27,6 +28,10 @@ export class SliderGlideComponent implements OnInit {
     const response = await this.funkoService.getFunkos();
     if (response != undefined) {
       this.lista = response as Funko[];
+      // Aplicar filtro por algun criterio si está presente
+    if (this.filtroLista) {
+      this.lista = this.lista.filter(funko => funko.licence === this.filtroLista);
+    }
       this.calculateTotalPages();
     } else {
       console.log('Error al mostrar los funkos');

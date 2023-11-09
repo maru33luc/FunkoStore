@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Auth, createUserWithEmailAndPassword,
-     signInWithEmailAndPassword, getAuth, sendPasswordResetEmail } from '@angular/fire/auth';
+import {
+    Auth, createUserWithEmailAndPassword,
+    signInWithEmailAndPassword, getAuth, sendPasswordResetEmail
+} from '@angular/fire/auth';
 import { getFirestore, doc, setDoc, getDoc } from 'firebase/firestore';
 import { FunkoCart } from '../interfaces/Cart';
 import { Observable } from 'rxjs';
@@ -179,5 +181,5 @@ export class LoginService {
             throw error;
         }
     }
-    
+
 }

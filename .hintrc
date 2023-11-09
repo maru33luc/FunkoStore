@@ -1,29 +1,29 @@
 {
-  "extends": [
-    "development"
-  ],
-  "hints": {
-    "axe/forms": [
-      "default",
-      {
-        "label": "off"
-      }
+    "extends": [
+        "development"
     ],
-    "axe/structure": "off",
-    "compat-api/css": [
-      "default",
-      {
-        "ignore": [
-          "-webkit-text-size-adjust"
-        ]
-      }
-    ],
-    "axe/name-role-value": [
-      "default",
-      {
-        "link-name": "off"
-      }
-    ],
-    "disown-opener": "off"
-  }
+    "hints": {
+        "axe/forms": [
+            "default",
+            {
+                "label": "off"
+            }
+        ],
+        "axe/structure": "off",
+        "compat-api/css": [
+            "default",
+            {
+                "ignore": [
+                    "-webkit-text-size-adjust"
+                ]
+            }
+        ],
+        "axe/name-role-value": [
+            "default",
+            {
+                "link-name": "off"
+            }
+        ],
+        "disown-opener": "off"
+    }
 }

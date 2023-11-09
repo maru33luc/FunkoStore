@@ -5,22 +5,20 @@ import { LoginService } from 'src/app/services/login.service';
 
 
 @Component({
-  selector: 'app-home-page',
-  templateUrl: './home-page.component.html',
-  styleUrls: ['./home-page.component.css']
+    selector: 'app-home-page',
+    templateUrl: './home-page.component.html',
+    styleUrls: ['./home-page.component.css']
 })
 export class HomePageComponent implements OnInit {
-title: string = 'ULTIMOS LANZAMIENTOS';
+    title: string = 'ULTIMOS LANZAMIENTOS';
 
-constructor(private loginService:LoginService) { 
-  
+    constructor(private loginService: LoginService) { }
+
+    async ngOnInit() {
+        // const resp = this.loginService.isUserLoggedIn();
+        // console.log(resp);
+        // const isAdmin = await  this.loginService.isAdmin();
+        // console.log(isAdmin);
+    }
 }
-
-  async ngOnInit() {
-    // const resp = this.loginService.isUserLoggedIn();
-    // console.log(resp);
-    // const isAdmin = await  this.loginService.isAdmin();
-    // console.log(isAdmin);
-  }
-  }
 

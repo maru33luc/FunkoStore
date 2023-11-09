@@ -21,7 +21,8 @@ export class ApiTolkienService {
 
             if (response.status === 200) {
                 return response.data;
-            } else {
+            }            
+            else {
                 alert('Error en la solicitud' + response.status);
             }
         } catch (error) {

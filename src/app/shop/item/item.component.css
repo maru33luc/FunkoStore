@@ -357,4 +357,17 @@
   .item-info-box p strong {
     font-weight: 600; 
   } 
+
+  .potter-info{
+    position: relative!important;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .potter-info img{
+    display: inline-block;
+    width: 100px;
+    border-radius: 12px;
+  }
   

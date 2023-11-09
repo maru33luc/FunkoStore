@@ -13,24 +13,46 @@
         <button id="subtract" class="item__quantity" #subtractButton type="button">-</button>
         <input class="item__input" type="text" #quantityButton name="quantity" id="quantity" value="0" disabled>
         <button id="add" class="item__quantity" #addButton type="button">+</button>
-        <button class="item__submit btn btn--primary btn--medium" type="button" (click)="addToCart()">Agregar al carrito</button>
+        <button class="item__submit btn btn--primary btn--medium" type="button" (click)="addToCart()">Agregar al
+          carrito</button>
       </div>
       <p class="item__promo">
-        <a href="">Ver Métodos de Pago</a> 
+        <a href="">Ver Métodos de Pago</a>
       </p>
     </article>
   </article>
 
-  <article class="item-info-box">
-    <h4 class="item-info-box__title">Información del Personaje</h4>
-    <p><strong>Raza:</strong> {{ characterInfo?.race }}</p>
-    <p><strong>Spouse:</strong> {{ characterInfo?.spouse }}</p>
-    <p><strong>Link Wiki:</strong> <a href="{{ characterInfo?.wikiUrl }}" target="_blank"> {{ characterInfo?.wikiUrl }}</a></p>
-    <p><strong>Nacimiento:</strong> {{ characterInfo?.birth }}</p>
-    <p><strong>Muerte:</strong> {{ characterInfo?.death }}</p>
-</article>
+  <article class="item-info-box lotr-info" *ngIf="selectedItemLicence=='The Lord of the Rings'">
+    <h4 class="item-info-box__title">Información Extra</h4>
+    <p><strong>Raza:</strong> {{ characterInfo?.race? characterInfo?.race : 'desconocido'}}</p>
+    <p><strong>Compañero/a:</strong> {{ characterInfo?.spouse? characterInfo?.spouse : 'desconocido'}}</p>
+    <p><strong>Link Wiki:</strong>
+      <ng-container *ngIf="characterInfo?.wikiUrl">
+        <a href="{{ characterInfo?.wikiUrl }}" target="_blank">{{ characterInfo?.wikiUrl }}</a>
+      </ng-container>
+      <ng-container *ngIf="!characterInfo?.wikiUrl">desconocido</ng-container>
+    </p>
+    <p><strong>Nacimiento:</strong> {{ characterInfo?.birth? characterInfo?.birth : 'desconocido'}}</p>
+    <p><strong>Muerte:</strong> {{ characterInfo?.death? characterInfo?.death : 'desconocido'}}</p>
+  </article>
+
+  <article class="item-info-box potter-info" *ngIf="selectedItemLicence=='Harry Potter'">
+    <div>
+      <h4 class="item-info-box__title">Información Extra</h4>
+      <p><strong>Especie:</strong> {{characterInfoPotter?.species? characterInfoPotter?.species : 'desconocido' }} </p>
+      <p><strong>Casa:</strong>{{characterInfoPotter?.house? characterInfoPotter?.house : 'desconocido' }} </p>
+      <p><strong>Nacimiento:</strong> {{characterInfoPotter?.dateOfBirth? characterInfoPotter?.dateOfBirth :
+        'desconocido' }}</p>
+      <p><strong>Ancestros:</strong> {{characterInfoPotter?.ancestry? characterInfoPotter?.ancestry : 'desconocido' }}
+      </p>
+      <p><strong>Patrono:</strong> {{characterInfoPotter?.patronus? characterInfoPotter?.patronus : 'desconocido' }}</p>
+      <p><strong>Madera de Varita:</strong>{{characterInfoPotter?.wand?.wood? characterInfoPotter?.wand?.wood :
+        'desconocido' }}</p>
+      <p><strong>Núcleo de Varita:</strong>{{characterInfoPotter?.wand?.core? characterInfoPotter?.wand?.core :
+        'desconocido' }}</p>
+    </div>
+
+    <img src="{{characterInfoPotter?.image}}" alt="" *ngIf="characterInfoPotter?.image!=undefined">
+  </article>
 
 </section>
-
-
-  

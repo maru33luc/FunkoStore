@@ -2,12 +2,13 @@ import { CartLocalService } from './../../services/cart-local.service';
 import { ApiTolkienService } from './../../services/api-tolkien.service';
 import { Component, AfterViewInit, ElementRef, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { CharacterApi } from 'src/app/interfaces/CharacterApi';
+import { CharacterApiPotter, CharacterApiTolkien } from 'src/app/interfaces/CharacterApi';
 import { Funko } from 'src/app/interfaces/Funko';
 import { CartService } from 'src/app/services/cart.service';
 import { FunkosService } from 'src/app/services/funkos.service';
 import { LoginService } from 'src/app/services/login.service';
 import { BehaviorSubject } from 'rxjs';
+import { PotterApiService } from 'src/app/services/potter-api.service';
 
 @Component({
   selector: 'app-item',
@@ -16,7 +17,8 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class ItemComponent implements AfterViewInit {
   selectedItem: Funko | undefined;
-  characterInfo: CharacterApi | undefined;
+  characterInfo: CharacterApiTolkien | undefined;
+  characterInfoPotter: CharacterApiPotter | undefined;
   isAuthenticated: boolean = false; // Variable para rastrear el estado de autenticación
   selectedItemLicence: string | undefined;
 
@@ -30,7 +32,8 @@ export class ItemComponent implements AfterViewInit {
     private cartService: CartService,
     private apiTolkienService: ApiTolkienService,
     private loginService: LoginService,
-    private cartLocalService: CartLocalService
+    private cartLocalService: CartLocalService,
+    private apiPotterService : PotterApiService
   ) {
     this.loginService.authStateObservable()?.subscribe((user) => {
       this.isAuthenticated = !!user; // Asigna verdadero si el usuario está logueado
@@ -87,15 +90,18 @@ export class ItemComponent implements AfterViewInit {
           const response = await this.apiTolkienService.getCharacterInfo(this.selectedItem.name);
           if (response && response.docs && response.docs.length > 0) {
             this.characterInfo = response.docs[0];
+            console.log(this.characterInfo);
+          }else if(response.docs.length === 0){
+            this.characterInfo = undefined;
           }
-          console.log(this.characterInfo);
         }
-        else if (this.selectedItem.licence === 'Harry Potter') {
-          const response = await this.apiTolkienService.getCharacterInfo(this.selectedItem.name);
-          if (response && response.docs && response.docs.length > 0) {
-            this.characterInfo = response.docs[0];
+        else if (this.selectedItem.licence === 'Harry Potter') {          
+          const response = await this.apiPotterService.getCharacterInfo(this.selectedItem.name);
+          if (response ) {
+            this.characterInfoPotter = response;
+          }else{
+            this.characterInfoPotter = undefined;
           }
-          console.log(this.characterInfo);
         }
         else if (this.selectedItem.licence === 'StarWars') {
           const response = await this.apiTolkienService.getCharacterInfo(this.selectedItem.name);

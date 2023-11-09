@@ -16,8 +16,9 @@
                             <img [src]="item.imageSrc" alt="{{ item.name }}">
                         </picture>
                         <article class="item__info">
+                            <p class="card-item__licence"> {{ item.licence }}</p>
                             <h3 class="card-item__name">{{ item.name }}</h3>
-                            <p class="card-item__licence">{{ item.licence }}</p>
+                            <p class="card-item__serie">{{ item.serie }}</p>
                             <p class="card-item__price">Precio: $ {{ item.price }}</p>
                         </article>
                     </div>

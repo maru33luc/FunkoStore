@@ -62,9 +62,15 @@ export class ShopMainComponent implements OnInit {
       this.currentPage = 0; 
       this.calculateTotalPages(); 
     });
-  }
 
-  
+    // Suscripción a cambios en el filtro de licencia
+    this.orderService.licenceQuery$?.subscribe((licence) => {
+      this.searchQuery = licence;
+      this.funkoService.filterFunkosByLicence(licence);
+      this.currentPage = 0; 
+      this.calculateTotalPages(); 
+    });
+  }
 
     // ------------PAGINACION -------------------------------
 

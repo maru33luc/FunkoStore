@@ -113,8 +113,18 @@ export class FunkosService {
           this.filteredFunkosSubject.next(this.filteredFunkos);
         }
       }
-      
 
+      filterFunkosByLicence(licence: string) {
+        if (licence.trim() === '') {
+          this.showAllFunkos();
+        } else {            
+          this.filteredFunkos = this.funkos.filter((funko) =>
+            (funko.licence == licence && typeof funko.licence === 'string')
+          );
+            this.filteredFunkosSubject.next(this.filteredFunkos);
+        }
+      }
+      
     getFilteredFunkosObservable(): Observable<Funko[]> {
         return this.filteredFunkosSubject.asObservable();
     }

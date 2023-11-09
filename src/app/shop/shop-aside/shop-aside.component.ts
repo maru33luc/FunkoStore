@@ -53,6 +53,15 @@ export class ShopAsideComponent {
       this.orderService.setCategoryQuery(''); // Valor vacío si se desmarca
     }
   }
+
+  onLicenceChange(event: Event, licence: string) {
+    const checkbox = event.target as HTMLInputElement;
+    if (checkbox.checked) {
+      this.orderService.setLicenceQuery(licence);
+    } else {
+      this.orderService.setLicenceQuery(''); // Valor vacío si se desmarca
+    }
+  }
   
 
   // Funciones para el manejo de los placeholders de los inputs de precio  

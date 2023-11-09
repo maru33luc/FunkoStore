@@ -6,10 +6,13 @@ import { BehaviorSubject, Observable } from 'rxjs';
 })
 export class OrderFunkosService {
 
-    constructor() {}
+    constructor() { }
 
     private orderTypeSubject = new BehaviorSubject<'az' | 'za' | 'desc' | 'asc'>('az');
     orderType$ = this.orderTypeSubject.asObservable();
+    private categoryQuerySubject = new BehaviorSubject<string>('');
+    categoryQuery$: Observable<string> = this.categoryQuerySubject.asObservable();
+    licenceQuery$= new BehaviorSubject<string>('');
 
     setOrderType(orderType: 'az' | 'za' | 'desc' | 'asc') {
         this.orderTypeSubject.next(orderType);
@@ -22,8 +25,9 @@ export class OrderFunkosService {
         this.searchQuerySubject.next(query);
     }
 
-    private categoryQuerySubject = new BehaviorSubject<string>('');
-    categoryQuery$: Observable<string> = this.categoryQuerySubject.asObservable();
+    setLicenceQuery(licence: string) {
+        this.licenceQuery$?.next(licence);
+    }
 
     setCategoryQuery(serie: string) {
         this.categoryQuerySubject.next(serie);

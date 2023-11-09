@@ -77,6 +77,7 @@ main {
     padding-top: 5px;
     align-items: center;
     background: #FAFAFF;
+    height: 160px;
 }
 
 .cart__item-picture {
@@ -109,6 +110,18 @@ main {
     margin-top: 5px;
     margin-bottom: 10px;
     text-wrap: balance;
+    color: var(--secondary-900);
+}
+
+.item__container .item__info .card-item__serie {
+    font-family: Inter;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 17px;
+    letter-spacing: 0em;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    text-wrap: balance;
 }
 
 .item__container .item__info .card-item__name {
@@ -123,7 +136,7 @@ main {
 .item__container .item__info .card-item__price {
     font-family: Inter;
     font-size: 14px;
-    font-weight: 400;
+    font-weight: 600;
     line-height: 17px;
     letter-spacing: 0em;
     text-align: left;
@@ -173,6 +186,9 @@ main {
 .cart__total-price {
     width: 140px;
     text-align: end;
+    font-family:  Inter;
+    font-size: 20px;
+    font-weight: 500;
 }
 
 .cart__item-delete {
@@ -328,7 +344,7 @@ main {
     }
 
     .cart__total-price p {
-        font-size: 1.4em;
+        font-size: 1em;
     }
 }
 
@@ -376,7 +392,7 @@ main {
     }
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 700px) {
     main {
         margin-right: 0;
         margin-left: 0;
@@ -513,6 +529,30 @@ main {
     }
     .cart__btn-pay{  
         font-size: 1.7em!important;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    
+    
+    .cart__total-price p {
+        font-size: 0.8em;
+    }
+
+    .cart__item-delete {
+        width: 30px;
+        height: 30px;
+        margin-left: 10px;
+        margin-right: 10px;
+        cursor: pointer;
+    }
+
+    .cart__item-confirm{
+        width: 30px;
+        height: 30px;
+        margin-left: 10px;
+        margin-right: 10px;
+        cursor: pointer;
     }
 }
 

@@ -55,4 +55,13 @@
     <img src="{{characterInfoPotter?.image}}" alt="" *ngIf="characterInfoPotter?.image!=undefined">
   </article>
 
+  <article class="item-info-box starWars-info" *ngIf="selectedItemLicence=='Star Wars'">
+   
+      <h4 class="item-info-box__title">Información Extra</h4>
+      <p><strong>Nombre:</strong> {{characterInfoStarWars?.name? characterInfoStarWars?.name : 'desconocido' }} </p>
+      <p><strong>Descripción:</strong> {{characterInfoStarWars?.description? characterInfoStarWars?.description : 'desconocido' }} </p>
+    
+    <img src="{{characterInfoStarWars?.image}}" alt="" *ngIf="characterInfoStarWars?.image!=undefined">
+  </article>
+
 </section>

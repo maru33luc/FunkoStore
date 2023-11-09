@@ -370,4 +370,12 @@
     width: 100px;
     border-radius: 12px;
   }
+
+  .starWars-info img{
+    border-radius: 10px;
+}
+
+.starWars-info p{
+    text-align:justify;
+}
   

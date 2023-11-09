@@ -18,3 +18,9 @@ export interface CharacterApiPotter {
     }
     image: string;
 }
+
+export interface CharacterApiStarWars {
+    name: string;
+    description: string;
+    image: string;
+}

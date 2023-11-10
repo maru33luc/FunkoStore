@@ -13,7 +13,6 @@ export class FunkosService {
     private filteredFunkos: Funko[] = [];
     private filteredFunkosSubject: Subject<Funko[]> = new Subject<Funko[]>();
     private appliedFilters: { type: string; criteria: string, min:number,max:number }[] = [];
-
     private history: Funko[][] = [];
 
     constructor(private orderFunkoService: OrderFunkosService) {
@@ -109,8 +108,6 @@ export class FunkosService {
     }
 
     aplicarFiltro(name: string, criteria: string, min: number, max:number): Funko[] {
-
-        console.log(this.appliedFilters);
         if (!this.appliedFilters.find(filter => filter.type === name)) {
             this.appliedFilters.push({ type: name, criteria, min, max });
         }
@@ -157,18 +154,15 @@ export class FunkosService {
                 });
                 result = result.filter(funko => {
                     const price = funko.price;
-                    console.log(min,max);
                     return !isNaN(price) && price >= min && price <= max;
                 });
                 console.log(result);
             } else if (type === 'category') {
                 if(!this.appliedFilters.find(filter => filter.type === "licence")){
-                    console.log('THIS FUNKOS',this.funkos);
                     result = this.funkos.filter((funko) =>
                     (funko.category == criteria && typeof funko.category === 'string')
                 ); 
-                console.log('RESULT',result);
-                    // this.limpiarFiltro("category");
+              
                 }
                 result = result.filter((funko) =>
                     (funko.category == criteria && typeof funko.category === 'string')
@@ -201,27 +195,28 @@ export class FunkosService {
 
     limpiarFiltro(name: string) {
         const filter = this.appliedFilters.find(filter => filter.type === name);
-        console.log('FILTER', filter);
         if (filter) {
             this.appliedFilters.splice(this.appliedFilters.indexOf(filter), 1);
         }
-
-        console.log(this.appliedFilters);
     }
 
     undoFilters(): Funko[] {
+        if(this.appliedFilters.length == 0 ){
+            this.showAllFunkos();
+            return this.funkos;
+        }
+
         if (this.history.length > 1) {
             // Elimina el estado actual del historial y retrocede al estado anterior
             this.history.pop();
             const previousState = this.history[this.history.length - 1];
             this.filteredFunkosSubject.next([...previousState]);
-            console.log('HISTORY', this.history);
+            this.aplicarFiltro("", "", 0, 0);
             return [...previousState];
         } else {
             // No hay estados anteriores para retroceder
             return this.funkos;
         }
-        
     }
 
     clearAllFilters() {

@@ -32,7 +32,8 @@ import { FormsModule } from '@angular/forms';
         ShopRoutingModule,
         SharedModule,
         AuthModule,
-        FormsModule
+        FormsModule,
+        
     ],
     exports: [
         CollectionComponent,

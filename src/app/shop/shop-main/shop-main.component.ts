@@ -83,7 +83,6 @@ export class ShopMainComponent implements OnInit {
     this.orderService.maxPriceSubject.subscribe((maxPrice) => {
       if (maxPrice !== 0) {
         this.maxPrice = maxPrice;
-        console.log(this.minPrice, maxPrice);
         this.funkoService.aplicarFiltro("price", "", this.minPrice, this.maxPrice);
         this.currentPage = 0;
         this.calculateTotalPages();

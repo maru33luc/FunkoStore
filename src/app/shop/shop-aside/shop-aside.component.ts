@@ -31,7 +31,10 @@ export class ShopAsideComponent {
 
   onSearchChange(query: string) {
     this.orderService.setSearchQuery(query);
-  }
+    if(query.length == 0){
+      this.funkoService.undoFilters();
+      this.funkoService.limpiarFiltro("name");
+  }}
 
   onCategoryChange(event: Event, serie: string) {
     const checkbox = event.target as HTMLInputElement;
@@ -40,7 +43,7 @@ export class ShopAsideComponent {
     } else {
       this.orderService.setCategoryQuery(''); // Valor vacío si se desmarca
       this.funkoService.undoFilters();
-      this.funkoService.limpiarFiltro("category");
+      this.funkoService.limpiarFiltro('category');
     }
   }
 
@@ -48,12 +51,10 @@ export class ShopAsideComponent {
     const checkbox = event.target as HTMLInputElement;
     if (checkbox.checked) {
       this.orderService.setLicenceQuery(licence);
-      console.log('the licence is: ', + licence);
     } else {
       this.orderService.setLicenceQuery('');
       this.funkoService.undoFilters();
       this.funkoService.limpiarFiltro("licence");
-      console.log('se destildo el checkbox');
     }
   }
 

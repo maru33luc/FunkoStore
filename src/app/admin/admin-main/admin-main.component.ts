@@ -51,7 +51,6 @@ export class AdminMainComponent implements OnInit {
         const response = await this.funkosService.getFunkos();
         if (response != undefined) {
             this.lista = response as Funko[];
-            console.log(this.lista);
             this.calculateTotalPages();
         }
     }

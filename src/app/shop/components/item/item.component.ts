@@ -1,5 +1,5 @@
-import { CartLocalService } from './../../services/cart-local.service';
-import { ApiTolkienService } from './../../services/api-tolkien.service';
+import { CartLocalService } from '../../../services/cart-local.service';
+import { ApiTolkienService } from '../../../services/api-tolkien.service';
 import { Component, AfterViewInit, ElementRef, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CharacterApiPokemon, CharacterApiPotter, CharacterApiStarWars, CharacterApiTolkien } from 'src/app/interfaces/CharacterApi';

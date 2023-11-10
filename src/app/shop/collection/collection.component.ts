@@ -5,4 +5,9 @@ import { Component } from '@angular/core';
     templateUrl: './collection.component.html',
     styleUrls: ['./collection.component.css']
 })
-export class CollectionComponent { }
+export class CollectionComponent {
+
+    scrollToTop() {
+        window.scroll(0, 0);
+    }
+}

@@ -9,8 +9,9 @@
 
 @media screen and (min-width: 768px) {
     .collection {
-        width: calc(100vw - var(--spacing-40));
         flex-direction: row;
+        justify-content: flex-start;
+        gap: 0;
     }
 }
 

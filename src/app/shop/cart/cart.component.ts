@@ -25,12 +25,11 @@ export class CartComponent {
 
     ngOnInit() {
 
-<<<<<<< HEAD
         this.loginService.authStateObservable()?.subscribe(async (user) => {
 
             if (user) {
                 this.user = user;
-                this.cartService.obtenerCarrito().subscribe(async (items) => {
+                this.cartService.cartSubject.subscribe(async (items) => {
                     this.cartItems = items;
                     this.cartItemsCopy = this.cartItems.map(item => ({ ...item }));
                     await this.loadFunkoDetails();
@@ -43,13 +42,6 @@ export class CartComponent {
         }
         );
         this.cartLocalService.cartSubject.subscribe((items) => {
-=======
-      this.loginService.authStateObservable()?.subscribe(async(user) => {
-        
-        if (user) {
-          this.user = user;
-          this.cartService.cartSubject.subscribe(async (items) => {
->>>>>>> marina
             this.cartItems = items;
             this.cartItemsCopy = this.cartItems.map(item => ({ ...item }));
             this.loadFunkoDetails();
@@ -83,24 +75,11 @@ export class CartComponent {
         }
     }
 
-<<<<<<< HEAD
     decreaseQuantity(item: any) {
         if (item.quantity > 0) {
             item.quantity--;
             this.quantityChanges.push({ funkoId: item.funkoId, quantity: item.quantity });
         }
-=======
-  saveChangesToDatabase() {
-    if(this.user){
-      this.cartService.actualizarCantidades(this.quantityChanges);
-    }else{
-    for (const change of this.quantityChanges) {
-      const cartItem = this.cartItems.find((item) => item.funkoId === change.funkoId);
-      if (cartItem) {
-        cartItem.quantity = change.quantity;
-        this.cartLocalService.updateCartItem({ funkoId: change.funkoId, quantity: change.quantity });
-      }
->>>>>>> marina
     }
 
     saveChangesToDatabase() {

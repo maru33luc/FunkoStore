@@ -4,6 +4,7 @@ import { CartService } from 'src/app/services/cart.service';
 import { FunkosService } from 'src/app/services/funkos.service';
 import { CartLocalService } from 'src/app/services/cart-local.service';
 import { Observable } from 'rxjs';
+import Swal from 'sweetalert2';
 
 @Component({
     selector: 'app-cart',
@@ -102,13 +103,23 @@ export class CartComponent {
     }
 
     removeItem(item: any) {
-        if (this.user) {
-            this.cartService.eliminarDelCarrito(item.funkoId);
-            this.cartItems = this.cartItems.filter((cartItem) => cartItem !== item);
-        } else {
-            this.cartLocalService.removeFromCart(item.funkoId);
-            this.cartItems = this.cartItems.filter((cartItem) => cartItem !== item);
-        }
+        Swal.fire({
+            text: "¿Está seguro de eliminar este producto?",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonText: "Eliminar",
+            cancelButtonText: "Cancelar"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                if (this.user) {
+                    this.cartService.eliminarDelCarrito(item.funkoId);
+                    this.cartItems = this.cartItems.filter((cartItem) => cartItem !== item);
+                } else {
+                    this.cartLocalService.removeFromCart(item.funkoId);
+                    this.cartItems = this.cartItems.filter((cartItem) => cartItem !== item);
+                }
+            }
+        });
     }
 
     getTotalQuantity(): number {

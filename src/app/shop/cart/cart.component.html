@@ -1,69 +1,67 @@
-<main class="main-container">
-    <section class="cart__items">
-        <h2 class="title">CARRITO DE COMPRAS</h2>
-        <article class="cart__items-header">
-            <ul>
-                <li>DETALLE DEL PRODUCTO</li>
-                <li>CANTIDAD</li>
-                <li>TOTAL</li>
-            </ul>
-        </article>
-        <article class="cart__article">
-            <ul class="cart__items">
-                <li class="cart__item" *ngFor="let item of cartItemsCopy">
-                    <div class="item__container">
-                        <picture class="cart__item-picture">
-                            <img [src]="item.imageSrc" alt="{{ item.name }}">
-                        </picture>
-                        <article class="item__info">
-                            <p class="card-item__licence"> {{ item.licence }}</p>
-                            <h3 class="card-item__name">{{ item.name }}</h3>
-                            <p class="card-item__serie">{{ item.serie }}</p>
-                            <p class="card-item__price">Precio: $ {{ item.price }}</p>
-                        </article>
-                    </div>
-                    <div class="item__cart">
-                        <input class="item__input" type="text" [value]="item.quantity" id="quantity" 
-                        placeholder="0" disabled>
-                        <div class="cart__quantity-buttons">
-                            <button (click)="increaseQuantity(item)" id="substract" class="item__quantity">+</button>
-                            <button (click)="decreaseQuantity(item)"id="add" class="item__quantity">-</button>
-                        </div>
-                    </div>
-                    <div class="cart__total-price">
-                        <p>${{ calculateTotalPrice(item) }}</p>
-                    </div>
-                   <div>
-                    <img src="../../../../assets/img/icons/check-circle-svgrepo-com.svg"
-                    alt="" class="cart__item-confirm" (click)="saveChangesToDatabase()">
-                    <img src="../..//../../assets/img/icons/gg-close-o.svg"
-                    alt="" class="cart__item-delete" (click)="removeItem(item)">
-                   </div>   
-                </li>
-            </ul>
-        </article>
-    </section>
+<main class="cart-main">
+    <h1 class="cart-h1">CARRITO DE COMPRAS</h1>
 
-    <section class="resumen__cart">
-        <h2 class="title">RESUMEN</h2>
-        <article class="resumen__cart-container">
-            <div class="resumen__cart-line">
-                <p>CANTIDAD DE ELEMENTOS</p>
-                <p>{{ getTotalQuantity() }}</p>
+    <ul class="cart-items">
+        <li class="cart-item" *ngFor="let item of cartItemsCopy">
+            <div class="cart-item-info">
+                <picture class="cart-item-picture">
+                    <img [src]="item.imageSrc" alt="{{item.name}}">
+                </picture>
+
+                <article class="cart-item-content">
+                    <p class="cart-item-license">{{item.licence}}</p>
+                    <p class="cart-item-name">{{item.name}}</p>
+                    <p class="cart-item-serie">{{item.serie}}</p>
+                </article>
             </div>
-            <div class="resumen__cart-line">
+
+            <div class="cart-item-quantity">
+                <input class="cart-item-input" type="text" [value]="item.quantity" id="quantity" placeholder="0"
+                    disabled>
+
+                <div class="cart-item-quantity-btns">
+                    <button class="cart-item-quantity-btn" (click)="increaseQuantity(item)" id="substract">+</button>
+                    <button class="cart-item-quantity-btn" (click)="decreaseQuantity(item)" id="add">-</button>
+                </div>
+            </div>
+
+            <div class="cart-total-price">
+                <p>${{calculateTotalPrice(item)}}</p>
+            </div>
+
+            <div>
+                <img class="cart-item-confirm" src="../../../../assets/img/icons/check-circle-svgrepo-com.svg"
+                    (click)="saveChangesToDatabase()">
+                <img class="cart-item-delete" src="../..//../../assets/img/icons/gg-close-o.svg"
+                    (click)="removeItem(item)">
+            </div>
+        </li>
+    </ul>
+
+    <section class="cart-resumen">
+        <h2 class="cart-resumen-title">RESUMEN</h2>
+        <article class="cart-resumen-container">
+            <div class="cart-resumen-line">
+                <p>PRODUCTOS</p>
+                <p>{{getTotalQuantity()}}</p>
+            </div>
+
+            <div class="cart-resumen-line">
                 <p>SUBTOTAL</p>
-                <p>$ {{ getSubtotal() | number: '1.2-2' }}</p>
+                <p>${{ getSubtotal() | number: '1.2-2' }}</p>
             </div>
-            <div class="resumen__cart-line">
+
+            <div class="cart-resumen-line">
                 <p>ENVÍO</p>
                 <p>$0</p>
             </div>
-            <div class="resumen__cart-line">
+
+            <div class="cart-resumen-line">
                 <p>TOTAL</p>
-                <p>$ {{ getTotalPrice() | number: '1.2-2' }}</p>
+                <p>${{ getTotalPrice() | number: '1.2-2' }}</p>
             </div>
         </article>
-        <a href="./checkout.html" class="cart__btn-pay">IR A PAGAR</a>
+
+        <a class="cart-pay-btn" href="./checkout.html">PAGAR</a>
     </section>
 </main>

@@ -25,6 +25,9 @@
     .collection:nth-of-type(2) .collection-cover {
         order: -1;
     }
+    .collection:nth-of-type(4) .collection-cover {
+        order: -1;
+    }
 }
 
 .collection-content {

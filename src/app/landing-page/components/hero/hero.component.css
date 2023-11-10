@@ -27,7 +27,7 @@
 
 @media screen and (min-width: 768px) {
     .hero-title {
-        font-size: var(--font-display);
+        font-size: var(--font-jumbo);
     }    
 }
 

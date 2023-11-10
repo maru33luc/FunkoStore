@@ -3,12 +3,13 @@ import { Funko } from '../interfaces/Funko';
 import { Observable, Subject, catchError, scan } from 'rxjs';
 import axios from 'axios';
 import { OrderFunkosService } from './order-funkos.service';
+import { environments } from 'src/environments/environments';
 
 @Injectable({
     providedIn: 'root'
 })
 export class FunkosService {
-    private url: string = 'http://localhost:4000/funkos';
+    private url: string = environments.urlFunkosJson;
     private funkos: Funko[] = [];
     private filteredFunkos: Funko[] = [];
     private filteredFunkosSubject: Subject<Funko[]> = new Subject<Funko[]>();
@@ -41,7 +42,7 @@ export class FunkosService {
 
     async getFunkos(): Promise<Funko[] | undefined> {
         try {
-            const response = await axios.get(this.url);
+            const response = await axios.get(this.url + '/funkos');
             return response.data;
         }
         catch (e) {
@@ -52,7 +53,7 @@ export class FunkosService {
 
     async getFunko(id: number | undefined): Promise<Funko | undefined> {
         try {
-            const response = await axios.get(`${this.url}/${id}`);
+            const response = await axios.get(`${this.url}/funkos/${id}`);
             return response.data;
         }
         catch (e) {
@@ -63,7 +64,7 @@ export class FunkosService {
 
     async postFunko(funko: Funko | undefined) {
         try {
-            const response = await axios.post(this.url, funko);
+            const response = await axios.post(this.url + '/funkos', funko);
         }
         catch (e) {
             console.log(e);
@@ -72,7 +73,7 @@ export class FunkosService {
 
     async putFunko(funko: Funko, id: number | undefined) {
         try {
-            const response = await axios.put(`${this.url}/${id}`, funko);
+            const response = await axios.put(`${this.url}/funkos/${id}`, funko);
         }
         catch (e) {
             console.log(e);
@@ -81,7 +82,7 @@ export class FunkosService {
 
     async deleteFunko(id: number | undefined) {
         try {
-            const response = await axios.delete(`${this.url}/${id}`);
+            const response = await axios.delete(`${this.url}/funkos/${id}`);
         }
         catch (e) {
             console.log(e);

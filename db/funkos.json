@@ -1099,66 +1099,76 @@
       "stock": 40,
       "licence": "Pokemon",
       "id": 82
-    }  
-],
-
-"pokemon":[
-  {
-    "name": "Pidgeotto",
-    "description": "Pidgeotto es conocido como el Pokémon Pájaro. A medida que evoluciona de Pidgey, este Pokémon muestra un aumento significativo en tamaño y en sus habilidades de vuelo. Su plumaje es más colorido en comparación con el de Pidgey, con un matiz más pronunciado de marrón y algunas plumas más grandes en sus alas. Pidgeotto es ágil y tiene una vista aguda, lo que lo convierte en un cazador eficiente. Suele cazar presas pequeñas y rápidas, y es capaz de realizar maniobras aéreas sorprendentes para atrapar a sus presas. A medida que se desarrolla, Pidgeotto continúa fortaleciendo sus alas y habilidades de vuelo en preparación para su etapa final de evolución, Pidgeot.",
-    "type": "Normal/Flyer",
-    "height": "1.09 m",
-    "weight": "30.0 kg",
-    "id": 76
-  },
-  {
-    "name": "Charmander",
-    "description": "Charmander es un Pokémon pequeño, bípedo, reptiliano. Tiene dos pequeños cuernos puntiagudos en la parte superior de su cabeza. Tiene ojos azules, un hocico puntiagudo y orejas largas y puntiagudas con bordes oscuros. Su cuerpo delgado tiene una cola larga y flameante, que se enciende cuando se emociona. La llama de su cola es un indicador de su salud y emociones, parpadeando brillantemente cuando está contento y oscureciéndose cuando está triste o enfermo. Charmander generalmente es amigable, pero se vuelve muy agresivo si se le provoca. Sin embargo, en el anime, Ash Ketchum tuvo un Charmander que era leal a él incluso después de que evolucionó.",
-    "type": "Fire",
-    "height": "0.61 m",
-    "weight": "8.5 kg",
-    "id": 77
-  },
-  {
-    "name": "Dragonite",
-    "description": "Dragonite es un Pokémon grande y naranja con alas de color verde claro, antenas pequeñas y una panza blanca. Tiene grandes ojos, una nariz pequeña y una boca puntiaguda con dos dientes prominentes que sobresalen de la mandíbula superior. Cada una de sus alas tiene tres garras. Su cola es gruesa y termina con un borde en forma de V. Dragonite es capaz de volar gracias a sus alas pequeñas y delgadas. Su cuerpo está cubierto de una ligera capa de pelaje naranja. Dragonite es capaz de volar a velocidades de Mach 2 gracias a las alas que tiene en la espalda. Es un Pokémon muy amable y cariñoso, y se dice que guía a los barcos perdidos en medio de la tormenta hacia tierra firme con sus cálidas alas.",
-    "type": "Dragon/Flyer",
-    "height": "2.21 m",
-    "weight": "210.0 kg",
-    "id": 78
-  },
-  {
-    "name": "Pikachu",
-    "description": "Pikachu es conocido como el Pokémon Ratón Eléctrico. Es un pequeño roedor amarillo con orejas puntiagudas y mejillas rojas. Tiene grandes ojos negros y una cola en forma de rayo. La característica más distintiva de Pikachu es su capacidad para generar electricidad y liberarla en forma de ataques eléctricos.Pikachu es conocido por su naturaleza amigable y su disposición juguetona. A menudo se le representa como un compañero leal que acompaña a entrenadores Pokémon en sus viajes. Su aspecto y personalidad han hecho que Pikachu sea un símbolo icónico de la cultura pop y uno de los personajes más reconocibles en la franquicia Pokémon.",
-    "type": "Electric",
-    "height": "0.4m",
-    "weight": "6 kg",
-    "id": 79
-  },
-  {
-    "name": "Vulpix",
-    "description": "Vulpix es un pequeño zorro de color anaranjado con seis colas, cada una de ellas con una punta de color blanco. Su pelaje es suave y esponjoso, dándole un aspecto encantador. Aunque Vulpix es un Pokémon de tipo Fuego, sus colas no están constantemente ardiendo; sin embargo, se dice que la intensidad del fuego aumenta cuando el Pokémon se encuentra emocionado o enojado. Este Pokémon es conocido por ser muy cauteloso y astuto.",
-    "type": "Fire",
-    "height": "0.6m",
-    "weight": "9.9 kg",
-    "id": 80
-  },
-  {
-    "name": "Bulbasaur",
-    "description": "Bulbasaur es un pequeño Pokémon reptiloide de color verde con una especie de planta brotando de su espalda. Esta planta es en realidad un bulbo, que se desarrolla a medida que Bulbasaur crece. Se le conoce como el Pokémon Semilla. A medida que evoluciona, este bulbo se transforma en un hermoso bulbo de flor cuando se convierte en Ivysaur y luego en una flor completamente desarrollada cuando evoluciona a Venusaur.",
-    "type": "Plant/Poison",
-    "height": "0.7m",
-    "weight": "6.9 kg",
-    "id": 81
-  },
-  {
-    "name": "Squirtle",
-    "description": "Squirtle es un pequeño Pokémon tortuga de color azul con una concha que le protege la espalda. Su concha tiene forma de media esfera y es lo suficientemente resistente como para proporcionarle una defensa sólida contra los ataques enemigos. Squirtle es conocido como el Pokémon Tortuga y es el primer eslabón en la cadena evolutiva que lleva a Wartortle y finalmente a Blastoise.",
-    "type": "Water",
-    "height": "0.5m",
-    "weight": "9 kg",
-    "id": 82
-  }
-  
-]
+    },
+    {
+      "name": "Theoden",
+      "category": "Pop! Vynil",
+      "serie": "Pocket Pop!",
+      "description": "s",
+      "price": 1,
+      "frontImage": "asdad.xom",
+      "backImage": "sadsj.xom",
+      "stock": 20,
+      "licence": "El Señor de los Anillos",
+      "id": 83
+    }
+  ],
+  "pokemon": [
+    {
+      "name": "Pidgeotto",
+      "description": "Pidgeotto es conocido como el Pokémon Pájaro. A medida que evoluciona de Pidgey, este Pokémon muestra un aumento significativo en tamaño y en sus habilidades de vuelo. Su plumaje es más colorido en comparación con el de Pidgey, con un matiz más pronunciado de marrón y algunas plumas más grandes en sus alas. Pidgeotto es ágil y tiene una vista aguda, lo que lo convierte en un cazador eficiente. Suele cazar presas pequeñas y rápidas, y es capaz de realizar maniobras aéreas sorprendentes para atrapar a sus presas. A medida que se desarrolla, Pidgeotto continúa fortaleciendo sus alas y habilidades de vuelo en preparación para su etapa final de evolución, Pidgeot.",
+      "type": "Normal/Flyer",
+      "height": "1.09 m",
+      "weight": "30.0 kg",
+      "id": 76
+    },
+    {
+      "name": "Charmander",
+      "description": "Charmander es un Pokémon pequeño, bípedo, reptiliano. Tiene dos pequeños cuernos puntiagudos en la parte superior de su cabeza. Tiene ojos azules, un hocico puntiagudo y orejas largas y puntiagudas con bordes oscuros. Su cuerpo delgado tiene una cola larga y flameante, que se enciende cuando se emociona. La llama de su cola es un indicador de su salud y emociones, parpadeando brillantemente cuando está contento y oscureciéndose cuando está triste o enfermo. Charmander generalmente es amigable, pero se vuelve muy agresivo si se le provoca. Sin embargo, en el anime, Ash Ketchum tuvo un Charmander que era leal a él incluso después de que evolucionó.",
+      "type": "Fire",
+      "height": "0.61 m",
+      "weight": "8.5 kg",
+      "id": 77
+    },
+    {
+      "name": "Dragonite",
+      "description": "Dragonite es un Pokémon grande y naranja con alas de color verde claro, antenas pequeñas y una panza blanca. Tiene grandes ojos, una nariz pequeña y una boca puntiaguda con dos dientes prominentes que sobresalen de la mandíbula superior. Cada una de sus alas tiene tres garras. Su cola es gruesa y termina con un borde en forma de V. Dragonite es capaz de volar gracias a sus alas pequeñas y delgadas. Su cuerpo está cubierto de una ligera capa de pelaje naranja. Dragonite es capaz de volar a velocidades de Mach 2 gracias a las alas que tiene en la espalda. Es un Pokémon muy amable y cariñoso, y se dice que guía a los barcos perdidos en medio de la tormenta hacia tierra firme con sus cálidas alas.",
+      "type": "Dragon/Flyer",
+      "height": "2.21 m",
+      "weight": "210.0 kg",
+      "id": 78
+    },
+    {
+      "name": "Pikachu",
+      "description": "Pikachu es conocido como el Pokémon Ratón Eléctrico. Es un pequeño roedor amarillo con orejas puntiagudas y mejillas rojas. Tiene grandes ojos negros y una cola en forma de rayo. La característica más distintiva de Pikachu es su capacidad para generar electricidad y liberarla en forma de ataques eléctricos.Pikachu es conocido por su naturaleza amigable y su disposición juguetona. A menudo se le representa como un compañero leal que acompaña a entrenadores Pokémon en sus viajes. Su aspecto y personalidad han hecho que Pikachu sea un símbolo icónico de la cultura pop y uno de los personajes más reconocibles en la franquicia Pokémon.",
+      "type": "Electric",
+      "height": "0.4m",
+      "weight": "6 kg",
+      "id": 79
+    },
+    {
+      "name": "Vulpix",
+      "description": "Vulpix es un pequeño zorro de color anaranjado con seis colas, cada una de ellas con una punta de color blanco. Su pelaje es suave y esponjoso, dándole un aspecto encantador. Aunque Vulpix es un Pokémon de tipo Fuego, sus colas no están constantemente ardiendo; sin embargo, se dice que la intensidad del fuego aumenta cuando el Pokémon se encuentra emocionado o enojado. Este Pokémon es conocido por ser muy cauteloso y astuto.",
+      "type": "Fire",
+      "height": "0.6m",
+      "weight": "9.9 kg",
+      "id": 80
+    },
+    {
+      "name": "Bulbasaur",
+      "description": "Bulbasaur es un pequeño Pokémon reptiloide de color verde con una especie de planta brotando de su espalda. Esta planta es en realidad un bulbo, que se desarrolla a medida que Bulbasaur crece. Se le conoce como el Pokémon Semilla. A medida que evoluciona, este bulbo se transforma en un hermoso bulbo de flor cuando se convierte en Ivysaur y luego en una flor completamente desarrollada cuando evoluciona a Venusaur.",
+      "type": "Plant/Poison",
+      "height": "0.7m",
+      "weight": "6.9 kg",
+      "id": 81
+    },
+    {
+      "name": "Squirtle",
+      "description": "Squirtle es un pequeño Pokémon tortuga de color azul con una concha que le protege la espalda. Su concha tiene forma de media esfera y es lo suficientemente resistente como para proporcionarle una defensa sólida contra los ataques enemigos. Squirtle es conocido como el Pokémon Tortuga y es el primer eslabón en la cadena evolutiva que lleva a Wartortle y finalmente a Blastoise.",
+      "type": "Water",
+      "height": "0.5m",
+      "weight": "9 kg",
+      "id": 82
+    }
+  ]
 }

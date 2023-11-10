@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ItemComponent } from '../../item/item.component';
+import { ItemComponent } from '../../components/item/item.component';
 import { Observable } from 'rxjs';
 import { Funko } from 'src/app/interfaces/Funko';
 import { FunkosService } from 'src/app/services/funkos.service';

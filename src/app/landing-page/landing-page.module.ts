@@ -13,6 +13,7 @@ import { CommonModule } from '@angular/common';
 import { LandingPageRoutingModule } from './landing-page-routing.module';
 import { ShopModule } from '../shop/shop.module';
 import { SharedModule } from '../shared/shared.module';
+import { CollectionComponent } from './components/collection/collection.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { SharedModule } from '../shared/shared.module';
         HomePageComponent,
         AboutUsPageComponent,
         ContactPageComponent,
-        TermsPageComponent
+        TermsPageComponent,
+        CollectionComponent
     ],
     imports: [
         CommonModule,

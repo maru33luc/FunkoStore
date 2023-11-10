@@ -26,12 +26,15 @@ export class ShopAsideComponent {
 
     onOrderChange() {
         this.orderService.setOrderType(this.orderType);
+        this.funkoService.aplicarFiltro("order", this.orderType,0,0);
     }
 
   onSearchChange(query: string) {
-    
     this.orderService.setSearchQuery(query);
-  }
+    if(query.length == 0){
+      this.funkoService.undoFilters();
+      this.funkoService.limpiarFiltro("name");
+  }}
 
   onCategoryChange(event: Event, serie: string) {
     const checkbox = event.target as HTMLInputElement;
@@ -40,6 +43,7 @@ export class ShopAsideComponent {
     } else {
       this.orderService.setCategoryQuery(''); // Valor vacío si se desmarca
       this.funkoService.undoFilters();
+      this.funkoService.limpiarFiltro('category');
     }
   }
 
@@ -50,6 +54,7 @@ export class ShopAsideComponent {
     } else {
       this.orderService.setLicenceQuery('');
       this.funkoService.undoFilters();
+      this.funkoService.limpiarFiltro("licence");
     }
   }
 

@@ -28,6 +28,7 @@ export class ShopMainComponent implements OnInit {
     this.activatedRoute.paramMap.subscribe(params => {
       const licence = params.get('licence');
       this.orderService.setLicenceQuery(licence || '');
+      this.funkoService.aplicarFiltro("licence", licence || '', 0, 0);
       this.currentPage = 0;
       this.calculateTotalPages();
     });

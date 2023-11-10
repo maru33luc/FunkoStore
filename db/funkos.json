@@ -1099,18 +1099,6 @@
       "stock": 40,
       "licence": "Pokemon",
       "id": 82
-    },
-    {
-      "name": "Theoden",
-      "category": "Pop! Vynil",
-      "serie": "Pocket Pop!",
-      "description": "s",
-      "price": 1,
-      "frontImage": "asdad.xom",
-      "backImage": "sadsj.xom",
-      "stock": 20,
-      "licence": "El Señor de los Anillos",
-      "id": 83
     }
   ],
   "pokemon": [

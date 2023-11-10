@@ -2,7 +2,7 @@
     <article class="collection-content">
         <h3 class="collection-title">EL SEÑOR DE LOS ANILLOS</h3>
         <p class="collection-text">Sumérgete en la Tierra Media con esta colección que captura la esencia de la obra maestra de J.R.R. Tolkien.</p>
-        <a class="collection-btn">VER COLECCIÓN</a>
+        <a class="collection-btn" [routerLink]="['/shop', { licence: 'The Lord of the Rings' }]">VER COLECCIÓN</a>
     </article>
     <picture class="collection-cover">
         <img src="../../../assets/img/funkos/gandalf.png"
@@ -14,7 +14,7 @@
     <article class="collection-content">
         <h3 class="collection-title">STAR WARS</h3>
         <p class="collection-text">Explora la galaxia muy muy lejana a través de esta colección que fascinará a cualquier fanático de la saga.</p>
-        <a class="collection-btn">VER COLECCIÓN</a>
+        <a class="collection-btn" [routerLink]="['/shop', { licence: 'Star Wars' }]">VER COLECCIÓN</a>
     </article>
     <picture class="collection-cover">
         <img src="../../../assets/img/funkos/ahsoka.png"
@@ -26,7 +26,7 @@
     <article class="collection-content">
         <h3 class="collection-title">HARRY POTTER</h3>
         <p class="collection-text">Descubre esta colección que hará las delicias de todos los fanáticos de la magia y la aventura.</p>
-        <a class="collection-btn">VER COLECCIÓN</a>
+        <a class="collection-btn" [routerLink]="['/shop', { licence: 'Harry Potter' }]">VER COLECCIÓN</a>
     </article>
     <picture class="collection-cover">
         <img src="../../../assets/img/funkos/harry-potter.webp"

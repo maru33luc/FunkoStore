@@ -22,6 +22,5 @@ export class PotterApiService {
       alert('Error en la solicitud' + error);
       return undefined;
     }
-  
   }
 }

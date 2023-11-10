@@ -16,12 +16,7 @@ export class ApiStarWarsService {
       if (data === undefined) {
         return undefined;
       }
-      else if (response.status === 200) {
-        return data[0];
-      }
-      else {
-        alert('Error en la solicitud' + response.status);
-      }
+      return data[0];
     } catch (error) {
       alert('Error en la solicitud' + error);
     }

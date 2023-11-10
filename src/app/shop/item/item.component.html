@@ -1,4 +1,5 @@
 <section class="item__container">
+ 
   <article class="item">
     <picture class="item__img card-item__cover">
       <img class="card-item__img--front" src="{{selectedItem?.frontImage}}" alt="">
@@ -51,28 +52,23 @@
       <p><strong>Núcleo de Varita:</strong>{{characterInfoPotter?.wand?.core? characterInfoPotter?.wand?.core :
         'desconocido' }}</p>
     </div>
-
-    <img src="{{characterInfoPotter?.image}}" alt="" *ngIf="characterInfoPotter?.image!=undefined">
+    <img src="{{characterInfoPotter?.image}}" alt="" *ngIf="characterInfoPotter?.image!=undefined && characterInfoPotter?.image!=''">
   </article>
 
   <article class="item-info-box starWars-info" *ngIf="selectedItemLicence=='Star Wars'">
-   
       <h4 class="item-info-box__title">Información Extra</h4>
       <p><strong>Nombre:</strong> {{characterInfoStarWars?.name? characterInfoStarWars?.name : 'desconocido' }} </p>
       <p><strong>Descripción:</strong> {{characterInfoStarWars?.description? characterInfoStarWars?.description : 'desconocido' }} </p>
-    
     <img src="{{characterInfoStarWars?.image}}" alt="" *ngIf="characterInfoStarWars?.image!=undefined">
   </article>
 
   <article class="item-info-box pokemon-info" *ngIf="selectedItemLicence=='Pokemon'">
-   
     <h4 class="item-info-box__title">Información Extra</h4>
     <p><strong>Nombre:</strong> {{characterInfoPokemon?.name? characterInfoPokemon?.name : 'desconocido' }} </p>
     <p><strong>Descripción:</strong> {{characterInfoPokemon?.description? characterInfoPokemon?.description : 'desconocido' }} </p>
     <p><strong>Tipo:</strong> {{characterInfoPokemon?.type? characterInfoPokemon?.type : 'desconocido' }} </p>
     <p><strong>Altura:</strong> {{characterInfoPokemon?.height? characterInfoPokemon?.height : 'desconocido' }} </p>
     <p><strong>Peso:</strong> {{characterInfoPokemon?.weight? characterInfoPokemon?.weight : 'desconocido' }} </p>
-  
   <img src="{{characterInfoStarWars?.image}}" alt="" *ngIf="characterInfoStarWars?.image!=undefined">
 </article>
 

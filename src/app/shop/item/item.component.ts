@@ -7,8 +7,7 @@ import { Funko } from 'src/app/interfaces/Funko';
 import { CartService } from 'src/app/services/cart.service';
 import { FunkosService } from 'src/app/services/funkos.service';
 import { LoginService } from 'src/app/services/login.service';
-import { BehaviorSubject } from 'rxjs';
-import { PotterApiService } from 'src/app/services/potter-api.service';
+import { PotterApiService } from 'src/app/services/api-potter.service';
 import { ApiStarWarsService } from 'src/app/services/api-star-wars.service';
 import { ApiPokemonService } from 'src/app/services/api-pokemon.service';
 
@@ -23,7 +22,7 @@ export class ItemComponent implements AfterViewInit {
   characterInfoPotter: CharacterApiPotter | undefined;
   characterInfoStarWars: CharacterApiStarWars | undefined;
   characterInfoPokemon: CharacterApiPokemon | undefined;
-  isAuthenticated: boolean = false; // Variable para rastrear el estado de autenticación
+  isAuthenticated: boolean = false; 
   selectedItemLicence: string | undefined;
 
   @ViewChild('addButton') addButton: ElementRef | undefined;
@@ -42,7 +41,7 @@ export class ItemComponent implements AfterViewInit {
     private apiPokemonService : ApiPokemonService
   ) {
     this.loginService.authStateObservable()?.subscribe((user) => {
-      this.isAuthenticated = !!user; // Asigna verdadero si el usuario está logueado
+      this.isAuthenticated = !!user; 
     });
   }
 
@@ -60,6 +59,7 @@ export class ItemComponent implements AfterViewInit {
     }
   }
 
+  // Funciones para el manejo de los placeholders de los inputs de precio
   private handleAddClick() {
     this.updateQuantity(1);
   }
@@ -84,13 +84,15 @@ export class ItemComponent implements AfterViewInit {
     }
   }
 
+  // Funcion para obtener informacion de un funko por su id, obtener la informacion del personaje y filtrar por licencia
   async getItemById(itemId: number): Promise<Funko | undefined> {
     try {
       this.selectedItem = await this.funkosService.getFunko(itemId);
       this.selectedItemLicence = this.selectedItem?.licence;
       if (this.selectedItemLicence) {
-        this.funkosService.filterFunkosByLicence(this.selectedItemLicence);
+        // this.funkosService.filterFunkosByLicence(this.selectedItemLicence);// Le avisa al servicio que filtre por licencia para obtener en el slider los relacionados
       }
+      // Obtener informacion extra por API
       if (this.selectedItem && this.selectedItem.name) {
         if (this.selectedItem.licence === 'The Lord of the Rings') {
           const response = await this.apiTolkienService.getCharacterInfo(this.selectedItem.name);
@@ -101,7 +103,7 @@ export class ItemComponent implements AfterViewInit {
             this.characterInfo = undefined;
           }
         }
-        else if (this.selectedItem.licence === 'Harry Potter') {          
+        else if (this.selectedItem.licence === 'Harry Potter'){          
           const response = await this.apiPotterService.getCharacterInfo(this.selectedItem.name);
           if (response ) {
             this.characterInfoPotter = response;
@@ -125,7 +127,6 @@ export class ItemComponent implements AfterViewInit {
           }else{
             this.characterInfoPokemon = undefined;
           }
-
         }
       }
       return this.selectedItem;
@@ -134,8 +135,6 @@ export class ItemComponent implements AfterViewInit {
       return undefined;
     }
   }
-
-  
 
   async addToCart() {
     if (this.selectedItem && this.quantityButton) {
@@ -146,7 +145,6 @@ export class ItemComponent implements AfterViewInit {
             this.cartService.agregarAlCarrito(this.selectedItem.id, quantity);
           } else {
             await this.cartLocalService.addToCart({ funkoId: this.selectedItem.id, quantity: quantity });
-            console.log('Agregado al carrito local');
           }
           this.quantityButton.nativeElement.value = "0";
         }

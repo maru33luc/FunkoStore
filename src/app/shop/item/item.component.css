@@ -1,8 +1,6 @@
 .item__container {
     display: flex;
-   /* gap: 2.5em; */
     margin-top: 50px;
-    /* justify-content: center; */
     align-items: center;
     flex-wrap: wrap;
     margin-right: 10px 0;
@@ -342,7 +340,6 @@
   }
 
   .item__info .item__description{
-    /* font-family: 'Arial', sans-serif;  */
     font-family: var(--base-font);
     font-weight: 800;
     color: var(--secondary-900)!important; 
@@ -375,7 +372,7 @@
     border-radius: 10px;
 }
 
-.starWars-info p{
+.starWars-info, .pokemon-info p{
     text-align:justify;
 }
   

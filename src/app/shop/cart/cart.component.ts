@@ -28,7 +28,7 @@ export class CartComponent {
         
         if (user) {
           this.user = user;
-          this.cartService.obtenerCarrito().subscribe(async (items) => {
+          this.cartService.cartSubject.subscribe(async (items) => {
             this.cartItems = items;
             this.cartItemsCopy = this.cartItems.map(item => ({ ...item }));
             await this.loadFunkoDetails();
@@ -85,7 +85,6 @@ export class CartComponent {
     if(this.user){
       this.cartService.actualizarCantidades(this.quantityChanges);
     }else{
-      
     for (const change of this.quantityChanges) {
       const cartItem = this.cartItems.find((item) => item.funkoId === change.funkoId);
       if (cartItem) {

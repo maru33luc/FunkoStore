@@ -11,7 +11,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 })
 export class CartService {
     cart: FunkoCart[] = [];
-    private cartSubject: BehaviorSubject<FunkoCart[]> = new BehaviorSubject(this.cart);
+    cartSubject: BehaviorSubject<FunkoCart[]> = new BehaviorSubject(this.cart);
 
     constructor(private loginService: LoginService,
         private auth: Auth) {
@@ -23,11 +23,6 @@ export class CartService {
                 console.log('no hay usuario logueado');
             }
         });
-      console.log(this.cart);
-    }
-
-    obtenerCarrito(): BehaviorSubject<FunkoCart[]> {
-        return this.cartSubject;
     }
 
     clearCart() {

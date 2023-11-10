@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Funko } from '../interfaces/Funko';
-import { Observable, Subject } from 'rxjs';
+import { Observable, Subject, scan } from 'rxjs';
 import axios from 'axios';
+import { OrderFunkosService } from './order-funkos.service';
 
 @Injectable({
     providedIn: 'root'
@@ -11,20 +12,38 @@ export class FunkosService {
     private funkos: Funko[] = [];
     private filteredFunkos: Funko[] = [];
     private filteredFunkosSubject: Subject<Funko[]> = new Subject<Funko[]>();
+    private appliedFilters: { type: string; criteria: string, min:number,max:number }[] = [];
 
-    constructor() {
-        this.getFunkos().then(data => {
-            if (data) {
-                this.funkos = data;
-                this.filteredFunkos = data;
-                this.filteredFunkosSubject.next(this.filteredFunkos);
+    private history: Funko[][] = [];
+
+    constructor(private orderFunkoService: OrderFunkosService) {
+        this.initialize();
+    }
+
+    async initialize() {
+        await this.levantarFunkos();
+        this.aplicarFiltro("", "", 0, 0);
+    }
+
+    async levantarFunkos(): Promise<Funko[]> {
+        try {
+            const funkos = await this.getFunkos();
+            if (funkos) {
+                this.funkos = funkos;
+                this.filteredFunkos = funkos;
+                return funkos;
             }
-        });
+            return [];
+        } catch (error) {
+            console.error(error);
+            return [];
+        }
     }
 
     async getFunkos(): Promise<Funko[] | undefined> {
         try {
             const response = await axios.get(this.url);
+            console.log(response.data);
             return response.data;
         }
         catch (e) {
@@ -71,60 +90,6 @@ export class FunkosService {
         }
     }
 
-    filterFunkosByName(searchQuery: string) {
-        if (searchQuery.trim() === '') {
-            this.showAllFunkos();
-        } else {
-            this.filteredFunkos = this.funkos.filter((funko) =>
-                (funko.name || '').toLowerCase().includes(searchQuery.toLowerCase())
-            );
-            this.filteredFunkosSubject.next(this.filteredFunkos);
-        }
-    }
-
-    sortFunkos(orderType: string) {
-        if (orderType === 'az') {
-            this.filteredFunkos.sort((a, b) => (a.name || '').localeCompare(b.name || ''));
-        } else if (orderType === 'za') {
-            this.filteredFunkos.sort((a, b) => (b.name || '').localeCompare(a.name || ''));
-        } else if (orderType === 'asc') {
-            this.filteredFunkos.sort((a, b) => a.price - b.price);
-        } else if (orderType === 'desc') {
-            this.filteredFunkos.sort((a, b) => b.price - a.price);
-        }
-        this.filteredFunkosSubject.next(this.filteredFunkos);
-    }
-
-    filterFunkosByPrice(minPrice: number, maxPrice: number) {
-        this.filteredFunkos = this.funkos.filter(funko => {
-            const price = funko.price;
-            return price >= minPrice && price <= maxPrice;
-        });
-        this.filteredFunkosSubject.next(this.filteredFunkos);
-    }
-
-    filterFunkosByCategory(serie: string) {
-        if (serie.trim() === '') {
-          this.showAllFunkos();
-        } else {
-          this.filteredFunkos = this.funkos.filter((funko) =>
-            (funko.category == serie && typeof funko.category === 'string')
-          );
-          this.filteredFunkosSubject.next(this.filteredFunkos);
-        }
-      }
-
-      filterFunkosByLicence(licence: string) {
-        if (licence.trim() === '') {
-          this.showAllFunkos();
-        } else {            
-          this.filteredFunkos = this.funkos.filter((funko) =>
-            (funko.licence == licence && typeof funko.licence === 'string')
-          );
-            this.filteredFunkosSubject.next(this.filteredFunkos);
-        }
-      }
-      
     getFilteredFunkosObservable(): Observable<Funko[]> {
         return this.filteredFunkosSubject.asObservable();
     }
@@ -134,13 +99,111 @@ export class FunkosService {
         this.filteredFunkosSubject.next(this.filteredFunkos);
     }
 
-    obtenerPrecioFunko (id: number): number | undefined {
+    obtenerPrecioFunko(id: number): number | undefined {
         const funko = this.funkos.find(funko => funko.id === id);
         return funko?.price;
     }
 
-    calcularPrecioTotal (funkoId: number, cantidad: number): number | undefined {
+    calcularPrecioTotal(funkoId: number, cantidad: number): number | undefined {
         const precioFunko = this.obtenerPrecioFunko(funkoId);
         return precioFunko ? precioFunko * cantidad : undefined;
+    }
+
+    aplicarFiltro(name: string, criteria: string, min: number, max:number): Funko[] {
+
+        console.log(this.appliedFilters);
+        if (!this.appliedFilters.find(filter => filter.type === name)) {
+            this.appliedFilters.push({ type: name, criteria, min, max });
+        }
+        // caso en que el filtro tenga el mismo nombre pero criteria distinto
+        else if (this.appliedFilters.find(filter => filter.type === name && filter.criteria !== criteria)) {
+            this.appliedFilters.find(filter => filter.type === name)!.criteria = criteria;
+        }
+        this.levantarFunkos();
+        let result = this.funkos;
+        // Crea una copia de los filtros aplicados para no modificar el array original
+        let appliedFiltersCopy = [...this.appliedFilters];
+
+        // Aplica cada filtro en orden
+        appliedFiltersCopy.forEach(filtro => {
+            const { type, criteria, min,max } = filtro;
+
+            if (type === 'name') {
+                result = result.filter((funko) =>
+                    (funko.name || '').toLowerCase().includes(criteria.toLowerCase())
+                );
+            } else if (type === 'price') {
+                console.log(result);
+                let max: number = 0;
+                let min: number = 0;
+                this.orderFunkoService.maxPriceSubject.subscribe((maxPrice) => {
+                    if (maxPrice !== 0) {
+                        max = maxPrice;
+                    }else if(maxPrice == 0){
+                        max=1000000;
+                    }
+                });
+                this.orderFunkoService.minPriceSubject.subscribe((minPrice) => {
+                    if (minPrice !== 0) {
+                        min = minPrice;
+                    }
+                });
+                result = result.filter(funko => {
+                    const price = funko.price;
+                    console.log(min,max);
+                    return !isNaN(price) && price >= min && price <= max;
+                });
+                console.log(result);
+            } else if (type === 'category') {
+                result = result.filter((funko) =>
+                    (funko.category == criteria && typeof funko.category === 'string')
+                );
+            } else if (type === 'licence') {
+                result = result.filter((funko) =>
+                    (funko.licence == criteria && typeof funko.licence === 'string')
+                );
+            } else if (type === 'order') {
+                if (criteria === 'az') {
+                    result.sort((a, b) => (a.name || '').localeCompare(b.name || ''));
+                } else if (criteria === 'za') {
+                    result.sort((a, b) => (b.name || '').localeCompare(a.name || ''));
+                } else if (criteria === 'asc') {
+                    result.sort((a, b) => a.price - b.price);
+                } else if (criteria === 'desc') {
+                    result.sort((a, b) => b.price - a.price);
+                }
+            }
+        });
+        // Guarda el estado actual en el historial
+        this.history.push([...result]);
+        this.filteredFunkosSubject.next(result);
+        return result;
+    }
+
+    limpiarFiltro(name: string) {
+        const filter = this.appliedFilters.find(filter => filter.type === name);
+        if (filter) {
+            this.appliedFilters.splice(this.appliedFilters.indexOf(filter), 1);
+        }
+        console.log(this.appliedFilters);
+    }
+
+    undoFilters(): Funko[] {
+        if (this.history.length > 1) {
+            // Elimina el estado actual del historial y retrocede al estado anterior
+            this.history.pop();
+            const previousState = this.history[this.history.length - 1];
+            this.filteredFunkosSubject.next([...previousState]);
+            return [...previousState];
+        } else {
+            // No hay estados anteriores para retroceder
+            return this.funkos;
+        }
+    }
+
+    clearAllFilters() {
+        this.appliedFilters = [];
+        this.history = [];
+        this.filteredFunkosSubject.next(this.funkos);
     }
 }

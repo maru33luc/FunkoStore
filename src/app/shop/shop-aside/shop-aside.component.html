@@ -51,9 +51,6 @@
             />
           </div>
           
-          
-          
-       
         </div>
       </div>
     <div class="aside__input">
@@ -85,27 +82,25 @@
 
         <div class="label-categoria">SAGA</div>
         <div class="checkbox">
-            <input type="checkbox" name="category" id="lotr" class="checkbox-input"  (click)="onLicenceChange($event,'The Lord of the Rings')">
+            <input type="checkbox" name="saga" id="lotr" class="checkbox-input"  (click)="onLicenceChange($event,'The Lord of the Rings')">
             <label class="checkbox__label-text" for="lotr">LOTR</label>
         </div>
         <div>
-            <input type="checkbox" name="category" id="potter" class="checkbox-input" (click)="onLicenceChange($event,'Harry Potter')">
+            <input type="checkbox" name="saga" id="potter" class="checkbox-input" (click)="onLicenceChange($event,'Harry Potter')">
             <label class="checkbox__label-text" for="potter">HARRY POTTER</label>
         </div>
         <div>
-            <input type="checkbox" name="category" id="starWars" class="checkbox-input" 
+            <input type="checkbox" name="saga" id="starWars" class="checkbox-input" 
             (click)="onLicenceChange($event,'Star Wars')">
             <label class="checkbox__label-text" for="starWars">STAR WARS</label>
         </div>
         <div>
-            <input type="checkbox" name="category" id="pokemon" class="checkbox-input"
+            <input type="checkbox" name="saga" id="pokemon" class="checkbox-input"
             (click)="onLicenceChange($event,'Pokemon')">
             <label class="checkbox__label-text" for="pokemon">POKEMON</label>
         </div>
-        
     </div>
 
-    
     <button class="clear-filters-button" (click)="clearFilters()">LIMPIAR FILTROS</button>
 
 </aside>

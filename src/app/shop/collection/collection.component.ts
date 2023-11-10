@@ -6,6 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./collection.component.css']
 })
 export class CollectionComponent {
-[x: string]: string|any[]|null|undefined;
 
 }

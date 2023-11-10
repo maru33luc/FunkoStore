@@ -28,7 +28,6 @@ export class ShopMainComponent implements OnInit {
     this.activatedRoute.paramMap.subscribe(params => {
       const licence = params.get('licence');
       this.orderService.setLicenceQuery(licence || '');
-      // this.funkoService.filterFunkosByLicence(licence || '');
       this.currentPage = 0;
       this.calculateTotalPages();
     });
@@ -42,7 +41,6 @@ export class ShopMainComponent implements OnInit {
     this.orderService.orderType$.subscribe(orderType => {
       if (orderType === "az" || orderType === "za") {
         this.funkoService.aplicarFiltro("order", orderType,0,0);
-        console.log(orderType);
         this.currentPage = 0; // Reiniciar a la primera página después de cambiar el orden
         this.calculateTotalPages(); // Recalcular el número de páginas
       }
@@ -55,6 +53,9 @@ export class ShopMainComponent implements OnInit {
         this.funkoService.aplicarFiltro("name", query, 0,0);
         this.currentPage = 0;
         this.calculateTotalPages();
+      }else{
+        this.funkoService.limpiarFiltro("name");
+        this.lista = this.funkoService.mostrarListaFiltrada();
       }
 
     });
@@ -97,7 +98,8 @@ export class ShopMainComponent implements OnInit {
         this.currentPage = 0;
         this.calculateTotalPages();
       }else{
-        this.funkoService.showAllFunkos();
+        this.funkoService.limpiarFiltro("category");
+        this.lista = this.funkoService.mostrarListaFiltrada();
       }
 
     });
@@ -110,7 +112,8 @@ export class ShopMainComponent implements OnInit {
         this.currentPage = 0;
         this.calculateTotalPages();
       }else{
-        this.funkoService.showAllFunkos();
+        this.funkoService.limpiarFiltro("licence");
+        this.lista = this.funkoService.mostrarListaFiltrada();
       }
 
     });

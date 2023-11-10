@@ -9,23 +9,18 @@ export class ApiStarWarsService {
 
     constructor() { }
 
-    async getCharacterInfo(name: string) {
-        try {
-            const response = await axios(`${this.url}${name}`);
-            const data = response.data;
-            if (data === undefined) {
-                return undefined;
-            }
-            else if (response.status === 200) {
-                return data[0];
-            }
-            else {
-                alert('Error en la solicitud' + response.status);
-            }
-        } catch (error) {
-            alert('Error en la solicitud' + error);
-        }
+  async getCharacterInfo(name: string) {
+    try {
+      const response = await axios(`${this.url}${name}`);
+      const data = response.data;
+      if (data === undefined) {
         return undefined;
+      }
+      return data[0];
+    } catch (error) {
+      alert('Error en la solicitud' + error);
     }
+    return undefined;
+  }
 
 }

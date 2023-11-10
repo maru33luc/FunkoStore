@@ -25,7 +25,7 @@ export class AdminMainComponent implements OnInit {
         this.mostrarFunkos();
 
         this.orderService.searchQuery$.subscribe((query) => {
-            this.funkosService.filterFunkosByName(query);
+            this.funkosService.aplicarFiltro("name", query, 0, 0);
         });
 
         this.funkosService.getFilteredFunkosObservable().subscribe(filteredFunkos => {
@@ -43,7 +43,7 @@ export class AdminMainComponent implements OnInit {
     }
 
     filterFunkos(query: string) {
-        this.funkosService.filterFunkosByName(query);
+        this.funkosService.aplicarFiltro("name", query, 0, 0);
         this.calculateTotalPages();
     }
 

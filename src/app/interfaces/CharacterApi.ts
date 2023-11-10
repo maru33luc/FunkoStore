@@ -24,3 +24,12 @@ export interface CharacterApiStarWars {
     description: string;
     image: string;
 }
+
+export interface CharacterApiPokemon {
+    name: string,
+    description: string,
+    type: string,
+    height: string,
+    weight: string,
+    id?: number
+}

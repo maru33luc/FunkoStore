@@ -38,19 +38,17 @@ export class CartLocalService {
         };
     }
 
-    async addToCart(item: { funkoId: number; quantity: number }) {
-        if (!this.db) {
-            throw new Error('Database not initialized');
-        }
-
-        const transaction = this.db.transaction(this.cartStoreName, 'readwrite');
-        const store = transaction.objectStore(this.cartStoreName);
-
-        const existingItemRequest = store.get(item.funkoId);
-        const existingItem = await new Promise<FunkoCart>((resolve, reject) => {
-            existingItemRequest.onsuccess = () => resolve(existingItemRequest.result);
-            existingItemRequest.onerror = () => reject(existingItemRequest.error);
-        });
+  async addToCart(item: { funkoId: number; quantity: number }) {
+    if (!this.db) {
+      throw new Error('Database not initialized');
+    }
+    const transaction = this.db.transaction(this.cartStoreName, 'readwrite');
+    const store = transaction.objectStore(this.cartStoreName);
+    const existingItemRequest = store.get(item.funkoId);
+    const existingItem = await new Promise<FunkoCart>((resolve, reject) => {
+      existingItemRequest.onsuccess = () => resolve(existingItemRequest.result);
+      existingItemRequest.onerror = () => reject(existingItemRequest.error);
+    });
 
         if (existingItem) {
             existingItem.quantity += item.quantity;

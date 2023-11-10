@@ -18,13 +18,7 @@ export class ApiTolkienService {
                     'Authorization': `Bearer ${this.token}`
                 }
             });
-
-            if (response.status === 200) {
-                return response.data;
-            }            
-            else {
-                alert('Error en la solicitud' + response.status);
-            }
+            return response.data;
         } catch (error) {
             alert('Error en la solicitud' + error);
         }

@@ -19,97 +19,111 @@ export class ShopAsideComponent {
         private funkoService: FunkosService
     ) { }
 
-    ngOnInit() {
-        const checkboxes = document.querySelectorAll<HTMLInputElement>('input[type="checkbox"][name="category"]');
-        checkboxes.forEach((checkbox) => {
-            checkbox.addEventListener('change', (event) => {
-                const inputCheckbox = checkbox as HTMLInputElement;
-                if (inputCheckbox.checked) {
-                    checkboxes.forEach((otherCheckbox) => {
-                        if (otherCheckbox !== checkbox) {
-                            otherCheckbox.disabled = true; // Desactiva los otros checkboxes
-                        }
-                    });
-                } else {
-                    checkboxes.forEach((otherCheckbox) => {
-                        otherCheckbox.disabled = false; // Activa los otros checkboxes
-                    });
-                }
-            });
-        });
-    }
+  ngOnInit() {
+    this.destildarCheckbox('category');
+    this.destildarCheckbox('saga');
+  }
 
     onOrderChange() {
         this.orderService.setOrderType(this.orderType);
     }
 
-    onSearchChange(query: string) {
-        this.orderService.setSearchQuery(query);
-    }
+  onSearchChange(query: string) {
+    
+    this.orderService.setSearchQuery(query);
+  }
 
-    onCategoryChange(event: Event, serie: string) {
-        const checkbox = event.target as HTMLInputElement;
-        if (checkbox.checked) {
-            this.orderService.setCategoryQuery(serie);
-        } else {
-            this.orderService.setCategoryQuery(''); // Valor vacío si se desmarca
+  onCategoryChange(event: Event, serie: string) {
+    const checkbox = event.target as HTMLInputElement;
+    if (checkbox.checked) {
+      this.orderService.setCategoryQuery(serie);
+    } else {
+      this.orderService.setCategoryQuery(''); // Valor vacío si se desmarca
+      this.funkoService.undoFilters();
+    }
+  }
+
+  onLicenceChange(event: Event, licence: string) {
+    const checkbox = event.target as HTMLInputElement;
+    if (checkbox.checked) {
+      this.orderService.setLicenceQuery(licence);
+    } else {
+      this.orderService.setLicenceQuery('');
+      this.funkoService.undoFilters();
+    }
+  }
+
+  onPriceFilterChange() {
+    console.log(this.minPrice, this.maxPrice);
+    if (this.maxPrice >= 0 && this.maxPrice >= this.minPrice) {
+      this.orderService.setMinPrice(this.minPrice);
+      this.orderService.setMaxPrice(this.maxPrice);
+      this.funkoService.aplicarFiltro("price", "",this.minPrice, this.maxPrice);
+    }
+}
+
+  clearMinPricePlaceholder() {
+    if (this.minPrice === 0) {
+      this.minPrice = NaN;
+    }
+  }
+
+  clearMaxPricePlaceholder() {
+    if (this.maxPrice === 0) {
+      this.maxPrice = NaN;
+    }
+  }
+
+  resetMinPricePlaceholder() {
+    if (isNaN(this.minPrice)) {
+      this.minPrice = 0;
+    }
+  }
+
+  resetMaxPricePlaceholder() {
+    if (isNaN(this.maxPrice)) {
+      this.maxPrice = 0;
+    }
+  }
+
+  clearFilters() {
+    this.searchQuery = '';
+    this.orderType = 'az';
+    this.minPrice = 0;
+    this.maxPrice = 0;
+    this.orderService.setSearchQuery('');
+    this.orderService.setOrderType('az');
+    this.orderService.setCategoryQuery('');
+    this.orderService.setLicenceQuery('');
+    this.funkoService.showAllFunkos();
+    this.funkoService.clearAllFilters();  
+    this.limpiarCheckboxes('category');
+    this.limpiarCheckboxes('saga');
+  }
+
+  limpiarCheckboxes(nameInput: string) {
+    const checkboxes = document.querySelectorAll<HTMLInputElement>('input[type="checkbox"][name="' + nameInput + '"]');
+    checkboxes.forEach((checkbox) => {
+      checkbox.checked = false;
+      checkbox.disabled = false;
+    });
+  }
+
+  destildarCheckbox(nameInput: string) {
+    const checkboxes = document.querySelectorAll<HTMLInputElement>('input[type="checkbox"][name="' + nameInput + '"]');
+
+    checkboxes.forEach((checkbox) => {
+      checkbox.addEventListener('change', (event) => {
+        const inputCheckbox = checkbox as HTMLInputElement;
+
+        if (inputCheckbox.checked) {
+          checkboxes.forEach((otherCheckbox) => {
+            if (otherCheckbox !== checkbox) {
+              otherCheckbox.checked = false;
+            }
+          });
         }
-    }
-
-    onLicenceChange(event: Event, licence: string) {
-        const checkbox = event.target as HTMLInputElement;
-        if (checkbox.checked) {
-            this.orderService.setLicenceQuery(licence);
-        } else {
-            this.orderService.setLicenceQuery(''); // Valor vacío si se desmarca
-        }
-    }
-
-    // Funciones para el manejo de los placeholders de los inputs de precio  
-    onPriceFilterChange() {
-        if (this.maxPrice > 0 && this.maxPrice > this.minPrice)
-            this.funkoService.filterFunkosByPrice(this.minPrice, this.maxPrice);
-        if (this.maxPrice === 0 && this.minPrice == 0)
-            this.funkoService.showAllFunkos();
-    }
-
-    clearMinPricePlaceholder() {
-        if (this.minPrice === 0) {
-            this.minPrice = NaN;
-        }
-    }
-
-    clearMaxPricePlaceholder() {
-        if (this.maxPrice === 0) {
-            this.maxPrice = NaN;
-        }
-    }
-
-    resetMinPricePlaceholder() {
-        if (this.minPrice === null) {
-            this.minPrice = 0;
-        }
-    }
-
-    resetMaxPricePlaceholder() {
-        if (this.maxPrice === null) {
-            this.maxPrice = 0;
-        }
-    }
-
-    clearFilters() {
-        this.searchQuery = '';
-        this.orderType = 'az';
-        this.minPrice = 0;
-        this.maxPrice = 0;
-        this.orderService.setSearchQuery('');
-        this.orderService.setOrderType('az');
-        this.funkoService.showAllFunkos();
-
-        const checkboxes = document.querySelectorAll<HTMLInputElement>('input[type="checkbox"][name="category"]');
-        checkboxes.forEach((checkbox) => {
-            checkbox.checked = false;
-            checkbox.disabled = false;
-        });
-    }
+      });
+    });
+  }
 }

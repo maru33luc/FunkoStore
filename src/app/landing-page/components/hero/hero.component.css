@@ -1,50 +1,54 @@
 .hero {
-    background: url(../../../../assets/img/funkos-banner-1.png) no-repeat center center;
-    background-size: cover;
-    position: relative;
     width: 100%;
     height: 80vh;
+    background: url(../../../../assets/img/funkos-banner-1.png) no-repeat center center;
+    background-size: cover;
+    font-family: var(--alternative-font);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .hero-content {
-    position: absolute;
-    top: 25%;
-    left: 10%;
+    width: 80%;
+    color: var(--light-font-solid);
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
+    align-items: center;
     gap: var(--spacing-50);
     z-index: 2;
-    color: var(--light-font-solid);
 }
 
 .hero-title {
-    font-size: var(--font-xlarge);
+    font-size: var(--font-large);
     font-weight: 1000;
+    text-align: center;
     margin: 0;
 }
 
 @media screen and (min-width: 768px) {
     .hero-title {
-        font-size: var(--font-jumbo);
-    }    
+        font-size: var(--font-xlarge);
+    }
 }
 
 .hero-text {
     font-size: var(--font-medium);
     font-weight: 500;
+    text-align: center;
 }
 
 @media screen and (min-width: 768px) {
     .hero-text {
         font-size: var(--font-large);
-    }    
+    }
 }
 
 .hero-btn {
+    display: block;
+    width: fit-content;
     background-color: var(--primary-solid);
-    font-size: var(--font-medium);
+    font-size: var(--font-small);
     transition: background .2s ease-in-out;
     padding: var(--spacing-10) var(--spacing-30);
     border: none;
@@ -54,9 +58,9 @@
 
 @media screen and (min-width: 768px) {
     .hero-btn {
-        font-size: var(--font-large);
-        padding: var(--spacing-20) var(--spacing-50);
-    }    
+        font-size: var(--font-medium);
+        padding: var(--spacing-20) var(--spacing-50) !important;
+    }
 }
 
 .hero-btn:hover {

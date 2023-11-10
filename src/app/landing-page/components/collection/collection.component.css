@@ -1,33 +1,128 @@
 .collection {
+    position: relative;
     font-family: var(--alternative-font);
+    color: var(--light-font-solid);
     display: flex;
     flex-direction: column-reverse;
     justify-content: center;
-    gap: var(--spacing-40);
-    margin: var(--spacing-20) 0;
+    padding: var(--spacing-68) 0;
 }
 
 @media screen and (min-width: 768px) {
     .collection {
         flex-direction: row;
         justify-content: flex-start;
-        gap: 0;
-    }
-}
-
-@media screen and (min-width: 992px) {
-    .collection {
-        margin: var(--spacing-68) 0;
     }
 }
 
 @media screen and (min-width: 768px) {
-    .collection:nth-of-type(2) .collection-cover {
+    .collection:nth-of-type(1) .collection-cover {
         order: -1;
     }
-    .collection:nth-of-type(4) .collection-cover {
+
+    .collection:nth-of-type(3) .collection-cover {
         order: -1;
     }
+}
+
+.collection:nth-of-type(1)::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url(../../../../assets/img/background-collections/lord-of-the-rings.png);
+    background-size: cover;
+    background-position: center;
+}
+
+.collection:nth-of-type(1)::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url(../../../../assets/img/background-collections/lord-of-the-rings.png);
+    background-size: cover;
+    background-position: center;
+    filter: blur(.1rem);
+    z-index: -1;
+}
+
+.collection:nth-of-type(2)::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url(../../../../assets/img/background-collections/star-wars.jpg);
+    background-size: cover;
+    background-position: center;
+}
+
+.collection:nth-of-type(2)::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url(../../../../assets/img/background-collections/star-wars.jpg);
+    background-size: cover;
+    background-position: center;
+    filter: blur(.1rem);
+    z-index: -1;
+}
+
+.collection:nth-of-type(3)::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url(../../../../assets/img/background-collections/harry-potter.jpg);
+    background-size: cover;
+    background-position: center;
+}
+
+.collection:nth-of-type(3)::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url(../../../../assets/img/background-collections/harry-potter.jpg);
+    background-size: cover;
+    background-position: center;
+    filter: blur(.1rem);
+    z-index: -1;
+}
+
+.collection:nth-of-type(4)::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url(../../../../assets/img/background-collections/pokemon.jpg);
+    background-size: cover;
+    background-position: center;
+}
+
+.collection:nth-of-type(4)::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url(../../../../assets/img/background-collections/pokemon.jpg);
+    background-size: cover;
+    background-position: center;
+    filter: blur(.1rem);
+    z-index: -1;
 }
 
 .collection-content {
@@ -44,6 +139,10 @@
         width: calc(50vw - 8rem);
         margin-left: var(--spacing-40);
     }
+}
+
+.collection-content * {
+    padding: var(--spacing-20);
 }
 
 .collection-title {
@@ -75,7 +174,6 @@
     display: block;
     width: fit-content;
     background-color: var(--primary-solid);
-    color: var(--light-font-solid);
     font-size: var(--font-small);
     transition: background .2s ease-in-out;
     padding: var(--spacing-10) var(--spacing-30);
@@ -87,8 +185,8 @@
 @media screen and (min-width: 768px) {
     .collection-btn {
         font-size: var(--font-medium);
-        padding: var(--spacing-20) var(--spacing-50);
-    }    
+        padding: var(--spacing-20) var(--spacing-50) !important;
+    }
 }
 
 .collection-btn:hover {

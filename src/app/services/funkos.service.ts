@@ -121,6 +121,7 @@ export class FunkosService {
         }
         this.levantarFunkos();
         let result = this.funkos;
+        
         // Crea una copia de los filtros aplicados para no modificar el array original
         let appliedFiltersCopy = [...this.appliedFilters];
 

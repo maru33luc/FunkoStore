@@ -1,30 +1,27 @@
-<section class="slider container">
-  <h2 class="slider__title">{{title}}</h2>
-  <ul class="slider__items">
-    <li class="slider__item g" *ngFor="let item of pagedItems">
-      <article class="card-item">
-        <a class="card-item__link" [routerLink]="'/shop/'+ item.id">
-          <picture class="card-item__cover">
-            <span class="card-item__tag">NUEVO</span>
-            <img class="card-item__img--front" [src]="item.frontImage" alt="Figura coleccionable Funko">
-            <img class="card-item__img--back" [src]="item.backImage" alt="Figura coleccionable Funko en caja">
-          </picture>
+<section class="slider-main">
+    <h2 class="slider-title">{{title}}</h2>
+    <ul class="slider-items">
+        <li class="slider-item" *ngFor="let item of pagedItems">
+            <article class="slider-item">
+                <a [routerLink]="'/shop/'+ item.id">
+                    <picture class="slider-item-cover">
+                        <span class="slider-item-tag">NUEVO</span>
+                        <img class="slider-item-img-front" [src]="item.frontImage" alt="Figura coleccionable Funko">
+                        <img class="slider-item-img-back" [src]="item.backImage" alt="Figura coleccionable Funko en caja">
+                    </picture>
 
-          <div class="card-item__content">
-            <p class="card-item__licence">{{item.name}}</p>
-            <h4 class="card-item__name">{{item.serie}}</h4>
-            <p class="card-item__price">$ {{item.price}}</p>
-            <p class="card-item__promo">{{item.licence}}</p>
-          </div>
-        </a>
-      </article>
-    </li>
-    
-  </ul>
-  <div class="slider__nav">
-      <button class="slider__prev" (click)="changePage(currentPage - 1)">Anterior</button>
-      <button class="slider__next" (click)="changePage(currentPage + 1)">Siguiente</button>
+                    <div class="slider-item-content">
+                        <p class="slider-item-name">{{item.name}}</p>
+                        <h4 class="slider-item-serie">{{item.serie}}</h4>
+                        <p class="slider-item-price">${{item.price}}</p>
+                    </div>
+                </a>
+            </article>
+        </li>
+    </ul>
+
+    <div class="slider-nav">
+        <button class="slider-nav-btn" (click)="changePage(currentPage - 1)">Anterior</button>
+        <button class="slider-nav-btn" (click)="changePage(currentPage + 1)">Siguiente</button>
     </div>
-
- 
 </section>

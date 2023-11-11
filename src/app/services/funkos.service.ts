@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Funko } from '../interfaces/Funko';
-import { Observable, Subject, catchError, scan } from 'rxjs';
+import { BehaviorSubject, Observable, Subject, catchError, scan } from 'rxjs';
 import axios from 'axios';
 import { OrderFunkosService } from './order-funkos.service';
 import { environments } from 'src/environments/environments';
@@ -15,6 +15,7 @@ export class FunkosService {
     private filteredFunkosSubject: Subject<Funko[]> = new Subject<Funko[]>();
     private appliedFilters: { type: string; criteria: string, min:number,max:number }[] = [];
     private history: Funko[][] = [];
+    stockFunkoSubject$ = new BehaviorSubject<number>(0);
 
     constructor(private orderFunkoService: OrderFunkosService) {
         this.initialize();
@@ -38,6 +39,10 @@ export class FunkosService {
             console.error(error);
             return [];
         }
+    }
+
+    emitirStockInicial(stock: number) {
+        this.stockFunkoSubject$.next(stock);
     }
 
     async getFunkos(): Promise<Funko[] | undefined> {
@@ -89,6 +94,11 @@ export class FunkosService {
         }
     }
 
+    async obtenerStockFunko(id: number | undefined): Promise<number | undefined> {
+        const funko = await this.getFunko(id);
+        return funko?.stock;
+    }
+
     getFilteredFunkosObservable(): Observable<Funko[]> {
         return this.filteredFunkosSubject.asObservable();
     }
@@ -135,8 +145,6 @@ export class FunkosService {
                     (funko.name || '').toLowerCase().includes(criteria.toLowerCase())
                 );
             } else if (type === 'price') {
-               
-                console.log(result);
                 let max: number = 0;
                 let min: number = 0;
                 this.orderFunkoService.maxPriceSubject.subscribe((maxPrice) => {

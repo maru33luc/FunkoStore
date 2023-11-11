@@ -105,6 +105,13 @@
     font-weight: 500;
 }
 
+.item-stock{
+    font-size: var(--font-small);
+    font-weight: 500;
+    color: var(--secondary-solid);
+
+}
+
 .item-cart {
     display: flex;
     justify-content: center;

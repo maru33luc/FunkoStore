@@ -39,7 +39,7 @@
       ],
       "price": 8000,
       "licence": "The Lord of the Rings",
-      "stock": 90,
+      "stock": 60,
       "id": 3
     },
     {
@@ -220,7 +220,7 @@
       ],
       "price": 12000,
       "licence": "The Lord of the Rings",
-      "stock": 40,
+      "stock": 26,
       "id": 15
     },
     {
@@ -379,7 +379,7 @@
       ],
       "price": 23000,
       "licence": "The Lord of the Rings",
-      "stock": 40,
+      "stock": 39,
       "id": 26
     },
     {
@@ -545,7 +545,7 @@
       ],
       "price": 12000,
       "licence": "The Lord of the Rings",
-      "stock": 40,
+      "stock": 30,
       "id": 37
     },
     {
@@ -581,17 +581,16 @@
       "id": 39
     },
     {
-      "name": "Eowyn",
+      "name": "Gimli",
       "description": "",
       "category": "Minis",
-      "frontImage": "https://images.hobbydb.com/processed_uploads/catalog_item_photo/catalog_item_photo/image/562638/Eowyn_Vinyl_Art_Toys_5e007efe-7a4d-4815-a561-4937cefcfa37_large.jpg",
-      "backImage": "https://cdn11.bigcommerce.com/s-0kvv9/images/stencil/1280x1280/products/178364/255193/apiovmj5o__65219.1512062294.jpg?c=2&imbypass=on",
+      "frontImage": "https://www.funkomania.com.br/media/catalog/product/cache/1/image/500x500/9df78eab33525d08d6e5fb8d27136e95/m/y/mystery-mini-gimli1.jpg",
+      "backImage": "https://th.bing.com/th/id/OIP.796JXUGbhxZowo-5B3cN8wHaIW?pid=ImgDet&rs=1",
       "serie": [
         "Funko Mystery Minis",
-        "Mystery Minis Lord of the Rings",
-        "Funko Hot Topic Exclusives"
+        "Mystery Minis Lord of the Rings"
       ],
-      "price": 15000,
+      "price": 12000,
       "licence": "The Lord of the Rings",
       "stock": 40,
       "id": 40
@@ -652,7 +651,7 @@
       "price": 20000,
       "frontImage": "https://www.leprechaun.es/1430-large_default/funko-pop-15-albus-dumbledore-harry-potter.jpg",
       "backImage": "https://www.leprechaun.es/1429-large_default/funko-pop-15-albus-dumbledore-harry-potter.jpg",
-      "stock": 80,
+      "stock": 78,
       "licence": "Harry Potter",
       "id": 45
     },

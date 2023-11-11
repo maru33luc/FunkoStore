@@ -1,3 +1,4 @@
+import { FunkosService } from 'src/app/services/funkos.service';
 import { Auth, user } from '@angular/fire/auth';
 import { Injectable } from '@angular/core';
 import { getFirestore, doc, getDoc, setDoc, collection, updateDoc } from 'firebase/firestore';
@@ -12,8 +13,10 @@ import { BehaviorSubject, Observable } from 'rxjs';
 export class CartService {
     cart: FunkoCart[] = [];
     cartSubject: BehaviorSubject<FunkoCart[]> = new BehaviorSubject(this.cart);
+    diferenciaCantidad: number = 0;
+    fkCambiadoId: number | undefined = 0;
 
-    constructor(private loginService: LoginService,
+    constructor(private loginService: LoginService, private funkoService: FunkosService,
         private auth: Auth) {
         this.loginService.authStateObservable()?.subscribe((user) => {
             if (user) {
@@ -63,7 +66,6 @@ export class CartService {
                                 const existingCartItemIndex = this.cart.findIndex((item: FunkoCart) => item.funkoId === funkoId);
                                 if (existingCartItemIndex !== -1) {
                                     this.cart[existingCartItemIndex].quantity += quantity;
-                                    console.log(this.cart);
                                     this.cartSubject.next(this.cart);
                                 } else {
                                     this.cart.push({ funkoId, quantity });
@@ -95,12 +97,23 @@ export class CartService {
             const db = getFirestore();
             const docRef = doc(db, 'users', user.uid);
       
-            for (const cambio of cambiosDeCantidad) {
-              const cartItem = this.cart.find((item) => item.funkoId === cambio.funkoId);
+            for(const cambio of cambiosDeCantidad) {
+                cambiosDeCantidad.shift();
+                this.diferenciaCantidad = cambio.quantity - (this.cart.find((item) => item.funkoId === cambio.funkoId)?.quantity || 0);
+
+                const cartItem = this.cart.find((item) => item.funkoId === cambio.funkoId);
               if (cartItem) {
-                cartItem.quantity = cambio.quantity;
+                let stock = await  this.funkoService.obtenerStockFunko(cartItem.funkoId);
+                stock? stock -= this.diferenciaCantidad : stock = 0;
+                const fk = await this.funkoService.getFunko(cartItem.funkoId);
+                if(fk){
+                    fk.stock = stock ;
+                    await this.funkoService.putFunko(fk, fk.id);
+                   this.fkCambiadoId = fk.id;
+                }
               }
             }
+
             await updateDoc(docRef, {
               carrito: this.cart
             });

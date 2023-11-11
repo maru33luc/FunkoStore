@@ -152,7 +152,8 @@ export class ItemComponent implements AfterViewInit {
             await this.cartLocalService.addToCart({ funkoId: this.selectedItem.id, quantity: quantity });
             // Emitir el nuevo stock después de agregar al carrito
             const nuevoStock = this.stock ? this.stock - quantity : 0;
-            this.funkosService.emitirStockInicial(this.stock || 0);
+            this.funkosService.emitirStockInicial(nuevoStock);
+            this.funkosService.actualizarStockFunko(this.selectedItem.id, nuevoStock);
           }
           this.quantityButton.nativeElement.value = "0";
         }

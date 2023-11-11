@@ -54,7 +54,6 @@ export class CartLocalService {
         if (existingItem) {
             existingItem.quantity += item.quantity;
             await store.put(existingItem);
-            console.log(existingItem);
         } else {
             await store.add(item);
         }

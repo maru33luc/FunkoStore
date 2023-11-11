@@ -99,6 +99,14 @@ export class FunkosService {
         return funko?.stock;
     }
 
+    async actualizarStockFunko(id: number | undefined, stock: number | undefined) {
+        const funko = await this.getFunko(id);
+        if (funko && stock !== undefined) {
+            funko.stock = stock;
+            await this.putFunko(funko, id);
+        }
+    }
+        
     getFilteredFunkosObservable(): Observable<Funko[]> {
         return this.filteredFunkosSubject.asObservable();
     }

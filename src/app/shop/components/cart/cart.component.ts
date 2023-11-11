@@ -17,13 +17,17 @@ export class CartComponent {
     cartItemsCopy: any[] = [];
     quantityChanges: { funkoId: number; quantity: number }[] = [];
     user: Observable<any> | undefined;
+valoresPrevios: { funkoId: number; quantity: number }[] = [];
+
 
     constructor(
         private cartService: CartService,
         private funkoService: FunkosService,
         private loginService: LoginService,
         private cartLocalService: CartLocalService,
-    ) { }
+    ) { 
+        
+    }
 
     ngOnInit() {
 
@@ -42,12 +46,23 @@ export class CartComponent {
             }
         }
         );
-        this.cartLocalService.cartSubject.subscribe((items) => {
-            this.cartItems = items;
+        this.cartLocalService.cartSubject.subscribe(async (items) => {
+            // this.cartItems = items;
             this.cartItemsCopy = this.cartItems.map(item => ({ ...item }));
             this.loadFunkoDetails();
+            this.valoresPrevios = [];
+            console.log('cartItems', this.cartItems);
+            this.obtenerCarritoDeCompras();
+            for (const item of this.cartItems) {
+                this.valoresPrevios.push({ funkoId: item.funkoId, quantity: item.quantity });
+            }
         });
 
+        
+    }
+
+    async obtenerCarritoDeCompras() {
+        this.cartItems = await this.cartLocalService.getCart();
     }
 
     async loadFunkoDetails() {
@@ -97,20 +112,37 @@ export class CartComponent {
             }
         }
 
-        saveChangesToDatabase() {
+        async saveChangesToDatabase() {
             if (this.user) {
-                this.cartService.actualizarCantidades(this.quantityChanges);
+              await this.cartService.actualizarCantidades(this.quantityChanges);
             } else {
-
-                for (const change of this.quantityChanges) {
-                    const cartItem = this.cartItems.find((item) => item.funkoId === change.funkoId);
-                    if (cartItem) {
-                        cartItem.quantity = change.quantity;
-                        this.cartLocalService.updateCartItem({ funkoId: change.funkoId, quantity: change.quantity });
-                    }
+              for (const change of this.quantityChanges) {
+                const cartItem = this.cartItems.find(item => item.funkoId === change.funkoId);
+                if (cartItem) {
+                  cartItem.quantity = change.quantity;
+                  await this.cartLocalService.updateCartItem({ funkoId: change.funkoId, quantity: change.quantity });
+                }
+              }
+            
+        
+            // Actualizar el stock después de haber actualizado las cantidades en el carrito
+            for (const change of this.quantityChanges) {
+                let diferenciaCantidad = 0;
+                const fk = this.cartItems.find((item) => item.funkoId === change.funkoId);
+                const valorPrevio = this.valoresPrevios.find((item) => item.funkoId === change.funkoId);
+                
+                if (valorPrevio) {
+                    diferenciaCantidad = change.quantity - valorPrevio!.quantity;
+                    
+                    // Actualizar el stock aquí para usuarios no logueados
+                    const stock = await this.funkoService.obtenerStockFunko(change.funkoId);
+                    const nuevoStock = stock? stock - diferenciaCantidad : undefined;
+                    await this.funkoService.obtenerStockFunko(change.funkoId);
                 }
             }
-        }
+            }
+            this.quantityChanges = [];
+          }
 
         calculateTotalPrice(item: any): number {
             return item.price * item.quantity;

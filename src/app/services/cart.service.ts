@@ -15,6 +15,7 @@ export class CartService {
     cartSubject: BehaviorSubject<FunkoCart[]> = new BehaviorSubject(this.cart);
     diferenciaCantidad: number = 0;
     fkCambiadoId: number | undefined = 0;
+    valoresPrevios : { funkoId: number; quantity: number }[] = [];
 
     constructor(private loginService: LoginService, private funkoService: FunkosService,
         private auth: Auth) {
@@ -24,6 +25,15 @@ export class CartService {
             } else {
                 this.clearCart();
                 console.log('no hay usuario logueado');
+            }
+        });
+
+        this.cartSubject.subscribe((cart) => {
+            this.cart = cart;
+           
+            this.valoresPrevios = [];
+            for (const item of this.cart) {
+                this.valoresPrevios.push({ funkoId: item.funkoId, quantity: item.quantity });
             }
         });
     }
@@ -91,32 +101,42 @@ export class CartService {
 
     async actualizarCantidades(cambiosDeCantidad: { funkoId: number; quantity: number }[]) {
         const user = this.auth.currentUser;
-      
+       
         if (user) {
           try {
             const db = getFirestore();
             const docRef = doc(db, 'users', user.uid);
-      
-            for(const cambio of cambiosDeCantidad) {
-                cambiosDeCantidad.shift();
-                this.diferenciaCantidad = cambio.quantity - (this.cart.find((item) => item.funkoId === cambio.funkoId)?.quantity || 0);
-
+            
+            for (const cambio of cambiosDeCantidad) {
                 const cartItem = this.cart.find((item) => item.funkoId === cambio.funkoId);
-              if (cartItem) {
-                let stock = await  this.funkoService.obtenerStockFunko(cartItem.funkoId);
-                stock? stock -= this.diferenciaCantidad : stock = 0;
-                const fk = await this.funkoService.getFunko(cartItem.funkoId);
-                if(fk){
-                    fk.stock = stock ;
-                    await this.funkoService.putFunko(fk, fk.id);
-                   this.fkCambiadoId = fk.id;
+                if (cartItem) {
+                  cartItem.quantity = cambio.quantity; 
                 }
               }
-            }
 
             await updateDoc(docRef, {
               carrito: this.cart
             });
+
+            // Actualizar el stock después de haber actualizado las cantidades en el carrito
+            for (const cambio of cambiosDeCantidad) {
+                this.diferenciaCantidad = 0;
+                const fk = this.cart.find((item) => item.funkoId === cambio.funkoId);
+                const valorPrevio = this.valoresPrevios.find((item) => item.funkoId === cambio.funkoId);
+                this.diferenciaCantidad = cambio.quantity - valorPrevio!.quantity;
+                const cartItem = this.cart.find((item) => item.funkoId === cambio.funkoId);
+                if (cartItem) {
+                    
+                    let stock = await this.funkoService.obtenerStockFunko(cartItem.funkoId);
+                    stock ? (stock -= this.diferenciaCantidad) : (stock = 0);
+                    const fk = await this.funkoService.getFunko(cartItem.funkoId);
+                    if (fk) {
+                        fk.stock = stock;
+                        await this.funkoService.putFunko(fk, fk.id);
+                        this.fkCambiadoId = fk.id;
+                    }
+                }
+            }
             this.cartSubject.next(this.cart);
           } catch (error) {
             console.error(error);

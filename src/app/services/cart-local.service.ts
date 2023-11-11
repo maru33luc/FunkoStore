@@ -42,8 +42,10 @@ export class CartLocalService {
     if (!this.db) {
       throw new Error('Database not initialized');
     }
+
     const transaction = this.db.transaction(this.cartStoreName, 'readwrite');
     const store = transaction.objectStore(this.cartStoreName);
+
     const existingItemRequest = store.get(item.funkoId);
     const existingItem = await new Promise<FunkoCart>((resolve, reject) => {
       existingItemRequest.onsuccess = () => resolve(existingItemRequest.result);

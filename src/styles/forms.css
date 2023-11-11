@@ -98,6 +98,7 @@
     width: 100%;
     padding: 1rem .5rem;
     border: .2rem solid var(--primary-solid);
+    border-radius: .5rem;
 }
 
 @media screen and (min-width: 768px) {

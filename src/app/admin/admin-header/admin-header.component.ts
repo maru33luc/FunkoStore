@@ -20,8 +20,8 @@ export class AdminHeaderComponent {
     ngAfterViewInit() {
         if (this.hambIcon) {
             this.hambIcon.nativeElement.addEventListener('click', () => {
-                this.navBar.nativeElement.classList.toggle('navbar-menu');
-                this.navBar.nativeElement.classList.toggle('navbar-menu-toogle');
+                this.navBar.nativeElement.classList.toggle('header-navbar-menu');
+                this.navBar.nativeElement.classList.toggle('header-navbar-dropdown-menu');
             });
         }
     }

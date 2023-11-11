@@ -14,12 +14,12 @@
                     <ng-container *ngIf="username">HOLA {{username}}</ng-container>
                 </li>
                 <li class="header-navbar-item">
-                    <a class="header-navbar-link" (click)="logout()">CERRAR SESIÓN</a>
+                    <a class="header-navbar-link" (click)="logout()">SALIR</a>
                 </li>
             </ng-container>
 
             <li class="header-navbar-item" *ngIf="!isLoggedIn">
-                <a class="header-navbar-link" [routerLink]="['/login/log']">INICIAR SESIÓN</a>
+                <a class="header-navbar-link" [routerLink]="['/login/log']">INGRESAR</a>
             </li>
 
             <li class="header-navbar-item" *ngIf="!isLoggedIn">

@@ -8,15 +8,15 @@ import { LoginService } from 'src/app/services/login.service';
     template: `<div #hambIcon></div>`,
     styleUrls: ['./header.component.css']
 })
-export class HeaderComponent{
+export class HeaderComponent {
     isLoggedIn: boolean = false;
     username: string = '';
-    user$ : Observable<any> | undefined;
+    user$: Observable<any> | undefined;
 
     @ViewChild('hambIcon') hambIcon!: ElementRef;
     @ViewChild('navBar') navBar!: ElementRef;
 
-    constructor(private loginService: LoginService) {}
+    constructor(private loginService: LoginService) { }
 
     ngOnInit() {
         this.loginService.authStateObservable()?.subscribe((user) => {

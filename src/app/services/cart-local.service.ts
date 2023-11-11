@@ -16,6 +16,9 @@ export class CartLocalService {
 
     constructor() {
         this.initDatabase();
+        this.cartSubject.subscribe((cart) => {
+            this.cart = cart;
+        });
     }
 
     private initDatabase() {
@@ -65,8 +68,7 @@ export class CartLocalService {
         const store = transaction.objectStore(this.cartStoreName);
         try {
             await store.delete(funkoId);
-            this.obtenerCarrito();
-            this.cartSubject.next(this.cart);
+            await this.getCart();
         } catch (error) {
             console.error('Error removing item from cart:', error);
         }
@@ -79,15 +81,10 @@ export class CartLocalService {
         const request = store.getAll();
         return new Promise((resolve, reject) => {
             request.onsuccess = () => {resolve(request.result);
-            return request.result } ;
+            this.cart = request.result;
+            this.cartSubject.next(this.cart); } ;
             request.onerror = () => reject(request.error);
         });
-    }
-
-    async obtenerCarrito() {
-        const resp = await this.getCart();
-        this.cart = resp;
-        this.cartSubject.next(this.cart);
     }
 
     async getCartItemFromDatabase(funkoId: number): Promise<FunkoCart | undefined> {

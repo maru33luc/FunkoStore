@@ -47,6 +47,7 @@ export class CartComponent {
         }
         );
         this.cartLocalService.cartSubject.subscribe(async (items) => {
+            this.cartItems = items;
             this.cartItemsCopy = this.cartItems.map(item => ({ ...item }));
             this.loadFunkoDetails();
         });
@@ -77,11 +78,13 @@ export class CartComponent {
             item.quantity++;
             if (!this.quantityChanges.find((change) => change.funkoId === item.funkoId)) {
                 this.quantityChanges.push({ funkoId: item.funkoId, quantity: item.quantity });
+                this.saveChangesToDatabase();
             } else {
                 const change = this.quantityChanges.find((change) => change.funkoId === item.funkoId);
                 if (change) {
                     change.quantity++;
                 }
+                this.saveChangesToDatabase();
             }
         }
     }
@@ -91,11 +94,13 @@ export class CartComponent {
             item.quantity--;
             if (!this.quantityChanges.find((change) => change.funkoId === item.funkoId)) {
                 this.quantityChanges.push({ funkoId: item.funkoId, quantity: item.quantity });
+                this.saveChangesToDatabase();
             } else {
                 const change = this.quantityChanges.find((change) => change.funkoId === item.funkoId);
                 if (change) {
                     change.quantity--;
                 }
+                this.saveChangesToDatabase();
             }
         }
     }
@@ -111,7 +116,6 @@ export class CartComponent {
                     await this.cartLocalService.updateCartItem({ funkoId: change.funkoId, quantity: change.quantity });
                 }
             }
-
             // Actualizar el stock después de haber actualizado las cantidades en el carrito
             for (const change of this.quantityChanges) {
                 let diferenciaCantidad = 0;

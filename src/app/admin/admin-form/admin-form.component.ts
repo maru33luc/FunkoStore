@@ -32,7 +32,7 @@ export class AdminFormComponent {
 
     @Output() sendFunko = new EventEmitter<Funko>();
 
-    constructor(private formBuilder: FormBuilder) {}
+    constructor(private formBuilder: FormBuilder) { }
 
     ngOnChanges() {
         this.formAdmin.controls['name'].setValue(this.name);

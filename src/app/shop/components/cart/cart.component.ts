@@ -1,11 +1,10 @@
 import { LoginService } from 'src/app/services/login.service';
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
 import { CartService } from 'src/app/services/cart.service';
 import { FunkosService } from 'src/app/services/funkos.service';
 import { CartLocalService } from 'src/app/services/cart-local.service';
 import { Observable } from 'rxjs';
 import Swal from 'sweetalert2';
-import { Funko } from 'src/app/interfaces/Funko';
 import { FunkoCart } from 'src/app/interfaces/Cart';
 
 @Component({
@@ -18,20 +17,16 @@ export class CartComponent {
     cartItemsCopy: any[] = [];
     quantityChanges: { funkoId: number; quantity: number }[] = [];
     user: Observable<any> | undefined;
-valoresPrevios: { funkoId: number; quantity: number }[] = [];
-
+    valoresPrevios: { funkoId: number; quantity: number }[] = [];
 
     constructor(
         private cartService: CartService,
         private funkoService: FunkosService,
         private loginService: LoginService,
         private cartLocalService: CartLocalService,
-    ) { 
-        
-    }
+    ) {}
 
     ngOnInit() {
-
         this.loginService.authStateObservable()?.subscribe(async (user) => {
             if (user) {
                 this.user = user;
@@ -43,27 +38,18 @@ valoresPrevios: { funkoId: number; quantity: number }[] = [];
             } else {
                 this.cartItems = await this.cartLocalService.getCart();
                 this.cartItemsCopy = this.cartItems.map(item => ({ ...item }));
+                this.valoresPrevios = [];
+                for (const item of this.cartItemsCopy) {
+                    this.valoresPrevios.push({ funkoId: item.funkoId, quantity: item.quantity });
+                }
                 this.loadFunkoDetails();
             }
         }
         );
         this.cartLocalService.cartSubject.subscribe(async (items) => {
-            // this.cartItems = items;
             this.cartItemsCopy = this.cartItems.map(item => ({ ...item }));
             this.loadFunkoDetails();
-            this.valoresPrevios = [];
-            console.log('cartItems', this.cartItems);
-            this.obtenerCarritoDeCompras();
-            for (const item of this.cartItems) {
-                this.valoresPrevios.push({ funkoId: item.funkoId, quantity: item.quantity });
-            }
         });
-
-        
-    }
-
-    async obtenerCarritoDeCompras() {
-        this.cartItems = await this.cartLocalService.getCart();
     }
 
     async loadFunkoDetails() {
@@ -97,57 +83,63 @@ valoresPrevios: { funkoId: number; quantity: number }[] = [];
                     change.quantity++;
                 }
             }
-        }}
+        }
+    }
 
-        decreaseQuantity(item: FunkoCart) {
-            if (item.quantity > 0) {
-                item.quantity--;
-                if (!this.quantityChanges.find((change) => change.funkoId === item.funkoId)) {
-                    this.quantityChanges.push({ funkoId: item.funkoId, quantity: item.quantity });
-                }else {
-                    const change = this.quantityChanges.find((change) => change.funkoId === item.funkoId);
-                    if (change) {
-                        change.quantity--;
-                    }
+    decreaseQuantity(item: FunkoCart) {
+        if (item.quantity > 0) {
+            item.quantity--;
+            if (!this.quantityChanges.find((change) => change.funkoId === item.funkoId)) {
+                this.quantityChanges.push({ funkoId: item.funkoId, quantity: item.quantity });
+            } else {
+                const change = this.quantityChanges.find((change) => change.funkoId === item.funkoId);
+                if (change) {
+                    change.quantity--;
                 }
             }
         }
+    }
 
-        async saveChangesToDatabase() {
-            if (this.user) {
-              await this.cartService.actualizarCantidades(this.quantityChanges);
-            } else {
-              for (const change of this.quantityChanges) {
+    async saveChangesToDatabase() {
+        if (this.user) {
+            await this.cartService.actualizarCantidades(this.quantityChanges);
+        } else {
+            for (const change of this.quantityChanges) {
                 const cartItem = this.cartItems.find(item => item.funkoId === change.funkoId);
                 if (cartItem) {
-                  cartItem.quantity = change.quantity;
-                  await this.cartLocalService.updateCartItem({ funkoId: change.funkoId, quantity: change.quantity });
+                    cartItem.quantity = change.quantity;
+                    await this.cartLocalService.updateCartItem({ funkoId: change.funkoId, quantity: change.quantity });
                 }
-              }
-            
-        
+            }
+
             // Actualizar el stock después de haber actualizado las cantidades en el carrito
             for (const change of this.quantityChanges) {
                 let diferenciaCantidad = 0;
-                const fk = this.cartItems.find((item) => item.funkoId === change.funkoId);
-                const valorPrevio = this.valoresPrevios.find((item) => item.funkoId === change.funkoId);
-                
+                const valorPrevio = this.valoresPrevios.find((item) => item.funkoId === change.funkoId)?.quantity;               
                 if (valorPrevio) {
-                    diferenciaCantidad = change.quantity - valorPrevio!.quantity;
+                    diferenciaCantidad = change.quantity - valorPrevio;
                     
                     // Actualizar el stock aquí para usuarios no logueados
-                    const stock = await this.funkoService.obtenerStockFunko(change.funkoId);
-                    const nuevoStock = stock? stock - diferenciaCantidad : undefined;
-                    await this.funkoService.obtenerStockFunko(change.funkoId);
-                }
-            }
-            }
-            this.quantityChanges = [];
-          }
+                    const funko = await this.funkoService.getFunko(change.funkoId);
+                    if (funko) {
+                        funko.stock -= diferenciaCantidad;
+                        await this.funkoService.putFunko(funko, funko.id);
+                    }
 
-        calculateTotalPrice(item: any): number {
-            return item.price * item.quantity;
+                }
+                // actualizar la nueva cantidad del item en valoresPrevios
+                const valorPrevioActualizado = this.valoresPrevios.find((item) => item.funkoId === change.funkoId);
+                if (valorPrevioActualizado) {
+                    valorPrevioActualizado.quantity = change.quantity;
+                }
+            }            
         }
+        this.quantityChanges = [];
+    }
+
+    calculateTotalPrice(item: any): number {
+        return item.price * item.quantity;
+    }
 
     removeItem(item: any) {
         Swal.fire({
@@ -169,15 +161,15 @@ valoresPrevios: { funkoId: number; quantity: number }[] = [];
         });
     }
 
-        getTotalQuantity(): number {
-            return this.cartItems.reduce((total, item) => total + item.quantity, 0);
-        }
-
-        getSubtotal(): number {
-            return this.cartItemsCopy.reduce((subtotal, item) => subtotal + item.price * item.quantity, 0);
-        }
-
-        getTotalPrice(): number {
-            return this.getSubtotal();
-        }
+    getTotalQuantity(): number {
+        return this.cartItems.reduce((total, item) => total + item.quantity, 0);
     }
+
+    getSubtotal(): number {
+        return this.cartItemsCopy.reduce((subtotal, item) => subtotal + item.price * item.quantity, 0);
+    }
+
+    getTotalPrice(): number {
+        return this.getSubtotal();
+    }
+}

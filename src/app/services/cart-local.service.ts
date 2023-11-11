@@ -20,7 +20,6 @@ export class CartLocalService {
 
     private initDatabase() {
         const request = indexedDB.open(this.dbName, this.dbVersion);
-
         request.onupgradeneeded = (event) => {
             const db = (event.target as IDBOpenDBRequest).result;
 
@@ -80,7 +79,8 @@ export class CartLocalService {
         const store = transaction.objectStore(this.cartStoreName);
         const request = store.getAll();
         return new Promise((resolve, reject) => {
-            request.onsuccess = () => resolve(request.result)
+            request.onsuccess = () => {resolve(request.result);
+            return request.result } ;
             request.onerror = () => reject(request.error);
         });
     }

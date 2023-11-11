@@ -16,6 +16,7 @@
                 <button class="item-cart-btn item-cart-quantity-btn" id="add" #addButton>+</button>
                 <button class="item-cart-btn" (click)="addToCart()">AGREGAR</button>
             </div>
+            <p class="item-stock">Stock: {{stock}}</p>
         </section>
 
         <section class="item-info-extra" *ngIf="selectedItemLicence=='The Lord of the Rings'">

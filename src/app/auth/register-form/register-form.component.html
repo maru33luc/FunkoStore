@@ -38,10 +38,10 @@
                 <span class="form-error" *ngIf="validateRepassword()">Las contraseñas no coinciden</span>
             </div>
         </div>
-
+        "'/register/terms'"
         <div class="form-accept-terms">
             <label class="form-label" for="accept-terms">Acepto los 
-                <a [routerLink]="['/terms']">términos y condiciones de uso</a>
+                <a [routerLink]="'/register/terms'">términos y condiciones de uso</a>
             </label>
             <input id="accept-terms" type="checkbox" formControlName="terms">
             <span class="form-error terms-error" *ngIf="this.validateTerms()">Campo obligatorio</span>

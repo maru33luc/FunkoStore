@@ -1,3 +1,4 @@
+import { FunkosService } from 'src/app/services/funkos.service';
 import { Auth, user } from '@angular/fire/auth';
 import { Injectable } from '@angular/core';
 import { getFirestore, doc, getDoc, setDoc, collection, updateDoc } from 'firebase/firestore';
@@ -12,8 +13,11 @@ import { BehaviorSubject, Observable } from 'rxjs';
 export class CartService {
     cart: FunkoCart[] = [];
     cartSubject: BehaviorSubject<FunkoCart[]> = new BehaviorSubject(this.cart);
+    diferenciaCantidad: number = 0;
+    fkCambiadoId: number | undefined = 0;
+    valoresPrevios : { funkoId: number; quantity: number }[] = [];
 
-    constructor(private loginService: LoginService,
+    constructor(private loginService: LoginService, private funkoService: FunkosService,
         private auth: Auth) {
         this.loginService.authStateObservable()?.subscribe((user) => {
             if (user) {
@@ -21,6 +25,15 @@ export class CartService {
             } else {
                 this.clearCart();
                 console.log('no hay usuario logueado');
+            }
+        });
+
+        this.cartSubject.subscribe((cart) => {
+            this.cart = cart;
+           
+            this.valoresPrevios = [];
+            for (const item of this.cart) {
+                this.valoresPrevios.push({ funkoId: item.funkoId, quantity: item.quantity });
             }
         });
     }
@@ -63,7 +76,6 @@ export class CartService {
                                 const existingCartItemIndex = this.cart.findIndex((item: FunkoCart) => item.funkoId === funkoId);
                                 if (existingCartItemIndex !== -1) {
                                     this.cart[existingCartItemIndex].quantity += quantity;
-                                    console.log(this.cart);
                                     this.cartSubject.next(this.cart);
                                 } else {
                                     this.cart.push({ funkoId, quantity });
@@ -89,21 +101,42 @@ export class CartService {
 
     async actualizarCantidades(cambiosDeCantidad: { funkoId: number; quantity: number }[]) {
         const user = this.auth.currentUser;
-      
+       
         if (user) {
           try {
             const db = getFirestore();
             const docRef = doc(db, 'users', user.uid);
-      
+            
             for (const cambio of cambiosDeCantidad) {
-              const cartItem = this.cart.find((item) => item.funkoId === cambio.funkoId);
-              if (cartItem) {
-                cartItem.quantity = cambio.quantity;
+                const cartItem = this.cart.find((item) => item.funkoId === cambio.funkoId);
+                if (cartItem) {
+                  cartItem.quantity = cambio.quantity; 
+                }
               }
-            }
+
             await updateDoc(docRef, {
               carrito: this.cart
             });
+
+            // Actualizar el stock después de haber actualizado las cantidades en el carrito
+            for (const cambio of cambiosDeCantidad) {
+                this.diferenciaCantidad = 0;
+                const fk = this.cart.find((item) => item.funkoId === cambio.funkoId);
+                const valorPrevio = this.valoresPrevios.find((item) => item.funkoId === cambio.funkoId);
+                this.diferenciaCantidad = cambio.quantity - valorPrevio!.quantity;
+                const cartItem = this.cart.find((item) => item.funkoId === cambio.funkoId);
+                if (cartItem) {
+                    
+                    let stock = await this.funkoService.obtenerStockFunko(cartItem.funkoId);
+                    stock ? (stock -= this.diferenciaCantidad) : (stock = 0);
+                    const fk = await this.funkoService.getFunko(cartItem.funkoId);
+                    if (fk) {
+                        fk.stock = stock;
+                        await this.funkoService.putFunko(fk, fk.id);
+                        this.fkCambiadoId = fk.id;
+                    }
+                }
+            }
             this.cartSubject.next(this.cart);
           } catch (error) {
             console.error(error);

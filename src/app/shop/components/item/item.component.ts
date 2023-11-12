@@ -144,16 +144,24 @@ export class ItemComponent implements AfterViewInit {
       if (quantity > 0) {
         if (this.selectedItem.id) {
           if (this.isAuthenticated) {
-            this.cartService.agregarAlCarrito(this.selectedItem.id, quantity);
-            // Emitir el nuevo stock después de agregar al carrito
-            const nuevoStock = this.stock ? this.stock - quantity : 0;
-            this.funkosService.emitirStockInicial(nuevoStock);
+            if (this.selectedItem.stock && this.selectedItem.stock > 0 && this.selectedItem.stock > quantity) {
+              this.cartService.agregarAlCarrito(this.selectedItem.id, quantity);
+              // Emitir el nuevo stock después de agregar al carrito
+              const nuevoStock = this.stock ? this.stock - quantity : 0;
+              this.funkosService.emitirStockInicial(nuevoStock);
+            } else {
+              alert('No hay stock suficiente'); // AGREGAR POP UP DE SWEET ALERT
+            }
           } else {
-            await this.cartLocalService.addToCart({ funkoId: this.selectedItem.id, quantity: quantity });
-            // Emitir el nuevo stock después de agregar al carrito
-            const nuevoStock = this.stock ? this.stock - quantity : 0;
-            this.funkosService.emitirStockInicial(nuevoStock);
-            this.funkosService.actualizarStockFunko(this.selectedItem.id, nuevoStock);
+            if (this.selectedItem.stock && this.selectedItem.stock > 0 && this.selectedItem.stock > quantity) {
+              await this.cartLocalService.addToCart({ funkoId: this.selectedItem.id, quantity: quantity });
+              // Emitir el nuevo stock después de agregar al carrito
+              const nuevoStock = this.stock ? this.stock - quantity : 0;
+              this.funkosService.emitirStockInicial(nuevoStock);
+              this.funkosService.actualizarStockFunko(this.selectedItem.id, nuevoStock);
+            } else {
+              alert('No hay stock suficiente'); // AGREGAR POP UP DE SWEET ALERT
+            }
           }
           this.quantityButton.nativeElement.value = "0";
         }

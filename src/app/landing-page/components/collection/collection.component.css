@@ -81,7 +81,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-image: url(../../../../assets/img/background-collections/harry-potter.jpg);
+    background-image: url(../../../../assets/img/background-collections/pokemon.jpg);
     background-size: cover;
     background-position: center;
 }
@@ -93,7 +93,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-image: url(../../../../assets/img/background-collections/harry-potter.jpg);
+    background-image: url(../../../../assets/img/background-collections/pokemon.jpg);
     background-size: cover;
     background-position: center;
     filter: blur(.1rem);
@@ -106,7 +106,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-image: url(../../../../assets/img/background-collections/pokemon.jpg);
+    background-image: url(../../../../assets/img/background-collections/harry-potter.jpg);
     background-size: cover;
     background-position: center;
 }
@@ -118,7 +118,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-image: url(../../../../assets/img/background-collections/pokemon.jpg);
+    background-image: url(../../../../assets/img/background-collections/harry-potter.jpg);
     background-size: cover;
     background-position: center;
     filter: blur(.1rem);

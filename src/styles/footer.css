@@ -2,18 +2,16 @@ footer {
     background: var(--dark-bg-solid);
     font-family: var(--alternative-font);
     color: var(--light-font-solid);
-    
 }
 
-.footer-main {
-    width: 100%;
+.footer-container {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
 @media screen and (min-width: 768px) {
-    .footer-main {
+    .footer-container {
         flex-direction: row;
         justify-content: space-around;
         gap: var(--spacing-30);
@@ -22,6 +20,7 @@ footer {
 }
 
 .footer-navbar {
+    width: 15rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -57,7 +56,32 @@ footer {
 
 .footer-social {
     display: flex;
-    gap: var(--spacing-50);
+    flex-direction: column;
+    padding-top: var(--spacing-20);
+}
+
+@media screen and (min-width: 768px) {
+    .footer-social {
+        align-self: flex-end;
+        padding: 0 var(--spacing-30);
+    }
+}
+
+.footer-social-title {
+    font-size: var(--font-xsmall);
+    font-weight: 500;
+    text-align: center;
+}
+
+@media screen and (min-width: 768px) {
+    .footer-social-title {
+        font-size: var(--font-medium);
+    }
+}
+
+.footer-social-icons {
+    display: flex;
+    gap: var(--spacing-30);
     padding: var(--spacing-30);
 }
 
@@ -82,7 +106,14 @@ footer {
 }
 
 .footer-logo {
-    padding: var(--spacing-30);
+    width: 15rem;
+    padding: var(--spacing-20);
+}
+
+@media screen and (min-width: 768px) {
+    .footer-logo {
+        padding: calc (var(--spacing-30) - 15rem);
+    }
 }
 
 .footer-copy {

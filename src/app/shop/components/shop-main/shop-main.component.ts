@@ -34,6 +34,7 @@ export class ShopMainComponent implements OnInit {
       this.calculateTotalPages();
       }else{
         this.mostrarFunkos();
+        
       }
       
     });
@@ -130,6 +131,8 @@ export class ShopMainComponent implements OnInit {
     const response = await this.funkoService.getFunkos();
     if (response != undefined) {
       this.lista = response as Funko[];
+      // ordenar la lista por nombre ascendente
+      this.lista.sort((a, b) => a.name.localeCompare(b.name));
       this.calculateTotalPages();
     } else {
       console.log('Error al mostrar los funkos');

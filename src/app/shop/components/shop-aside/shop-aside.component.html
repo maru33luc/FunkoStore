@@ -20,13 +20,13 @@
         <div class="shop-aside-price">
             <div class="shop-aside-box">
                 <label class="shop-aside-label-small" for="min-price">Min</label>
-                <input id="min-price" class="shop-aside-input" type="number" min="0" [ngModel]="minPrice"
+                <input id="min-price" class="shop-aside-input" type="number" [ngModel]="minPrice"
                     (ngModelChange)="minPrice = $event" (focus)="clearMinPricePlaceholder()"
                     (blur)="resetMinPricePlaceholder()" (input)="onPriceFilterChange()"/>
             </div>
             <div class="shop-aside-box">
                 <label class="shop-aside-label-small" for="max-price">Max</label>
-                <input id="max-price" class="shop-aside-input" type="number" min="0" [ngModel]="maxPrice"
+                <input id="max-price" class="shop-aside-input" type="number" [ngModel]="maxPrice"
                     (ngModelChange)="maxPrice = $event" (focus)="clearMaxPricePlaceholder()"
                     (blur)="resetMaxPricePlaceholder()" (input)="onPriceFilterChange()"/>
             </div>

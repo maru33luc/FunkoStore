@@ -60,11 +60,18 @@ export class ShopAsideComponent {
 
   onPriceFilterChange() {
     console.log(this.minPrice, this.maxPrice);
-    if (this.maxPrice >= 0 && this.maxPrice >= this.minPrice) {
+    if (this.minPrice < 0 || this.maxPrice < 0 ) {
+      alert("El precio no puede ser negativo");
+      this.minPrice = 0;
+      this.maxPrice = 0;
+      return; 
+    }
+    else if (this.maxPrice >= 0 && this.maxPrice >= this.minPrice) {
       this.orderService.setMinPrice(this.minPrice);
       this.orderService.setMaxPrice(this.maxPrice);
       this.funkoService.aplicarFiltro("price", "",this.minPrice, this.maxPrice);
     }
+  
 }
 
   clearMinPricePlaceholder() {

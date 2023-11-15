@@ -173,7 +173,7 @@ export class FunkosService {
                     const price = funko.price;
                     return !isNaN(price) && price >= min && price <= max;
                 });
-                console.log(result);
+              
             } else if (type === 'category') {
                 if(!this.appliedFilters.find(filter => filter.type === "licence")){
                     result = this.funkos.filter((funko) =>

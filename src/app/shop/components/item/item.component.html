@@ -38,21 +38,39 @@
                 <h4 class="item-info-extra-title">INFORMACIÓN ADICIONAL</h4>
                 <p>Especie: {{characterInfoPotter?.species? characterInfoPotter?.species : 'desconocido' }}</p>
                 <p>Casa: {{characterInfoPotter?.house? characterInfoPotter?.house : 'desconocido' }}</p>
-                <p>Nacimiento: {{characterInfoPotter?.dateOfBirth? characterInfoPotter?.dateOfBirth : 'desconocido' }}</p>
+                <p>Nacimiento: {{characterInfoPotter?.dateOfBirth? characterInfoPotter?.dateOfBirth : 'desconocido' }}
+                </p>
                 <p>Ancestros: {{characterInfoPotter?.ancestry? characterInfoPotter?.ancestry : 'desconocido' }}</p>
                 <p>Patrono: {{characterInfoPotter?.patronus? characterInfoPotter?.patronus : 'desconocido'}}</p>
-                <p>Madera de Varita: {{characterInfoPotter?.wand?.wood? characterInfoPotter?.wand?.wood : 'desconocido' }}</p>
-                <p>Núcleo de Varita: {{characterInfoPotter?.wand?.core? characterInfoPotter?.wand?.core : 'desconocido' }}</p>
+                <p>Madera de Varita: {{characterInfoPotter?.wand?.wood? characterInfoPotter?.wand?.wood : 'desconocido'
+                    }}</p>
+                <p>Núcleo de Varita: {{characterInfoPotter?.wand?.core? characterInfoPotter?.wand?.core : 'desconocido'
+                    }}</p>
             </div>
 
-            <img src="{{characterInfoPotter?.image}}" *ngIf="characterInfoPotter?.image!=undefined">
+            <img src="{{characterInfoPotter?.image}}"
+                *ngIf="characterInfoPotter?.image!=undefined && characterInfoPotter?.image!=''">
         </section>
 
         <section class="item-info-extra star-wars-info" *ngIf="selectedItemLicence=='Star Wars'">
             <h4 class="item-info-extra-title">INFORMACIÓN ADICIONAL</h4>
             <p>Nombre: {{characterInfoStarWars?.name? characterInfoStarWars?.name : 'desconocido' }}</p>
-            <p>Descripción: {{characterInfoStarWars?.description? characterInfoStarWars?.description : 'desconocido' }}</p>
+            <p>Descripción: {{characterInfoStarWars?.description? characterInfoStarWars?.description : 'desconocido' }}
+            </p>
             <img src="{{characterInfoStarWars?.image}}" *ngIf="characterInfoStarWars?.image!=undefined">
         </section>
+
+        <section class="item-info-extra pokemon-info" *ngIf="selectedItemLicence=='Pokemon'">
+            <h4 class="item-info-extra-title">INFORMACIÓN ADICIONAL</h4>
+            <p><strong>Nombre:</strong> {{characterInfoPokemon?.name? characterInfoPokemon?.name : 'desconocido' }} </p>
+            <p><strong>Descripción:</strong> {{characterInfoPokemon?.description? characterInfoPokemon?.description :
+                'desconocido' }} </p>
+            <p><strong>Tipo:</strong> {{characterInfoPokemon?.type? characterInfoPokemon?.type : 'desconocido' }} </p>
+            <p><strong>Altura:</strong> {{characterInfoPokemon?.height? characterInfoPokemon?.height : 'desconocido' }}
+            </p>
+            <p><strong>Peso:</strong> {{characterInfoPokemon?.weight? characterInfoPokemon?.weight : 'desconocido' }}
+            </p>
+        </section>
+
     </article>
 </main>

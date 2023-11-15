@@ -112,7 +112,7 @@ export class ShopMainComponent implements OnInit {
 
     // Suscripción a cambios en el filtro de licencia
     this.orderService.licenceQuery$?.subscribe((licence) => {
-      console.log(licence);
+      
       if (licence.length !== 0) {
         this.funkoService.aplicarFiltro("licence", licence, 0,0);
         this.currentPage = 0;

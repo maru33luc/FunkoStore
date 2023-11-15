@@ -59,7 +59,6 @@ export class ShopAsideComponent {
   }
 
   onPriceFilterChange() {
-    console.log(this.minPrice, this.maxPrice);
     if (this.minPrice < 0 || this.maxPrice < 0 ) {
       alert("El precio no puede ser negativo");
       this.minPrice = 0;

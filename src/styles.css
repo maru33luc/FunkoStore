@@ -5,3 +5,4 @@
 @import url(./styles/forms.css);
 @import url(./styles/pagination.css);
 @import url(./styles/swal.css);
+@import '~aos/dist/aos.css';

@@ -11,6 +11,7 @@ import { getAuth, provideAuth } from '@angular/fire/auth';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { FirestoreModule } from '@angular/fire/firestore';
 import { AngularFireModule } from '@angular/fire/compat';
+import { environments } from 'src/environments/environments';
 
 @NgModule({
     declarations: [AppComponent],
@@ -19,16 +20,7 @@ import { AngularFireModule } from '@angular/fire/compat';
         AppRoutingModule,
         ReactiveFormsModule,
         HttpClientModule,
-        provideFirebaseApp(() => initializeApp(
-            {
-                "projectId": "funkostore-b44e7",
-                "appId": "1:599703726366:web:dc176fcc201097bd2fc10f",
-                "storageBucket": "funkostore-b44e7.appspot.com",
-                "apiKey": "AIzaSyDtU1Rdh5mZXb5OFL9KWJetYtfi8hcJfE0",
-                "authDomain": "funkostore-b44e7.firebaseapp.com",
-                "messagingSenderId": "599703726366",
-                "measurementId": "G-QFY4FKRWLQ"
-            })),
+        provideFirebaseApp(() => initializeApp(environments.firebaseConfig)),
         provideAuth(() => getAuth()),
         provideFirestore(() => getFirestore()),
         AngularFireModule,

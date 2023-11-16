@@ -44,7 +44,7 @@
             </li>
         </ul>
 
-        <form class="contact-form" [formGroup]="formContact" (submit)="enviarFormulario()" id="my-form" action="https://formspree.io/f/xknlabrk" method="POST">
+        <form class="contact-form" [formGroup]="formContact" (submit)="enviarFormulario()"  method="POST">
             <div class="form-box">
                 <label class="form-label" for="name">Nombre</label>
                 <input id="name" class="form-input" type="text" formControlName="name" placeholder="Tu nombre">

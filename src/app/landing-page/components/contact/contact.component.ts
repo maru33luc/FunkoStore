@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { environments } from 'src/environments/environments';
 
 @Component({
   selector: 'app-contact',
@@ -35,7 +36,7 @@ enviarFormulario() {
         message: this.formContact.controls['message'].value,
       };
 
-      this.http.post('https://formspree.io/f/xknlabrk', contacto).subscribe(
+      this.http.post(environments.urlFormsPree, contacto).subscribe(
        {
         next: () => {
           Swal.fire({

@@ -1,10 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Raleway:wght@300;400;500;600;700&display=swap');
 
 html {
-    font-family: var(--base-font);
     box-sizing: border-box;
     font-size: 62.5%;
+    font-family: var(--base-font);
     color: var(--dark-solid);
+    overflow-x: hidden;
 }
 
 *,
@@ -31,4 +32,29 @@ img {
     width: 100%;
     object-fit: contain;
     height: 100%;
+}
+
+.main {
+    margin: 2rem;
+    display: flex;
+    flex-direction: column;
+}
+
+@media screen and (min-width: 768px) {
+    .main {
+        margin: 6rem;
+    }
+}
+
+.h1 {
+    font-size: var(--font-large);
+    text-align: center;
+    margin: 0;
+    margin-bottom: 3rem;
+}
+
+@media screen and (min-width: 768px) {
+    .h1 {
+        font-size: var(--font-jumbo);
+    }
 }

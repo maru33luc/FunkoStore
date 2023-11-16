@@ -1,25 +1,5 @@
-.terms-main {
-    margin: var(--spacing-20);
+main {
     text-align: justify;
-    text-wrap: wrap;
-}
-
-@media screen and (min-width: 768px) {
-    .terms-main {
-        margin: var(--spacing-68);
-    }
-}
-
-.terms-h1 {
-    font-size: var(--font-large);
-    text-align: center;
-    margin-bottom: var(--spacing-28);
-}
-
-@media screen and (min-width: 768px) {
-    .terms-h1 {
-        font-size: var(--font-jumbo);
-    }
 }
 
 .terms-header {
@@ -33,12 +13,13 @@
 }
 
 .terms-header p {
-    margin-bottom: var(--spacing-20);
+    margin-bottom: 2rem;
 }
 
 .terms-h2 {
     font-size: var(--font-large);
-    margin: var(--spacing-20) 0;
+    text-align: center;
+    margin: 2rem 0;
 }
 
 @media screen and (min-width: 768px) {
@@ -58,14 +39,14 @@
 }
 
 .terms-clauses li p {
-    margin-bottom: var(--spacing-8);
+    margin-bottom: 1rem;
 }
 
 .terms-clauses li ul {
     list-style-type: disc;
-    margin-left: var(--spacing-16);
+    margin-left: 2rem;
 }
 
 .terms-clauses li ul p {
-    margin: var(--spacing-12);
+    margin: 1rem;
 }

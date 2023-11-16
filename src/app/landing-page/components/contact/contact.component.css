@@ -1,59 +1,38 @@
-.contact-main {
-    margin: var(--spacing-20);
-    display: flex;
-    flex-direction: column;
-}
-
-@media screen and (min-width: 768px) {
-    .contact-main {
-        margin: var(--spacing-68);
-    }
-}
-
-.contact-h1 {
-    font-size: var(--font-large);
-    text-align: center;
-    margin: 0;
-    margin-bottom: var(--spacing-28);
-}
-
-@media screen and (min-width: 768px) {
-    .contact-h1 {
-        font-size: var(--font-jumbo);
-    }
-}
-
 .contact-container {
     display: flex;
     flex-direction: column-reverse;
-    gap: var(--spacing-50);
+    gap: 5rem;
 }
 
-@media screen and (min-width: 992px) {
+@media screen and (min-width: 1200px) {
     .contact-container {
         flex-direction: row;
-        gap: 0;
     }
 }
 
 .contact-links {
+    position: relative;
     display: flex;
     flex-direction: column;
-    gap: var(--spacing-20);
+    gap: 2rem;
 }
 
 .contact-links {
+    font-size: var(--font-small);
     display: flex;
     flex-direction: column;
     align-items: center;
-    font-size: var(--font-xsmall);
 }
 
-@media screen and (min-width: 992px) {
+@media screen and (min-width: 1200px) {
     .contact-links {
-        min-width: 25vw;
         align-items: flex-start;
-        font-size: var(--font-small);
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .contact-links {
+        position: absolute;
     }
 }
 
@@ -62,19 +41,26 @@
 }
 
 .contact-link svg {
-    width: var(--spacing-20);
-    height: var(--spacing-20);
-    margin-right: var(--spacing-10);
+    width: 2rem;
+    height: 2rem;
+    margin-right: 2rem;
 }
 
 .contact-form {
     display: flex;
     flex-direction: column;
-    gap: var(--spacing-50);
+    gap: 5rem;
 }
 
 @media screen and (min-width: 992px) {
     .contact-form {
-        min-width: 40vw;
+        width: 60vw;
+        margin: 0 auto;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .contact-form {
+        width: 40vw;
     }
 }

@@ -8,7 +8,7 @@ const routes: Routes = [
     {path: '' , component: AdminMainPageComponent},
     {path: 'new-funko', component: AdminNewFunkoPageComponent},
     {path: 'edit-funko/:id', component: AdminEditFunkoPageComponent},
-    {path: '**', redirectTo: ''}
+    {path: '**', redirectTo: '' }
 ];
 
 @NgModule({

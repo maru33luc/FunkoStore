@@ -16,12 +16,17 @@ export class AuthLoginGuard implements CanActivate {
 
     canActivate(): Observable<boolean> {
         return this.loginService.authStateObservable()!.pipe(
-            take(1), // Toma solo un valor y se desuscribe
             map(user => {
+                
                 if (user) {
-                    // El usuario está logueado, redirige a la página de inicio o a donde desees
-                    this.router.navigate(['home']);
-                    return false;
+                    if (this.loginService.isAdmin()) {
+                        this.router.navigate(['admin']);
+                        return false;
+                    }else{
+                        this.router.navigate(['home']);
+                        return false;
+                    }
+                    
                 } else {
                     return true;
                 }

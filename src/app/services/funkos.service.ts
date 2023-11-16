@@ -16,6 +16,7 @@ export class FunkosService {
     private appliedFilters: { type: string; criteria: string, min:number,max:number }[] = [];
     private history: Funko[][] = [];
     stockFunkoSubject$ = new BehaviorSubject<number>(0);
+    landing$: Subject <string> | undefined= new Subject<string>();
 
     constructor(private orderFunkoService: OrderFunkosService) {
         this.initialize();
@@ -244,5 +245,9 @@ export class FunkosService {
 
     mostrarListaFiltrada() {
         return this.history[this.history.length - 1];
+    }
+
+    emitirLanding(estado: string){
+        this.landing$?.next(estado)
     }
 }

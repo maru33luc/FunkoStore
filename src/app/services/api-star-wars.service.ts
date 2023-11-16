@@ -1,17 +1,18 @@
 import { Injectable } from '@angular/core';
 import axios from 'axios';
+import { environments } from 'src/environments/environments';
 
 @Injectable({
     providedIn: 'root'
 })
 export class ApiStarWarsService {
-    url: string = 'https://starwars-databank-server.vercel.app/api/v1/characters/name/';
+    url: string = environments.urlAPIStarWars;
 
     constructor() { }
 
   async getCharacterInfo(name: string) {
     try {
-      const response = await axios(`${this.url}${name}`);
+      const response = await axios(`${this.url}/characters/name/${name}`);
       const data = response.data;
       if (data === undefined) {
         return undefined;

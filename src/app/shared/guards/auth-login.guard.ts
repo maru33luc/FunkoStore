@@ -14,20 +14,15 @@ export class AuthLoginGuard implements CanActivate {
         private router: Router
     ) {}
 
-    canActivate(
-        next: ActivatedRouteSnapshot,
-        state: RouterStateSnapshot
-    ): Observable<boolean> {
+    canActivate(): Observable<boolean> {
         return this.loginService.authStateObservable()!.pipe(
             take(1), // Toma solo un valor y se desuscribe
             map(user => {
                 if (user) {
                     // El usuario está logueado, redirige a la página de inicio o a donde desees
                     this.router.navigate(['home']);
-                    console.log('Usuario logueado');
                     return false;
                 } else {
-                    console.log('Usuario no logueado');
                     return true;
                 }
             })

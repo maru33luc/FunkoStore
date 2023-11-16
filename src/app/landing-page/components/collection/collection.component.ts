@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
-import { Observable } from 'rxjs';
 import { FunkosService } from 'src/app/services/funkos.service';
-import { OrderFunkosService } from 'src/app/services/order-funkos.service';
 
 @Component({
     selector: 'app-collection',

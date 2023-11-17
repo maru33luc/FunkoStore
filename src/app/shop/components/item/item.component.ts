@@ -25,6 +25,7 @@ export class ItemComponent implements AfterViewInit {
   isAuthenticated: boolean = false;
   selectedItemLicence: string | undefined;
   stock: number | undefined = 0;
+  dataLoaded: boolean = false;
 
   @ViewChild('addButton') addButton: ElementRef | undefined;
   @ViewChild('subtractButton') subtractButton: ElementRef | undefined;
@@ -61,7 +62,6 @@ export class ItemComponent implements AfterViewInit {
       this.addButton.nativeElement.addEventListener('click', () => this.handleAddClick());
       this.subtractButton.nativeElement.addEventListener('click', () => this.handleSubtractClick());
     }
-
   }
 
   // Funciones para el manejo de los placeholders de los inputs de precio
@@ -92,6 +92,7 @@ export class ItemComponent implements AfterViewInit {
   // Funcion para obtener informacion de un funko por su id, obtener la informacion del personaje y filtrar por licencia
   async getItemById(itemId: number): Promise<Funko | undefined> {
     try {
+      this.dataLoaded = false;
       this.selectedItem = await this.funkosService.getFunko(itemId);
       this.selectedItemLicence = this.selectedItem?.licence;
       this.stock = this.selectedItem?.stock;
@@ -102,32 +103,40 @@ export class ItemComponent implements AfterViewInit {
           const response = await this.apiTolkienService.getCharacterInfo(this.selectedItem.name);
           if (response && response.docs && response.docs.length > 0) {
             this.characterInfo = response.docs[0];
+            this.dataLoaded = true;
           } else if (response.docs.length === 0) {
             this.characterInfo = undefined;
+            this.dataLoaded = true;
           }
         }
         else if (this.selectedItem.licence === 'Harry Potter') {
           const response = await this.apiPotterService.getCharacterInfo(this.selectedItem.name);
           if (response) {
             this.characterInfoPotter = response;
+            this.dataLoaded = true;
           } else {
             this.characterInfoPotter = undefined;
+            this.dataLoaded = true;
           }
         }
         else if (this.selectedItem.licence === 'Star Wars') {
           const response = await this.apiStarWarsService.getCharacterInfo(this.selectedItem.name);
           if (response) {
             this.characterInfoStarWars = response;
+            this.dataLoaded = true;
           } else {
             this.characterInfoStarWars = undefined;
+            this.dataLoaded = true;
           }
         }
         else if (this.selectedItem.licence === 'Pokemon') {
           const response = await this.apiPokemonService.getPokemon(this.selectedItem.id);
           if (response) {
             this.characterInfoPokemon = response;
+            this.dataLoaded = true;
           } else {
             this.characterInfoPokemon = undefined;
+            this.dataLoaded = true;
           }
         }
       }

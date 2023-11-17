@@ -23,6 +23,7 @@ export class ItemPageComponent {
 
     obtenerIdItem() {
         this.activatedRoute.paramMap.subscribe(async(params) =>  {
+            window.scroll(0,0);
             let id = params.get('id');
             const resp = await this.funkoService.getFunko(parseInt(id || ''));
             this.selectedItemLicence = resp?.licence;

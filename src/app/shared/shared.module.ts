@@ -7,7 +7,6 @@ import { IfAuthenticatedDirective } from './directives/if-authenticated.directiv
 import { CommonModule } from '@angular/common';
 import { SharedRoutingModule } from './shared-routing.module';
 
-
 @NgModule({
     declarations: [
         HeaderComponent,

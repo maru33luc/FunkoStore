@@ -19,6 +19,7 @@ export class CartLocalService {
         this.cartSubject.subscribe((cart) => {
             this.cart = cart;
         });
+
     }
 
     private initDatabase() {
@@ -33,6 +34,7 @@ export class CartLocalService {
 
         request.onsuccess = (event) => {
             this.db = (event.target as IDBOpenDBRequest).result;
+            this.getCart();
         };
 
         request.onerror = (event) => {

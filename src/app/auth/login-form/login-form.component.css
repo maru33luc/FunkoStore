@@ -1,24 +1,14 @@
 .form-box-login {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: var(--spacing-30);
-    }
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+}
 
 @media screen and (min-width: 768px) {
     .form-box-login {
         flex-direction: row-reverse;
         justify-content: space-between;
     }
-}
-
-.form-box-login-message {
-    font-size: var(--font-xsmall);
-    font-weight: 600;
-    letter-spacing: .1rem;
-    text-align: center;
-}
-
-.form-box-login-message a {
-    color: var(--secondary-solid);
 }

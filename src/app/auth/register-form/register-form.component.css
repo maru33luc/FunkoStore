@@ -3,7 +3,7 @@
     width: 100%;
     display: flex;
     justify-content: flex-start;
-    gap: var(--spacing-16);
+    gap: 2rem;
 }
 
 @media screen and (min-width: 576px) {
@@ -13,21 +13,7 @@
 }
 
 .form-accept-terms label {
-    font-size: 1rem;
-}
-
-.form-accept-terms label a {
-    text-decoration: underline;
-}
-
-@media screen and (min-width: 576px) {
-    .form-accept-terms label {
-        font-size: var(--font-xsmall);
-    }
-}
-
-.terms-error {
-    top: 100%;
+    text-align: justify;
 }
 
 .form-box-register {
@@ -35,23 +21,12 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: var(--spacing-30);
+    gap: 3rem;
 }
 
 @media screen and (min-width: 768px) {
     .form-box-register {
         flex-direction: row-reverse;
         justify-content: space-between;
-}
-}
-
-.form-box-register-message {
-    font-size: var(--font-xsmall);
-    font-weight: 600;
-    letter-spacing: .1rem;
-    text-align: center;
-}
-
-.form-box-register-message a {
-    color: var(--secondary-solid);
+    }
 }

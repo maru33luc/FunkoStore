@@ -36,11 +36,7 @@ export class CartComponent {
                     await this.loadFunkoDetails();
                 });
             } else {
-                const res = await this.cartLocalService.getCart();
-                if(res){
-                this.cartItems = res;
-                }
-                
+                this.cartItems = await this.cartLocalService.getCart();
                 this.cartItemsCopy = this.cartItems.map(item => ({ ...item }));
                 this.valoresPrevios = [];
                 for (const item of this.cartItemsCopy) {

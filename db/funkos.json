@@ -4,12 +4,12 @@
       "name": "Frodo Baggins",
       "category": "Keychain",
       "serie": "Pocket Pop!",
-      "description": "",
+      "description": "dffdsfd",
       "price": 8000,
       "frontImage": "https://media.entertainmentearth.com/assets/images/ea4c002dfe1e4f2eac1dbf903e772390lg.jpg",
       "backImage": "https://i.pinimg.com/originals/7b/0b/b0/7b0bb03e613123ab6f5dec2bf26b1d35.jpg",
-      "licence": "The Lord of the Rings",
-      "stock": 40,
+      "stock": 5,
+      "licence": "El Señor de los Anillos",
       "id": 1
     },
     {
@@ -39,7 +39,7 @@
       ],
       "price": 8000,
       "licence": "The Lord of the Rings",
-      "stock": 59,
+      "stock": 58,
       "id": 3
     },
     {
@@ -129,7 +129,7 @@
       ],
       "price": 12000,
       "licence": "The Lord of the Rings",
-      "stock": 85,
+      "stock": 78,
       "id": 9
     },
     {
@@ -144,7 +144,7 @@
       ],
       "price": 12000,
       "licence": "The Lord of the Rings",
-      "stock": 82,
+      "stock": 100,
       "id": 10
     },
     {
@@ -498,7 +498,7 @@
       ],
       "price": 12000,
       "licence": "The Lord of the Rings",
-      "stock": 36,
+      "stock": 35,
       "id": 34
     },
     {
@@ -651,7 +651,7 @@
       "price": 20000,
       "frontImage": "https://www.leprechaun.es/1430-large_default/funko-pop-15-albus-dumbledore-harry-potter.jpg",
       "backImage": "https://www.leprechaun.es/1429-large_default/funko-pop-15-albus-dumbledore-harry-potter.jpg",
-      "stock": 78,
+      "stock": 71,
       "licence": "Harry Potter",
       "id": 45
     },
@@ -711,7 +711,7 @@
       "price": 8000,
       "frontImage": "https://th.bing.com/th/id/OIP.IYgSf5bVEksy3mSfgq1pcQHaHa?pid=ImgDet&rs=1",
       "backImage": "https://th.bing.com/th/id/R.be48d1cc58b0e052a216c350b9aab391?rik=JxpBrIzA6RvWAQ&pid=ImgRaw&r=0",
-      "stock": 40,
+      "stock": 38,
       "licence": "Harry Potter",
       "id": 50
     },
@@ -891,7 +891,7 @@
       "price": 25000,
       "frontImage": "https://66703.cdn.simplo7.net/static/66703/sku/5009_0f014549-059a-4bbc-bfbf-f3821001cdbe.jpg",
       "backImage": "https://funstock.vteximg.com.br/arquivos/ids/164490-1000-1000/Funko-Pop-Han-Solo-Star-Wars--286-2.jpg?v=637209117425370000",
-      "stock": 40,
+      "stock": 38,
       "licence": "Star Wars",
       "id": 65
     },
@@ -987,7 +987,7 @@
       "price": 20000,
       "frontImage": "https://i5.walmartimages.com/asr/966e5224-a0a2-4c60-a6f8-0d7ed5d06ff7_1.e6e29cf8c865e013c1863c2b83c7e34d.jpeg?odnWidth=612&odnHeight=612&odnBg=ffffff",
       "backImage": "https://a3k5c4z3.stackpathcdn.com/895566-medium_default/star-wars-basic-plush-assortment.jpg",
-      "stock": 40,
+      "stock": 39,
       "licence": "Star Wars",
       "id": 73
     },
@@ -1011,7 +1011,7 @@
       "price": 20000,
       "frontImage": "https://i5.walmartimages.com/asr/c4576ecd-a1ca-4108-9404-f9b8f6114fa8_1.d33ea4e5ec04c199b0e836ea8d9a63c3.jpeg?odnWidth=1000&odnHeight=1000&odnBg=ffffff",
       "backImage": "https://funkolandia.com/images/products/thumbnails/51iLXRYEcEL.jpg",
-      "stock": 40,
+      "stock": 38,
       "licence": "Star Wars",
       "id": 75
     },
@@ -1083,7 +1083,7 @@
       "price": 27000,
       "frontImage": "https://nintendoeverything.com/wp-content/uploads/bulbasaur-funko-pop-1.jpg",
       "backImage": "https://i5.walmartimages.com/asr/d983904c-bb13-4bbc-a393-7133ce81531c_1.d62df57ffdf4b5e37db2afbaf58b55a6.jpeg",
-      "stock": 40,
+      "stock": 38,
       "licence": "Pokemon",
       "id": 81
     },

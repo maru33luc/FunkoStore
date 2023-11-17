@@ -10,6 +10,7 @@ import { LoginService } from 'src/app/services/login.service';
 })
 export class RegisterFormComponent implements OnInit {
     isUser: boolean = false;
+    checkTerms!: boolean;
 
     registerForm: FormGroup = this.fb.group({
         name: ['', [Validators.required, Validators.maxLength(30)]],
@@ -34,7 +35,7 @@ export class RegisterFormComponent implements OnInit {
 
     validate(field: string, error: string): boolean {
         return (
-            this.registerForm.controls[field].getError(error) && 
+            this.registerForm.controls[field].getError(error) &&
             this.registerForm.controls[field].touched);
     }
 
@@ -50,13 +51,20 @@ export class RegisterFormComponent implements OnInit {
     validateTerms(): boolean {
         return (
             !this.registerForm.controls['terms'].value &&
-            this.registerForm.controls['terms'].touched);
+            this.registerForm.controls['terms'].touched
+        );
     }
 
     async register() {
-        if (this.registerForm.invalid) {
+        const terms = document.getElementById('accept-terms') as HTMLInputElement;
+        if (!terms?.checked) {
+            this.checkTerms = true;
+            return;
+        }
+        else if (this.registerForm.invalid) {
             this.registerForm.markAllAsTouched();
-        } else {
+        }
+        else {
             try {
                 const response = await this.loginService.register(
                     this.registerForm.value.email,
@@ -64,12 +72,14 @@ export class RegisterFormComponent implements OnInit {
                     this.registerForm.value.name,
                     this.registerForm.value.lastname
                 );
-                this.loginService.logout();
-                this.router.navigateByUrl('/login/log');
+                
+                await this.loginService.logout();
+                await this.router.navigateByUrl('/login/log');
             } catch (e) {
                 this.isUser = true;
                 console.log(e);
             }
+
         }
     }
 

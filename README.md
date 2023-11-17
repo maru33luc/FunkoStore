@@ -1,4 +1,25 @@
-# FunkoStore
+# Welcome to FunkoStore!
+
+Thank you for choosing our application. Below, we provide you with the necessary information to test login functionality for both administrators and regular users.
+
+## Administrator Credentials
+
+To log in as an administrator, please use the following credentials:
+
+- **Email:** admin@gmail.com
+- **Password:** 123456
+
+Please note that these credentials are intended exclusively for development and testing purposes.
+
+## Regular User Credentials
+
+If you wish to log in as a regular user, you can use the following credentials:
+
+- **Email:** user@gmail.com
+- **Password:** 123456
+
+Thank you for trying out our application! If you have any questions or encounter any issues, feel free to reach out to our support team.
+
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.7.
 

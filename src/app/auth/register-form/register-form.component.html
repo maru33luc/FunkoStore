@@ -44,7 +44,7 @@
                 <a [routerLink]="'/register/terms'" target="_blank">términos y condiciones de uso</a>
             </label>
             <input id="accept-terms" type="checkbox" formControlName="terms">
-            <span class="form-error" *ngIf="this.validateTerms()">Campo obligatorio</span>
+            <span class="form-error" *ngIf="validateTerms() || checkTerms">Campo obligatorio</span>
         </div>
 
         <div class="form-box-register">

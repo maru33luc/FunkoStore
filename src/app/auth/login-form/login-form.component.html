@@ -1,5 +1,5 @@
-<main class="container main-form">
-    <h1 class="h1-form">INGRESAR</h1>
+<main class="main">
+    <h1 class="h1">INGRESAR</h1>
     <form class="form" [formGroup]="loginForm" (ngSubmit)="login()">
         <div class="form-box">
             <label class="form-label" for="email">Correo electrónico</label>
@@ -18,12 +18,12 @@
         </div>
 
         <div class="form-box-login">
-            <input class="form-btn" type="submit" value="INICIAR SESIÓN">
-            <div class="form-box-login-message">
+            <input class="button" type="submit" value="INICIAR SESIÓN">
+            <div class="form-message">
                 <p>¿Olvidó su contraseña?</p>
                 <a (click)="resetPassword()">Click aquí</a>
             </div>
-            <div class="form-box-login-message">
+            <div class="form-message">
                 <p>¿No está registrado?</p>
                 <a [routerLink]="['/register/reg']" (click)="scrollToTop()">Click aquí</a>
             </div>

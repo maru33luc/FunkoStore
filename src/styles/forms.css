@@ -1,36 +1,14 @@
-.main-form {
-    margin: var(--spacing-20);
-}
-
-@media screen and (min-width: 768px) {
-    .main-form {
-        margin: var(--spacing-68);
-    }
-}
-
-.h1-form {
-    font-size: var(--font-large);
-    text-align: center;
-    margin-bottom: var(--spacing-28);
-}
-
-@media screen and (min-width: 768px) {
-    .h1-form {
-        font-size: var(--font-jumbo);
-    }
-}
-
 .form {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: var(--spacing-50);
-    margin: 0 auto;
+    gap: 5rem;
 }
 
 @media screen and (min-width: 996px) {
     .form {
         width: 50%;
+        margin: 0 auto;
     }
 }
 
@@ -39,7 +17,7 @@
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-    gap: var(--spacing-30);
+    gap: 3rem;
 }
 
 @media screen and (min-width: 576px) {
@@ -54,13 +32,12 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: var(--spacing-20);
+    gap: 1rem;
 }
 
 .form-label {
     font-size: var(--font-xsmall);
-    font-weight: 600;
-    letter-spacing: .1rem;
+    font-weight: 500;
 }
 
 @media screen and (min-width: 768px) {
@@ -70,13 +47,13 @@
 }
 
 .form-label-text-area {
-    margin-bottom: var(--spacing-8);
+    margin-bottom: 1rem;
 }
 
 .form-input {
     font-size: var(--font-xsmall);
     width: 100%;
-    padding: 1rem .5rem;
+    padding: 1rem 0;
     border: none;
     border-bottom: .2rem solid var(--primary-solid);
 }
@@ -113,10 +90,10 @@
 
 .form-error {
     position: absolute;
-    top: 25%;
+    top: 100%;
     font-size: var(--font-xsmall);
     color: var(--primary-solid);
-    font-weight: 600;
+    font-weight: 500;
 }
 
 .form-error-text-area {
@@ -126,7 +103,7 @@
 .form-box-btn {
     display: flex;
     justify-content: center;
-    gap: var(--spacing-30);
+    gap: 3rem;
 }
 
 @media screen and (min-width: 992px) {
@@ -140,7 +117,7 @@
     color: var(--light-font-solid);
     font-size: var(--font-xsmall);
     transition: background .2s ease-in-out;
-    padding: var(--spacing-12) var(--spacing-28);
+    padding: 1.2rem 2.8rem;
     border: none;
     border-radius: .5rem;
     cursor: pointer;
@@ -154,4 +131,18 @@
 
 .form-btn:hover {
     background-color: var(--secondary-solid);
+}
+
+.form-message {
+    font-size: var(--font-xsmall);
+    font-weight: 500;
+    text-align: center;
+}
+
+.form-message a {
+    color: var(--primary-solid);
+}
+
+.form-message a:hover {
+    color: var(--secondary-solid);
 }

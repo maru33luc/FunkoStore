@@ -1,5 +1,5 @@
-<main class="container main-form">
-    <h1 class="h1-form">CREAR CUENTA</h1>
+<main class="main">
+    <h1 class="h1">CREAR CUENTA</h1>
     <form class="form" [formGroup]="registerForm" (submit)="register()">
         <div class="form-box">
             <label class="form-label" for="name">Nombre</label>
@@ -40,16 +40,16 @@
         </div>
 
         <div class="form-accept-terms">
-            <label class="form-label" for="accept-terms">Acepto los 
+            <label class="form-message" for="accept-terms">Acepto los 
                 <a [routerLink]="'/register/terms'" target="_blank">términos y condiciones de uso</a>
             </label>
             <input id="accept-terms" type="checkbox" formControlName="terms">
-            <span class="form-error terms-error" *ngIf="this.validateTerms()">Campo obligatorio</span>
+            <span class="form-error" *ngIf="this.validateTerms()">Campo obligatorio</span>
         </div>
 
         <div class="form-box-register">
             <input class="form-btn" type="submit" value="REGISTRARSE">
-            <div class="form-box-register-message">
+            <div class="form-message">
                 <p>¿Ya es usuario?</p>
                 <a [routerLink]="['/login/log']" (click)="scrollToTop()">Click aquí</a>
             </div>

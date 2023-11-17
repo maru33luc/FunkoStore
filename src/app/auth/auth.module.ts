@@ -27,4 +27,4 @@ import { AdminModule } from '../admin/admin.module';
         AdminModule
     ]
 })
-export class AuthModule {}
+export class AuthModule { }

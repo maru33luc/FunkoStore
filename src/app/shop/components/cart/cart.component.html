@@ -16,7 +16,7 @@
             </div>
 
             <div class="cart-item-quantity">
-                <input class="cart-item-input" type="text" [value]="item.quantity" id="quantity" placeholder="0"
+                <input class="cart-item-input" type="text" [value]="item.quantity" id="quantity" placeholder="1"
                     disabled>
 
                 <div class="cart-item-quantity-btns">
@@ -30,8 +30,6 @@
             </div>
 
             <div>
-                <!-- <img class="cart-item-confirm" src="../../../../assets/img/icons/check-circle-svgrepo-com.svg"
-                    (click)="saveChangesToDatabase()"> -->
                 <img class="cart-item-delete" src="../..//../../assets/img/icons/gg-close-o.svg"
                     (click)="removeItem(item)">
             </div>

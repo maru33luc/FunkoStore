@@ -55,7 +55,6 @@ export class LoginService {
     async login(email: string, password: string) {
         try {
             const user = await signInWithEmailAndPassword(this.auth, email, password);
-            console.log("login exitoso");
             this.getDataActualUser();
         } catch (e) {
             console.log(e);
@@ -66,7 +65,6 @@ export class LoginService {
     async logout() {
         try {
             await this.auth.signOut();
-            console.log("logout exitoso");
         } catch (error) {
             console.log(error);
         }
@@ -79,7 +77,6 @@ export class LoginService {
                 const db = getFirestore();
                 const docRef = doc(db, 'users', user.uid);
                 const docSnap = await getDoc(docRef);
-                console.log(docSnap.data());
                 return docSnap.data();
             }
             catch (error) {

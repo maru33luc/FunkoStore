@@ -21,6 +21,7 @@ export class LoginService {
         this.authState$ = new Observable((observer) => {
             this.auth.onAuthStateChanged(observer);
         });
+        this.cerrarSesionAdmin();
     }
 
     private initialize(): void {
@@ -179,4 +180,14 @@ export class LoginService {
             throw error;
         }
     }
+
+    cerrarSesionAdmin() {
+        window.addEventListener('beforeunload', (event) => {
+            const isAdmin = this.isAdmin();
+            if (isAdmin) {
+                this.logout();
+               
+            }});
+        }
+            
 }

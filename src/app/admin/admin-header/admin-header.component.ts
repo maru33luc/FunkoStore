@@ -15,7 +15,7 @@ export class AdminHeaderComponent {
     constructor (
         private loginService: LoginService,
         private router: Router
-    ) {}
+    ) { }
 
     ngAfterViewInit() {
         if (this.hambIcon) {

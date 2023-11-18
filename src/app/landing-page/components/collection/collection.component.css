@@ -1,7 +1,7 @@
 .collection {
     position: relative;
     font-family: var(--alternative-font);
-    color: var(--light-font-solid);
+    color: var(--ligth-font);
     display: flex;
     flex-direction: column-reverse;
     justify-content: center;
@@ -170,7 +170,7 @@
 
 .collection-btn {
     display: block;
-    background-color: var(--primary-solid);
+    background-color: var(--primary);
     font-size: var(--font-medium);
     transition: background .2s ease-in-out;
     transition: transform .2s ease-in-out;
@@ -189,7 +189,7 @@
 }
 
 .collection-btn:hover {
-    background-color: var(--secondary-solid);
+    background-color: var(--secondary);
     transform: scale(1.05);
 }
 

@@ -35,7 +35,7 @@
     align-items: center;
     gap: var(--spacing-20);
     padding: var(--spacing-30);
-    border: .2rem solid var(--primary-solid);
+    border: .2rem solid var(--primary);
     border-radius: .5rem;
 }
 
@@ -133,7 +133,7 @@
     width: 5rem;
     height: 5rem;
     font-size: var(--font-small);
-    border: .2rem solid var(--dark-bg-solid);
+    border: .2rem solid var(--dark-bg);
     border-radius: .5rem;
     text-align: center;
 }
@@ -148,8 +148,8 @@
 
 .cart-item-quantity-btn {
     height: calc(5rem - var(--spacing-10));
-    background-color: var(--primary-solid);
-    color: var(--light-font-solid);
+    background-color: var(--primary);
+    color: var(--ligth-font);
     font-size: var(--font-xsmall);
     transition: background .2s ease-in-out;
     border: none;
@@ -158,7 +158,7 @@
 }
 
 .cart-item-quantity-btn:hover {
-    background-color: var(--secondary-solid);
+    background-color: var(--secondary);
 }
 
 .cart-total-price {
@@ -221,7 +221,7 @@
     flex-direction: column;
     gap: var(--spacing-10);
     padding: var(--spacing-30);
-    border: .2rem solid var(--primary-solid);
+    border: .2rem solid var(--primary);
     border-radius: .5rem;
 }
 
@@ -234,15 +234,15 @@
 }
 
 .cart-resumen-line:nth-of-type(4) {
-    border-top: .2rem solid var(--primary-solid);
+    border-top: .2rem solid var(--primary);
     padding-top: 1rem;
 }
 
 .cart-pay-btn {
     align-self: center;
     max-width: 50%;
-    background-color: var(--primary-solid);
-    color: var(--light-font-solid);
+    background-color: var(--primary);
+    color: var(--ligth-font);
     font-size: var(--font-small);
     transition: background .2s ease-in-out;
     padding: var(--spacing-10) var(--spacing-20);
@@ -258,6 +258,6 @@
 }
 
 .cart-pay-btn:hover {
-    background-color: var(--secondary-solid);
+    background-color: var(--secondary);
 }
 

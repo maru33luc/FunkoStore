@@ -1,47 +1,43 @@
-<main class="admin-main">
-    <h1 class="admin-h1">LISTADO DE PRODUCTOS</h1>
+<main class="main">
+    <h1 class="h1">LISTADO DE PRODUCTOS</h1>
 
-    <div class="admin-header">
-        <div class="admin-search">
-            <svg class="admin-search-icon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16">
-                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5">
-                    <path d="m11.25 11.25l3 3"></path>
-                    <circle cx="7.5" cy="7.5" r="4.75"></circle>
+    <div class="admin-main-header">
+        <div class="admin-main-search">
+            <label for="search">
+                <svg class="admin-main-search-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                    <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5">
+                        <path d="m11.25 11.25l3 3"></path>
+                        <circle cx="7.5" cy="7.5" r="4.75"></circle>
+                    </svg>
                 </svg>
-            </svg>
-            <input class="admin-search-bar" type="text" placeholder="Filtrar por nombre" [(ngModel)]="searchQuery" (ngModelChange)="filterFunkos($event)">
+            </label>
+            <input id="search" class="form-input" type="text" placeholder="Buscar por nombre" [(ngModel)]="searchQuery" (ngModelChange)="filterFunkos($event)">
         </div>
 
-        <div class="admin-add">AGREGAR
-            <a class="admin-add-btn" routerLink="new-funko">
-                <svg xmlns="http://www.w3.org/2000/svg" width="3rem" height="3rem" viewBox="0 0 20 20">
-                    <path fill="currentColor" d="M5 21h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2zm2-10h4V7h2v4h4v2h-4v4h-2v-4H7v-2z"></path>
-                </svg>
-            </a>
-        </div>
+        <input class="form-btn" type="submit" value="AGREGAR" routerLink="new-funko">
     </div>
 
     <table class="admin-table">
         <thead class="admin-table-header">
             <tr>
-                <th class="admin-table-cell-small">ID</th>
-                <th class="admin-table-cell-large">Nombre</th>
-                <th class="admin-table-cell-large">Categoría</th>
-                <th class="admin-table-cell-large">Serie</th>
-                <th class="admin-table-cell-medium">Precio</th>
-                <th class="admin-table-cell-small"></th>
-                <th class="admin-table-cell-small"></th>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Categoría</th>
+                <th>Licencia</th>
+                <th>Precio</th>
+                <th></th>
+                <th></th>
             </tr>
         </thead>
 
         <tbody class="admin-table-body">
             <tr class="admin-table-row" *ngFor="let item of paginatedItems">
-                <td class="admin-table-cell-small">{{item.id}}</td>
-                <td class="admin-table-cell-large">{{item.name}}</td>
-                <td class="admin-table-cell-large">{{item.category}}</td>
-                <td class="admin-table-cell-large">{{item.serie}}</td>
-                <td class="admin-table-cell-medium">${{item.price}}</td>
-                <td class="admin-table-cell-small">
+                <td>{{item.id}}</td>
+                <td>{{item.name}}</td>
+                <td>{{item.category}}</td>
+                <td>{{item.licence}}</td>
+                <td>${{item.price}}</td>
+                <td>
                     <a class="admin-edit-btn" [routerLink]="'edit-funko/' + item.id" (click)="scrollToTop()">
                         <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
                             <path fill="currentColor" fill-rule="evenodd" d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83l3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z">
@@ -64,15 +60,15 @@
     <div class="admin-search-negative" *ngIf="!hasResults">NO SE ENCONTRARON PRODUCTOS</div>
 
     <div class="pagination" *ngIf="showPagination">
-        <ul class="pag-ul">
-            <li id="previous-page" [class.disabled]="currentPage === 0"
+        <ul class="pagination-list">
+            <li id="pagination-previous-page" [class.disabled]="currentPage === 0"
                 (click)="changePage(currentPage - 1)">
                 «
             </li>
-            <li class="page-link" *ngFor="let _ of pages; let i = index" [class.active]="i === currentPage"
+            <li class="pagination-page-link" *ngFor="let _ of pages; let i = index" [class.active]="i === currentPage"
                 (click)="changePage(i)">{{ i + 1 }}
             </li>
-            <li id="next-page" [class.disabled]="currentPage === pages.length - 1"
+            <li id="pagination-next-page" [class.disabled]="currentPage === pages.length - 1"
                 (click)="changePage(currentPage + 1)">
                 »
             </li>

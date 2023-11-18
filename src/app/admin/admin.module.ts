@@ -34,4 +34,4 @@ import { FormsModule } from '@angular/forms';
         FormsModule
     ]
 })
-export class AdminModule {}
+export class AdminModule { }

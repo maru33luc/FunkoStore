@@ -43,7 +43,7 @@
     font-size: var(--font-xsmall);
     width: 100%;
     padding: 1rem .5rem;
-    border: .2rem solid var(--dark-solid);
+    border: .2rem solid var(--dark-font);
     border-radius: .5rem;
 }
 
@@ -55,7 +55,7 @@
 
 .shop-aside-input:focus {
     outline: 0;
-    border: .2rem solid var(--primary-solid);
+    border: .2rem solid var(--primary);
 }
 
 .shop-aside-price {
@@ -96,8 +96,8 @@
 }
 
 .shop-aside-btn {
-    background-color: var(--primary-solid);
-    color: var(--light-font-solid);
+    background-color: var(--primary);
+    color: var(--ligth-font);
     font-size: var(--font-xsmall);
     transition: background .2s ease-in-out;
     padding: var(--spacing-10) var(--spacing-20);
@@ -113,5 +113,5 @@
 }
 
 .shop-aside-btn:hover {
-    background-color: var(--secondary-solid);
+    background-color: var(--secondary);
 }

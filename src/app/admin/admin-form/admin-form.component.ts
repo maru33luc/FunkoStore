@@ -9,25 +9,25 @@ import { Funko } from 'src/app/interfaces/Funko';
 })
 export class AdminFormComponent {
     @Input() name?: string;
-    @Input() category?: string;
     @Input() serie?: string;
-    @Input() description?: string;
+    @Input() category?: string;
+    @Input() licence?: string;
     @Input() price?: number;
+    @Input() stock?: number;
     @Input() frontImage?: string;
     @Input() backImage?: string;
-    @Input() licence?: string;
-    @Input() stock?: number;
+    @Input() description?: string;
 
     formAdmin: FormGroup = this.formBuilder.group({
-        name: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(20)]],
+        name: ['', Validators.required],
+        serie: ['', Validators.required],
         category: ['', Validators.required],
-        serie: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(20)]],
+        licence: ['', Validators.required],
         price: [0, [Validators.required, Validators.min(1)]],
-        description: ['', [Validators.required, Validators.maxLength(100)]],
+        stock: [0, [Validators.required, Validators.min(1)]],
         frontImage: ['', [Validators.required, Validators.pattern('^(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})([/\\w .-]*)*/?$')]],
         backImage: ['', [Validators.required, Validators.pattern('^(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})([/\\w .-]*)*/?$')]],
-        licence: ['', Validators.required],
-        stock: [0, [Validators.required, Validators.min(1)]],
+        description: ['', Validators.required],
     });
 
     @Output() sendFunko = new EventEmitter<Funko>();
@@ -36,14 +36,14 @@ export class AdminFormComponent {
 
     ngOnChanges() {
         this.formAdmin.controls['name'].setValue(this.name);
-        this.formAdmin.controls['category'].setValue(this.category);
         this.formAdmin.controls['serie'].setValue(this.serie);
-        this.formAdmin.controls['description'].setValue(this.description);
+        this.formAdmin.controls['category'].setValue(this.category);
+        this.formAdmin.controls['licence'].setValue(this.licence);
         this.formAdmin.controls['price'].setValue(this.price);
+        this.formAdmin.controls['stock'].setValue(this.stock);
         this.formAdmin.controls['frontImage'].setValue(this.frontImage);
         this.formAdmin.controls['backImage'].setValue(this.backImage);
-        this.formAdmin.controls['licence'].setValue(this.licence);
-        this.formAdmin.controls['stock'].setValue(this.stock);
+        this.formAdmin.controls['description'].setValue(this.description);
     }
 
     validate(field: string, error: string) {
@@ -58,21 +58,17 @@ export class AdminFormComponent {
         } else {
             const funko: Funko = {
                 name: this.formAdmin.controls['name'].value,
-                category: this.formAdmin.controls['category'].value,
                 serie: this.formAdmin.controls['serie'].value,
-                description: this.formAdmin.controls['description'].value,
+                category: this.formAdmin.controls['category'].value,
+                licence: this.formAdmin.controls['licence'].value,
                 price: this.formAdmin.controls['price'].value,
+                stock: this.formAdmin.controls['stock'].value,
                 frontImage: this.formAdmin.controls['frontImage'].value,
                 backImage: this.formAdmin.controls['backImage'].value,
-                stock: this.formAdmin.controls['stock'].value,
-                licence: this.formAdmin.controls['licence'].value,
+                description: this.formAdmin.controls['description'].value,
                 id: 0,
             };
             this.sendFunko.emit(funko);
         }
-    }
-
-    scrollToTop() {
-        window.scrollTo(0, 0);
     }
 }

@@ -64,9 +64,9 @@
             </div>
 
             <div class="form-box">
-                <label class="form-label form-label-text-area" for="message">Mensaje</label>
-                <textarea id="message" class="form-text-area" rows="10" formControlName="message" placeholder="Tu mensaje"></textarea>
-                <span class="form-error form-error-text-area" *ngIf="validate('message', 'required')">Campo obligatorio</span>
+                <label class="form-label form-label-textarea" for="message">Mensaje</label>
+                <textarea id="message" class="form-textarea" rows="10" formControlName="message" placeholder="Tu mensaje"></textarea>
+                <span class="form-error" *ngIf="validate('message', 'required')">Campo obligatorio</span>
             </div>
 
             <div class="form-box-btn">

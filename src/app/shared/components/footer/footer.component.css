@@ -1,7 +1,7 @@
 footer {
-    background: var(--dark-bg-solid);
+    background: var(--dark-bg);
     font-family: var(--alternative-font);
-    color: var(--light-font-solid);
+    color: var(--ligth-font);
 }
 
 .footer-container {
@@ -51,7 +51,7 @@ footer {
 }
 
 .footer-navbar-link:hover {
-    color: var(--primary-solid);
+    color: var(--primary);
 }
 
 .footer-social {
@@ -86,11 +86,11 @@ footer {
 }
 
 .footer-icon {
-    fill: var(--light-font-solid);
+    fill: var(--ligth-font);
 }
 
 .footer-icon:hover {
-    fill: var(--primary-solid);
+    fill: var(--primary);
 }
 
 .footer-icon svg {

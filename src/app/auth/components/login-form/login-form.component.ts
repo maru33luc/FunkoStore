@@ -11,7 +11,7 @@ import Swal from 'sweetalert2';
 })
 export class LoginFormComponent implements OnInit {
     isCorrect: boolean = true;
-
+   
     loginForm: FormGroup = this.fb.group({
         email: ['', [Validators.required, Validators.email]],
         password: ['', [Validators.required, Validators.minLength(6)]]
@@ -48,13 +48,11 @@ export class LoginFormComponent implements OnInit {
                     this.loginForm.value.password
                 );
                 if (this.loginService.isUserLoggedIn()) {
-                    this.loginService.isAdmin().subscribe((isAdmin) => {
-                        if (isAdmin) {
+                        if (this.loginService.isAdmin()) {
                             this.router.navigateByUrl('/admin');
                         } else {
                             this.router.navigateByUrl('/home');
-                        }
-                    });
+                        }     
                 }
             } catch (e) {
                 this.isCorrect = false;

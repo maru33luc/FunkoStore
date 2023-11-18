@@ -54,6 +54,7 @@ export class HeaderComponent {
         }
     }
 
+
     logout() {
         if(this.isAdmin){
             this.router.navigate(['/home']);

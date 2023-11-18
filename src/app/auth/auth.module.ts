@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 
-import { RegisterFormComponent } from './register-form/register-form.component';
-import { LoginFormComponent } from './login-form/login-form.component';
+import { RegisterFormComponent } from './components/register-form/register-form.component';
+import { LoginFormComponent } from './components/login-form/login-form.component';
 import { RegisterPageComponent } from './pages/register-page/register-page.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 

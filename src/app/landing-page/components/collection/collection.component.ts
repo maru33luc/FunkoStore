@@ -14,7 +14,6 @@ export class CollectionComponent implements OnInit{
 
     ngOnInit() {
         AOS.init();
-        this.funkoService.emitirLanding("home");
     }
 
     scrollToTop() {

@@ -17,19 +17,15 @@ export class ShopAsideComponent {
   constructor(
     private orderService: OrderFunkosService,
     private funkoService: FunkosService
-  ) {
-
-    
-  }
+  ) {}
 
   ngOnInit() {
     this.destildarCheckbox('category');
     this.destildarCheckbox('saga');
-    this.funkoService.landing$?.subscribe((landing) => {
-      if (landing === 'home') {
-        this.clearFilters();
-      }
-    });
+  }
+
+  ngOnDestroy() {
+    this.clearFilters();  // Limpia los filtros cuando el componente se destruye
   }
 
   onOrderChange() {

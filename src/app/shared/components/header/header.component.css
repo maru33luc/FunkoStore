@@ -114,3 +114,7 @@
     color: var(--primary);
     cursor: pointer;
 }
+
+.adm-nav{
+    margin-right: 30px;
+}

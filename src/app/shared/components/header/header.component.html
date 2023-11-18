@@ -7,7 +7,7 @@
     </picture>
 
     <nav class="header-navbar">
-        <ul #navBar class="header-navbar-menu">
+        <ul #navBar class="header-navbar-menu" *ngIf="!isAdmin">
             <li class="header-navbar-item">
                 <a class="header-navbar-link" [routerLink]="['/shop']">TIENDA</a>
             </li>
@@ -30,7 +30,7 @@
             </li>
         </ul>
 
-        <div class="header-cart">
+        <div class="header-cart" *ngIf="!isAdmin">
             <a [routerLink]="['/shop/cart']">
                 <svg width="33" height="31" viewBox="0 0 33 31" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
@@ -46,12 +46,8 @@
             </a>
         </div>
 
-        <!--
-            SI ES ADMIN:
-            - SE TIENE QUE MOSTRAR LA UL COMENTADA QUE ESTÁ ABAJO
-            - SE TIENEN QUE OCULTAR EL NAVBAR-MENU Y EL HEADER-CART QUE ESTÁN ARRIBA
-        -->
-        <!-- <ul #navBar class="header-navbar-menu">
+    
+        <ul #navBar class="header-navbar-menu adm-nav" *ngIf="isAdmin">
             <li class="header-navbar-item">
                 <a class="header-navbar-link" routerLink="/admin">LISTADO</a>
             </li>
@@ -63,7 +59,7 @@
             <li class="header-navbar-item">
                 <a class="header-navbar-link" (click)="logout()">SALIR</a>
             </li>
-        </ul> -->
+        </ul>
 
         <div class="header-hamb-icon">
             <span #hambIcon>&#9776;</span>

@@ -2,14 +2,14 @@
   "funkos": [
     {
       "name": "Frodo Baggins",
-      "category": "Keychain",
       "serie": "Pocket Pop!",
-      "description": "dffdsfd",
+      "category": "Keychain",
+      "licence": "El Señor de los Anillos",
       "price": 8000,
+      "stock": 5,
       "frontImage": "https://media.entertainmentearth.com/assets/images/ea4c002dfe1e4f2eac1dbf903e772390lg.jpg",
       "backImage": "https://i.pinimg.com/originals/7b/0b/b0/7b0bb03e613123ab6f5dec2bf26b1d35.jpg",
-      "stock": 5,
-      "licence": "El Señor de los Anillos",
+      "description": "dffdsfd",
       "id": 1
     },
     {

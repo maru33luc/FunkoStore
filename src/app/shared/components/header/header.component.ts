@@ -1,4 +1,5 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
+import { Route, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { LoginService } from 'src/app/services/login.service';
 
@@ -10,13 +11,15 @@ import { LoginService } from 'src/app/services/login.service';
 })
 export class HeaderComponent {
     isLoggedIn: boolean = false;
+    isAdmin: boolean = false;
     username: string = '';
     user$: Observable<any> | undefined;
 
     @ViewChild('hambIcon') hambIcon!: ElementRef;
     @ViewChild('navBar') navBar!: ElementRef;
 
-    constructor(private loginService: LoginService) { }
+    constructor(private loginService: LoginService,
+                private router: Router) { }
 
     ngOnInit() {
         this.loginService.authStateObservable()?.subscribe((user) => {
@@ -25,6 +28,10 @@ export class HeaderComponent {
             } else {
                 this.isLoggedIn = false;
             }
+        });
+
+        this.loginService.isAdmin().subscribe((isAdmin) => {
+            this.isAdmin = isAdmin;
         });
 
         this.loginService.authStateObservable()?.subscribe((user) => {
@@ -48,6 +55,10 @@ export class HeaderComponent {
     }
 
     logout() {
+        if(this.isAdmin){
+            this.router.navigate(['/home']);
+            this.isAdmin = false;
+        }
         this.loginService.logout();
     }
 }

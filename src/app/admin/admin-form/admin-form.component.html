@@ -1,13 +1,19 @@
-<form class="admin-form" [formGroup]="formAdmin" (submit)="sendData()">
+<form class="form admin-form" [formGroup]="formAdmin" (submit)="sendData()">
     <div class="form-row">
         <div class="form-box">
             <label class="form-label" for="name">Nombre</label>
             <input id="name" class="form-input" type="text" formControlName="name" placeholder="Nombre del producto">
             <span class="form-error" *ngIf="validate('name', 'required')">Campo obligatorio</span>
-            <span class="form-error" *ngIf="validate('name', 'minlength')">Mínimo 3 caracteres</span>
-            <span class="form-error" *ngIf="validate('name', 'maxlength')">Máximo 20 caracteres</span>
         </div>
 
+        <div class="form-box">
+            <label class="form-label" for="serie">Serie</label>
+            <input id="serie" class="form-input" type="text" formControlName="serie" placeholder="Serie del producto">
+            <span class="form-error" *ngIf="validate('serie', 'required')">Campo obligatorio</span>
+        </div>
+    </div>
+
+    <div class="form-row">
         <div class="form-box">
             <label class="form-label" for="category">Categoría</label>
             <select id="category" class="form-input" formControlName="category">
@@ -19,17 +25,20 @@
             </select>
             <span class="form-error" *ngIf="validate('category', 'required')">Campo obligatorio</span>
         </div>
+
+        <div class="form-box">
+            <label class="form-label" for="licence">Licencia</label>
+            <select id="licence" class="form-input" formControlName="licence" >
+                <option value="" disabled selected>Licencia del producto</option>
+                <option value="El Señor de los Anillos">El Señor de los Anillos</option>
+                <option value="Starwars">Starwars</option>
+                <option value="Harry Potter">Harry Potter</option>
+            </select>
+            <span class="form-error" *ngIf="validate('licence', 'required')">Campo obligatorio</span>
+        </div>
     </div>
 
     <div class="form-row">
-        <div class="form-box">
-            <label class="form-label" for="serie">Serie</label>
-            <input id="serie" class="form-input" type="text" formControlName="serie" placeholder="Serie del producto">
-            <span class="form-error" *ngIf="validate('serie', 'required')">Campo obligatorio</span>
-            <span class="form-error" *ngIf="validate('serie', 'minlength')">Mínimo 3 caracteres</span>
-            <span class="form-error" *ngIf="validate('serie', 'maxlength')">Máximo 20 caracteres</span>
-        </div>
-
         <div class="form-box">
             <label class="form-label" for="price">Precio</label>
             <input id="price" class="form-input" type="number" formControlName="price" min="0">
@@ -39,17 +48,9 @@
 
         <div class="form-box">
             <label class="form-label" for="stock">Stock</label>
-            <input id="stock" class="form-input" type="number" formControlName="stock" value="0" min="0">
+            <input id="stock" class="form-input" type="number" formControlName="stock" min="0">
             <span class="form-error" *ngIf="validate('stock', 'required')">Campo obligatorio</span>
-        </div>
-    </div>
-
-    <div class="form-row">
-        <div class="form-box">
-            <label class="form-label" for="description">Descripción</label>
-            <input id="description" class="form-input" type="text" formControlName="description" placeholder="Descripción del producto">
-            <span class="form-error" *ngIf="validate('description', 'required')">Campo obligatorio</span>
-            <span class="form-error" *ngIf="validate('description', 'maxlength')">Máximo 100 caracteres</span>
+            <span class="form-error" *ngIf="validate('stock', 'min')">Stock inválido</span>
         </div>
     </div>
 
@@ -67,24 +68,18 @@
             <span class="form-error" *ngIf="validate('backImage', 'required')">Campo obligatorio</span>
             <span class="form-error" *ngIf="validate('backImage', 'pattern')">Formato inválido</span>
         </div>
-
     </div>
 
-    <div class="form-box">
-        <label class="form-label" for="licence">Saga</label>
-        <select id="licence" class="form-input" formControlName="licence" >
-            
-            <option value="" disabled selected>Nombre de la Saga</option>
-            <option value="El Señor de los Anillos">El Señor de los Anillos</option>
-            <option value="Starwars">Starwars</option>
-            <option value="Harry Potter">Harry Potter</option>
-        
-        </select>
-        <span class="form-error" *ngIf="validate('licence', 'required')">Campo obligatorio</span>
+    <div class="form-row">
+        <div class="form-box">
+            <label class="form-label form-label-textarea" for="description">Descripción</label>
+            <textarea id="description" class="form-textarea" rows="10" formControlName="description" placeholder="Descripción del producto"></textarea>
+            <span class="form-error" *ngIf="validate('description', 'required')">Campo obligatorio</span>
+        </div>
     </div>
 
     <div class="form-box-btn">
         <input class="form-btn" type="submit" value="GUARDAR">
-        <input class="form-btn" type="reset" value="LIMPIAR" (click)="scrollToTop()">
+        <input class="form-btn" type="reset" value="LIMPIAR">
     </div>
 </form>

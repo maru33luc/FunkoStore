@@ -64,14 +64,14 @@
     right: 0;
     font-size: var(--font-xsmall);
     font-weight: 500;
-    background-color: var(--primary-solid);
-    color: var(--light-font-solid);
+    background-color: var(--primary);
+    color: var(--ligth-font);
     padding: .4rem .8rem;
     border-radius: .5rem;
 }
 
 .card-item-cover:hover .card-item-tag {
-    background-color: var(--secondary-solid);
+    background-color: var(--secondary);
 }
 
 .card-item-img-front, .card-item-img-back{
@@ -116,7 +116,7 @@
 }
 
 .card-item-promo {
-    color: var(--primary-solid);
+    color: var(--primary);
     font-size: var(--font-xsmall);
     font-weight: 500;
 }

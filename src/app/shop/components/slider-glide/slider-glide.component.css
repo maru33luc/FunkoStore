@@ -53,14 +53,14 @@
     right: 0;
     font-size: var(--font-xsmall);
     font-weight: 500;
-    background-color: var(--primary-solid);
-    color: var(--light-font-solid);
+    background-color: var(--primary);
+    color: var(--ligth-font);
     padding: .4rem .8rem;
     border-radius: .5rem;
 }
 
 .slider-item-cover:hover .slider-item-tag {
-    background-color: var(--secondary-solid);
+    background-color: var(--secondary);
 }
 
 .slider-item-img-front,
@@ -119,8 +119,8 @@
 }
 
 .slider-nav-btn {
-    background-color: var(--primary-solid);
-    color: var(--light-font-solid);
+    background-color: var(--primary);
+    color: var(--ligth-font);
     font-size: var(--font-xsmall);
     transition: background .2s ease-in-out;
     padding: var(--spacing-10) var(--spacing-20);
@@ -136,5 +136,5 @@
 }
 
 .slider-nav-btn:hover {
-    background-color: var(--secondary-solid);
+    background-color: var(--secondary);
 }

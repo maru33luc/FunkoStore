@@ -17,7 +17,7 @@
 
 .hero-content {
     width: 80%;
-    color: var(--light-font-solid);
+    color: var(--ligth-font);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -52,7 +52,7 @@
 .hero-btn {
     display: block;
     width: fit-content;
-    background-color: var(--primary-solid);
+    background-color: var(--primary);
     font-size: var(--font-medium);
     transition: background .2s ease-in-out;
     transition: transform .2s ease-in-out;
@@ -70,6 +70,6 @@
 }
 
 .hero-btn:hover {
-    background-color: var(--secondary-solid);
+    background-color: var(--secondary);
     transform: scale(1.05);
 }

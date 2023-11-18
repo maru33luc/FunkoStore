@@ -52,8 +52,8 @@
 }
 
 .admin-table-header {
-    background-color: var(--dark-bg-solid);
-    color: var(--light-font-solid);
+    background-color: var(--dark-bg);
+    color: var(--ligth-font);
 }
 
 th {
@@ -88,22 +88,22 @@ td:nth-child(5) {
 }
 
 .admin-table-body .admin-table-row:nth-child(odd) {
-    background-color: var(--medium-bg-solid);
+    background-color: var(--medium-bg);
 }
 
 .admin-edit-btn {
-    color: var(--secondary-solid);
+    color: var(--secondary);
 }
 
 .admin-delete-btn {
-    color: var(--primary-solid);
+    color: var(--primary);
     cursor: pointer;
 }
 
 .admin-search-negative {
     font-size: var(--font-xsmall);
     font-weight: 500;
-    color: var(--primary-solid);
+    color: var(--primary);
     text-align: center;
     margin: 1rem;
 }

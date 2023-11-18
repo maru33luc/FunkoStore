@@ -20,15 +20,15 @@
     </ul>
 
     <div class="pagination" *ngIf="showPagination">
-        <ul class="pag-ul">
-            <li id="previous-page" [class.disabled]="currentPage === 0"
+        <ul class="pagination-list">
+            <li id="pagination-previous-page" [class.disabled]="currentPage === 0"
                 (click)="changePage(currentPage - 1)">
                 «
             </li>
-            <li class="page-link" *ngFor="let _ of pages; let i = index" [class.active]="i === currentPage"
+            <li class="pagination-page-link" *ngFor="let _ of pages; let i = index" [class.active]="i === currentPage"
                 (click)="changePage(i)">{{ i + 1 }}
             </li>
-            <li id="next-page" [class.disabled]="currentPage === pages.length - 1"
+            <li id="pagination-next-page" [class.disabled]="currentPage === pages.length - 1"
                 (click)="changePage(currentPage + 1)">
                 »
             </li>

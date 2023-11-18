@@ -5,4 +5,4 @@ import { Component } from '@angular/core';
     templateUrl: './admin-edit-funko-page.component.html',
     styleUrls: ['./admin-edit-funko-page.component.css']
 })
-export class AdminEditFunkoPageComponent {}
+export class AdminEditFunkoPageComponent { }

@@ -18,8 +18,10 @@ export class AdminMainComponent implements OnInit {
     hasResults: boolean = true;
     searchQuery: string = '';
 
-    constructor(private funkosService: FunkosService,
-        private orderService: OrderFunkosService) { }
+    constructor(
+        private funkosService: FunkosService,
+        private orderService: OrderFunkosService
+    ) { }
 
     ngOnInit() {
         this.mostrarFunkos();
@@ -73,7 +75,6 @@ export class AdminMainComponent implements OnInit {
         } else {
             this.currentPage = newPage;
         }
-        window.scrollTo(0, 0);
     }
 
     eliminarFunko(id: number | undefined) {
@@ -81,8 +82,8 @@ export class AdminMainComponent implements OnInit {
             text: "¿Está seguro de eliminar este producto?",
             icon: "warning",
             showCancelButton: true,
-            confirmButtonText: "Eliminar",
-            cancelButtonText: "Cancelar"
+            confirmButtonText: "ELIMINAR",
+            cancelButtonText: "CANCELAR"
         }).then((result) => {
             if (result.isConfirmed) {
                 this.funkosService.deleteFunko(id);

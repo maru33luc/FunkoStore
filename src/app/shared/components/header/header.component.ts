@@ -1,5 +1,5 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
-import { Route, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { LoginService } from 'src/app/services/login.service';
 
@@ -53,7 +53,6 @@ export class HeaderComponent {
             });
         }
     }
-
 
     logout() {
         if(this.isAdmin){

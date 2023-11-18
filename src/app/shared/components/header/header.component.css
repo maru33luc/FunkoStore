@@ -51,6 +51,12 @@
     }
 }
 
+@media (min-width: 992px) {
+    .header-navbar-menu-admin {
+        margin-right: 3rem;
+    }
+}
+
 .header-navbar-item {
     font-size: var(--font-medium);
     font-weight: 500;
@@ -114,10 +120,3 @@
     color: var(--primary);
     cursor: pointer;
 }
-
-.adm-nav{
-    margin-right: 60px;
-}
-
-
-  

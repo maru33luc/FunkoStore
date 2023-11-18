@@ -99,7 +99,7 @@
       ],
       "price": 8000,
       "licence": "The Lord of the Rings",
-      "stock": 40,
+      "stock": 39,
       "id": 7
     },
     {
@@ -129,7 +129,7 @@
       ],
       "price": 12000,
       "licence": "The Lord of the Rings",
-      "stock": 78,
+      "stock": 89,
       "id": 9
     },
     {
@@ -364,7 +364,7 @@
       ],
       "price": 25000,
       "licence": "The Lord of the Rings",
-      "stock": 40,
+      "stock": 41,
       "id": 25
     },
     {
@@ -651,7 +651,7 @@
       "price": 20000,
       "frontImage": "https://www.leprechaun.es/1430-large_default/funko-pop-15-albus-dumbledore-harry-potter.jpg",
       "backImage": "https://www.leprechaun.es/1429-large_default/funko-pop-15-albus-dumbledore-harry-potter.jpg",
-      "stock": 71,
+      "stock": 70,
       "licence": "Harry Potter",
       "id": 45
     },

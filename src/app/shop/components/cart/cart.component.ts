@@ -90,7 +90,7 @@ export class CartComponent {
     }
 
     decreaseQuantity(item: FunkoCart) {
-        if (item.quantity > 0) {
+        if (item.quantity > 1) {
             item.quantity--;
             if (!this.quantityChanges.find((change) => change.funkoId === item.funkoId)) {
                 this.quantityChanges.push({ funkoId: item.funkoId, quantity: item.quantity });

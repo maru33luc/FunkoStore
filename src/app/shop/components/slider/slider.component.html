@@ -9,7 +9,7 @@
                     <img class="slider-item-img-back" [src]="item.backImage" alt="Figura coleccionable Funko en caja">
                 </picture>
 
-                <div class="slider-item-content">
+                <div class="slider-item-info">
                     <h3 class="slider-item-name">{{item.name}}</h3>
                     <p class="slider-item-serie">{{item.serie.toString().replaceAll(',', ' - ')}}</p>
                     <p class="slider-item-license">{{item.licence}}</p>
@@ -20,7 +20,7 @@
     </ul>
 
     <div class="slider-nav">
-        <button class="form-btn" (click)="changePage(currentPage - 1)">ANTERIOR</button>
-        <button class="form-btn" (click)="changePage(currentPage + 1)">SIGUIENTE</button>
+        <button class="button" (click)="changePage(currentPage - 1)">ANTERIOR</button>
+        <button class="button" (click)="changePage(currentPage + 1)">SIGUIENTE</button>
     </div>
 </section>

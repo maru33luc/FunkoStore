@@ -37,8 +37,6 @@
     --spacing-8: 0.8rem;
 }
 
-
-
 /*-------------------------GENERALS-------------------------*/
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Raleway:wght@300;400;500;600;700&display=swap');
@@ -123,8 +121,6 @@ img {
 .button:hover {
     background-color: var(--secondary);
 }
-
-
 
 /*-------------------------FORMS-------------------------*/
 
@@ -244,26 +240,6 @@ img {
     }
 }
 
-.form-btn {
-    background-color: var(--primary);
-    color: var(--ligth-font);
-    font-size: var(--font-xsmall);
-    transition: background .2s ease-in-out;
-    padding: 1.2rem 2.8rem;
-    border: none;
-    border-radius: .5rem;
-    cursor: pointer;
-}
-
-@media screen and (min-width: 768px) {
-    .form-btn {
-        font-size: var(--font-medium);
-    }
-}
-
-.form-btn:hover {
-    background-color: var(--secondary);
-}
 
 .form-message {
     font-size: var(--font-xsmall);
@@ -278,8 +254,6 @@ img {
 .form-message a:hover {
     color: var(--secondary);
 }
-
-
 
 /*-------------------------PAGINATION-------------------------*/
 
@@ -336,8 +310,6 @@ img {
     border: .1rem solid var(--medium-bg);
     cursor: not-allowed;
 }
-
-
 
 /*-------------------------SWAL-------------------------*/
 

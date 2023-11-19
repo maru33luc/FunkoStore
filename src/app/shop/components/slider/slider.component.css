@@ -69,7 +69,7 @@
     display: block;
 }
 
-.slider-item-content {
+.slider-item-info {
     display: flex;
     flex-direction: column;
     align-items: flex-start;

@@ -1,18 +1,18 @@
 <main class="shop-main">
-    <ul class="shop-main-cards">
+    <ul class="shop-main-items">
         <li *ngFor="let item of paginatedItems">
-            <article class="card-item">
+            <article class="shop-main-item">
                 <a [routerLink]="'/shop/'+ item.id">
-                    <picture class="card-item-cover">
-                        <span class="card-item-tag">NUEVO</span>
-                        <img class="card-item-img-front" [src]="item.frontImage" alt="Figura coleccionable Funko">
-                        <img class="card-item-img-back" [src]="item.backImage" alt="Figura coleccionable Funko">
+                    <picture class="item-cover">
+                        <span class="item-tag">NUEVO</span>
+                        <img class="item-img-front" [src]="item.frontImage" alt="Figura coleccionable Funko">
+                        <img class="item-img-back" [src]="item.backImage" alt="Figura coleccionable Funko">
                     </picture>
-                    <div class="card-item-content">
-                        <p class="card-item-name">{{item.name}}</p>
-                        <p class="card-item-serie">{{item.serie}}</p>
-                        <p class="card-item-price">${{item.price}}</p>
-                        <p class="card-item-promo">3 CUOTAS SIN INTERÉS</p>
+                    <div class="item-info">
+                        <p class="item-name">{{item.name}}</p>
+                        <p class="item-serie">{{item.serie}}</p>
+                        <p class="item-license">{{item.licence}}</p>
+                        <p class="item-price">${{item.price.toLocaleString('es', { minimumFractionDigits: 2, maximumFractionDigits: 2, useGrouping: true})}}</p>
                     </div>
                 </a>
             </article>

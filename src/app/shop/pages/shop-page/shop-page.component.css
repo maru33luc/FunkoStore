@@ -1,6 +1,4 @@
 .shop-container {
-    width: 100%;
-    background: var(--ligth-bg);
     display: flex;
     flex-direction: column-reverse;
     align-items: center;

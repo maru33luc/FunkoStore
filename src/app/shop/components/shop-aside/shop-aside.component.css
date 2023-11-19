@@ -4,10 +4,10 @@
     flex-direction: column;
     align-items: center;
     gap: 4rem;
-    margin: 2rem auto;
+    margin: 3rem auto;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 576px) {
     .shop-aside {
         margin: 6rem 2rem;
     }
@@ -30,7 +30,6 @@
 .shop-aside-label {
     font-size: var(--font-xsmall);
     font-weight: 600;
-    letter-spacing: .1rem;
 }
 
 @media screen and (min-width: 768px) {
@@ -40,8 +39,8 @@
 }
 
 .shop-aside-input {
-    font-size: var(--font-xsmall);
     width: 100%;
+    font-size: var(--font-xsmall);
     padding: 1rem .5rem;
     border: .2rem solid var(--dark-font);
     border-radius: .5rem;
@@ -74,7 +73,7 @@
 
 .shop-aside-label-small {
     font-size: var(--font-xsmall);
-    font-weight: 600;
+    font-weight: 500;
     letter-spacing: .1rem;
 }
 
@@ -91,27 +90,13 @@
 }
 
 .shop-aside-checkbox-input {
-    width: 1.5rem;
-    height: 1.5rem;
-}
-
-.shop-aside-btn {
-    background-color: var(--primary);
-    color: var(--ligth-font);
-    font-size: var(--font-xsmall);
-    transition: background .2s ease-in-out;
-    padding: 1rem 2rem;
-    border: none;
-    border-radius: .5rem;
-    cursor: pointer;
+    width: 1rem;
+    height: 1rem;
 }
 
 @media screen and (min-width: 768px) {
-    .shop-aside-btn {
-        font-size: var(--font-small);
+    .shop-aside-checkbox-input {
+        width: 1.5rem;
+        height: 1.5rem;
     }
-}
-
-.shop-aside-btn:hover {
-    background-color: var(--secondary);
 }

@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { FunkosService } from 'src/app/services/funkos.service';
 import AOS from 'aos';
 
 @Component({
@@ -9,8 +8,7 @@ import AOS from 'aos';
 })
 export class CollectionComponent implements OnInit{
     
-    constructor(private funkoService: FunkosService) {
-    }
+    constructor() { }
 
     ngOnInit() {
         AOS.init();

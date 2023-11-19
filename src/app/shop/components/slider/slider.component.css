@@ -1,26 +1,14 @@
-.slider-main {
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacing-10);
-    margin: var(--spacing-30);
+.slider-container {
+    gap: 3rem;
 }
 
 .slider-title {
-    font-size: var(--font-large);
     text-transform: uppercase;
-    text-align: center;
-    margin-bottom: var(--spacing-30);
-}
-
-@media screen and (min-width: 768px) {
-    .slider-title {
-        font-size: var(--font-jumbo);
-    }
 }
 
 .slider-items {
     display: flex;
-    gap: var(--spacing-30);
+    gap: 3rem;
     margin: 0 auto;
 }
 
@@ -40,27 +28,26 @@
 @keyframes fade {
     from {
         opacity: 0;
-    }
-
-    to {
+    } to {
         opacity: 1;
     }
 }
 
 .slider-item-tag {
     position: absolute;
-    top: 0;
+    top: -10%;
     right: 0;
-    font-size: var(--font-xsmall);
-    font-weight: 500;
     background-color: var(--primary);
     color: var(--ligth-font);
+    font-size: var(--font-xsmall);
+    font-weight: 500;
     padding: .4rem .8rem;
     border-radius: .5rem;
+    transition: background .2s ease-in-out;
 }
 
 .slider-item-cover:hover .slider-item-tag {
-    background-color: var(--secondary);
+    background: var(--secondary);
 }
 
 .slider-item-img-front,
@@ -86,8 +73,8 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: var(--spacing-10);
-    padding: var(--spacing-20);
+    gap: 1rem;
+    padding: 2rem;
 }
 
 .slider-item-name {
@@ -100,6 +87,11 @@
     font-weight: 500;
 }
 
+.slider-item-license {
+    font-size: var(--font-xsmall);
+    font-weight: 500;
+}
+
 .slider-item-price {
     font-size: var(--font-medium);
     font-weight: 500;
@@ -108,33 +100,12 @@
 .slider-nav {
     display: flex;
     justify-content: center;
-    gap: var(--spacing-20);
-    margin: var(--spacing-10) 0;
+    gap: 2rem;
+    margin: 1rem 0;
 }
 
 @media screen and (min-width: 576px) {
     .slider-nav {
-        gap: var(--spacing-50);
+        gap: 5rem;
     }
-}
-
-.slider-nav-btn {
-    background-color: var(--primary);
-    color: var(--ligth-font);
-    font-size: var(--font-xsmall);
-    transition: background .2s ease-in-out;
-    padding: var(--spacing-10) var(--spacing-20);
-    border: none;
-    border-radius: .5rem;
-    cursor: pointer;
-}
-
-@media screen and (min-width: 768px) {
-    .slider-nav-btn {
-        font-size: var(--font-small);
-    }
-}
-
-.slider-nav-btn:hover {
-    background-color: var(--secondary);
 }

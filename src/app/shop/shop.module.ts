@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 
-import { SliderGlideComponent } from './components/slider-glide/slider-glide.component';
+import { SliderComponent } from './components/slider/slider.component';
 import { ShopAsideComponent } from './components/shop-aside/shop-aside.component';
 import { ShopMainComponent } from './components/shop-main/shop-main.component';
 import { ItemComponent } from './components/item/item.component';
@@ -18,7 +18,7 @@ import { FormsModule } from '@angular/forms';
 @NgModule({
     declarations: [
         CartComponent,
-        SliderGlideComponent,
+        SliderComponent,
         ShopPageComponent,
         ShopAsideComponent,
         ShopMainComponent,
@@ -33,7 +33,7 @@ import { FormsModule } from '@angular/forms';
         FormsModule,
     ],
     exports: [
-        SliderGlideComponent,
+        SliderComponent,
         ShopAsideComponent,
         ShopMainComponent,
         ItemComponent,

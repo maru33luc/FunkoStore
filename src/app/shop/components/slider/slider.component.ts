@@ -3,11 +3,11 @@ import { Funko } from 'src/app/interfaces/Funko';
 import { FunkosService } from 'src/app/services/funkos.service';
 
 @Component({
-    selector: 'app-slider-glide',
-    templateUrl: './slider-glide.component.html',
-    styleUrls: ['./slider-glide.component.css']
+    selector: 'app-slider',
+    templateUrl: './slider.component.html',
+    styleUrls: ['./slider.component.css']
 })
-export class SliderGlideComponent implements OnInit {
+export class SliderComponent implements OnInit {
     lista: Funko[] = [];
     itemsPerPage = 4;
     currentPage = 0;
@@ -60,12 +60,12 @@ export class SliderGlideComponent implements OnInit {
     }
 
     updateItemsPerPage() {
-        if (window.innerWidth <= 1050 && window.innerWidth > 800) {
+        if (window.innerWidth <= 1200 && window.innerWidth > 992) {
             this.itemsPerPage = 3;
-        } else if (window.innerWidth <= 800 && window.innerWidth > 600) {
+        } else if (window.innerWidth <= 992 && window.innerWidth > 576) {
             this.itemsPerPage = 2;
         }
-        else if (window.innerWidth <= 600) {
+        else if (window.innerWidth <= 576) {
             this.itemsPerPage = 1;
         }
         else {

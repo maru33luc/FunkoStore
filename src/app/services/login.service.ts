@@ -56,7 +56,6 @@ export class LoginService {
         try {
             const user = await signInWithEmailAndPassword(this.auth, email, password);
             this.getDataActualUser();
-            console.log(user);
         } catch (e) {
             console.log(e);
             throw e;

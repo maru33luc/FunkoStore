@@ -75,6 +75,7 @@ export class ItemComponent implements AfterViewInit {
 
     private updateQuantity(change: number) {
         if (this.quantityButton) {
+            console.log(this.stock);
             let quantityValue = this.quantityButton.nativeElement.value;
 
             if (quantityValue === "" || isNaN(quantityValue)) {
@@ -83,6 +84,8 @@ export class ItemComponent implements AfterViewInit {
                 quantityValue = (parseInt(quantityValue) + change).toString();
                 if (parseInt(quantityValue) < 0) {
                     quantityValue = "0";
+                } else if (this.stock && parseInt(quantityValue) > this.stock) {
+                    quantityValue = this.stock;
                 }
             }
             this.quantityButton.nativeElement.value = quantityValue;
@@ -162,15 +165,13 @@ export class ItemComponent implements AfterViewInit {
                             alert('No hay stock suficiente'); // AGREGAR POP UP DE SWEET ALERT
                         }
                     } else {
-                        if (this.selectedItem.stock && this.selectedItem.stock > 0 && this.selectedItem.stock > quantity) {
+                        if (this.selectedItem.stock && this.selectedItem.stock > 0 && this.selectedItem.stock >= quantity) {
                             await this.cartLocalService.addToCart({ funkoId: this.selectedItem.id, quantity: quantity });
                             // Emitir el nuevo stock después de agregar al carrito
                             const nuevoStock = this.stock ? this.stock - quantity : 0;
                             this.funkosService.emitirStockInicial(nuevoStock);
                             this.funkosService.actualizarStockFunko(this.selectedItem.id, nuevoStock);
-                        } else {
-                            alert('No hay stock suficiente'); // AGREGAR POP UP DE SWEET ALERT
-                        }
+                        } 
                     }
                     this.quantityButton.nativeElement.value = "0";
                 }

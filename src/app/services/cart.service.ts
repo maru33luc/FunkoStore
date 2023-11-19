@@ -103,16 +103,20 @@ export class CartService {
                 // Actualizar el stock después de haber actualizado las cantidades en el carrito
                 for (const cambio of cambiosDeCantidad) {
                     this.diferenciaCantidad = 0;
-                    const fk = this.cart.find((item) => item.funkoId === cambio.funkoId);
+                    const fk = this.cart.filter((item) => item.funkoId === cambio.funkoId);
                     const valorPrevio = this.valoresPrevios.find((item) => item.funkoId === cambio.funkoId);
                     this.diferenciaCantidad = cambio.quantity - valorPrevio!.quantity;
                     const cartItem = this.cart.find((item) => item.funkoId === cambio.funkoId);
                     if (cartItem) {
                         let stock = await this.funkoService.obtenerStockFunko(cartItem.funkoId);
                         stock ? (stock -= this.diferenciaCantidad) : (stock = 0);
+                        if (stock ===0 && this.diferenciaCantidad <= 0){
+                            stock -= this.diferenciaCantidad;
+                        }
+                       
                         const fk = await this.funkoService.getFunko(cartItem.funkoId);
                         if (fk) {
-                            fk.stock = stock;
+                            fk.stock = stock? stock : 0;
                             await this.funkoService.putFunko(fk, fk.id);
                             this.fkCambiadoId = fk.id;
                         }

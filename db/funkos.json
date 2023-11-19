@@ -6,7 +6,7 @@
       "category": "Keychain",
       "licence": "The Lord of the Rings",
       "price": 8000,
-      "stock": 5,
+      "stock": 3,
       "frontImage": "https://media.entertainmentearth.com/assets/images/ea4c002dfe1e4f2eac1dbf903e772390lg.jpg",
       "backImage": "https://i.pinimg.com/originals/7b/0b/b0/7b0bb03e613123ab6f5dec2bf26b1d35.jpg",
       "description": "dffdsfd",
@@ -114,7 +114,7 @@
       ],
       "price": 12000,
       "licence": "The Lord of the Rings",
-      "stock": 40,
+      "stock": 3,
       "id": 8
     },
     {
@@ -144,7 +144,7 @@
       ],
       "price": 12000,
       "licence": "The Lord of the Rings",
-      "stock": 100,
+      "stock": 97,
       "id": 10
     },
     {
@@ -639,7 +639,7 @@
       "price": 17000,
       "frontImage": "https://www.lamarquezone.fr/images/Image/xfk5860.jpg",
       "backImage": "https://figurines-pop.com/media/img/figurine/3-figurine-funko-pop-harry-potter-hermione-granger-box.jpg",
-      "stock": 41,
+      "stock": 39,
       "licence": "Harry Potter",
       "id": 44
     },
@@ -651,7 +651,7 @@
       "price": 20000,
       "frontImage": "https://www.leprechaun.es/1430-large_default/funko-pop-15-albus-dumbledore-harry-potter.jpg",
       "backImage": "https://www.leprechaun.es/1429-large_default/funko-pop-15-albus-dumbledore-harry-potter.jpg",
-      "stock": 62,
+      "stock": 58,
       "licence": "Harry Potter",
       "id": 45
     },
@@ -1083,7 +1083,7 @@
       "price": 27000,
       "frontImage": "https://nintendoeverything.com/wp-content/uploads/bulbasaur-funko-pop-1.jpg",
       "backImage": "https://i5.walmartimages.com/asr/d983904c-bb13-4bbc-a393-7133ce81531c_1.d62df57ffdf4b5e37db2afbaf58b55a6.jpeg",
-      "stock": 38,
+      "stock": 33,
       "licence": "Pokemon",
       "id": 81
     },

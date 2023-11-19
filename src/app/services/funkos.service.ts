@@ -99,9 +99,9 @@ export class FunkosService {
         return funko?.stock;
     }
 
-    async actualizarStockFunko(id: number | undefined, stock: number | undefined) {
+    async actualizarStockFunko(id: number | undefined, stock: number ) {
         const funko = await this.getFunko(id);
-        if (funko && stock !== undefined) {
+        if (funko ) {
             funko.stock = stock;
             await this.putFunko(funko, id);
         }

@@ -1,16 +1,16 @@
 .shop-main {
-    margin: var(--spacing-20) auto;
+    margin: 2rem auto;
 }
 
 @media screen and (min-width: 768px) {
     .shop-main {
-        margin: var(--spacing-68) var(--spacing-20);
+        margin: 6rem 2rem;
     }
 }
 
 @media screen and (min-width: 996px) {
     .shop-main {
-        margin: var(--spacing-68) var(--spacing-40);
+        margin: 6rem 4rem;
     }
 }
 
@@ -18,7 +18,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: var(--spacing-20);
+    gap: 2rem;
 }
 
 @media screen and (min-width: 992px) {
@@ -36,7 +36,7 @@
 
 @media screen and (min-width: 992px) {
     .card-item {
-        margin: var(--spacing-20);
+        margin: 2rem;
     }
 }
 
@@ -52,8 +52,7 @@
 @keyframes fade {
     from {
         opacity: 0;
-    }
-    to {
+    } to {
         opacity: 1;
     }
 }
@@ -96,8 +95,8 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: var(--spacing-10);
-    padding: var(--spacing-20);
+    gap: 1rem;
+    padding: 2rem;
 }
 
 .card-item-name {

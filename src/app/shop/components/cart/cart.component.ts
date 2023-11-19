@@ -1,5 +1,5 @@
 import { LoginService } from 'src/app/services/login.service';
-import { ChangeDetectorRef, Component } from '@angular/core';
+import { Component } from '@angular/core';
 import { CartService } from 'src/app/services/cart.service';
 import { FunkosService } from 'src/app/services/funkos.service';
 import { CartLocalService } from 'src/app/services/cart-local.service';
@@ -24,7 +24,7 @@ export class CartComponent {
         private funkoService: FunkosService,
         private loginService: LoginService,
         private cartLocalService: CartLocalService,
-    ) {}
+    ) { }
 
     ngOnInit() {
         this.loginService.authStateObservable()?.subscribe(async (user) => {
@@ -73,7 +73,6 @@ export class CartComponent {
     }
 
     increaseQuantity(item: FunkoCart) {
-
         if (item.quantity < 99) {
             item.quantity++;
             if (!this.quantityChanges.find((change) => change.funkoId === item.funkoId)) {
@@ -119,10 +118,10 @@ export class CartComponent {
             // Actualizar el stock después de haber actualizado las cantidades en el carrito
             for (const change of this.quantityChanges) {
                 let diferenciaCantidad = 0;
-                const valorPrevio = this.valoresPrevios.find((item) => item.funkoId === change.funkoId)?.quantity;               
+                const valorPrevio = this.valoresPrevios.find((item) => item.funkoId === change.funkoId)?.quantity;
                 if (valorPrevio) {
                     diferenciaCantidad = change.quantity - valorPrevio;
-                    
+
                     // Actualizar el stock aquí para usuarios no logueados
                     const funko = await this.funkoService.getFunko(change.funkoId);
                     if (funko) {
@@ -136,7 +135,7 @@ export class CartComponent {
                 if (valorPrevioActualizado) {
                     valorPrevioActualizado.quantity = change.quantity;
                 }
-            }            
+            }
         }
         this.quantityChanges = [];
     }
@@ -150,8 +149,8 @@ export class CartComponent {
             text: "¿Está seguro de eliminar este producto?",
             icon: "warning",
             showCancelButton: true,
-            confirmButtonText: "Eliminar",
-            cancelButtonText: "Cancelar"
+            confirmButtonText: "ELIMINAR",
+            cancelButtonText: "CANCELAR"
         }).then((result) => {
             if (result.isConfirmed) {
                 if (this.user) {

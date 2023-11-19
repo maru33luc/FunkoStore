@@ -4,7 +4,7 @@
       "name": "Frodo Baggins",
       "serie": "Pocket Pop!",
       "category": "Keychain",
-      "licence": "El Señor de los Anillos",
+      "licence": "The Lord of the Rings",
       "price": 8000,
       "stock": 5,
       "frontImage": "https://media.entertainmentearth.com/assets/images/ea4c002dfe1e4f2eac1dbf903e772390lg.jpg",
@@ -498,7 +498,7 @@
       ],
       "price": 12000,
       "licence": "The Lord of the Rings",
-      "stock": 35,
+      "stock": 27,
       "id": 34
     },
     {
@@ -651,7 +651,7 @@
       "price": 20000,
       "frontImage": "https://www.leprechaun.es/1430-large_default/funko-pop-15-albus-dumbledore-harry-potter.jpg",
       "backImage": "https://www.leprechaun.es/1429-large_default/funko-pop-15-albus-dumbledore-harry-potter.jpg",
-      "stock": 70,
+      "stock": 62,
       "licence": "Harry Potter",
       "id": 45
     },
@@ -711,7 +711,7 @@
       "price": 8000,
       "frontImage": "https://th.bing.com/th/id/OIP.IYgSf5bVEksy3mSfgq1pcQHaHa?pid=ImgDet&rs=1",
       "backImage": "https://th.bing.com/th/id/R.be48d1cc58b0e052a216c350b9aab391?rik=JxpBrIzA6RvWAQ&pid=ImgRaw&r=0",
-      "stock": 38,
+      "stock": 21,
       "licence": "Harry Potter",
       "id": 50
     },

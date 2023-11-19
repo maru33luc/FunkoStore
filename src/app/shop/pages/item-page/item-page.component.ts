@@ -1,7 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { ItemComponent } from '../../components/item/item.component';
+import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Funko } from 'src/app/interfaces/Funko';
 import { FunkosService } from 'src/app/services/funkos.service';
 import { ActivatedRoute } from '@angular/router';
 
@@ -15,10 +13,11 @@ export class ItemPageComponent {
     selectedItemLicence: string | undefined;
     selectedItemLicence$: Observable<string> | undefined;
 
-    constructor(private funkoService: FunkosService,
-        private activatedRoute: ActivatedRoute) {
-            this.obtenerIdItem();
-
+    constructor(
+        private funkoService: FunkosService,
+        private activatedRoute: ActivatedRoute
+    ){
+        this.obtenerIdItem();
     }
 
     obtenerIdItem() {

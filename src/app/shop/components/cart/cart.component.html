@@ -1,5 +1,5 @@
-<main class="cart-main">
-    <h1 class="cart-h1">CARRITO DE COMPRAS</h1>
+<main class="main cart-main">
+    <h1 class="h1">CARRITO DE COMPRAS</h1>
 
     <ul class="cart-items">
         <li class="cart-item" *ngFor="let item of cartItemsCopy">
@@ -9,24 +9,21 @@
                 </picture>
 
                 <article class="cart-item-content">
-                    <p class="cart-item-license">{{item.licence}}</p>
                     <p class="cart-item-name">{{item.name}}</p>
-                    <p class="cart-item-serie">{{item.serie}}</p>
+                    <p class="cart-item-serie">{{item.serie.toString().replaceAll(',', ' - ')}}</p>
+                    <p class="cart-item-license">{{item.licence}}</p>
                 </article>
             </div>
 
-            <div class="cart-item-quantity">
-                <input class="cart-item-input" type="text" [value]="item.quantity" id="quantity" placeholder="1"
-                    disabled>
-
-                <div class="cart-item-quantity-btns">
-                    <button class="cart-item-quantity-btn" (click)="increaseQuantity(item)" id="substract">+</button>
-                    <button class="cart-item-quantity-btn" (click)="decreaseQuantity(item)" id="add">-</button>
-                </div>
+            <div class="item-cart-quantity">
+                <button class="button item-cart-quantity-btn" id="subtract" (click)="decreaseQuantity(item)">-</button>
+                <input class="item-input" type="text" id="quantity" #quantityButton [value]="item.quantity" placeholder="1">
+                <button class="button item-cart-quantity-btn" id="add" (click)="increaseQuantity(item)">+</button>
+                <p class="item-stock">Disponible: <!-- {{stock}} --></p>
             </div>
 
             <div class="cart-total-price">
-                <p>${{calculateTotalPrice(item)}}</p>
+                <p>${{calculateTotalPrice(item).toLocaleString('es', { minimumFractionDigits: 2, maximumFractionDigits: 2, useGrouping: true})}}</p>
             </div>
 
             <div>
@@ -46,20 +43,20 @@
 
             <div class="cart-resumen-line">
                 <p>SUBTOTAL</p>
-                <p>${{ getSubtotal() | number: '1.2-2' }}</p>
+                <p>${{getSubtotal().toLocaleString('es', { minimumFractionDigits: 2, maximumFractionDigits: 2, useGrouping: true})}}</p>
             </div>
 
             <div class="cart-resumen-line">
                 <p>ENVÍO</p>
-                <p>$0</p>
+                <p>$0,00</p>
             </div>
 
             <div class="cart-resumen-line">
                 <p>TOTAL</p>
-                <p>${{ getTotalPrice() | number: '1.2-2' }}</p>
+                <p>${{getTotalPrice().toLocaleString('es', { minimumFractionDigits: 2, maximumFractionDigits: 2, useGrouping: true})}}</p>
             </div>
         </article>
 
-        <a class="cart-pay-btn" href="./checkout.html">PAGAR</a>
+        <a class="button cart-pay-btn" href="./checkout.html">PAGAR</a>
     </section>
 </main>

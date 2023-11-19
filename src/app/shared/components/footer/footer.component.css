@@ -1,7 +1,7 @@
 footer {
-    background: var(--dark-bg);
-    font-family: var(--alternative-font);
+    background-color: var(--dark-bg);
     color: var(--ligth-font);
+    font-family: var(--alternative-font);
 }
 
 .footer-container {

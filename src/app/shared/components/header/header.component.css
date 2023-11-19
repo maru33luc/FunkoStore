@@ -1,8 +1,8 @@
 .header-container {
     max-width: 100vw;
-    background: var(--dark-bg);
-    font-family: var(--alternative-font);
+    background-color: var(--dark-bg);
     color: var(--ligth-font);
+    font-family: var(--alternative-font);
     display: flex;
     flex-direction: column;
     justify-content: space-between;

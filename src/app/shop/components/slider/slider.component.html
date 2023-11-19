@@ -3,17 +3,17 @@
     <ul class="slider-items">
         <li class="slider-item" *ngFor="let item of pagedItems">
             <a [routerLink]="'/shop/'+ item.id">
-                <picture class="slider-item-cover">
-                    <span class="slider-item-tag">NUEVO</span>
-                    <img class="slider-item-img-front" [src]="item.frontImage" alt="Figura coleccionable Funko">
-                    <img class="slider-item-img-back" [src]="item.backImage" alt="Figura coleccionable Funko en caja">
+                <picture class="item-cover">
+                    <span class="item-tag">NUEVO</span>
+                    <img class="item-img-front" [src]="item.frontImage" alt="Figura coleccionable Funko">
+                    <img class="item-img-back" [src]="item.backImage" alt="Figura coleccionable Funko en caja">
                 </picture>
 
-                <div class="slider-item-info">
-                    <h3 class="slider-item-name">{{item.name}}</h3>
-                    <p class="slider-item-serie">{{item.serie.toString().replaceAll(',', ' - ')}}</p>
-                    <p class="slider-item-license">{{item.licence}}</p>
-                    <p class="slider-item-price">${{item.price.toLocaleString('es', { minimumFractionDigits: 2, maximumFractionDigits: 2, useGrouping: true})}}</p>
+                <div class="item-info">
+                    <h3 class="item-name">{{item.name}}</h3>
+                    <p class="item-serie">{{item.serie.toString().replaceAll(',', ' - ')}}</p>
+                    <p class="item-license">{{item.licence}}</p>
+                    <p class="item-price">${{item.price.toLocaleString('es', { minimumFractionDigits: 2, maximumFractionDigits: 2, useGrouping: true})}}</p>
                 </div>
             </a>
         </li>

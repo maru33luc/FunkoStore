@@ -409,6 +409,8 @@ img {
     color: var(--secondary);
     font-size: var(--font-xsmall);
     font-weight: 500;
+    text-align: start;
+    text-wrap: nowrap;
 }
 
 @media screen and (min-width: 768px) {

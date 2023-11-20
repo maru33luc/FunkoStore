@@ -7,7 +7,7 @@
 
         <section class="item-info">
             <h3 class="item-name">{{selectedItem?.name}}</h3>
-            <p class="item-serie">{{selectedItem?.serie?.toString()?.replaceAll(',', ' - ')}}</p>
+            <p class="item-serie">{{selectedItem?.serie}}</p>
             <p class="item-license">{{selectedItem?.licence}} </p>
             <p class="item-price">${{selectedItem?.price?.toLocaleString('es', { minimumFractionDigits: 2, maximumFractionDigits: 2, useGrouping: true})}}</p>
             <div class="item-cart">
@@ -15,7 +15,7 @@
                     <button class="button item-cart-quantity-btn" id="subtract" #subtractButton>-</button>
                     <input class="item-input" type="text" id="quantity" #quantityButton value="0" disabled>
                     <button class="button item-cart-quantity-btn" id="add" #addButton>+</button>
-                    <p class="item-stock">Disponible: {{stock}}</p>
+                    <p class="item-stock">Disponibles: {{stock}}</p>
                 </div>
                 <button class="button" (click)="addToCart()">AGREGAR</button>
             </div>

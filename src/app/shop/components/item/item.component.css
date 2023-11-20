@@ -8,6 +8,7 @@
 
 @media screen and (min-width: 992px) {
     .item-container {
+        min-height: 60vh;
         flex-direction: row;
         margin: 6rem;
     }

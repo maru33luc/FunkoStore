@@ -10,9 +10,7 @@
 
                 <article class="cart-item-content">
                     <p class="cart-item-name">{{item.name}}</p>
-                    <!-- <p class="cart-item-serie">{{item.serie.toString().replaceAll(',', ' - ')}}</p> -->
-                    <p class="cart-item-serie">{{item.serie ? item.serie.toString().replaceAll(',', ' - ') : ''}}</p>
-
+                    <p class="cart-item-serie">{{item.serie}}</p>
                     <p class="cart-item-license">{{item.licence}}</p>
                 </article>
             </div>
@@ -21,7 +19,7 @@
                 <button class="button item-cart-quantity-btn" id="subtract" (click)="decreaseQuantity(item)">-</button>
                 <input class="item-input" type="text" id="quantity" #quantityButton [value]="item.quantity" placeholder="1">
                 <button class="button item-cart-quantity-btn" id="add" (click)="increaseQuantity(item)">+</button>
-                <p class="item-stock">Disponible: {{ item.stock}}</p>
+                <p class="item-stock">Disponibles: {{ item.stock}}</p>
             </div>
 
             <div class="cart-total-price">
@@ -29,7 +27,7 @@
             </div>
 
             <div>
-                <img class="cart-item-delete" src="../../../../assets/img/gg-close-o.svg"
+                <img class="cart-item-delete" src="../../../../assets/img/close-icon.svg"
                     (click)="removeItem(item)">
             </div>
         </li>

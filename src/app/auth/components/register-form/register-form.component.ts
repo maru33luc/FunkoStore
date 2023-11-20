@@ -11,6 +11,7 @@ import { LoginService } from 'src/app/services/login.service';
 export class RegisterFormComponent implements OnInit {
     isUser: boolean = false;
     checkTerms!: boolean;
+    dataLoaded: boolean = true;
 
     registerForm: FormGroup = this.fb.group({
         name: ['', [Validators.required, Validators.maxLength(30)]],
@@ -66,20 +67,21 @@ export class RegisterFormComponent implements OnInit {
         }
         else {
             try {
+                this.dataLoaded = false;
                 const response = await this.loginService.register(
                     this.registerForm.value.email,
                     this.registerForm.value.password,
                     this.registerForm.value.name,
                     this.registerForm.value.lastname
                 );
-                
+                this.dataLoaded = true;
                 await this.loginService.logout();
                 await this.router.navigateByUrl('/login/log');
             } catch (e) {
                 this.isUser = true;
+                this.dataLoaded = true;
                 console.log(e);
             }
-
         }
     }
 

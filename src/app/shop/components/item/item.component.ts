@@ -175,7 +175,6 @@ export class ItemComponent implements AfterViewInit {
                     }
                     this.quantityButton.nativeElement.value = "0";
                 }
-
             }
         }
     }

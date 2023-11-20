@@ -17,7 +17,8 @@
 
         <div class="form-box">
             <label class="form-label" for="email">Correo electrónico</label>
-            <input id="email" class="form-input" type="email" formControlName="email" placeholder="Tu correo electrónico">
+            <input id="email" class="form-input" type="email" formControlName="email"
+                placeholder="Tu correo electrónico">
             <span class="form-error" *ngIf="validate('email', 'required')">Campo obligatorio</span>
             <span class="form-error" *ngIf="validate('email', 'email')">Fomato inválido</span>
             <span class="form-error" *ngIf="isUser">Otro usuario se registró con este correo</span>
@@ -26,21 +27,23 @@
         <div class="form-row">
             <div class="form-box">
                 <label class="form-label" for="password">Contraseña</label>
-                <input id="password" class="form-input" type="password" formControlName="password" placeholder="Tu contraseña">
+                <input id="password" class="form-input" type="password" formControlName="password"
+                    placeholder="Tu contraseña">
                 <span class="form-error" *ngIf="validate('password', 'required')">Campo obligatorio</span>
                 <span class="form-error" *ngIf="validate('password', 'minlength')">Mínimo 6 caracteres</span>
             </div>
-    
+
             <div class="form-box">
                 <label class="form-label" for="repassword">Confirmar</label>
-                <input id="repassword" class="form-input" type="password" formControlName="repassword" placeholder="Confirma tu contraseña">
+                <input id="repassword" class="form-input" type="password" formControlName="repassword"
+                    placeholder="Confirma tu contraseña">
                 <span class="form-error" *ngIf="validate('repassword', 'required')">Campo obligatorio</span>
                 <span class="form-error" *ngIf="validateRepassword()">Las contraseñas no coinciden</span>
             </div>
         </div>
 
         <div class="form-accept-terms">
-            <label class="form-message" for="accept-terms">Acepto los 
+            <label class="form-message" for="accept-terms">Acepto los
                 <a [routerLink]="'/register/terms'" target="_blank">términos y condiciones de uso</a>
             </label>
             <input id="accept-terms" type="checkbox" formControlName="terms">
@@ -54,5 +57,13 @@
                 <a [routerLink]="['/login/log']" (click)="scrollToTop()">Click aquí</a>
             </div>
         </div>
+
+        <ng-container *ngIf="dataLoaded; else loading"></ng-container>
     </form>
+
+    <ng-template #loading>
+        <div class="loading">
+            <img class="spinner" src="../../../../assets/img/spinner.svg" alt="Loading spinner">
+        </div>
+    </ng-template>
 </main>

@@ -11,7 +11,8 @@ import Swal from 'sweetalert2';
 })
 export class LoginFormComponent implements OnInit {
     isCorrect: boolean = true;
-   
+    dataLoaded: boolean = true;
+
     loginForm: FormGroup = this.fb.group({
         email: ['', [Validators.required, Validators.email]],
         password: ['', [Validators.required, Validators.minLength(6)]]
@@ -43,19 +44,22 @@ export class LoginFormComponent implements OnInit {
             this.loginForm.markAllAsTouched();
         } else {
             try {
+                this.dataLoaded = false;
                 await this.loginService.login(
                     this.loginForm.value.email,
                     this.loginForm.value.password
                 );
+                this.dataLoaded = true;
                 if (this.loginService.isUserLoggedIn()) {
-                        if (this.loginService.isAdmin()) {
-                            this.router.navigateByUrl('/admin');
-                        } else {
-                            this.router.navigateByUrl('/home');
-                        }     
+                    if (this.loginService.isAdmin()) {
+                        this.router.navigateByUrl('/admin');
+                    } else {
+                        this.router.navigateByUrl('/home');
+                    }
                 }
             } catch (e) {
                 this.isCorrect = false;
+                this.dataLoaded = true;
                 console.error(e);
             }
         }
@@ -80,7 +84,7 @@ export class LoginFormComponent implements OnInit {
         });
         if (mail) {
             try {
-                await this.loginService.resetPassword(mail); 
+                await this.loginService.resetPassword(mail);
                 Swal.fire({
                     text: `Se ha enviado un correo a ${mail} para restablecer su contraseña`,
                     icon: "success",

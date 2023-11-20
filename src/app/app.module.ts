@@ -1,4 +1,4 @@
-import { APP_INITIALIZER, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 
 import { BrowserModule } from '@angular/platform-browser';
@@ -9,7 +9,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { getAuth, provideAuth } from '@angular/fire/auth';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
-import { FirestoreModule } from '@angular/fire/firestore';
 import { AngularFireModule } from '@angular/fire/compat';
 import { environments } from 'src/environments/environments';
 

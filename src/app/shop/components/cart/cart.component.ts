@@ -6,7 +6,6 @@ import { CartLocalService } from 'src/app/services/cart-local.service';
 import { Observable } from 'rxjs';
 import Swal from 'sweetalert2';
 import { FunkoCart } from 'src/app/interfaces/Cart';
-import { Funko } from 'src/app/interfaces/Funko';
 
 @Component({
     selector: 'app-cart',
@@ -37,7 +36,7 @@ export class CartComponent {
                 this.user = undefined;
                 this.cartItems = [];
                 this.cartItemsCopy = [];
-                    
+
                 this.cartItems = await this.cartLocalService.getCart();
                 this.cartItemsCopy = this.cartItems.map(item => ({ ...item }));
                 this.valoresPrevios = [];
@@ -55,10 +54,10 @@ export class CartComponent {
         });
     }
 
-    
 
-    async obtenerCart(uid : string) {
-        
+
+    async obtenerCart(uid: string) {
+
         const res = await this.cartService.obtenerCarritoDeCompras(uid);
         if (res) {
             this.cartItems = res as FunkoCart[];
@@ -81,7 +80,7 @@ export class CartComponent {
                     item.imageSrc = funko.frontImage;
                     item.serie = funko.serie;
                     item.licence = funko.licence;
-                    item.stock =  funko.stock;
+                    item.stock = funko.stock;
                 } else {
                     console.log('Item not found:', item);
                 }
@@ -99,9 +98,9 @@ export class CartComponent {
 
             const foundItem = this.cartItemsCopy.find((items) => item.funkoId === items.funkoId);
             foundItem.stock--;
-            
 
-          
+
+
             if (!this.quantityChanges.find((change) => change.funkoId === item.funkoId)) {
                 this.quantityChanges.push({ funkoId: item.funkoId, quantity: item.quantity });
                 this.saveChangesToDatabase();
@@ -112,7 +111,7 @@ export class CartComponent {
                 }
                 this.saveChangesToDatabase();
             }
-           
+
         }
     }
 
@@ -123,7 +122,6 @@ export class CartComponent {
             item.quantity--;
             const foundItem = this.cartItemsCopy.find((items) => item.funkoId === items.funkoId);
             foundItem.stock++;
-           
 
             if (!this.quantityChanges.find((change) => change.funkoId === item.funkoId)) {
                 this.quantityChanges.push({ funkoId: item.funkoId, quantity: item.quantity });
@@ -141,7 +139,7 @@ export class CartComponent {
     async saveChangesToDatabase() {
         if (this.user) {
             await this.cartService.actualizarCantidades(this.quantityChanges);
-            
+
         } else {
             for (const change of this.quantityChanges) {
                 const cartItem = this.cartItems.find(item => item.funkoId === change.funkoId);

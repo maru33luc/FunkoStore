@@ -8,7 +8,7 @@ import { environments } from 'src/environments/environments';
 export class ApiTolkienService {
     url: string = environments.urlAPITolkien;
     token: string = environments.tokenAPITolkien;
-    constructor() {}
+    constructor() { }
 
     async getCharacterInfo(name: string) {
         try {

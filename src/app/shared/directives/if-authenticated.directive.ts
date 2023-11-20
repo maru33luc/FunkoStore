@@ -10,7 +10,7 @@ export class IfAuthenticatedDirective implements OnInit {
         private viewContainer: ViewContainerRef,
         private templateRef: TemplateRef<any>,
         private loginService: LoginService
-    ) {}
+    ) { }
 
     ngOnInit() {
         this.loginService.authStateObservable()?.subscribe({

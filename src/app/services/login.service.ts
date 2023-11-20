@@ -178,7 +178,4 @@ export class LoginService {
             throw error;
         }
     }
-
-   
-            
 }

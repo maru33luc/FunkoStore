@@ -13,7 +13,7 @@ export class FunkosService {
     private funkos: Funko[] = [];
     private filteredFunkos: Funko[] = [];
     private filteredFunkosSubject: Subject<Funko[]> = new Subject<Funko[]>();
-    private appliedFilters: { type: string; criteria: string, min:number,max:number }[] = [];
+    private appliedFilters: { type: string; criteria: string, min: number, max: number }[] = [];
     private history: Funko[][] = [];
     stockFunkoSubject$ = new BehaviorSubject<number>(0);
 
@@ -99,14 +99,14 @@ export class FunkosService {
         return funko?.stock;
     }
 
-    async actualizarStockFunko(id: number | undefined, stock: number ) {
+    async actualizarStockFunko(id: number | undefined, stock: number) {
         const funko = await this.getFunko(id);
-        if (funko ) {
+        if (funko) {
             funko.stock = stock;
             await this.putFunko(funko, id);
         }
     }
-        
+
     getFilteredFunkosObservable(): Observable<Funko[]> {
         return this.filteredFunkosSubject.asObservable();
     }
@@ -126,7 +126,7 @@ export class FunkosService {
         return precioFunko ? precioFunko * cantidad : undefined;
     }
 
-    aplicarFiltro(name: string, criteria: string, min: number, max:number): Funko[] {
+    aplicarFiltro(name: string, criteria: string, min: number, max: number): Funko[] {
         if (!this.appliedFilters.find(filter => filter.type === name)) {
             this.appliedFilters.push({ type: name, criteria, min, max });
         }
@@ -136,16 +136,16 @@ export class FunkosService {
         }
         this.levantarFunkos();
         let result = this.funkos;
-        
+
         // Crea una copia de los filtros aplicados para no modificar el array original
         let appliedFiltersCopy = [...this.appliedFilters];
 
         // Aplica cada filtro en orden
         appliedFiltersCopy.forEach(filtro => {
-            const { type, criteria, min,max } = filtro;
+            const { type, criteria, min, max } = filtro;
 
             if (type === 'name') {
-                if(criteria !== ""){
+                if (criteria !== "") {
                     this.undoFilters();
                     this.limpiarFiltro("name");
                 }
@@ -158,8 +158,8 @@ export class FunkosService {
                 this.orderFunkoService.maxPriceSubject.subscribe((maxPrice) => {
                     if (maxPrice !== 0) {
                         max = maxPrice;
-                    }else if(maxPrice == 0){
-                        max=1000000;
+                    } else if (maxPrice == 0) {
+                        max = 1000000;
                         this.undoFilters();
                         this.limpiarFiltro("price");
                     }
@@ -173,19 +173,19 @@ export class FunkosService {
                     const price = funko.price;
                     return !isNaN(price) && price >= min && price <= max;
                 });
-              
+
             } else if (type === 'category') {
-                if(!this.appliedFilters.find(filter => filter.type === "licence")){
+                if (!this.appliedFilters.find(filter => filter.type === "licence")) {
                     result = this.funkos.filter((funko) =>
-                    (funko.category == criteria && typeof funko.category === 'string')
-                ); 
-              
+                        (funko.category == criteria && typeof funko.category === 'string')
+                    );
+
                 }
                 result = result.filter((funko) =>
                     (funko.category == criteria && typeof funko.category === 'string')
                 );
             } else if (type === 'licence') {
-                if(criteria == ""){
+                if (criteria == "") {
                     this.undoFilters();
                     this.limpiarFiltro("licence");
                 }
@@ -218,7 +218,7 @@ export class FunkosService {
     }
 
     undoFilters(): Funko[] {
-        if(this.appliedFilters.length == 0 ){
+        if (this.appliedFilters.length == 0) {
             this.showAllFunkos();
             return this.funkos;
         }
@@ -245,6 +245,4 @@ export class FunkosService {
     mostrarListaFiltrada() {
         return this.history[this.history.length - 1];
     }
-
-   
 }

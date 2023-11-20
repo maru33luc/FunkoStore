@@ -292,7 +292,9 @@ img {
 @keyframes fade {
     from {
         opacity: 0;
-    } to {
+    }
+
+    to {
         opacity: 1;
     }
 }
@@ -301,7 +303,8 @@ img {
     background: var(--secondary);
 }
 
-.item-img-front, .item-img-back{
+.item-img-front,
+.item-img-back {
     width: 25rem;
     height: 25rem;
     object-fit: contain;
@@ -403,7 +406,7 @@ img {
     padding: 1.2rem;
 }
 
-.item-stock{
+.item-stock {
     position: absolute;
     top: 125%;
     color: var(--secondary);
@@ -544,6 +547,7 @@ img {
 }
 
 @media screen and (min-width: 768px) {
+
     .swal2-confirm,
     .swal2-cancel {
         font-size: var(--font-small) !important;

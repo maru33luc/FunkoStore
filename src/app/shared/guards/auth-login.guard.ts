@@ -12,7 +12,7 @@ export class AuthLoginGuard implements CanActivate {
     constructor(
         private loginService: LoginService,
         private router: Router
-    ) {}
+    ) { }
 
     canActivate(): Observable<boolean> {
         return this.loginService.authStateObservable()!.pipe(

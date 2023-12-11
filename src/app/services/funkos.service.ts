@@ -4,6 +4,10 @@ import { BehaviorSubject, Observable, Subject, catchError, scan } from 'rxjs';
 import axios from 'axios';
 import { OrderFunkosService } from './order-funkos.service';
 import { environments } from 'src/environments/environments';
+import { CartService } from './cart.service';
+import { LoginService } from './login.service';
+import { getAuth, user } from '@angular/fire/auth';
+import { getFirestore, doc, getDoc, setDoc, collection, updateDoc } from 'firebase/firestore';
 
 @Injectable({
     providedIn: 'root'
@@ -174,7 +178,25 @@ export class FunkosService {
                     return !isNaN(price) && price >= min && price <= max;
                 });
 
-            } else if (type === 'category') {
+            }
+            else if (type === 'category' && criteria === 'Favorites') {
+                const user = getAuth().currentUser;
+                if (user) {
+                    const userId = user.uid;
+                    this.traerFavo(userId).then((favs) => {
+                        console.log('favoritos', favs);
+                        if (favs !== null) {
+                            result = this.funkos.filter((funko) => favs.includes(funko.id as number));
+                            console.log('result', result);
+                        }else{
+                            result = [];
+                        }
+                    });
+                    
+
+                }
+            }
+            else if (type === 'category') {
                 if (!this.appliedFilters.find(filter => filter.type === "licence")) {
                     result = this.funkos.filter((funko) =>
                         (funko.category == criteria && typeof funko.category === 'string')
@@ -203,11 +225,39 @@ export class FunkosService {
                     result.sort((a, b) => b.price - a.price);
                 }
             }
+            
         });
         // Guarda el estado actual en el historial
         this.history.push([...result]);
         this.filteredFunkosSubject.next(result);
         return result;
+    }
+
+    async traerFavo(userId: string): Promise<number[] | null> {
+        try {
+            const db = getFirestore();
+            const docRef = doc(db, 'users', userId);
+            const docSnap = await getDoc(docRef);
+            
+            // Verificar si hay datos y si existe la propiedad 'favoritos'
+            const data = docSnap.data();
+            if (data && 'favoritos' in data) {
+                const favoritos = data['favoritos'];
+    
+                // Verificar si 'favoritos' no es null ni undefined
+                if (favoritos != null) {
+                    // Retornar un array de los valores de 'favoritos'
+                    const arrayFavoritos = Object.keys(favoritos).map((key) => favoritos[key]);
+                    return arrayFavoritos;
+                }
+            }
+    
+            // Si 'favoritos' es null o undefined, retornar null
+            return null;
+        } catch (error) {
+            console.error(error);
+            throw error;
+        }
     }
 
     limpiarFiltro(name: string) {
@@ -245,4 +295,6 @@ export class FunkosService {
     mostrarListaFiltrada() {
         return this.history[this.history.length - 1];
     }
+
+   
 }

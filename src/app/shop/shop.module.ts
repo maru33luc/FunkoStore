@@ -24,7 +24,8 @@ import { FormsModule } from '@angular/forms';
         ShopMainComponent,
         ItemPageComponent,
         CartPageComponent,
-        ItemComponent],
+        ItemComponent
+        ],
     imports: [
         CommonModule,
         ShopRoutingModule,

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CartService } from 'src/app/services/cart.service';
 import { FunkosService } from 'src/app/services/funkos.service';
 import { OrderFunkosService } from 'src/app/services/order-funkos.service';
 
@@ -16,7 +17,8 @@ export class ShopAsideComponent {
 
     constructor(
         private orderService: OrderFunkosService,
-        private funkoService: FunkosService
+        private funkoService: FunkosService,
+        private cartService: CartService
     ) { }
 
     ngOnInit() {
@@ -143,4 +145,7 @@ export class ShopAsideComponent {
             });
         });
     }
+
+    
+    
 }

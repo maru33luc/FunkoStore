@@ -1,11 +1,19 @@
 import { LoginService } from 'src/app/services/login.service';
-import { Component } from '@angular/core';
+import { Component, Renderer2 } from '@angular/core';
 import { CartService } from 'src/app/services/cart.service';
 import { FunkosService } from 'src/app/services/funkos.service';
 import { CartLocalService } from 'src/app/services/cart-local.service';
 import { Observable } from 'rxjs';
 import Swal from 'sweetalert2';
 import { FunkoCart } from 'src/app/interfaces/Cart';
+import { PaymentService } from 'src/app/services/payment.service';
+
+declare global {
+    interface Window {
+      paymentButton: HTMLElement | null;
+      mercadoPagoBtn : HTMLElement | null;
+    }
+  }
 
 @Component({
     selector: 'app-cart',
@@ -18,16 +26,22 @@ export class CartComponent {
     quantityChanges: { funkoId: number; quantity: number }[] = [];
     user: Observable<any> | undefined;
     valoresPrevios: { funkoId: number; quantity: number }[] = [];
-
+    
     constructor(
         private cartService: CartService,
         private funkoService: FunkosService,
         private loginService: LoginService,
         private cartLocalService: CartLocalService,
+        private paymentService : PaymentService,
+        private renderer: Renderer2,
+       
     ) { }
 
     ngOnInit() {
-
+        this.cargarScript();
+        window.paymentButton = document.getElementById('payment');
+        window.mercadoPagoBtn = document.getElementById('wallet_container');
+        
         this.loginService.authStateObservable()?.subscribe(async (user) => {
             if (user) {
                 this.user = user;
@@ -54,10 +68,21 @@ export class CartComponent {
         });
     }
 
+    ngOnDestroy() {
+        window.paymentButton = null;
+        window.mercadoPagoBtn = null;
+        localStorage.removeItem('script');
+        
+    }
 
+    cargarScript() {
+        const script = this.renderer.createElement('script');
+        script.src = 'assets/js/mercadopago.js';
+        this.renderer.appendChild(document.body, script);
+        localStorage.setItem('script', 'scriptCargado');
+      }
 
     async obtenerCart(uid: string) {
-
         const res = await this.cartService.obtenerCarritoDeCompras(uid);
         if (res) {
             this.cartItems = res as FunkoCart[];
@@ -99,8 +124,6 @@ export class CartComponent {
             const foundItem = this.cartItemsCopy.find((items) => item.funkoId === items.funkoId);
             foundItem.stock--;
 
-
-
             if (!this.quantityChanges.find((change) => change.funkoId === item.funkoId)) {
                 this.quantityChanges.push({ funkoId: item.funkoId, quantity: item.quantity });
                 this.saveChangesToDatabase();
@@ -111,7 +134,6 @@ export class CartComponent {
                 }
                 this.saveChangesToDatabase();
             }
-
         }
     }
 
@@ -161,7 +183,6 @@ export class CartComponent {
                         funko.stock -= diferenciaCantidad;
                         await this.funkoService.putFunko(funko, funko.id);
                     }
-
                 }
                 // actualizar la nueva cantidad del item en valoresPrevios
                 const valorPrevioActualizado = this.valoresPrevios.find((item) => item.funkoId === change.funkoId);
@@ -208,4 +229,5 @@ export class CartComponent {
     getTotalPrice(): number {
         return this.getSubtotal();
     }
+
 }

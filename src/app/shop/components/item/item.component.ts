@@ -26,6 +26,7 @@ export class ItemComponent implements AfterViewInit {
     selectedItemLicence: string | undefined;
     stock: number | undefined = 0;
     dataLoaded: boolean = false;
+    isFavorite: boolean = false;
 
     @ViewChild('addButton') addButton: ElementRef | undefined;
     @ViewChild('subtractButton') subtractButton: ElementRef | undefined;
@@ -51,10 +52,12 @@ export class ItemComponent implements AfterViewInit {
         this.route.params.subscribe(params => {
             const itemId = params['id'];
             this.getItemById(itemId);
+            
         });
         this.funkosService.stockFunkoSubject$.subscribe((stock) => {
             this.stock = stock;
         });
+        
     }
 
     ngAfterViewInit() {
@@ -75,7 +78,6 @@ export class ItemComponent implements AfterViewInit {
 
     private updateQuantity(change: number) {
         if (this.quantityButton) {
-            console.log(this.stock);
             let quantityValue = this.quantityButton.nativeElement.value;
 
             if (quantityValue === "" || isNaN(quantityValue)) {
@@ -100,6 +102,7 @@ export class ItemComponent implements AfterViewInit {
             this.selectedItemLicence = this.selectedItem?.licence;
             this.stock = this.selectedItem?.stock;
             this.funkosService.emitirStockInicial(this.selectedItem?.stock || 0);
+            this.esFavorito(itemId);
             // Obtener informacion extra por API
             if (this.selectedItem && this.selectedItem.name) {
                 if (this.selectedItem.licence === 'The Lord of the Rings') {
@@ -171,11 +174,50 @@ export class ItemComponent implements AfterViewInit {
                             const nuevoStock = this.stock ? this.stock - quantity : 0;
                             this.funkosService.emitirStockInicial(nuevoStock);
                             this.funkosService.actualizarStockFunko(this.selectedItem.id, nuevoStock);
-                        } 
+                        }
                     }
                     this.quantityButton.nativeElement.value = "0";
                 }
             }
         }
     }
+
+    async toggleFavorite() {
+        this.loginService.authStateObservable()?.subscribe((user) => {
+            if (user) {
+                const userId = user.uid;
+                if (this.selectedItem && this.selectedItem.id) {
+                    if (this.isFavorite) {
+                        this.cartService.eliminarFavorito(userId, this.selectedItem.id);
+                        this.isFavorite = false;
+                    } else {
+                        this.cartService.agregarFavorito(this.selectedItem.id, userId);
+                        this.isFavorite = true;
+                    }
+                }
+            }
+        });
+    }
+
+
+    esFavorito(idItem: number | null) {
+        this.loginService.authStateObservable()?.subscribe((user) => {
+            if (user) {
+                if(!idItem) return console.log('No hay id');
+                const userId = user.uid;
+                this.cartService.obtenerFavoritos(userId).then((favoritos) => {
+                    if (favoritos) {
+                        const favIndex = favoritos.findIndex((item) => item == idItem);
+                        if (favIndex !== -1) {
+                            this.isFavorite = true;
+                        } else {
+                            this.isFavorite = false;
+                        }
+                    }
+                });
+            }
+        });
+    }
+
+
 }

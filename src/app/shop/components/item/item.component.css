@@ -194,3 +194,38 @@
 .pokemon-info p {
     text-align: justify;
 }
+
+.fav-price-container{
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 6rem;
+    width: 100%;
+}
+
+@media screen and (max-width: 992px) {
+    .fav-price-container {
+        justify-content: center;
+        gap: 2rem;
+    }
+}
+
+  #favoriteButton {
+    background: none;
+    border: none;
+    cursor: pointer;
+    
+  }
+  
+  #heartIcon {
+    width: 40px;
+    height: 40px;
+  }
+
+  @media screen and (max-width: 765px) {
+    #heartIcon {
+      width: 30px;
+      height: 30px;
+    }
+  }
+  

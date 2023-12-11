@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
 import {
     Auth, createUserWithEmailAndPassword,
-    signInWithEmailAndPassword, getAuth, sendPasswordResetEmail
+    signInWithEmailAndPassword, getAuth, signInWithPopup, GoogleAuthProvider,
+    sendPasswordResetEmail
 } from '@angular/fire/auth';
 import { getFirestore, doc, setDoc, getDoc } from 'firebase/firestore';
 import { FunkoCart } from '../interfaces/Cart';
 import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 
 @Injectable({
@@ -14,8 +16,9 @@ import { Observable } from 'rxjs';
 export class LoginService {
 
     private authState$: Observable<any> | undefined;
+    private providerGoogle = new GoogleAuthProvider();
 
-    constructor(private auth: Auth) {
+    constructor(private auth: Auth, private router: Router) {
         this.initialize();
         // Crea un observable personalizado para el estado de autenticación
         this.authState$ = new Observable((observer) => {
@@ -42,6 +45,7 @@ export class LoginService {
                 nombre: nombre,
                 apellido: apellido,
                 carrito: [] as FunkoCart[],
+                favoritos: [] as number[],
                 isAdmin: false
             }
             const docSnap = await setDoc(docRef, payload);
@@ -61,6 +65,39 @@ export class LoginService {
             throw e;
         }
     }
+
+    async loginWithGoogle() {
+        try {
+            const result = await signInWithPopup(this.auth, this.providerGoogle);
+            const user = result.user;
+            const nombre = user.displayName?.split(' ')[0];
+            const apellido = user.displayName?.split(' ')[1];
+            const db = getFirestore();
+            const docRef = doc(db, 'users', user.uid);
+    
+            // Verificar si el documento ya existe
+            const docSnap = await getDoc(docRef);
+            if (!docSnap.exists()) {
+                // El documento no existe, entonces podemos crear el payload
+                const payload = {
+                    nombre: nombre,
+                    apellido: apellido,
+                    carrito: [] as FunkoCart[],
+                    isAdmin: false
+                }
+                await setDoc(docRef, payload);
+            }
+            // Obtener y mostrar la información del usuario
+            this.getDataActualUser();
+    
+            // Redirigir al home si todo resulta bien
+            this.router.navigateByUrl('/home');
+        } catch (e) {
+            console.error(e);
+            throw e;
+        }
+    }
+    
 
     async logout() {
         try {
@@ -117,7 +154,6 @@ export class LoginService {
                     carrito: carrito
                 }
                 const docSnap = await setDoc(docRef, payload);
-                console.log(docSnap);
             }
             catch (error) {
                 console.log(error);

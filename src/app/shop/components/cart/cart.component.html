@@ -38,7 +38,7 @@
         <article class="cart-resumen-container">
             <div class="cart-resumen-line">
                 <p>PRODUCTOS</p>
-                <p>{{getTotalQuantity()}}</p>
+                <p id="total-quantity">{{getTotalQuantity()}}</p>
             </div>
 
             <div class="cart-resumen-line">
@@ -53,10 +53,11 @@
 
             <div class="cart-resumen-line">
                 <p>TOTAL</p>
-                <p>${{getTotalPrice().toLocaleString('es', { minimumFractionDigits: 2, maximumFractionDigits: 2, useGrouping: true})}}</p>
+                <p id="total-price">${{getTotalPrice().toLocaleString('es', { minimumFractionDigits: 2, maximumFractionDigits: 2, useGrouping: true})}}</p>
             </div>
         </article>
 
-        <a class="button cart-pay-btn" href="./checkout.html">PAGAR</a>
+        <div id="wallet_container"></div>
     </section>
+    
 </main>

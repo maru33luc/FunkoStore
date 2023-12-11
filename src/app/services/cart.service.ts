@@ -5,7 +5,7 @@ import { getFirestore, doc, getDoc, setDoc, collection, updateDoc } from 'fireba
 import { getAuth } from 'firebase/auth';
 import { FunkoCart } from '../interfaces/Cart';
 import { LoginService } from './login.service';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 
 @Injectable({
     providedIn: 'root'
@@ -16,6 +16,7 @@ export class CartService {
     diferenciaCantidad: number = 0;
     fkCambiadoId: number | undefined = 0;
     valoresPrevios: { funkoId: number; quantity: number }[] = [];
+    mostrarFavoritos$ = new Subject<boolean>();
 
     constructor(private loginService: LoginService, private funkoService: FunkosService,
         private auth: Auth) {
@@ -148,4 +149,76 @@ export class CartService {
             this.cartSubject.next(this.cart);
         }
     }
+
+    async obtenerFavoritos(userId: string): Promise<number[] | null> {
+        try {
+            const db = getFirestore();
+            const docRef = doc(db, 'users', userId);
+            const docSnap = await getDoc(docRef);
+            
+            // Verificar si hay datos y si existe la propiedad 'favoritos'
+            const data = docSnap.data();
+            if (data && 'favoritos' in data) {
+                const favoritos = data['favoritos'];
+    
+                // Verificar si 'favoritos' no es null ni undefined
+                if (favoritos != null) {
+                    // Retornar un array de los valores de 'favoritos'
+                    const arrayFavoritos = Object.keys(favoritos).map((key) => favoritos[key]);
+                    return arrayFavoritos;
+                }
+            }
+    
+            // Si 'favoritos' es null o undefined, retornar null
+            return null;
+        } catch (error) {
+            console.error(error);
+            throw error;
+        }
+    }
+    
+    agregarFavorito(id: number | undefined, userId: string | undefined) {
+        if (id && userId) {
+            const db = getFirestore();
+            const docRef = doc(db, 'users', userId);
+            const user = this.auth.currentUser;
+            if (user) {
+                const userRef = doc(db, 'users', user.uid);
+                setDoc(userRef, {
+                    favoritos: {
+                        [id]: id
+                    }
+                }, { merge: true });
+            }
+            
+        }
+
+    }
+
+    async eliminarFavorito(userId: string, id: number) {
+        try {
+            const db = getFirestore();
+            const userRef = doc(db, 'users', userId);
+    
+            // Obtener los favoritos actuales del usuario
+            const docSnap = await getDoc(userRef);
+            const favoritos = docSnap.data()?.['favoritos'] || {};
+    
+            // Eliminar el favorito con el ID proporcionado
+            delete favoritos[id];
+    
+            // Actualizar el documento del usuario con los nuevos favoritos
+            await updateDoc(userRef, { favoritos });
+        } catch (error) {
+            console.error(error);
+            throw error;
+        }
+    }
+
+    mostrarFavoritos() {
+        this.mostrarFavoritos$.next(true);
+    }
+    
+
+    
 }

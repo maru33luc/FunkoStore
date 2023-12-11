@@ -102,4 +102,10 @@ export class LoginFormComponent implements OnInit {
     scrollToTop() {
         window.scrollTo(0, 0);
     }
+
+    signInWithGoogle() {
+        this.loginService.loginWithGoogle();
+       
+        
+    }
 }

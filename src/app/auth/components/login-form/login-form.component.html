@@ -31,9 +31,14 @@
                 <a [routerLink]="['/register/reg']" (click)="scrollToTop()">Click aquí</a>
             </div>
         </div>
+        <!-- <input (click)="signInWithGoogle()" class="button" readonly value="INICIAR SESIÓN CON GOOGLE"> -->
+        <img (click)="signInWithGoogle()" id="login-google"  alt="">
 
         <ng-container *ngIf="dataLoaded; else loading"></ng-container>
     </form>
+
+
+
 
     <ng-template #loading>
         <div class="loading">

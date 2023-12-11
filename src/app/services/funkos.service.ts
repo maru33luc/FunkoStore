@@ -145,7 +145,7 @@ export class FunkosService {
         let appliedFiltersCopy = [...this.appliedFilters];
 
         // Aplica cada filtro en orden
-        appliedFiltersCopy.forEach(filtro => {
+        appliedFiltersCopy.forEach(async filtro => {
             const { type, criteria, min, max } = filtro;
 
             if (type === 'name') {
@@ -177,31 +177,29 @@ export class FunkosService {
                     const price = funko.price;
                     return !isNaN(price) && price >= min && price <= max;
                 });
-
             }
             else if (type === 'category' && criteria === 'Favorites') {
                 const user = getAuth().currentUser;
                 if (user) {
                     const userId = user.uid;
-                    this.traerFavo(userId).then((favs) => {
-                        console.log('favoritos', favs);
+                    try {
+                        const favs = await this.traerFavo(userId);
                         if (favs !== null) {
-                            result = this.funkos.filter((funko) => favs.includes(funko.id as number));
-                            console.log('result', result);
-                        }else{
+                            const funkos = this.funkos;
+                            result = result.filter((funko) => favs.includes(funko.id as number));
+                        } else {
                             result = [];
                         }
-                    });
-                    
-
+                    } catch (error) {
+                        console.error(error);
+                    }
                 }
             }
-            else if (type === 'category') {
+            else if (type === 'category' && criteria !== 'Favorites') {
                 if (!this.appliedFilters.find(filter => filter.type === "licence")) {
                     result = this.funkos.filter((funko) =>
                         (funko.category == criteria && typeof funko.category === 'string')
                     );
-
                 }
                 result = result.filter((funko) =>
                     (funko.category == criteria && typeof funko.category === 'string')
@@ -225,11 +223,12 @@ export class FunkosService {
                     result.sort((a, b) => b.price - a.price);
                 }
             }
-            
         });
         // Guarda el estado actual en el historial
         this.history.push([...result]);
-        this.filteredFunkosSubject.next(result);
+        setTimeout(() => {
+            this.filteredFunkosSubject.next(result);
+        }, 300);
         return result;
     }
 
@@ -238,12 +237,12 @@ export class FunkosService {
             const db = getFirestore();
             const docRef = doc(db, 'users', userId);
             const docSnap = await getDoc(docRef);
-            
+
             // Verificar si hay datos y si existe la propiedad 'favoritos'
             const data = docSnap.data();
             if (data && 'favoritos' in data) {
                 const favoritos = data['favoritos'];
-    
+
                 // Verificar si 'favoritos' no es null ni undefined
                 if (favoritos != null) {
                     // Retornar un array de los valores de 'favoritos'
@@ -251,7 +250,6 @@ export class FunkosService {
                     return arrayFavoritos;
                 }
             }
-    
             // Si 'favoritos' es null o undefined, retornar null
             return null;
         } catch (error) {
@@ -295,6 +293,4 @@ export class FunkosService {
     mostrarListaFiltrada() {
         return this.history[this.history.length - 1];
     }
-
-   
 }

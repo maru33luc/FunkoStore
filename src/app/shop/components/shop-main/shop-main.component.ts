@@ -128,6 +128,7 @@ export class ShopMainComponent implements OnInit {
     }
 
     calculateTotalPages() {
+        if(this.lista.length > 0)
         this.pages = Array(Math.ceil(this.lista.length / this.itemsPerPage)).fill(0).map((_, i) => i);
     }
 

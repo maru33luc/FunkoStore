@@ -1,5 +1,5 @@
 import { LoginService } from 'src/app/services/login.service';
-import { Component, Renderer2 } from '@angular/core';
+import { Component, EventEmitter, Output, Renderer2 } from '@angular/core';
 import { CartService } from 'src/app/services/cart.service';
 import { FunkosService } from 'src/app/services/funkos.service';
 import { CartLocalService } from 'src/app/services/cart-local.service';
@@ -10,10 +10,10 @@ import { PaymentService } from 'src/app/services/payment.service';
 
 declare global {
     interface Window {
-      paymentButton: HTMLElement | null;
-      mercadoPagoBtn : HTMLElement | null;
+        paymentButton: HTMLElement | null;
+        mercadoPagoBtn: HTMLElement | null;
     }
-  }
+}
 
 @Component({
     selector: 'app-cart',
@@ -26,22 +26,24 @@ export class CartComponent {
     quantityChanges: { funkoId: number; quantity: number }[] = [];
     user: Observable<any> | undefined;
     valoresPrevios: { funkoId: number; quantity: number }[] = [];
-    
+
     constructor(
         private cartService: CartService,
         private funkoService: FunkosService,
         private loginService: LoginService,
         private cartLocalService: CartLocalService,
-        private paymentService : PaymentService,
+        private paymentService: PaymentService,
         private renderer: Renderer2,
-       
-    ) { }
+
+    ) {
+
+    }
 
     ngOnInit() {
         this.cargarScript();
         window.paymentButton = document.getElementById('payment');
         window.mercadoPagoBtn = document.getElementById('wallet_container');
-        
+
         this.loginService.authStateObservable()?.subscribe(async (user) => {
             if (user) {
                 this.user = user;
@@ -65,6 +67,7 @@ export class CartComponent {
             this.cartItems = items;
             this.cartItemsCopy = this.cartItems.map(item => ({ ...item }));
             await this.loadFunkoDetails();
+
         });
     }
 
@@ -72,7 +75,7 @@ export class CartComponent {
         window.paymentButton = null;
         window.mercadoPagoBtn = null;
         localStorage.removeItem('script');
-        
+
     }
 
     cargarScript() {
@@ -80,7 +83,7 @@ export class CartComponent {
         script.src = 'assets/js/mercadopago.js';
         this.renderer.appendChild(document.body, script);
         localStorage.setItem('script', 'scriptCargado');
-      }
+    }
 
     async obtenerCart(uid: string) {
         const res = await this.cartService.obtenerCarritoDeCompras(uid);
@@ -210,10 +213,30 @@ export class CartComponent {
                 if (this.user) {
                     this.cartService.eliminarDelCarrito(item.funkoId);
                     this.cartItems = this.cartItems.filter((cartItem) => cartItem !== item);
+
+                    this.cartService.cartSubject.subscribe(async (items) => {
+                        if (items.length === 0) {
+                            // Verificar si el carrito está vacío y activar el evento
+                            if (this.cartItems.length === 0) {
+                                document.dispatchEvent(new Event('carritoVacioEvent'));
+                            }
+                        }
+                    });
+
                 } else {
                     this.cartLocalService.removeFromCart(item.funkoId);
                     this.cartItems = this.cartItems.filter((cartItem) => cartItem !== item);
+
+                    this.cartLocalService.cartSubject.subscribe(async (items) => {
+                        if (items.length === 0) {
+                            // Verificar si el carrito está vacío y activar el evento
+                            if (this.cartItems.length === 0) {
+                                document.dispatchEvent(new Event('carritoVacioEvent'));
+                            }
+                        }
+                    });
                 }
+
             }
         });
     }

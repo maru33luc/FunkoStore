@@ -31,7 +31,8 @@
                 <a [routerLink]="['/register/reg']" (click)="scrollToTop()">Click aquí</a>
             </div>
         </div>
-        <img (click)="signInWithGoogle()" id="login-google"  alt="">
+
+        <input class="button login-google" type="button" value="ACCEDER CON GOOGLE" (click)="signInWithGoogle()">
 
         <ng-container *ngIf="dataLoaded; else loading"></ng-container>
     </form>

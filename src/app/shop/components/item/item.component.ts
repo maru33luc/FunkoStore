@@ -52,12 +52,12 @@ export class ItemComponent implements AfterViewInit {
         this.route.params.subscribe(params => {
             const itemId = params['id'];
             this.getItemById(itemId);
-            
+
         });
         this.funkosService.stockFunkoSubject$.subscribe((stock) => {
             this.stock = stock;
         });
-        
+
     }
 
     ngAfterViewInit() {
@@ -81,11 +81,11 @@ export class ItemComponent implements AfterViewInit {
             let quantityValue = this.quantityButton.nativeElement.value;
 
             if (quantityValue === "" || isNaN(quantityValue)) {
-                quantityValue = "0";
+                quantityValue = "1";
             } else {
                 quantityValue = (parseInt(quantityValue) + change).toString();
-                if (parseInt(quantityValue) < 0) {
-                    quantityValue = "0";
+                if (parseInt(quantityValue) < 1) {
+                    quantityValue = "1";
                 } else if (this.stock && parseInt(quantityValue) > this.stock) {
                     quantityValue = this.stock;
                 }
@@ -203,7 +203,7 @@ export class ItemComponent implements AfterViewInit {
     esFavorito(idItem: number | null) {
         this.loginService.authStateObservable()?.subscribe((user) => {
             if (user) {
-                if(!idItem) return console.log('No hay id');
+                if (!idItem) return console.log('No hay id');
                 const userId = user.uid;
                 this.cartService.obtenerFavoritos(userId).then((favoritos) => {
                     if (favoritos) {

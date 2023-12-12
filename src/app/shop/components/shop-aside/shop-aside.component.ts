@@ -16,13 +16,18 @@ export class ShopAsideComponent {
     minPrice: number = 0;
     maxPrice: number = 0;
     favorites: number [] | null = [];
+    isAuthenticated: boolean = false;
 
     constructor(
         private orderService: OrderFunkosService,
         private funkoService: FunkosService,
         private cartService: CartService,
         private loginService: LoginService
-    ) { }
+    ) {
+        this.loginService.authStateObservable()?.subscribe((user) => {
+            this.isAuthenticated = !!user;
+        });
+     }
 
     ngOnInit() {
         this.destildarCheckbox('category');

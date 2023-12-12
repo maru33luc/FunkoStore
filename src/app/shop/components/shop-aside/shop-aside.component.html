@@ -61,7 +61,7 @@
             <label class="shop-aside-label-small" for="pop-vinyl">Pop! Vinyl</label>
         </div>
         
-        <div class="shop-aside-checkbox">
+        <div class="shop-aside-checkbox" *ngIf="isAuthenticated">
             <input id="favorites" name="category" class="shop-aside-checkbox-input" type="checkbox"
                 (click)="onCategoryChange($event,'Favorites')">
             <label class="shop-aside-label-small" for="favorites">Favoritos</label>

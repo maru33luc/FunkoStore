@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CartService } from 'src/app/services/cart.service';
 import { FunkosService } from 'src/app/services/funkos.service';
+import { LoginService } from 'src/app/services/login.service';
 import { OrderFunkosService } from 'src/app/services/order-funkos.service';
 
 @Component({
@@ -14,16 +15,25 @@ export class ShopAsideComponent {
     orderType: 'az' | 'za' | 'desc' | 'asc' = 'az';
     minPrice: number = 0;
     maxPrice: number = 0;
+    favorites: number [] | null = [];
 
     constructor(
         private orderService: OrderFunkosService,
         private funkoService: FunkosService,
-        private cartService: CartService
+        private cartService: CartService,
+        private loginService: LoginService
     ) { }
 
     ngOnInit() {
         this.destildarCheckbox('category');
         this.destildarCheckbox('saga');
+        this.loginService.authStateObservable()?.subscribe(async(user) => {
+            if(user){
+                const arrayFav = await this.cartService.obtenerFavoritos(user.uid);
+                this.favorites = arrayFav;
+            }
+
+        });
     }
 
     ngOnDestroy() {
@@ -38,7 +48,7 @@ export class ShopAsideComponent {
     onSearchChange(query: string) {
         this.orderService.setSearchQuery(query);
         if (query.length == 0) {
-            this.funkoService.undoFilters();
+            this.funkoService.undoFilters(this.favorites);
             this.funkoService.limpiarFiltro("name");
         }
     }
@@ -49,7 +59,7 @@ export class ShopAsideComponent {
             this.orderService.setCategoryQuery(serie);
         } else {
             this.orderService.setCategoryQuery(''); // Valor vacío si se desmarca
-            this.funkoService.undoFilters();
+            this.funkoService.undoFilters(this.favorites);
             this.funkoService.limpiarFiltro('category');
         }
     }
@@ -60,7 +70,7 @@ export class ShopAsideComponent {
             this.orderService.setLicenceQuery(licence);
         } else {
             this.orderService.setLicenceQuery('');
-            this.funkoService.undoFilters();
+            this.funkoService.undoFilters(this.favorites);
             this.funkoService.limpiarFiltro("licence");
         }
     }
@@ -104,6 +114,7 @@ export class ShopAsideComponent {
     }
 
     clearFilters() {
+        this.funkoService.clearAllFilters();
         this.searchQuery = '';
         this.orderType = 'az';
         this.minPrice = 0;
@@ -115,7 +126,7 @@ export class ShopAsideComponent {
         this.orderService.setMinPrice(0);
         this.orderService.setMaxPrice(0);
         this.funkoService.showAllFunkos();
-        this.funkoService.clearAllFilters();
+        
         this.limpiarCheckboxes('category');
         this.limpiarCheckboxes('saga');
     }

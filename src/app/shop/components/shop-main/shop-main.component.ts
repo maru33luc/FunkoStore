@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Funko } from 'src/app/interfaces/Funko';
+import { CartService } from 'src/app/services/cart.service';
 import { FunkosService } from 'src/app/services/funkos.service';
+import { LoginService } from 'src/app/services/login.service';
 import { OrderFunkosService } from 'src/app/services/order-funkos.service';
 
 @Component({
@@ -19,10 +21,13 @@ export class ShopMainComponent implements OnInit {
     filteredFunkos$: Observable<Funko[]> | undefined;
     minPrice: number = 0;
     maxPrice: number = 0; // Valores iniciales de precio mínimo y máximo
+    favorites: number [] | null = [];
 
     constructor(private funkoService: FunkosService,
         private orderService: OrderFunkosService,
-        private activatedRoute: ActivatedRoute) { }
+        private activatedRoute: ActivatedRoute,
+         private loginService: LoginService,
+         private cartService: CartService) { }
 
     ngOnInit() {
         this.activatedRoute.paramMap.subscribe(params => {
@@ -36,6 +41,15 @@ export class ShopMainComponent implements OnInit {
                 this.mostrarFunkos();
             }
         });
+
+        this.loginService.authStateObservable()?.subscribe(async(user) => {
+            if(user){
+                const arrayFav = await this.cartService.obtenerFavoritos(user.uid);
+                this.favorites = arrayFav;
+            }
+
+        });
+
         this.filteredFunkos$ = this.funkoService.getFilteredFunkosObservable();
         window.addEventListener('resize', () => {
             this.updateItemsPerPage();
@@ -44,7 +58,7 @@ export class ShopMainComponent implements OnInit {
         // Suscripción a cambios en el orden
         this.orderService.orderType$.subscribe(orderType => {
             if (orderType === "az" || orderType === "za") {
-                this.funkoService.aplicarFiltro("order", orderType, 0, 0);
+                this.funkoService.aplicarFiltro("order", orderType, 0, 0, this.favorites);
                 this.currentPage = 0; // Reiniciar a la primera página después de cambiar el orden
                 this.calculateTotalPages(); // Recalcular el número de páginas
             }
@@ -53,7 +67,7 @@ export class ShopMainComponent implements OnInit {
         // Suscripción a cambios en el filtro de búsqueda
         this.orderService.searchQuery$.subscribe((query) => {
             if (query.length !== 0) {
-                this.funkoService.aplicarFiltro("name", query, 0, 0);
+                this.funkoService.aplicarFiltro("name", query, 0, 0, this.favorites);
                 this.currentPage = 0;
                 this.calculateTotalPages();
             } else {
@@ -74,7 +88,7 @@ export class ShopMainComponent implements OnInit {
         this.orderService.minPriceSubject.subscribe((minPrice) => {
             if (minPrice !== 0) {
                 this.minPrice = minPrice;
-                this.funkoService.aplicarFiltro("price", "", minPrice, this.maxPrice);
+                this.funkoService.aplicarFiltro("price", "", minPrice, this.maxPrice, this.favorites);
                 this.currentPage = 0;
                 this.calculateTotalPages();
             }
@@ -84,7 +98,7 @@ export class ShopMainComponent implements OnInit {
         this.orderService.maxPriceSubject.subscribe((maxPrice) => {
             if (maxPrice !== 0) {
                 this.maxPrice = maxPrice;
-                this.funkoService.aplicarFiltro("price", "", this.minPrice, this.maxPrice);
+                this.funkoService.aplicarFiltro("price", "", this.minPrice, this.maxPrice, this.favorites);
                 this.currentPage = 0;
                 this.calculateTotalPages();
             }
@@ -92,12 +106,13 @@ export class ShopMainComponent implements OnInit {
 
         // Suscripción a cambios en el filtro de serie
         this.orderService.categoryQuery$.subscribe((serie) => {
+            console.log('serie: ', serie);
             if (serie.length !== 0) {
-                this.funkoService.aplicarFiltro("category", serie, 0, 0);
-                this.currentPage = 0;
-                this.calculateTotalPages();
+                console.log('this.favorites: ', this.favorites);
+                this.funkoService.aplicarFiltro("category", serie, 0, 0, this.favorites);
             } else {
                 this.funkoService.limpiarFiltro("category");
+                console.log('dentro del else');
                 this.lista = this.funkoService.mostrarListaFiltrada();
             }
         });
@@ -105,7 +120,7 @@ export class ShopMainComponent implements OnInit {
         // Suscripción a cambios en el filtro de licencia
         this.orderService.licenceQuery$?.subscribe((licence) => {
             if (licence.length !== 0) {
-                this.funkoService.aplicarFiltro("licence", licence, 0, 0);
+                this.funkoService.aplicarFiltro("licence", licence, 0, 0, this.favorites);
                 this.currentPage = 0;
                 this.calculateTotalPages();
             } else {
@@ -128,8 +143,10 @@ export class ShopMainComponent implements OnInit {
     }
 
     calculateTotalPages() {
-        if(this.lista.length > 0)
-        this.pages = Array(Math.ceil(this.lista.length / this.itemsPerPage)).fill(0).map((_, i) => i);
+        if(this.lista.length > 0){
+            this.pages = Array(Math.ceil(this.lista.length / this.itemsPerPage)).fill(0).map((_, i) => i);
+        }
+        
     }
 
     get paginatedItems() {

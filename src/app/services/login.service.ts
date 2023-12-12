@@ -107,6 +107,14 @@ export class LoginService {
         }
     }
 
+    getUser (){
+        this.getDataActualUser().then((user) => {
+            if(user){
+                return user;
+            }return null;
+        })
+    }
+
     async getDataActualUser() {
         const user = getAuth().currentUser;
         if (user) {

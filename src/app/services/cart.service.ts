@@ -150,6 +150,22 @@ export class CartService {
         }
     }
 
+    async vaciarCarrito(userId: string) {
+        try {
+            const db = getFirestore();
+            const docRef = doc(db, 'users', userId);
+            // Actualizar el documento del usuario con un carrito vacío
+            await updateDoc(docRef, { carrito: [] });
+            // Actualizar el estado interno del carrito y notificar a los suscriptores
+            this.cart = [];
+            this.cartSubject.next(this.cart);
+        } catch (error) {
+            console.error(error);
+            throw error;
+        }
+    }
+    
+
     async obtenerFavoritos(userId: string): Promise<number[] | null> {
         try {
             const db = getFirestore();

@@ -40,7 +40,7 @@ export class CartComponent {
     }
 
     ngOnInit() {
-        this.cargarScript();
+        // this.cargarScript();
         window.paymentButton = document.getElementById('payment');
         window.mercadoPagoBtn = document.getElementById('wallet_container');
 
@@ -48,6 +48,7 @@ export class CartComponent {
             if (user) {
                 this.user = user;
                 await this.obtenerCart(user.uid);
+                this.cargarScript();
             } else {
                 this.user = undefined;
                 this.cartItems = [];
@@ -60,6 +61,7 @@ export class CartComponent {
                     this.valoresPrevios.push({ funkoId: item.funkoId, quantity: item.quantity });
                 }
                 await this.loadFunkoDetails();
+                this.cargarScript();
             }
         }
         );

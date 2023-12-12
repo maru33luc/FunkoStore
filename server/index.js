@@ -31,9 +31,9 @@ app.post('/create_preference', async (req, res) => {
         }
       ],
       back_urls: {
-        "success": "http://localhost:8080",
-        "failure": "http://localhost:8080",
-        "pending": "http://localhost:8080"
+        "success": "http://localhost:8080/sucess",
+        "failure": "http://localhost:8080/failure",
+        "pending": "http://localhost:8080/sucess"
       },
       auto_return: "approved"
     }});
@@ -52,8 +52,15 @@ app.get('/feedback', function (req, res) {
   });
 });
 
-app.get('/', function (req, res) {
+app.get('/sucess', function (req, res) {
   res.redirect('http://localhost:4200/shop/clear-cart');
+});
+
+app.get('/failure', function (req, res) {
+  setTimeout(() => {
+    res.redirect('http://localhost:4200/shop/cart');
+  }, 300);
+  // res.redirect('http://localhost:4200/shop/cart');
 });
 
 app.listen(port, () => {

@@ -12,10 +12,3 @@
         justify-content: space-between;
     }
 }
-
-.login-google {
-    background-image: url('../../../../assets/img/signGoogle.png');
-    background-repeat: no-repeat;
-    background-size: contain;
-    padding-left: 7rem;
-}

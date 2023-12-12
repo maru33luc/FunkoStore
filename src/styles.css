@@ -132,6 +132,13 @@ img {
     background-color: var(--secondary);
 }
 
+.login-google {
+    background-image: url('assets/img/signGoogle.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    padding-left: 7rem;
+}
+
 /*-------------------------FORMS-------------------------*/
 
 .form {

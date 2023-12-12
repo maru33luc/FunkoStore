@@ -85,6 +85,10 @@ export class RegisterFormComponent implements OnInit {
         }
     }
 
+    signInWithGoogle() {
+        this.loginService.loginWithGoogle();
+    }
+
     scrollToTop() {
         window.scrollTo(0, 0);
     }

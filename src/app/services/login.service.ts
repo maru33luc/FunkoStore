@@ -83,6 +83,7 @@ export class LoginService {
                     nombre: nombre,
                     apellido: apellido,
                     carrito: [] as FunkoCart[],
+                    favoritos: [] as number[],
                     isAdmin: false
                 }
                 await setDoc(docRef, payload);

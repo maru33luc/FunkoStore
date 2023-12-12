@@ -32,7 +32,6 @@ export class ShopAsideComponent {
                 const arrayFav = await this.cartService.obtenerFavoritos(user.uid);
                 this.favorites = arrayFav;
             }
-
         });
     }
 
@@ -126,7 +125,6 @@ export class ShopAsideComponent {
         this.orderService.setMinPrice(0);
         this.orderService.setMaxPrice(0);
         this.funkoService.showAllFunkos();
-        
         this.limpiarCheckboxes('category');
         this.limpiarCheckboxes('saga');
     }
@@ -156,7 +154,4 @@ export class ShopAsideComponent {
             });
         });
     }
-
-    
-    
 }

@@ -4,10 +4,7 @@ import { BehaviorSubject, Observable, Subject, catchError, scan } from 'rxjs';
 import axios from 'axios';
 import { OrderFunkosService } from './order-funkos.service';
 import { environments } from 'src/environments/environments';
-import { CartService } from './cart.service';
-import { LoginService } from './login.service';
 import { getAuth, user } from '@angular/fire/auth';
-import { getFirestore, doc, getDoc, setDoc, collection, updateDoc } from 'firebase/firestore';
 
 @Injectable({
     providedIn: 'root'
@@ -131,7 +128,6 @@ export class FunkosService {
     }
 
     aplicarFiltro(name: string, criteria: string, min: number, max: number, favorites?: number[] | null ): Funko[] {
-        console.log('favorites', favorites);
         if (!this.appliedFilters.find(filter => filter.type === name)) {
             this.appliedFilters.push({ type: name, criteria, min, max, favorites: favorites ?? null });
         }
@@ -149,7 +145,6 @@ export class FunkosService {
         for (const filtro of this.appliedFilters) {
             const { type, criteria, min, max } = filtro;
            
-
             if (type === 'name') {
                 if (criteria !== "") {
                     this.undoFilters(favorites? favorites : null);
@@ -180,20 +175,16 @@ export class FunkosService {
                     const price = funko.price;
                     return !isNaN(price) && price >= min && price <= max;
                 });
-                
             }
             else if (type === 'category' && criteria === 'Favorites') {
                 const user = getAuth().currentUser;
                 if (user) {
                     const userId = user.uid;
                     const favArray = favorites;
-                    console.log('FAVARRAY', favArray);
                     if (favArray) {
-                        
                         result = result.filter((funko) =>
                             favArray.includes(funko.id as number)
                         );
-                        console.log('RESULT', result);
                     } 
                 }
             }
@@ -212,12 +203,9 @@ export class FunkosService {
                     this.undoFilters(favorites? favorites : null);
                     this.limpiarFiltro("licence");
                 }
-                console.log('result dentro del filtro de licencia', result);
                 result = result.filter((funko) =>
                     (funko.licence == criteria && typeof funko.licence === 'string')
                 );
-                console.log('result', result);
-                
             } 
             else if (type === 'order') {
                 if (criteria === 'az') {
@@ -229,21 +217,13 @@ export class FunkosService {
                 } else if (criteria === 'desc') {
                     result.sort((a, b) => b.price - a.price);
                 }
-                
-
-
             } 
         }
         // Guarda el estado actual en el historial
 
-        console.log('this.history', this.history);
-        console.log('result', result);
-        console.log('this.apliedFilters', this.appliedFilters);
         this.history.push([...result]);
         this.filteredFunkosSubject.next(result);
-
         return result;
-        
     }
 
     limpiarFiltro(name: string) {

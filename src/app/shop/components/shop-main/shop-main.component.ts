@@ -47,7 +47,6 @@ export class ShopMainComponent implements OnInit {
                 const arrayFav = await this.cartService.obtenerFavoritos(user.uid);
                 this.favorites = arrayFav;
             }
-
         });
 
         this.filteredFunkos$ = this.funkoService.getFilteredFunkosObservable();
@@ -106,13 +105,10 @@ export class ShopMainComponent implements OnInit {
 
         // Suscripción a cambios en el filtro de serie
         this.orderService.categoryQuery$.subscribe((serie) => {
-            console.log('serie: ', serie);
             if (serie.length !== 0) {
-                console.log('this.favorites: ', this.favorites);
                 this.funkoService.aplicarFiltro("category", serie, 0, 0, this.favorites);
             } else {
                 this.funkoService.limpiarFiltro("category");
-                console.log('dentro del else');
                 this.lista = this.funkoService.mostrarListaFiltrada();
             }
         });
@@ -145,8 +141,7 @@ export class ShopMainComponent implements OnInit {
     calculateTotalPages() {
         if(this.lista.length > 0){
             this.pages = Array(Math.ceil(this.lista.length / this.itemsPerPage)).fill(0).map((_, i) => i);
-        }
-        
+        }  
     }
 
     get paginatedItems() {

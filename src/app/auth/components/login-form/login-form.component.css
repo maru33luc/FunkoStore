@@ -13,20 +13,9 @@
     }
 }
 
-#login-google{
-  cursor: pointer;
-  width: 220px;
-  height: 50px;
-  background-image: url('../../../../assets/img/signGoogle.png');
-  background-size: cover;
-  transition: background-image 0.3s ease-in-out;
-  border-radius: 6px ;
-  -webkit-border-radius: 6px ;
-  -moz-border-radius: 6px ;
-  -ms-border-radius: 6px ;
-  -o-border-radius: 6px ;
-}
-
-#login-google:hover{
-    background-image: url('../../../../assets/img/signGoogleDark.png');
+.login-google {
+    background-image: url('../../../../assets/img/signGoogle.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    padding-left: 7rem;
 }

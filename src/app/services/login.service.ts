@@ -97,7 +97,6 @@ export class LoginService {
             throw e;
         }
     }
-    
 
     async logout() {
         try {

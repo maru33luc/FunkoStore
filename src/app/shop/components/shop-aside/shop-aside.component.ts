@@ -42,7 +42,7 @@ export class ShopAsideComponent {
 
     onOrderChange() {
         this.orderService.setOrderType(this.orderType);
-        this.funkoService.aplicarFiltro("order", this.orderType, 0, 0);
+        this.funkoService.aplicarFiltro("order", this.orderType, 0, 0, this.favorites);
     }
 
     onSearchChange(query: string) {
@@ -85,7 +85,7 @@ export class ShopAsideComponent {
         else if (this.maxPrice >= 0 && this.maxPrice >= this.minPrice) {
             this.orderService.setMinPrice(this.minPrice);
             this.orderService.setMaxPrice(this.maxPrice);
-            this.funkoService.aplicarFiltro("price", "", this.minPrice, this.maxPrice);
+            this.funkoService.aplicarFiltro("price", "", this.minPrice, this.maxPrice, this.favorites);
         }
     }
 

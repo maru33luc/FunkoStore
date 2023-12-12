@@ -121,7 +121,6 @@ img {
     -o-transition: background .2s ease-in-out;
 }
 
-
 @media screen and (min-width: 768px) {
     .button {
         font-size: var(--font-medium);
@@ -194,6 +193,7 @@ img {
 }
 
 .form-input {
+    background-color: var(--ligth-bg);
     font-size: var(--font-xsmall);
     width: 100%;
     padding: 1rem 0;
@@ -217,6 +217,7 @@ img {
 }
 
 .form-textarea {
+    background-color: var(--ligth-bg);
     font-family: var(--base-font);
     font-size: var(--font-xsmall);
     width: 100%;

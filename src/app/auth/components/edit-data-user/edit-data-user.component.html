@@ -1,0 +1,43 @@
+<main class="main">
+    <h1 class="h1">EDITAR DATOS USUARIO</h1>
+    <form class="form" [formGroup]="editDataForm" (submit)="editData()">
+
+        <div class="form-box">
+            <label class="form-label" for="name">Nombre</label>
+            <input id="name" class="form-input" type="text" formControlName="name" placeholder="Tu nombre">
+            <span class="form-error" *ngIf="validate('name', 'required')">Campo obligatorio</span>
+            <span class="form-error" *ngIf="validate('name', 'maxlength')">Máximo 30 caracteres</span>
+        </div>
+
+        <div class="form-box">
+            <label class="form-label" for="lastname">Apellido</label>
+            <input id="lastname" class="form-input" type="text" formControlName="lastname" placeholder="Tu apellido">
+            <span class="form-error" *ngIf="validate('lastname', 'required')">Campo obligatorio</span>
+            <span class="form-error" *ngIf="validate('lastname', 'maxlength')">Máximo 30 caracteres</span>
+        </div>
+
+        <div class="form-box">
+            <label class="form-label" for="phone">Teléfono</label>
+            <input id="phone" class="form-input" type="text" formControlName="phone" placeholder="Tu teléfono">
+            <!-- Agrega aquí las validaciones necesarias para el campo phone -->
+        </div>
+    
+        <div class="form-box">
+            <label class="form-label" for="address">Dirección</label>
+            <input id="address" class="form-input" type="text" formControlName="address" placeholder="Tu dirección">
+            <!-- Agrega aquí las validaciones necesarias para el campo address -->
+        </div>
+
+        <div class="form-box-register">
+            <input class="button" type="submit" value="GUARDAR"> 
+        </div>
+
+        <ng-container *ngIf="dataLoaded; else loading"></ng-container>
+    </form>
+
+    <ng-template #loading>
+        <div class="loading">
+            <img class="spinner" src="../../../../assets/img/spinner.svg" alt="Loading spinner">
+        </div>
+    </ng-template>
+</main>

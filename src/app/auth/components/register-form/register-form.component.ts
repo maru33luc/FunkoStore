@@ -20,6 +20,8 @@ export class RegisterFormComponent implements OnInit {
         password: ['', [Validators.required, Validators.minLength(6)]],
         repassword: ['', [Validators.required]],
         terms: false,
+        phone: ['', [Validators.required]], // Agregado: Campo teléfono
+        address: ['', [Validators.required]], // Agregado: Campo dirección
     });
 
     constructor(
@@ -72,7 +74,9 @@ export class RegisterFormComponent implements OnInit {
                     this.registerForm.value.email,
                     this.registerForm.value.password,
                     this.registerForm.value.name,
-                    this.registerForm.value.lastname
+                    this.registerForm.value.lastname,
+                    this.registerForm.value.phone,
+                    this.registerForm.value.address,
                 );
                 this.dataLoaded = true;
                 await this.loginService.logout();

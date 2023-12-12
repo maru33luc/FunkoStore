@@ -10,6 +10,8 @@ import { AuthRoutingModule } from './auth-routing.module';
 import { SharedModule } from '../shared/shared.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AdminModule } from '../admin/admin.module';
+import { EditDataUserComponent } from './components/edit-data-user/edit-data-user.component';
+import { EditDataPageComponent } from './pages/edit-data-page/edit-data-page.component';
 
 
 @NgModule({
@@ -17,7 +19,9 @@ import { AdminModule } from '../admin/admin.module';
         RegisterFormComponent,
         LoginFormComponent,
         RegisterPageComponent,
-        LoginPageComponent
+        LoginPageComponent,
+        EditDataUserComponent, 
+        EditDataPageComponent
     ],
     imports: [
         CommonModule,

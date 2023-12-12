@@ -16,6 +16,9 @@
                 <li class="header-navbar-item">
                     <ng-container *ngIf="username">HOLA {{username}}</ng-container>
                 </li>
+                <li class="header-navbar-item" >
+                    <a class="header-navbar-link" [routerLink]="['/register/edit']">EDITAR DATOS</a>
+                </li>
                 <li class="header-navbar-item">
                     <a class="header-navbar-link" (click)="logout()">SALIR</a>
                 </li>

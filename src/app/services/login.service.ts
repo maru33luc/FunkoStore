@@ -4,7 +4,7 @@ import {
     signInWithEmailAndPassword, getAuth, signInWithPopup, GoogleAuthProvider,
     sendPasswordResetEmail
 } from '@angular/fire/auth';
-import { getFirestore, doc, setDoc, getDoc } from 'firebase/firestore';
+import { getFirestore, doc, setDoc, getDoc, updateDoc } from 'firebase/firestore';
 import { FunkoCart } from '../interfaces/Cart';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
@@ -35,7 +35,7 @@ export class LoginService {
         return this.authState$;
     }
 
-    async register(email: string, password: string, nombre: string, apellido: string) {
+    async register(email: string, password: string, nombre: string, apellido: string, telefono: string, direccion: string) {
         try {
             const response = await createUserWithEmailAndPassword(this.auth, email, password);
             const user = response.user;
@@ -44,6 +44,8 @@ export class LoginService {
             const payload = {
                 nombre: nombre,
                 apellido: apellido,
+                telefono: telefono,
+                direccion: direccion,
                 carrito: [] as FunkoCart[],
                 favoritos: [] as number[],
                 isAdmin: false
@@ -70,6 +72,7 @@ export class LoginService {
         try {
             const result = await signInWithPopup(this.auth, this.providerGoogle);
             const user = result.user;
+            console.log('user', user);
             const nombre = user.displayName?.split(' ')[0];
             const apellido = user.displayName?.split(' ')[1];
             const db = getFirestore();
@@ -82,6 +85,8 @@ export class LoginService {
                 const payload = {
                     nombre: nombre,
                     apellido: apellido,
+                    telefono: '',
+                    direccion: '',
                     carrito: [] as FunkoCart[],
                     favoritos: [] as number[],
                     isAdmin: false
@@ -150,24 +155,29 @@ export class LoginService {
         }
     }
 
-    async updateDataUser(nombre: string, apellido: string, carrito: FunkoCart[]) {
+    async updateUserData(
+        nombre: string,
+        apellido: string,
+        telefono: string,
+        direccion: string
+      ) {
         const user = getAuth().currentUser;
         if (user) {
-            try {
-                const db = getFirestore();
-                const docRef = doc(db, 'users', user.uid);
-                const payload = {
-                    nombre: nombre,
-                    apellido: apellido,
-                    carrito: carrito
-                }
-                const docSnap = await setDoc(docRef, payload);
-            }
-            catch (error) {
-                console.log(error);
-            }
+          try {
+            const db = getFirestore();
+            const docRef = doc(db, 'users', user.uid);
+            const payload = {
+              nombre: nombre,
+              apellido: apellido,
+              telefono: telefono,
+              direccion: direccion,
+            };
+            await updateDoc(docRef, payload);
+          } catch (error) {
+            console.log(error);
+          }
         }
-    }
+      }
 
     isUserLoggedIn(): boolean {
         const user = getAuth().currentUser;

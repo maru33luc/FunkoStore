@@ -118,4 +118,18 @@ export class CartLocalService {
             await store.put(existingItem);
         }
     }
+    async clearCart() {
+        if (!this.db) {
+            throw new Error('Database not initialized');
+        }
+        const transaction = this.db.transaction(this.cartStoreName, 'readwrite');
+        const store = transaction.objectStore(this.cartStoreName);
+
+        try {
+            await store.clear();
+            await this.getCart();
+        } catch (error) {
+            console.error('Error clearing cart:', error);
+        }
+    }
 }

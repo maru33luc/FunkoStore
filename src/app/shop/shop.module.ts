@@ -14,6 +14,7 @@ import { ShopRoutingModule } from './shop-routing.module';
 import { SharedModule } from '../shared/shared.module';
 import { AuthModule } from '@angular/fire/auth';
 import { FormsModule } from '@angular/forms';
+import { ClearCartPageComponent } from './pages/clear-cart-page/clear-cart-page.component';
 
 @NgModule({
     declarations: [
@@ -24,6 +25,7 @@ import { FormsModule } from '@angular/forms';
         ShopMainComponent,
         ItemPageComponent,
         CartPageComponent,
+        ClearCartPageComponent,
         ItemComponent
         ],
     imports: [
@@ -39,6 +41,7 @@ import { FormsModule } from '@angular/forms';
         ShopMainComponent,
         ItemComponent,
         CartPageComponent,
+        ClearCartPageComponent,
     ]
 })
 export class ShopModule { }

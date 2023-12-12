@@ -10,7 +10,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 // Configurar CORS
 app.use(cors({
-  origin: 'http://localhost:4200', // Reemplaza con la URL de tu aplicación cliente
+  origin: 'http://localhost:4200/shop/clear-cart', // Reemplaza con la URL de tu aplicación cliente
   methods: ['GET', 'POST'], // Especifica los métodos HTTP permitidos
   allowedHeaders: ['Content-Type', 'Authorization', 'Accept', 'Origin',  ], // Especifica los encabezados permitidos
 }));
@@ -53,7 +53,7 @@ app.get('/feedback', function (req, res) {
 });
 
 app.get('/', function (req, res) {
-  res.redirect('http://localhost:4200');
+  res.redirect('http://localhost:4200/shop/clear-cart');
 });
 
 app.listen(port, () => {

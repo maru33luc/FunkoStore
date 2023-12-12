@@ -131,6 +131,17 @@ img {
     background-color: var(--secondary);
 }
 
+.small-button {
+    font-size: var(--font-min);
+    padding: 1.2rem;
+}
+
+@media screen and (min-width: 768px) {
+    .small-button {
+        font-size: var(--font-xsmall);
+    }
+}
+
 .login-google {
     background-image: url('assets/img/signGoogle.png');
     background-repeat: no-repeat;

@@ -15,9 +15,9 @@ To install the application, please follow the steps below:
 
 Ensure that you have three separate terminals open to run the Angular app, JSON server, and the additional backend server.
 
-1. In the first terminal, run `npm run start:server` to start the JSON server.
-2. In the second terminal, run `npm run funkos` to start json-server
-3. In the third terminal, go to the `/server` folder and run `npm run start:server` to start the backend server.
+1. In the first terminal, run `npm start` to start the Angular app.
+2. In the second terminal, run `npm run funkos` to start json-server.
+3. In the third terminal, go to the `/server` folder and run `npm start` to start the backend server.
 
 ## Administrator Credentials
 

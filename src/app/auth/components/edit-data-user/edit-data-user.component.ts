@@ -37,8 +37,8 @@ export class EditDataUserComponent implements OnInit {
                         this.editDataForm.patchValue({
                             name: userData.nombre,
                             lastname: userData.apellido,
-                            phone: userData.telefono,
-                            address: userData.direccion
+                            phone: userData.teléfono,
+                            address: userData.dirección
                         });
                     });
                 }

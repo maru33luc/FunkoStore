@@ -44,8 +44,8 @@ export class LoginService {
             const payload = {
                 nombre: nombre,
                 apellido: apellido,
-                telefono: telefono,
-                direccion: direccion,
+                teléfono: telefono,
+                dirección: direccion,
                 carrito: [] as FunkoCart[],
                 favoritos: [] as number[],
                 isAdmin: false
@@ -85,8 +85,8 @@ export class LoginService {
                 const payload = {
                     nombre: nombre,
                     apellido: apellido,
-                    telefono: '',
-                    direccion: '',
+                    teléfono: '',
+                    dirección: '',
                     carrito: [] as FunkoCart[],
                     favoritos: [] as number[],
                     isAdmin: false
@@ -169,8 +169,8 @@ export class LoginService {
             const payload = {
               nombre: nombre,
               apellido: apellido,
-              telefono: telefono,
-              direccion: direccion,
+              teléfono: telefono,
+              dirección: direccion,
             };
             await updateDoc(docRef, payload);
           } catch (error) {

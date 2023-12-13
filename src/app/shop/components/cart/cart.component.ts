@@ -71,7 +71,16 @@ export class CartComponent {
             await this.loadFunkoDetails();
 
         });
+
+        // this.cartService.cartSubject.subscribe(async (items) => {
+        //     this.cartItems = items;
+        //     this.cartItemsCopy = this.cartItems.map(item => ({ ...item }));
+        //     await this.loadFunkoDetails();
+
+        // });
     }
+
+    
 
     ngOnDestroy() {
         window.paymentButton = null;
@@ -215,13 +224,16 @@ export class CartComponent {
                 if (this.user) {
                     this.cartService.eliminarDelCarrito(item.funkoId);
                     this.cartItems = this.cartItems.filter((cartItem) => cartItem !== item);
+                    this.cartItemsCopy = this.cartItemsCopy.filter((cartItem) => cartItem !== item);
 
                     this.cartService.cartSubject.subscribe(async (items) => {
                         if (items.length === 0) {
                             // Verificar si el carrito está vacío y activar el evento
-                            if (this.cartItems.length === 0) {
                                 document.dispatchEvent(new Event('carritoVacioEvent'));
-                            }
+                                this.cartItems = [];
+                                this.cartItemsCopy = [];
+                            
+                            
                         }
                     });
 
@@ -234,6 +246,8 @@ export class CartComponent {
                             // Verificar si el carrito está vacío y activar el evento
                             if (this.cartItems.length === 0) {
                                 document.dispatchEvent(new Event('carritoVacioEvent'));
+                                this.cartItems = [];
+                                this.cartItemsCopy = [];
                             }
                         }
                     });
@@ -244,7 +258,7 @@ export class CartComponent {
     }
 
     getTotalQuantity(): number {
-        return this.cartItems.reduce((total, item) => total + item.quantity, 0);
+        return this.cartItemsCopy.reduce((total, item) => total + item.quantity, 0);
     }
 
     getSubtotal(): number {

@@ -81,7 +81,7 @@
       "serie": "Pocket Pop!, Lord of the Rings Mystery Keychains",
       "price": 8000,
       "licence": "The Lord of the Rings",
-      "stock": 39,
+      "stock": 34,
       "id": 7
     },
     {
@@ -93,7 +93,7 @@
       "serie": "Funko Mystery Minis, Mystery Minis Lord of the Rings",
       "price": 12000,
       "licence": "The Lord of the Rings",
-      "stock": 40,
+      "stock": 29,
       "id": 8
     },
     {
@@ -105,7 +105,7 @@
       "serie": "Funko Mystery Minis, Mystery Minis Lord of the Rings",
       "price": 12000,
       "licence": "The Lord of the Rings",
-      "stock": 89,
+      "stock": 88,
       "id": 9
     },
     {
@@ -285,7 +285,7 @@
       "serie": "Plushies",
       "price": 20000,
       "licence": "The Lord of the Rings",
-      "stock": 0,
+      "stock": 24,
       "id": 24
     },
     {
@@ -536,7 +536,7 @@
       "price": 20000,
       "frontImage": "https://www.leprechaun.es/1430-large_default/funko-pop-15-albus-dumbledore-harry-potter.jpg",
       "backImage": "https://www.leprechaun.es/1429-large_default/funko-pop-15-albus-dumbledore-harry-potter.jpg",
-      "stock": 45,
+      "stock": 38,
       "licence": "Harry Potter",
       "id": 45
     },
@@ -596,7 +596,7 @@
       "price": 8000,
       "frontImage": "https://th.bing.com/th/id/OIP.IYgSf5bVEksy3mSfgq1pcQHaHa?pid=ImgDet&rs=1",
       "backImage": "https://th.bing.com/th/id/R.be48d1cc58b0e052a216c350b9aab391?rik=JxpBrIzA6RvWAQ&pid=ImgRaw&r=0",
-      "stock": 17,
+      "stock": 14,
       "licence": "Harry Potter",
       "id": 50
     },

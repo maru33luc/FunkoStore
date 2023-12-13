@@ -56,7 +56,7 @@ if (localStorage.getItem('script') == 'scriptCargado') {
             const orderData = {
                 items: [
                     {
-                        title: 'Small Silk Plate',
+                        title: 'Funkos',
                         quantity: parseInt(totalQuantity.textContent),
                         price: parseFloat(precioSinPunto),
                     },

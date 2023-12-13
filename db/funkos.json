@@ -81,7 +81,7 @@
       "serie": "Pocket Pop!, Lord of the Rings Mystery Keychains",
       "price": 8000,
       "licence": "The Lord of the Rings",
-      "stock": 34,
+      "stock": 33,
       "id": 7
     },
     {
@@ -285,7 +285,7 @@
       "serie": "Plushies",
       "price": 20000,
       "licence": "The Lord of the Rings",
-      "stock": 24,
+      "stock": 21,
       "id": 24
     },
     {
@@ -596,7 +596,7 @@
       "price": 8000,
       "frontImage": "https://th.bing.com/th/id/OIP.IYgSf5bVEksy3mSfgq1pcQHaHa?pid=ImgDet&rs=1",
       "backImage": "https://th.bing.com/th/id/R.be48d1cc58b0e052a216c350b9aab391?rik=JxpBrIzA6RvWAQ&pid=ImgRaw&r=0",
-      "stock": 14,
+      "stock": 13,
       "licence": "Harry Potter",
       "id": 50
     },
@@ -656,7 +656,7 @@
       "price": 20000,
       "frontImage": "https://th.bing.com/th/id/R.9c8ddbc3283e25b7f7a90a443906288a?rik=wOK9jLYGQQfzyg&riu=http%3a%2f%2fcdn1.commentseruiner.net%2f26545-home_default%2fpeluche-harry-potter.jpg&ehk=fqY%2ftpXUxM0j8tbqBzip4S7pSrEje4FmV2OK3mb8gd0%3d&risl=&pid=ImgRaw&r=0",
       "backImage": "https://i5.walmartimages.com/asr/1558579a-bab4-443e-8c58-a130429419aa_1.1fbde3ffb3cad5c4e7e4ba3b31bb0135.jpeg?odnWidth=1000&odnHeight=1000&odnBg=ffffff",
-      "stock": 40,
+      "stock": 39,
       "licence": "Harry Potter",
       "id": 55
     },
@@ -872,7 +872,7 @@
       "price": 20000,
       "frontImage": "https://i5.walmartimages.com/asr/966e5224-a0a2-4c60-a6f8-0d7ed5d06ff7_1.e6e29cf8c865e013c1863c2b83c7e34d.jpeg?odnWidth=612&odnHeight=612&odnBg=ffffff",
       "backImage": "https://a3k5c4z3.stackpathcdn.com/895566-medium_default/star-wars-basic-plush-assortment.jpg",
-      "stock": 39,
+      "stock": 38,
       "licence": "Star Wars",
       "id": 73
     },

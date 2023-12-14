@@ -6,7 +6,7 @@ import {
 } from '@angular/fire/auth';
 import { getFirestore, doc, setDoc, getDoc, updateDoc } from 'firebase/firestore';
 import { FunkoCart } from '../interfaces/Cart';
-import { Observable } from 'rxjs';
+import { Observable, Subject, observable } from 'rxjs';
 import { Router } from '@angular/router';
 
 
@@ -17,12 +17,22 @@ export class LoginService {
 
     private authState$: Observable<any> | undefined;
     private providerGoogle = new GoogleAuthProvider();
+    public username$ = new Subject<string>();
 
     constructor(private auth: Auth, private router: Router) {
         this.initialize();
         // Crea un observable personalizado para el estado de autenticación
         this.authState$ = new Observable((observer) => {
             this.auth.onAuthStateChanged(observer);
+        });
+
+        this.authStateObservable()?.subscribe((user) => {
+            if (user) {
+                this.getDataActualUser().then((data: any) => { 
+                    const nombre = data.nombre;
+                    this.username$.next(nombre);
+                });
+            }
         });
     }
 
@@ -77,7 +87,7 @@ export class LoginService {
             const apellido = user.displayName?.split(' ')[1];
             const db = getFirestore();
             const docRef = doc(db, 'users', user.uid);
-    
+
             // Verificar si el documento ya existe
             const docSnap = await getDoc(docRef);
             if (!docSnap.exists()) {
@@ -95,7 +105,7 @@ export class LoginService {
             }
             // Obtener y mostrar la información del usuario
             this.getDataActualUser();
-    
+
             // Redirigir al home si todo resulta bien
             this.router.navigateByUrl('/home');
         } catch (e) {
@@ -112,11 +122,11 @@ export class LoginService {
         }
     }
 
-    getUser (){
+    getUser() {
         this.getDataActualUser().then((user) => {
-            if(user){
+            if (user) {
                 return user;
-            }return null;
+            } return null;
         })
     }
 
@@ -160,24 +170,25 @@ export class LoginService {
         apellido: string,
         telefono: string,
         direccion: string
-      ) {
+    ) {
         const user = getAuth().currentUser;
         if (user) {
-          try {
-            const db = getFirestore();
-            const docRef = doc(db, 'users', user.uid);
-            const payload = {
-              nombre: nombre,
-              apellido: apellido,
-              teléfono: telefono,
-              dirección: direccion,
-            };
-            await updateDoc(docRef, payload);
-          } catch (error) {
-            console.log(error);
-          }
+            try {
+                const db = getFirestore();
+                const docRef = doc(db, 'users', user.uid);
+                const payload = {
+                    nombre: nombre,
+                    apellido: apellido,
+                    teléfono: telefono,
+                    dirección: direccion,
+                };
+                await updateDoc(docRef, payload);
+                this.username$.next(nombre);
+            } catch (error) {
+                console.log(error);
+            }
         }
-      }
+    }
 
     isUserLoggedIn(): boolean {
         const user = getAuth().currentUser;

@@ -1,6 +1,6 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { LoginService } from 'src/app/services/login.service';
 
 @Component({
@@ -13,7 +13,7 @@ export class HeaderComponent {
     isLoggedIn: boolean = false;
     isAdmin: boolean = false;
     username: string = '';
-    user$: Observable<any> | undefined;
+    user$: Observable<any> | undefined;    
 
     @ViewChild('hambIcon') hambIcon!: ElementRef;
     @ViewChild('navBar') navBar!: ElementRef;
@@ -34,14 +34,8 @@ export class HeaderComponent {
             this.isAdmin = isAdmin;
         });
 
-        this.loginService.authStateObservable()?.subscribe((user) => {
-            if (user) {
-                this.loginService.getUserName().then((nombre) => {
-                    if (nombre) {
-                        this.username = nombre.toUpperCase();
-                    }
-                });
-            }
+        this.loginService.username$.subscribe((username) => {
+            this.username = username.toUpperCase();
         });
     }
 

@@ -1,8 +1,9 @@
 import { CartLocalService } from 'src/app/services/cart-local.service';
 import { Component } from '@angular/core';
-import { LoginService } from 'src/app/services/login.service';
-import { CartService } from 'src/app/services/cart.service';
 import { Router } from '@angular/router';
+import AOS from 'aos';
+import { CartService } from 'src/app/services/cart.service';
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
     selector: 'app-clear-cart-page',
@@ -10,11 +11,13 @@ import { Router } from '@angular/router';
     styleUrls: ['./clear-cart-page.component.css']
 })
 export class ClearCartPageComponent {
-    constructor(private cartLocalService: CartLocalService,
+
+    constructor(
+        private cartLocalService: CartLocalService,
         private cartService: CartService,
         private loginService: LoginService,
-        private router: Router) {
-
+        private router: Router
+    ) {
         this.loginService.authStateObservable()?.subscribe((user) => {
             if (user) {
                 this.cartService.vaciarCarrito(user.uid);
@@ -24,7 +27,10 @@ export class ClearCartPageComponent {
         });
         setTimeout(() => {
             this.router.navigate(['/home']);
-        }, 2000);
+        }, 4000);
+    }
 
+    ngOnInit() {
+        AOS.init();
     }
 }

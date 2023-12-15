@@ -11,6 +11,7 @@ import { LoginService } from 'src/app/services/login.service';
     styleUrls: ['./clear-cart-page.component.css']
 })
 export class ClearCartPageComponent {
+    countdown: number = 4;
 
     constructor(
         private cartLocalService: CartLocalService,
@@ -25,12 +26,32 @@ export class ClearCartPageComponent {
                 this.cartLocalService.clearCart();
             }
         });
-        setTimeout(() => {
-            this.router.navigate(['/home']);
-        }, 5000);
+        // setTimeout(() => {
+        //     this.router.navigate(['/home']);
+        // }, 5000);
     }
 
     ngOnInit() {
         AOS.init();
+        this.startCountdown();        
+    }
+
+    startCountdown() {
+        const interval = setInterval(() => {
+            this.countdown--;
+
+            if (this.countdown <= 0) {
+                clearInterval(interval);
+                this.redirectToHome();
+            }
+        }, 1000);
+    }
+
+    redirectToHome() {
+        this.router.navigate(['/home']);
+    }
+
+    getCountdownMessage(): string {
+        return `Volviendo a la tienda en ${this.countdown} segundos...`;
     }
 }

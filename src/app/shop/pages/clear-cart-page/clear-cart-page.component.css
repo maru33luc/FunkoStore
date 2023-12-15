@@ -7,3 +7,11 @@
     max-height: 75vh;
     object-fit: contain;
 }
+
+.count-down-message{
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #000;
+    font-family: var(--alternative-font);
+}

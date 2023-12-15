@@ -1,37 +1,48 @@
 <main class="main cart-main">
     <h1 class="h1">CARRITO DE COMPRAS</h1>
 
-    <ul class="cart-items">
-        <li class="cart-item" *ngFor="let item of cartItemsCopy">
-            <div class="cart-item-info">
-                <picture class="cart-item-picture">
-                    <img [src]="item.imageSrc" alt="{{item.name}}">
-                </picture>
+    <ng-container *ngIf="loadingCart; else cartContent">
+        <!-- Spinner de carga -->
+        <img class="spinner" src="../../../../assets/img/spinner.svg" alt="Loading spinner">
+    </ng-container>
 
-                <article class="cart-item-content">
-                    <p class="cart-item-name">{{item.name}}</p>
-                    <p class="cart-item-serie">{{item.serie}}</p>
-                    <p class="cart-item-license">{{item.licence}}</p>
-                </article>
-            </div>
+    <ng-template #cartContent>
+        <ul class="cart-items" *ngIf="!loadingCart">
+            <li class="cart-item" *ngFor="let item of cartItemsCopy">
+                <div class="cart-item-info">
+                    <picture class="cart-item-picture">
+                        <img [src]="item.imageSrc" alt="{{item.name}}">
+                    </picture>
 
-            <div class="item-cart-quantity">
-                <button class="button item-cart-quantity-btn" id="subtract" (click)="decreaseQuantity(item)">-</button>
-                <input class="item-input" type="text" id="quantity" #quantityButton [value]="item.quantity" placeholder="1">
-                <button class="button item-cart-quantity-btn" id="add" (click)="increaseQuantity(item)">+</button>
-                <p class="item-stock">Disponibles: {{ item.stock}}</p>
-            </div>
+                    <article class="cart-item-content">
+                        <p class="cart-item-name">{{item.name}}</p>
+                        <p class="cart-item-serie">{{item.serie}}</p>
+                        <p class="cart-item-license">{{item.licence}}</p>
+                    </article>
+                </div>
 
-            <div class="cart-total-price">
-                <p>${{calculateTotalPrice(item).toLocaleString('es', { minimumFractionDigits: 2, maximumFractionDigits: 2, useGrouping: true})}}</p>
-            </div>
+                <div class="item-cart-quantity">
+                    <button class="button item-cart-quantity-btn" id="subtract"
+                        (click)="decreaseQuantity(item)">-</button>
+                    <input class="item-input" type="text" id="quantity" #quantityButton [value]="item.quantity"
+                        placeholder="1">
+                    <button class="button item-cart-quantity-btn" id="add" (click)="increaseQuantity(item)">+</button>
+                    <p class="item-stock">Disponibles: {{ item.stock}}</p>
+                </div>
 
-            <div>
-                <img class="cart-item-delete" src="../../../../assets/img/close-icon.svg"
-                    (click)="removeItem(item)">
-            </div>
-        </li>
-    </ul>
+                <div class="cart-total-price">
+                    <p>${{calculateTotalPrice(item).toLocaleString('es', { minimumFractionDigits: 2,
+                        maximumFractionDigits:
+                        2, useGrouping: true})}}</p>
+                </div>
+
+                <div>
+                    <img class="cart-item-delete" src="../../../../assets/img/close-icon.svg"
+                        (click)="removeItem(item)">
+                </div>
+            </li>
+        </ul>
+    </ng-template>
 
     <section class="cart-resumen">
         <h2 class="cart-resumen-title">RESUMEN</h2>
@@ -43,7 +54,8 @@
 
             <div class="cart-resumen-line">
                 <p>SUBTOTAL</p>
-                <p>${{getSubtotal().toLocaleString('es', { minimumFractionDigits: 2, maximumFractionDigits: 2, useGrouping: true})}}</p>
+                <p>${{getSubtotal().toLocaleString('es', { minimumFractionDigits: 2, maximumFractionDigits: 2,
+                    useGrouping: true})}}</p>
             </div>
 
             <div class="cart-resumen-line">
@@ -53,11 +65,12 @@
 
             <div class="cart-resumen-line">
                 <p>TOTAL</p>
-                <p id="total-price">${{getTotalPrice().toLocaleString('es', { minimumFractionDigits: 2, maximumFractionDigits: 2, useGrouping: true})}}</p>
+                <p id="total-price">${{getTotalPrice().toLocaleString('es', { minimumFractionDigits: 2,
+                    maximumFractionDigits: 2, useGrouping: true})}}</p>
             </div>
         </article>
 
         <div id="wallet_container"></div>
     </section>
-    
+
 </main>

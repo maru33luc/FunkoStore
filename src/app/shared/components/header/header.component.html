@@ -14,7 +14,7 @@
 
             <ng-container *appIfAuthenticated >
                 <li class="header-navbar-item">
-                    <ng-container *ngIf="username">HOLA {{username}}</ng-container>
+                    <ng-container *ngIf="username !== ''">HOLA {{username}}</ng-container>
                 </li>
                 <li class="header-navbar-item" >
                     <a class="header-navbar-link" [routerLink]="['/register/edit']">EDITAR DATOS</a>
@@ -49,7 +49,6 @@
             </a>
         </div>
 
-    
         <ul #navBar class="header-navbar-menu header-navbar-menu-admin" *ngIf="isAdmin">
             <li class="header-navbar-item">
                 <a class="header-navbar-link" routerLink="/admin">LISTADO</a>

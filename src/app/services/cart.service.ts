@@ -131,6 +131,8 @@ export class CartService {
 
     async eliminarDelCarrito(funkoId: number) {
         const user = this.auth.currentUser;
+        console.log('funkoId', funkoId);
+        console.log('this.cart', this.cart);
         if (user) {
             try {
                 const db = getFirestore();
@@ -140,6 +142,7 @@ export class CartService {
                     carrito: this.cart
                 });
                 this.cartSubject.next(this.cart);
+                console.log('this.cart pos', this.cart);
             } catch (error) {
                 console.error(error);
             }

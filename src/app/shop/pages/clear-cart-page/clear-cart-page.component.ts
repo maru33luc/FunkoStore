@@ -27,7 +27,7 @@ export class ClearCartPageComponent {
         });
         setTimeout(() => {
             this.router.navigate(['/home']);
-        }, 4000);
+        }, 5000);
     }
 
     ngOnInit() {

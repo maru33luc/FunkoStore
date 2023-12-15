@@ -26,21 +26,17 @@ export class CartComponent {
     quantityChanges: { funkoId: number; quantity: number }[] = [];
     user: Observable<any> | undefined;
     valoresPrevios: { funkoId: number; quantity: number }[] = [];
+    loadingCart: boolean = true;
 
     constructor(
         private cartService: CartService,
         private funkoService: FunkosService,
         private loginService: LoginService,
         private cartLocalService: CartLocalService,
-        private paymentService: PaymentService,
         private renderer: Renderer2,
-
-    ) {
-
-    }
+    ) { }
 
     ngOnInit() {
-        // this.cargarScript();
         window.paymentButton = document.getElementById('payment');
         window.mercadoPagoBtn = document.getElementById('wallet_container');
 
@@ -48,12 +44,14 @@ export class CartComponent {
             if (user) {
                 this.user = user;
                 await this.obtenerCart(user.uid);
+                this.loadingCart = false; // Después de cargar el carrito, ocultar el spinner
                 this.cargarScript();
             } else {
                 this.user = undefined;
                 this.cartItems = [];
                 this.cartItemsCopy = [];
-
+                // Mostrar el spinner mientras se carga el carrito local
+                this.loadingCart = true;
                 this.cartItems = await this.cartLocalService.getCart();
                 this.cartItemsCopy = this.cartItems.map(item => ({ ...item }));
                 this.valoresPrevios = [];
@@ -62,31 +60,22 @@ export class CartComponent {
                 }
                 await this.loadFunkoDetails();
                 this.cargarScript();
+                this.loadingCart = false;
             }
         }
         );
+
         this.cartLocalService.cartSubject.subscribe(async (items) => {
             this.cartItems = items;
             this.cartItemsCopy = this.cartItems.map(item => ({ ...item }));
             await this.loadFunkoDetails();
-
         });
-
-        // this.cartService.cartSubject.subscribe(async (items) => {
-        //     this.cartItems = items;
-        //     this.cartItemsCopy = this.cartItems.map(item => ({ ...item }));
-        //     await this.loadFunkoDetails();
-
-        // });
     }
-
-    
 
     ngOnDestroy() {
         window.paymentButton = null;
         window.mercadoPagoBtn = null;
         localStorage.removeItem('script');
-
     }
 
     cargarScript() {
@@ -229,11 +218,9 @@ export class CartComponent {
                     this.cartService.cartSubject.subscribe(async (items) => {
                         if (items.length === 0) {
                             // Verificar si el carrito está vacío y activar el evento
-                                document.dispatchEvent(new Event('carritoVacioEvent'));
-                                this.cartItems = [];
-                                this.cartItemsCopy = [];
-                            
-                            
+                            document.dispatchEvent(new Event('carritoVacioEvent'));
+                            this.cartItems = [];
+                            this.cartItemsCopy = [];
                         }
                     });
 
@@ -252,7 +239,6 @@ export class CartComponent {
                         }
                     });
                 }
-
             }
         });
     }

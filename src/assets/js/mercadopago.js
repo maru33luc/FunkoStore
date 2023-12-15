@@ -31,17 +31,14 @@ if (localStorage.getItem('script') == 'scriptCargado') {
 
     async function iniciarPago() {
         try {
-
             await new Promise(resolve => setTimeout(resolve, 500)); // Esperar a que se cargue el DOM
 
             // Verificar la existencia de elementos en el carrito
             const cartItems = document.querySelector('.cart-items');
             if (!cartItems || cartItems.childElementCount === 0) {
-                console.log('No hay elementos en el carrito. No se iniciará el pago.');
                 return;
             }
            
-
             // Obtener los elementos después de que se haya actualizado el DOM
             const totalQuantity = document.getElementById('total-quantity');
 
@@ -83,9 +80,7 @@ if (localStorage.getItem('script') == 'scriptCargado') {
         }
     }
 
-
     // Llamar a la función para iniciar el pago
-    
     iniciarPago();
 
     // Función para ocultar o destruir el botón de pago

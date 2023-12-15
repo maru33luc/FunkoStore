@@ -81,7 +81,7 @@
       "serie": "Pocket Pop!, Lord of the Rings Mystery Keychains",
       "price": 8000,
       "licence": "The Lord of the Rings",
-      "stock": 33,
+      "stock": 13,
       "id": 7
     },
     {
@@ -93,7 +93,7 @@
       "serie": "Funko Mystery Minis, Mystery Minis Lord of the Rings",
       "price": 12000,
       "licence": "The Lord of the Rings",
-      "stock": 29,
+      "stock": 26,
       "id": 8
     },
     {
@@ -105,7 +105,7 @@
       "serie": "Funko Mystery Minis, Mystery Minis Lord of the Rings",
       "price": 12000,
       "licence": "The Lord of the Rings",
-      "stock": 88,
+      "stock": 83,
       "id": 9
     },
     {
@@ -309,7 +309,7 @@
       "serie": "Pop! Vinyl, Pop! Movies",
       "price": 23000,
       "licence": "The Lord of the Rings",
-      "stock": 39,
+      "stock": 35,
       "id": 26
     },
     {
@@ -405,7 +405,7 @@
       "serie": "Funko Mystery Minis, Mystery Minis Lord of the Rings",
       "price": 12000,
       "licence": "The Lord of the Rings",
-      "stock": 27,
+      "stock": 26,
       "id": 34
     },
     {
@@ -536,7 +536,7 @@
       "price": 20000,
       "frontImage": "https://www.leprechaun.es/1430-large_default/funko-pop-15-albus-dumbledore-harry-potter.jpg",
       "backImage": "https://www.leprechaun.es/1429-large_default/funko-pop-15-albus-dumbledore-harry-potter.jpg",
-      "stock": 38,
+      "stock": 29,
       "licence": "Harry Potter",
       "id": 45
     },
@@ -596,7 +596,7 @@
       "price": 8000,
       "frontImage": "https://th.bing.com/th/id/OIP.IYgSf5bVEksy3mSfgq1pcQHaHa?pid=ImgDet&rs=1",
       "backImage": "https://th.bing.com/th/id/R.be48d1cc58b0e052a216c350b9aab391?rik=JxpBrIzA6RvWAQ&pid=ImgRaw&r=0",
-      "stock": 13,
+      "stock": 7,
       "licence": "Harry Potter",
       "id": 50
     },
@@ -872,7 +872,7 @@
       "price": 20000,
       "frontImage": "https://i5.walmartimages.com/asr/966e5224-a0a2-4c60-a6f8-0d7ed5d06ff7_1.e6e29cf8c865e013c1863c2b83c7e34d.jpeg?odnWidth=612&odnHeight=612&odnBg=ffffff",
       "backImage": "https://a3k5c4z3.stackpathcdn.com/895566-medium_default/star-wars-basic-plush-assortment.jpg",
-      "stock": 38,
+      "stock": 36,
       "licence": "Star Wars",
       "id": 73
     },

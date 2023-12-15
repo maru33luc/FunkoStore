@@ -6,7 +6,7 @@ import {
 } from '@angular/fire/auth';
 import { getFirestore, doc, setDoc, getDoc, updateDoc } from 'firebase/firestore';
 import { FunkoCart } from '../interfaces/Cart';
-import { Observable, Subject, observable } from 'rxjs';
+import { BehaviorSubject, Observable, Subject, observable } from 'rxjs';
 import { Router } from '@angular/router';
 
 
@@ -17,7 +17,7 @@ export class LoginService {
 
     private authState$: Observable<any> | undefined;
     private providerGoogle = new GoogleAuthProvider();
-    public username$ = new Subject<string>();
+    public username$ = new BehaviorSubject<string>('');
 
     constructor(private auth: Auth, private router: Router) {
         this.initialize();

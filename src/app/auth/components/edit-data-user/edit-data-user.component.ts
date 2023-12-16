@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
 import { LoginService } from "src/app/services/login.service";
+import Swal from 'sweetalert2';
 
 @Component({
     selector: 'app-edit-data-form',
@@ -13,8 +14,8 @@ export class EditDataUserComponent implements OnInit {
     editDataForm: FormGroup = this.fb.group({
         name: ['', [Validators.required, Validators.maxLength(30)]],
         lastname: ['', [Validators.required, Validators.maxLength(30)]],
-        phone: [''],
-        address: ['']
+        phone: ['', [Validators.required, Validators.pattern('^[0-9]+$'), Validators.maxLength(10)]],
+        address: ['', [Validators.required, Validators.maxLength(50)]]
     });
     isUser: boolean = false;
     dataLoaded: boolean = true;
@@ -22,7 +23,6 @@ export class EditDataUserComponent implements OnInit {
     constructor(private fb: FormBuilder, private loginService: LoginService, private router:Router) { }
 
     ngOnInit() {
-
         this.obtenerDatos();
     }
 
@@ -42,10 +42,7 @@ export class EditDataUserComponent implements OnInit {
                         });
                     });
                 }
-
             });
-
-
         } catch (error) {
             console.error('Error al obtener datos del usuario', error);
         }
@@ -58,8 +55,6 @@ export class EditDataUserComponent implements OnInit {
             this.editDataForm.controls[field].touched
         );
     }
-
-
 
     // Método para manejar la lógica de actualización de datos
     editData() {
@@ -76,10 +71,20 @@ export class EditDataUserComponent implements OnInit {
             this.loginService.updateUserData(name, lastname, phone, address);
 
             // redirigir al home
-            this.router.navigate(['/home']);
+            Swal.fire({
+                text: "El usuario ha sido modificado",
+                icon: "success",
+            }).then(() => {
+                this.router.navigate(['/home']);
+                this.scrollToTop();
+            });
             
         } catch (error) {
             console.error('Error al actualizar los datos', error);
         }
+    }
+
+    scrollToTop() {
+        window.scrollTo(0, 0);
     }
 }

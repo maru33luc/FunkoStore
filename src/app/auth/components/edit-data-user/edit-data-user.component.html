@@ -1,5 +1,5 @@
 <main class="main">
-    <h1 class="h1">EDITAR DATOS USUARIO</h1>
+    <h1 class="h1">EDITAR USUARIO</h1>
     <form class="form" [formGroup]="editDataForm" (submit)="editData()">
 
         <div class="form-box">
@@ -19,17 +19,21 @@
         <div class="form-box">
             <label class="form-label" for="phone">Teléfono</label>
             <input id="phone" class="form-input" type="text" formControlName="phone" placeholder="Tu teléfono">
-            <!-- Agrega aquí las validaciones necesarias para el campo phone -->
+            <span class="form-error" *ngIf="validate('phone', 'required')">Campo obligatorio</span>
+            <span class="form-error" *ngIf="validate('phone', 'pattern')">Teléfono inválido</span>
+            <span class="form-error" *ngIf="validate('phone', 'maxlength')">Máximo 10 caracteres</span>
         </div>
     
         <div class="form-box">
             <label class="form-label" for="address">Dirección</label>
             <input id="address" class="form-input" type="text" formControlName="address" placeholder="Tu dirección">
-            <!-- Agrega aquí las validaciones necesarias para el campo address -->
+            <span class="form-error" *ngIf="validate('address', 'required')">Campo obligatorio</span>
+            <span class="form-error" *ngIf="validate('address', 'maxlength')">Máximo 50 caracteres</span>
         </div>
 
-        <div class="form-box-register">
-            <input class="button" type="submit" value="GUARDAR"> 
+        <div class="form-box-btn">
+            <input class="button" type="submit" value="GUARDAR">
+            <input class="button" type="button" routerLink="/home" (click)="scrollToTop()" value="CANCELAR">
         </div>
 
         <ng-container *ngIf="dataLoaded; else loading"></ng-container>

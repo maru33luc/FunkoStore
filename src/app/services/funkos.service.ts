@@ -146,10 +146,6 @@ export class FunkosService {
             const { type, criteria, min, max } = filtro;
            
             if (type === 'name') {
-                if (criteria !== "") {
-                    this.undoFilters(favorites? favorites : null);
-                    this.limpiarFiltro("name");
-                }
                 result = result.filter((funko) =>
                     (funko.name || '').toLowerCase().includes(criteria.toLowerCase())
                 );
@@ -190,7 +186,7 @@ export class FunkosService {
             }
             else if (type === 'category' && criteria !== 'Favorites') {
                 if (!this.appliedFilters.find(filter => filter.type === "licence")) {
-                    result = this.funkos.filter((funko) =>
+                    result = result.filter((funko) =>
                         (funko.category == criteria && typeof funko.category === 'string')
                     );
                 }

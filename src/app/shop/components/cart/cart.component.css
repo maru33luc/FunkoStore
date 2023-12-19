@@ -196,3 +196,12 @@
     align-self: center;
     max-width: 50%;
 }
+
+.spinner-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+}
+
+

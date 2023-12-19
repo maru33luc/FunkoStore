@@ -27,6 +27,7 @@ export class CartComponent {
     user: Observable<any> | undefined;
     valoresPrevios: { funkoId: number; quantity: number }[] = [];
     loadingCart: boolean = true;
+    
 
     constructor(
         private cartService: CartService,

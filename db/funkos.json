@@ -81,7 +81,7 @@
       "serie": "Pocket Pop!, Lord of the Rings Mystery Keychains",
       "price": 8000,
       "licence": "The Lord of the Rings",
-      "stock": 12,
+      "stock": 9,
       "id": 7
     },
     {
@@ -93,7 +93,7 @@
       "serie": "Funko Mystery Minis, Mystery Minis Lord of the Rings",
       "price": 12000,
       "licence": "The Lord of the Rings",
-      "stock": 26,
+      "stock": 24,
       "id": 8
     },
     {
@@ -105,7 +105,7 @@
       "serie": "Funko Mystery Minis, Mystery Minis Lord of the Rings",
       "price": 12000,
       "licence": "The Lord of the Rings",
-      "stock": 83,
+      "stock": 82,
       "id": 9
     },
     {
@@ -500,7 +500,7 @@
       "price": 18000,
       "frontImage": "https://th.bing.com/th/id/OIP.G61aRWBA5xiEJspxCPf5jgHaHa?pid=ImgDet&rs=1",
       "backImage": "https://www.supportivepc.com/assets/alt_1/FUNK000826.jpg",
-      "stock": 40,
+      "stock": 38,
       "licence": "Harry Potter",
       "id": 42
     },
@@ -536,7 +536,7 @@
       "price": 20000,
       "frontImage": "https://www.leprechaun.es/1430-large_default/funko-pop-15-albus-dumbledore-harry-potter.jpg",
       "backImage": "https://www.leprechaun.es/1429-large_default/funko-pop-15-albus-dumbledore-harry-potter.jpg",
-      "stock": 28,
+      "stock": 23,
       "licence": "Harry Potter",
       "id": 45
     },
@@ -596,7 +596,7 @@
       "price": 8000,
       "frontImage": "https://th.bing.com/th/id/OIP.IYgSf5bVEksy3mSfgq1pcQHaHa?pid=ImgDet&rs=1",
       "backImage": "https://th.bing.com/th/id/R.be48d1cc58b0e052a216c350b9aab391?rik=JxpBrIzA6RvWAQ&pid=ImgRaw&r=0",
-      "stock": 5,
+      "stock": 3,
       "licence": "Harry Potter",
       "id": 50
     },
@@ -656,7 +656,7 @@
       "price": 20000,
       "frontImage": "https://th.bing.com/th/id/R.9c8ddbc3283e25b7f7a90a443906288a?rik=wOK9jLYGQQfzyg&riu=http%3a%2f%2fcdn1.commentseruiner.net%2f26545-home_default%2fpeluche-harry-potter.jpg&ehk=fqY%2ftpXUxM0j8tbqBzip4S7pSrEje4FmV2OK3mb8gd0%3d&risl=&pid=ImgRaw&r=0",
       "backImage": "https://i5.walmartimages.com/asr/1558579a-bab4-443e-8c58-a130429419aa_1.1fbde3ffb3cad5c4e7e4ba3b31bb0135.jpeg?odnWidth=1000&odnHeight=1000&odnBg=ffffff",
-      "stock": 39,
+      "stock": 37,
       "licence": "Harry Potter",
       "id": 55
     },

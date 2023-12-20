@@ -15,7 +15,6 @@ if (localStorage.getItem('script') == 'scriptCargado') {
     // Escucha un evento personalizado que indica la creación del botón
     document.addEventListener('bricksButtonCreated', () => {
         bricksButtonCreated = true;
-        console.log('Botón de pago creado');
     });
 
     const mp = new MercadoPago('TEST-ad2a00a3-36b2-41ec-9cff-be4ea472b2e4', { locale: 'es-AR' });
@@ -42,7 +41,7 @@ if (localStorage.getItem('script') == 'scriptCargado') {
     async function iniciarPago() {
 
         try {
-            await new Promise(resolve => setTimeout(resolve, 500));
+            await new Promise(resolve => setTimeout(resolve, 100));
              // Esperar a que se cargue el DOM
 
             // Verificar la existencia de elementos en el carrito
@@ -123,26 +122,4 @@ if (localStorage.getItem('script') == 'scriptCargado') {
         }
     }
 
-    // const cartItems = document.querySelectorAll('.cart-item');
-    //         console.log('cartItems', cartItems);
-    //         cartItems.forEach((item) => {
-    //             const btnAdd = item.querySelector('#add');
-    //             const btnSubstract = item.querySelector('#substract');
-    
-    //             btnAdd.addEventListener('click', () => {
-    //                 console.log('click');
-    //                 localStorage.removeItem('script');
-    //                 ocultarBotonPago();
-    //                 bricksBuilderCreado = false;
-    //                 iniciarPago();
-    
-    //             }); 
-    //             btnSubstract.addEventListener('click', () => {
-    //                 console.log('click');
-    //                 localStorage.removeItem('script');
-    //                 bricksBuilderCreado = false;
-    //                 iniciarPago();
-    
-    //             });
-    //         });
 }

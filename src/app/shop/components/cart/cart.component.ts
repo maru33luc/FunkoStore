@@ -47,6 +47,9 @@ export class CartComponent {
                 await this.obtenerCart(user.uid);
                 this.loadingCart = false; // Después de cargar el carrito, ocultar el spinner
                 this.cargarScript();
+                setTimeout(() => {
+                    this.renderizarBtnPago();
+                }, 40);
             } else {
                 this.user = undefined;
                 this.cartItems = [];
@@ -70,7 +73,28 @@ export class CartComponent {
             this.cartItems = items;
             this.cartItemsCopy = this.cartItems.map(item => ({ ...item }));
             await this.loadFunkoDetails();
+            setTimeout(() => {
+                this.renderizarBtnPago();
+            }, 40);
         });
+    }
+
+    renderizarBtnPago() {
+        const cartItems = document.querySelectorAll('.cart-item');
+            cartItems.forEach((item) => {
+                const btnAdd = item.querySelector('#add');
+                const btnSubstract = item.querySelector('#substract');
+    
+                btnAdd?.addEventListener('click', () => {
+                    localStorage.removeItem('script');
+                    this.cargarScript();
+                });
+                btnSubstract?.addEventListener('click', () => {
+                    localStorage.removeItem('script');
+                    this.cargarScript();
+                });
+            });
+
     }
 
     ngOnDestroy() {

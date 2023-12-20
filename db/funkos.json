@@ -309,7 +309,7 @@
       "serie": "Pop! Vinyl, Pop! Movies",
       "price": 23000,
       "licence": "The Lord of the Rings",
-      "stock": 35,
+      "stock": 28,
       "id": 26
     },
     {
@@ -536,7 +536,7 @@
       "price": 20000,
       "frontImage": "https://www.leprechaun.es/1430-large_default/funko-pop-15-albus-dumbledore-harry-potter.jpg",
       "backImage": "https://www.leprechaun.es/1429-large_default/funko-pop-15-albus-dumbledore-harry-potter.jpg",
-      "stock": 6,
+      "stock": 10,
       "licence": "Harry Potter",
       "id": 45
     },

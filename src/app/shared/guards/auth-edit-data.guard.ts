@@ -19,6 +19,7 @@ export class AuthEditDataGuard implements CanActivate {
         return this.loginService.authStateObservable()!.pipe(
             map(user => {
                     if (user) {
+                        
                         return true;
                     } else {
                         this.router.navigate(['home']);

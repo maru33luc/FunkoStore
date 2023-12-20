@@ -74,14 +74,14 @@
     },
     {
       "name": "Aragorn",
-      "description": "",
+      "serie": "Pocket Pop!, Lord of the Rings Mystery Keychains",
       "category": "Keychain",
+      "licence": "The Lord of the Rings",
+      "price": 8000,
+      "stock": 9,
       "frontImage": "https://www.supportivepc.com/assets/full/FUNK006743.jpg?20211211210308g",
       "backImage": "https://th.bing.com/th/id/OIP.ySbfbkn3u7yxIDTb9WQeTQHaHa?pid=ImgDet&rs=1",
-      "serie": "Pocket Pop!, Lord of the Rings Mystery Keychains",
-      "price": 8000,
-      "licence": "The Lord of the Rings",
-      "stock": 9,
+      "description": " ",
       "id": 7
     },
     {

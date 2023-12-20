@@ -198,7 +198,7 @@
 .fav-price-container{
     display: flex;
     align-items: center;
-    justify-content: start;
+    justify-content: flex-start;
     gap: 6rem;
     width: 100%;
 }

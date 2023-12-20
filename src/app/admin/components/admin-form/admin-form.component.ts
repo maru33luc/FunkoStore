@@ -25,8 +25,9 @@ export class AdminFormComponent {
         licence: ['', Validators.required],
         price: [0, [Validators.required, Validators.min(1)]],
         stock: [0, [Validators.required, Validators.min(1)]],
-        frontImage: ['', [Validators.required, Validators.pattern('^(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})([/\\w .-]*)*/?$')]],
-        backImage: ['', [Validators.required, Validators.pattern('^(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})([/\\w .-]*)*/?$')]],
+        // frontImage: ['', [Validators.required, Validators.pattern('^(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})([/\\w .-]*)*/?$')]],
+        frontImage: ['', [Validators.required]],
+        backImage: ['', [Validators.required]],
         description: ['', Validators.required],
     });
 

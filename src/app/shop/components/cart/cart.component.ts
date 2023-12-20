@@ -60,8 +60,8 @@ export class CartComponent {
                     this.valoresPrevios.push({ funkoId: item.funkoId, quantity: item.quantity });
                 }
                 await this.loadFunkoDetails();
-                this.cargarScript();
                 this.loadingCart = false;
+                this.cargarScript();
             }
         }
         );

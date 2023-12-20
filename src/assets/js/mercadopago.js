@@ -11,8 +11,16 @@ if (localStorage.getItem('script') == 'scriptCargado') {
 
     // let loadingPayment = true;
     let bricksBuilderCreado = false;
+
+    // Escucha un evento personalizado que indica la creación del botón
+    document.addEventListener('bricksButtonCreated', () => {
+        bricksButtonCreated = true;
+        console.log('Botón de pago creado');
+    });
+
     const mp = new MercadoPago('TEST-ad2a00a3-36b2-41ec-9cff-be4ea472b2e4', { locale: 'es-AR' });
     const bricksBuilder = mp.bricks();
+
 
     async function obtenerPreferenceId(orderData) {
         try {
@@ -32,43 +40,46 @@ if (localStorage.getItem('script') == 'scriptCargado') {
     }
 
     async function iniciarPago() {
-        if (bricksBuilderCreado === false) {
 
-            try {
-                await new Promise(resolve => setTimeout(resolve, 500)); // Esperar a que se cargue el DOM
+        try {
+            await new Promise(resolve => setTimeout(resolve, 500));
+             // Esperar a que se cargue el DOM
 
-                // Verificar la existencia de elementos en el carrito
-                const cartItems = document.querySelector('.cart-items');
-                if (!cartItems || cartItems.childElementCount === 0) {
-                    return;
-                }
+            // Verificar la existencia de elementos en el carrito
+            const cartItems = document.querySelector('.cart-items');
+            if (!cartItems || cartItems.childElementCount === 0) {
+                return;
+            }
 
-                // Mostrar el spinner de carga
-                const walletContainer = document.getElementById('wallet_container');
-                walletContainer.innerHTML = '<div class="spinner-container"><img class="spinner" style="display: block; margin: auto;" src="../../../../assets/img/spinner.svg" alt="Loading spinner"></div>';
+            // Mostrar el spinner de carga
+            const walletContainer = document.getElementById('wallet_container');
+            walletContainer.innerHTML = '<div class="spinner-container"><img class="spinner" style="display: block; margin: auto;" src="../../../../assets/img/spinner.svg" alt="Loading spinner"></div>';
 
-                // Obtener los elementos después de que se haya actualizado el DOM
-                const totalQuantity = document.getElementById('total-quantity');
+            // Obtener los elementos después de que se haya actualizado el DOM
+            const totalQuantity = document.getElementById('total-quantity');
 
-                // sacarle el signo $ al precio
-                const precio = document.getElementById('total-price').textContent;
-                const precioSinSigno = precio.slice(1, precio.length);
-                const precioSinPunto = precioSinSigno.replace('.', '');
+            // sacarle el signo $ al precio
+            const precio = document.getElementById('total-price').textContent;
+            const precioSinSigno = precio.slice(1, precio.length);
+            const precioSinPunto = precioSinSigno.replace('.', '');
 
-                // Imprimir los valores después de obtener los elementos
-                const totalPrice = document.getElementById('total-price');
+            // Imprimir los valores después de obtener los elementos
+            const totalPrice = document.getElementById('total-price');
 
-                const orderData = {
-                    items: [
-                        {
-                            title: 'Funkos',
-                            quantity: parseInt(totalQuantity.textContent),
-                            price: parseFloat(precioSinPunto),
-                        },
-                    ],
-                };
-                const preferenceId = await obtenerPreferenceId(orderData); // Esperar a que se resuelva la promesa
+            const orderData = {
+                items: [
+                    {
+                        title: 'Funkos',
+                        // quantity: parseInt(totalQuantity.textContent),
+                        quantity : 1,
+                        price: parseFloat(precioSinPunto),
+                    },
+                ],
+            };
+            const preferenceId = await obtenerPreferenceId(orderData); // Esperar a que se resuelva la promesa
 
+            // if (paymentButton === null) {
+                if(bricksBuilderCreado === false){
                 bricksBuilder.create('wallet', 'wallet_container', {
                     initialization: {
                         preferenceId: preferenceId,
@@ -82,18 +93,21 @@ if (localStorage.getItem('script') == 'scriptCargado') {
 
                 });
                 bricksBuilderCreado = true;
-                // Ocultar el spinner de carga después de renderizar el botón
-                // Agrega aquí la lógica para ocultar el spinner en tu HTML
-                document.getElementById('wallet_container').innerHTML = '';
+            }
+            
 
-                // Resto de la configuración del Brick
-            }
-            catch (error) {
-                console.error('Error al iniciar el pago:', error);
-                // Manejar el error y ocultar el spinner de carga si es necesario
-                // loadingPayment = false;
-            }
+             // Dispara un evento personalizado indicando la creación del botón
+             const bricksButtonCreatedEvent = new Event('bricksButtonCreated');
+             document.dispatchEvent(bricksButtonCreatedEvent);
+
+            // Ocultar el spinner de carga después de renderizar el botón
+            document.getElementById('wallet_container').innerHTML = '';
+
         }
+        catch (error) {
+            console.error('Error al iniciar el pago:', error);
+        }
+        // }
     }
 
     // Llamar a la función para iniciar el pago
@@ -108,4 +122,27 @@ if (localStorage.getItem('script') == 'scriptCargado') {
             mercadoPagoBtn.style.display = 'none';
         }
     }
+
+    // const cartItems = document.querySelectorAll('.cart-item');
+    //         console.log('cartItems', cartItems);
+    //         cartItems.forEach((item) => {
+    //             const btnAdd = item.querySelector('#add');
+    //             const btnSubstract = item.querySelector('#substract');
+    
+    //             btnAdd.addEventListener('click', () => {
+    //                 console.log('click');
+    //                 localStorage.removeItem('script');
+    //                 ocultarBotonPago();
+    //                 bricksBuilderCreado = false;
+    //                 iniciarPago();
+    
+    //             }); 
+    //             btnSubstract.addEventListener('click', () => {
+    //                 console.log('click');
+    //                 localStorage.removeItem('script');
+    //                 bricksBuilderCreado = false;
+    //                 iniciarPago();
+    
+    //             });
+    //         });
 }

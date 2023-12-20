@@ -1,25 +1,24 @@
-
 if (localStorage.getItem('script') == 'scriptCargado') {
-    // Obtener el botón desde la variable global
-    paymentButton = window.paymentButton;
-    mercadoPagoBtn = window.mercadoPagoBtn;
+    let paymentButton = window.paymentButton;
+    let mercadoPagoBtn = window.mercadoPagoBtn;
+    let bricksButtonCreated = false;
 
     document.addEventListener('carritoVacioEvent', () => {
-        // Llamada a la función para ocultar o destruir el botón de pago
         ocultarBotonPago();
     });
 
-    // let loadingPayment = true;
-    let bricksBuilderCreado = false;
+    document.removeEventListener('bricksButtonCreated', bricksButtonCreatedHandler);
+    document.addEventListener('bricksButtonCreated', bricksButtonCreatedHandler);
 
-    // Escucha un evento personalizado que indica la creación del botón
-    document.addEventListener('bricksButtonCreated', () => {
-        bricksButtonCreated = true;
-    });
+    function bricksButtonCreatedHandler() {
+        if (!bricksButtonCreated) {
+            console.log('Evento bricksButtonCreated disparado');
+            bricksButtonCreated = true;
+        }
+    }
 
     const mp = new MercadoPago('TEST-ad2a00a3-36b2-41ec-9cff-be4ea472b2e4', { locale: 'es-AR' });
     const bricksBuilder = mp.bricks();
-
 
     async function obtenerPreferenceId(orderData) {
         try {
@@ -39,46 +38,34 @@ if (localStorage.getItem('script') == 'scriptCargado') {
     }
 
     async function iniciarPago() {
-
         try {
-            await new Promise(resolve => setTimeout(resolve, 100));
-             // Esperar a que se cargue el DOM
+            await new Promise(resolve => setTimeout(resolve, 30));
 
-            // Verificar la existencia de elementos en el carrito
             const cartItems = document.querySelector('.cart-items');
             if (!cartItems || cartItems.childElementCount === 0) {
                 return;
             }
 
-            // Mostrar el spinner de carga
             const walletContainer = document.getElementById('wallet_container');
             walletContainer.innerHTML = '<div class="spinner-container"><img class="spinner" style="display: block; margin: auto;" src="../../../../assets/img/spinner.svg" alt="Loading spinner"></div>';
 
-            // Obtener los elementos después de que se haya actualizado el DOM
             const totalQuantity = document.getElementById('total-quantity');
-
-            // sacarle el signo $ al precio
             const precio = document.getElementById('total-price').textContent;
             const precioSinSigno = precio.slice(1, precio.length);
             const precioSinPunto = precioSinSigno.replace('.', '');
-
-            // Imprimir los valores después de obtener los elementos
-            const totalPrice = document.getElementById('total-price');
 
             const orderData = {
                 items: [
                     {
                         title: 'Funkos',
-                        // quantity: parseInt(totalQuantity.textContent),
-                        quantity : 1,
+                        quantity: 1,
                         price: parseFloat(precioSinPunto),
                     },
                 ],
             };
-            const preferenceId = await obtenerPreferenceId(orderData); // Esperar a que se resuelva la promesa
+            const preferenceId = await obtenerPreferenceId(orderData);
 
-            // if (paymentButton === null) {
-                if(bricksBuilderCreado === false){
+            if (!bricksButtonCreated) {
                 bricksBuilder.create('wallet', 'wallet_container', {
                     initialization: {
                         preferenceId: preferenceId,
@@ -89,30 +76,21 @@ if (localStorage.getItem('script') == 'scriptCargado') {
                             valueProp: 'security_details',
                         },
                     }
-
                 });
-                bricksBuilderCreado = true;
+                bricksButtonCreated = true;
             }
-            
 
-             // Dispara un evento personalizado indicando la creación del botón
-             const bricksButtonCreatedEvent = new Event('bricksButtonCreated');
-             document.dispatchEvent(bricksButtonCreatedEvent);
+            const bricksButtonCreatedEvent = new Event('bricksButtonCreated');
+            document.dispatchEvent(bricksButtonCreatedEvent);
 
-            // Ocultar el spinner de carga después de renderizar el botón
             document.getElementById('wallet_container').innerHTML = '';
-
-        }
-        catch (error) {
+        } catch (error) {
             console.error('Error al iniciar el pago:', error);
         }
-        // }
     }
 
-    // Llamar a la función para iniciar el pago
     iniciarPago();
 
-    // Función para ocultar o destruir el botón de pago
     function ocultarBotonPago() {
         if (paymentButton) {
             paymentButton.style.display = 'none';
@@ -121,5 +99,4 @@ if (localStorage.getItem('script') == 'scriptCargado') {
             mercadoPagoBtn.style.display = 'none';
         }
     }
-
 }

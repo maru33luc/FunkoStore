@@ -10,6 +10,7 @@ import { LoginService } from 'src/app/services/login.service';
 import { PotterApiService } from 'src/app/services/api-potter.service';
 import { ApiStarWarsService } from 'src/app/services/api-star-wars.service';
 import { ApiPokemonService } from 'src/app/services/api-pokemon.service';
+import Swal from 'sweetalert2';
 
 @Component({
     selector: 'app-item',
@@ -164,8 +165,19 @@ export class ItemComponent implements AfterViewInit {
                             // Emitir el nuevo stock después de agregar al carrito
                             const nuevoStock = this.stock ? this.stock - quantity : 0;
                             this.funkosService.emitirStockInicial(nuevoStock);
+                            Swal.fire({
+                                icon: 'success',
+                                title: '¡Operación exitosa!',
+                                text: 'El artículo se ha agregado al carrito exitosamente.',
+                              });
+                              
                         } else {
-                            alert('No hay stock suficiente'); // AGREGAR POP UP DE SWEET ALERT
+                            // alert('No hay stock suficiente'); // AGREGAR POP UP DE SWEET ALERT
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'No hay stock suficiente',
+                              });
+                              
                         }
                     } else {
                         if (this.selectedItem.stock && this.selectedItem.stock > 0 && this.selectedItem.stock >= quantity) {
@@ -174,6 +186,21 @@ export class ItemComponent implements AfterViewInit {
                             const nuevoStock = this.stock ? this.stock - quantity : 0;
                             this.funkosService.emitirStockInicial(nuevoStock);
                             this.funkosService.actualizarStockFunko(this.selectedItem.id, nuevoStock);
+                            Swal.fire({
+                                icon: 'success',
+                                title: '¡Operación exitosa!',
+                                text: 'El artículo se ha agregado al carrito exitosamente.',
+                              });
+                              
+                              
+                        }
+                        else{
+                            // alert('No hay stock suficiente'); // AGREGAR POP UP DE SWEET ALERT
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'No hay stock suficiente',
+                              });
+                              
                         }
                     }
                     this.quantityButton.nativeElement.value = "0";

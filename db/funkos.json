@@ -78,7 +78,7 @@
       "category": "Keychain",
       "licence": "The Lord of the Rings",
       "price": 8000,
-      "stock": 5,
+      "stock": 3,
       "frontImage": "https://www.supportivepc.com/assets/full/FUNK006743.jpg?20211211210308g",
       "backImage": "https://th.bing.com/th/id/OIP.ySbfbkn3u7yxIDTb9WQeTQHaHa?pid=ImgDet&rs=1",
       "description": " ",
@@ -105,7 +105,7 @@
       "serie": "Funko Mystery Minis, Mystery Minis Lord of the Rings",
       "price": 12000,
       "licence": "The Lord of the Rings",
-      "stock": 77,
+      "stock": 76,
       "id": 9
     },
     {
@@ -309,7 +309,7 @@
       "serie": "Pop! Vinyl, Pop! Movies",
       "price": 23000,
       "licence": "The Lord of the Rings",
-      "stock": 28,
+      "stock": 32,
       "id": 26
     },
     {
@@ -968,7 +968,7 @@
       "price": 27000,
       "frontImage": "https://nintendoeverything.com/wp-content/uploads/bulbasaur-funko-pop-1.jpg",
       "backImage": "https://i5.walmartimages.com/asr/d983904c-bb13-4bbc-a393-7133ce81531c_1.d62df57ffdf4b5e37db2afbaf58b55a6.jpeg",
-      "stock": 38,
+      "stock": 37,
       "licence": "Pokemon",
       "id": 81
     },

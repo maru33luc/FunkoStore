@@ -91,8 +91,9 @@ export class AdminMainComponent implements OnInit {
                     text: "El producto ha sido eliminado",
                     icon: "success"
                 }).then(() => {
-                    this.scrollToTop();
-                    window.location.reload();
+                    this.searchQuery = '';
+                    this.mostrarFunkos();
+                    this.currentPage = 0;
                 });
             }
         });

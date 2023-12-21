@@ -93,7 +93,7 @@
       "serie": "Funko Mystery Minis, Mystery Minis Lord of the Rings",
       "price": 12000,
       "licence": "The Lord of the Rings",
-      "stock": 21,
+      "stock": 20,
       "id": 8
     },
     {
@@ -500,7 +500,7 @@
       "price": 18000,
       "frontImage": "https://th.bing.com/th/id/OIP.G61aRWBA5xiEJspxCPf5jgHaHa?pid=ImgDet&rs=1",
       "backImage": "https://www.supportivepc.com/assets/alt_1/FUNK000826.jpg",
-      "stock": 38,
+      "stock": 37,
       "licence": "Harry Potter",
       "id": 42
     },

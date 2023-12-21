@@ -39,7 +39,7 @@ if (localStorage.getItem('script') == 'scriptCargado') {
 
     async function iniciarPago() {
         try {
-            await new Promise(resolve => setTimeout(resolve, 30));
+            await new Promise(resolve => setTimeout(resolve, 60));
 
             const cartItems = document.querySelector('.cart-items');
             if (!cartItems || cartItems.childElementCount === 0) {

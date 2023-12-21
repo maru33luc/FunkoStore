@@ -20,8 +20,8 @@ export class RegisterFormComponent implements OnInit {
         password: ['', [Validators.required, Validators.minLength(6)]],
         repassword: ['', [Validators.required]],
         terms: false,
-        phone: ['', [Validators.required]], // Agregado: Campo teléfono
-        address: ['', [Validators.required]], // Agregado: Campo dirección
+        phone: ['', [Validators.required]], 
+        address: ['', [Validators.required]], 
     });
 
     constructor(

@@ -78,7 +78,7 @@
       "category": "Keychain",
       "licence": "The Lord of the Rings",
       "price": 8000,
-      "stock": 2,
+      "stock": 0,
       "frontImage": "https://www.supportivepc.com/assets/full/FUNK006743.jpg?20211211210308g",
       "backImage": "https://th.bing.com/th/id/OIP.ySbfbkn3u7yxIDTb9WQeTQHaHa?pid=ImgDet&rs=1",
       "description": " ",
@@ -536,7 +536,7 @@
       "price": 20000,
       "frontImage": "https://www.leprechaun.es/1430-large_default/funko-pop-15-albus-dumbledore-harry-potter.jpg",
       "backImage": "https://www.leprechaun.es/1429-large_default/funko-pop-15-albus-dumbledore-harry-potter.jpg",
-      "stock": 6,
+      "stock": 12,
       "licence": "Harry Potter",
       "id": 45
     },

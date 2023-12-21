@@ -19,12 +19,18 @@ export class HeaderComponent {
     @ViewChild('navBar') navBar!: ElementRef;
 
     constructor(private loginService: LoginService,
-                private router: Router) { }
+                private router: Router) {
+                    this.loginService.username$.subscribe((username) => {
+                        console.log('username: ', username);
+                        this.username = username.toUpperCase();
+                    });
+                 }
 
     ngOnInit() {
         this.loginService.authStateObservable()?.subscribe((user) => {
             if (user) {
                 this.isLoggedIn = true;
+                console.log('user: ', user);
             } else {
                 this.isLoggedIn = false;
             }
@@ -34,9 +40,10 @@ export class HeaderComponent {
             this.isAdmin = isAdmin;
         });
 
-        this.loginService.username$.subscribe((username) => {
-            this.username = username.toUpperCase();
-        });
+        // this.loginService.username$.subscribe((username) => {
+        //     console.log('username: ', username);
+        //     this.username = username.toUpperCase();
+        // });
     }
 
     ngAfterViewInit() {
@@ -54,5 +61,6 @@ export class HeaderComponent {
             this.isAdmin = false;
         }
         this.loginService.logout();
+        this.loginService.username$.next('');
     }
 }

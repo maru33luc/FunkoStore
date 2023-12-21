@@ -39,7 +39,7 @@ if (localStorage.getItem('script') == 'scriptCargado') {
 
     async function iniciarPago() {
         try {
-            await new Promise(resolve => setTimeout(resolve, 60));
+            await new Promise(resolve => setTimeout(resolve, 120));
 
             const cartItems = document.querySelector('.cart-items');
             if (!cartItems || cartItems.childElementCount === 0) {
@@ -78,12 +78,14 @@ if (localStorage.getItem('script') == 'scriptCargado') {
                     }
                 });
                 bricksButtonCreated = true;
+
+                const bricksButtonCreatedEvent = new Event('bricksButtonCreated');
+                document.dispatchEvent(bricksButtonCreatedEvent);
+
+                document.getElementById('wallet_container').innerHTML = '';
             }
 
-            const bricksButtonCreatedEvent = new Event('bricksButtonCreated');
-            document.dispatchEvent(bricksButtonCreatedEvent);
 
-            document.getElementById('wallet_container').innerHTML = '';
         } catch (error) {
             console.error('Error al iniciar el pago:', error);
         }

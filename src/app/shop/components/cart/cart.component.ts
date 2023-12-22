@@ -44,7 +44,12 @@ export class CartComponent {
         this.loginService.authStateObservable()?.subscribe(async (user) => {
             if (user) {
                 this.user = user;
-                await this.obtenerCart(user.uid);
+                // await this.obtenerCart(user.uid);
+                this.cartService.cartSubject.subscribe(async (items) => {
+                    this.cartItems = items;
+                    this.cartItemsCopy = this.cartItems.map(item => ({ ...item }));
+                    await this.loadFunkoDetails();
+                });
                 this.loadingCart = false; // Después de cargar el carrito, ocultar el spinner
                 this.cargarScript();
                 setTimeout(() => {

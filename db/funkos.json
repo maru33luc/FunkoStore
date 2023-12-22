@@ -93,7 +93,7 @@
       "serie": "Funko Mystery Minis, Mystery Minis Lord of the Rings",
       "price": 12000,
       "licence": "The Lord of the Rings",
-      "stock": 20,
+      "stock": 21,
       "id": 8
     },
     {
@@ -105,7 +105,7 @@
       "serie": "Funko Mystery Minis, Mystery Minis Lord of the Rings",
       "price": 12000,
       "licence": "The Lord of the Rings",
-      "stock": 75,
+      "stock": 74,
       "id": 9
     },
     {
@@ -297,7 +297,7 @@
       "serie": "Pop! Vinyl, Pop! Movies",
       "price": 25000,
       "licence": "The Lord of the Rings",
-      "stock": 41,
+      "stock": 40,
       "id": 25
     },
     {
@@ -405,7 +405,7 @@
       "serie": "Funko Mystery Minis, Mystery Minis Lord of the Rings",
       "price": 12000,
       "licence": "The Lord of the Rings",
-      "stock": 25,
+      "stock": 23,
       "id": 34
     },
     {
@@ -500,7 +500,7 @@
       "price": 18000,
       "frontImage": "https://th.bing.com/th/id/OIP.G61aRWBA5xiEJspxCPf5jgHaHa?pid=ImgDet&rs=1",
       "backImage": "https://www.supportivepc.com/assets/alt_1/FUNK000826.jpg",
-      "stock": 37,
+      "stock": 36,
       "licence": "Harry Potter",
       "id": 42
     },
@@ -968,7 +968,7 @@
       "price": 27000,
       "frontImage": "https://nintendoeverything.com/wp-content/uploads/bulbasaur-funko-pop-1.jpg",
       "backImage": "https://i5.walmartimages.com/asr/d983904c-bb13-4bbc-a393-7133ce81531c_1.d62df57ffdf4b5e37db2afbaf58b55a6.jpeg",
-      "stock": 36,
+      "stock": 35,
       "licence": "Pokemon",
       "id": 81
     },
